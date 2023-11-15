@@ -15,6 +15,7 @@ public class Id
 	 */
 	public static int CalculateIdentification(int amount) 
 	{
+		
 		//Creates a new date created
 		LocalDate DateCreated;
 		
