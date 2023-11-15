@@ -76,9 +76,6 @@ public class HalloweenStoryClusterProject
 			System.out.println("Please enter a verb (past tense):");
 			String Verbed4 		= br.readLine();
 			
-			System.out.println("Please enter a verb (past tense):");
-			String Verbed5 		= br.readLine();
-			
 			System.out.println("Please enter an adjective:");
 			String	Adjective8  = br.readLine();
 			
