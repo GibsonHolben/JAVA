@@ -1,0 +1,9 @@
+
+public class Sunglasses
+{
+	 Manufaturer M1;
+	 
+	String Color;
+	
+	
+}

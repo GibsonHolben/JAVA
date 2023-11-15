@@ -1,0 +1,334 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+/**
+ * A simple class that creates ink that is used by a printer
+ * @author Gibson Holben
+ * @version 0.0.2
+ */
+public class Ink 
+{
+	//***********************
+	//Static variables
+	//***********************
+	
+	/**The amout of ink carterages that exist*/
+	private static int  amountOfInkCartridges = 0;
+	
+	//***********************
+	//Standerd variables
+	//***********************
+	
+	/**The brand of the curent ink cartridge. 
+	 * Default is ""*/
+	private String 	    Brand  = "";
+	
+	/**The size of the printer ink cartridge limited to 67, 910, and 21 
+	 * Default is 0*/
+	private short 		cartridgeSize = 0;
+	
+	/**The color of the ink in the cartridge
+	 * Default is ""*/
+	private String 		ColorofInk = "";
+	
+	/**The amount of ink the cartrage can hold (milliliter)
+	 * Default is 0*/
+	private byte 		capacity = 0;
+	
+	/**The date that the curent ink cartridge was created*/
+	private LocalDate 	DateCreated;
+	
+	/**The id number of the curent Ink with the amount of inks + the date created*/
+	private final int 	IDENTIFICATION; 
+	
+	/**The price of the curent ink cartridge
+	 * Default is 0*/
+	private float 		price = 0;
+	
+	
+	/**
+	 * Creates a simple Ink with an identification number
+	 */
+	Ink()
+	{
+		amountOfInkCartridges += 1;
+		IDENTIFICATION = calculateIdentification();
+	}
+	
+	/**
+	 * 
+	 * Creates a simple Ink with an identification number
+	 * and all the variables except capacity set via user input
+	 * @param NewBrand The name of the brand that made the ink
+	 * @param newCartridgeSize the size of the cartridge
+	 * (limited to 67, 910, and 21)
+	 * @param NewColorOfInk The color of the ink
+	 * @param newPrice The price of the ink
+	 */
+	Ink(String NewBrand, short newCartridgeSize,
+			String NewColorOfInk, float newPrice)
+	{
+		amountOfInkCartridges += 1;
+		
+		Brand 			= NewBrand;	
+		ColorofInk 	 	= NewColorOfInk;
+		price	 		= newPrice;
+		
+		if(isCorectSize(newCartridgeSize))
+		{
+			cartridgeSize = newCartridgeSize;
+		}
+		
+		//Gets the date (y/m/d)
+		IDENTIFICATION = calculateIdentification();
+	}
+	
+	/**
+	 * Creates a simple Ink with an identification number
+	 * and all the variables set via user input
+	 * @param NewBrand The name of the brand that made the ink
+	 * @param newCartridgeSize the size of the cartridge
+	 * (limited to 67, 910, and 21)
+	 * @param NewColorOfInk NewColorOfInk The color of the ink
+	 * @param newCapacity The capacity of the ink cartridge (milliliter)
+	 * @param newPrice The price of the ink
+	 */
+	Ink(String NewBrand, short newCartridgeSize, 
+			String NewColorOfInk, byte newCapacity, float newPrice)
+	{
+		amountOfInkCartridges += 1;
+		
+		Brand 			= NewBrand;
+		ColorofInk 	 	= NewColorOfInk;
+		capacity 		= newCapacity;
+		price	 		= newPrice;
+		
+		if(isCorectSize(newCartridgeSize))
+		{
+			cartridgeSize = newCartridgeSize;
+		}		
+		
+		//Gets the date (y/m/d)
+		IDENTIFICATION = calculateIdentification();
+	}
+	
+	
+	/**
+	 * Returns the amount of ink cartridges
+	 * @return amountOfInkCartridges
+	 */
+	public static int getAmountOfInkCartridges() {
+		return amountOfInkCartridges;
+	}
+	/**
+	 * Returns the brand of the curent Ink
+	 * @return Brand
+	 */
+	public String getBrand() {
+		return Brand;
+	}
+
+	/**
+	 * Sets the brand of the curent Ink
+	 * @param brand The new brand
+	 */
+	public void setBrand(String brand) {
+		Brand = brand;
+	}
+
+	/**
+	 * Returns the cartridgeSize
+	 * @return cartridgeSize
+	 */
+	public short getCartridgeSize() {
+		return cartridgeSize;
+	}
+	/**
+	 * Sets the value of cartridgeSize
+	 * @param cartridgeSize The new cartridge size
+	 */
+	public void setCartridgeSize(short cartridgeSize) {
+		this.cartridgeSize = cartridgeSize;
+	}
+
+	/**
+	 * Returns the color of the curent Ink
+	 * @return ColorofInk
+	 */
+	public String getColorofInk() {
+		return ColorofInk;
+	}
+
+	/**
+	 * Sets the color of the curent Ink
+	 * @param colorofInk The new color of Ink
+	 */
+	public void setColorofInk(String colorofInk) {
+		ColorofInk = colorofInk;
+	}
+
+	/**
+	 * Returns the capacity of the curent Ink
+	 * @return capacity
+	 */
+	public byte getCapacity() {
+		return capacity;
+	}
+
+	/**
+	 * Sets the capacity of the curent Ink 
+	 * @param capacity the new capacity
+	 */
+	public void setCapacity(byte capacity) {
+		this.capacity = capacity;
+	}
+
+	/**
+	 * Returns the curent in Inks's date of creation
+	 * @return DateCreated
+	 */
+	public LocalDate getDateCreated() {
+		return DateCreated;
+	}
+
+	/**
+	 * Returns the price of the curent Ink
+	 * @return price
+	 */
+	public float getPrice() {
+		return price;
+	}
+
+	/**
+	 * Sets the price of the curent Ink
+	 * @param price the new price
+	 */
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	/**
+	 * Returns the identification number of the curent Ink
+	 * @return identification
+	 */
+	public int getIdentification() {
+		return IDENTIFICATION;
+	}
+
+	/**
+	 * Checks if your carterage size matches the ones defined
+	 * @param sizer the size of the carterage
+	 * @return if the size is corect
+	 */
+	private boolean isCorectSize(short sizer)
+	{
+		if(sizer == 67 || sizer == 910 || sizer == 21)	
+		{
+			return true;
+		}
+		else
+		{
+			System.out.println("Please use one of the following: "
+					+ "67, 910, 21. Size will be defaulted to 0");
+			return false;
+			
+		}
+	}
+	
+	/**
+	 * Calculates the identification number of the Ink
+	 * id = number of ink cartridges + curent date (yyyy/mm/dd)
+	 * @return the identification number
+	 */
+	private int calculateIdentification()
+	{
+		//Gets the date
+		DateCreated = LocalDate.now();
+		
+		//Creates an id number 
+		String S = Ink.amountOfInkCartridges + DateCreated.toString();
+		String NewS = S.replace("-", "");
+		
+		return Integer.parseInt(NewS);
+	}
+	
+	
+	/**
+	 * Returns the object Ink in String form and saves the
+	 *  CSV file to a folder on the computer
+	 *  @return CSV formated String of the curent Ink's variables
+	 */
+	public String toString()
+	{
+		String s1 = Brand + "|" + cartridgeSize + "|" + ColorofInk + "|";
+		String s2 = capacity + "|" + DateCreated + "|" + IDENTIFICATION;
+		String s3 = "|" + price + "|";
+		return s1 + s2 + s3;
+		
+	}
+	
+	/**
+	 * Overode toString method. Takes in 2 Strings
+	 *  Returns the object Ink in String form and saves the CSV file 
+	 *  to a user specified file path with a user specified name
+	 * @param path the path to the file 
+	 * @param name the name of the file
+	 * @return CSV formated String of the curent Ink's variables
+	 */
+	public String toString(String path, String name)
+	{
+		try
+		{
+			File f = new File(path + name + ".txt");	
+			if(f.exists()) 
+			{
+				//Creates a new file if it does not exist
+				File myFile = new File(path + name + ".txt"); 	  
+				myFile.createNewFile();  
+			}
+			FileWriter myWriter = new FileWriter(path +  name + ".txt");
+			String s1 = Brand + "|" + cartridgeSize + "|" + ColorofInk + "|";
+			String s2 = capacity + "|" + DateCreated + "|" + IDENTIFICATION;
+			String s3 = "|" + price + "|";
+			myWriter.write(s1 + s2 + s3);
+			myWriter.close();
+			return s1 + s2 + s3;
+			
+			
+		}
+		catch (FileNotFoundException e)
+		{
+			//If the file cannot be found then print this error
+			System.out.println("The file could not be found");
+			return "Could not get the values or save the file";
+		}
+		catch (IOException e)
+		{
+			System.out.println("Could not save the file");
+			return "Could not get values";
+		}
+		
+		
+		
+	}
+	
+	/**
+	 * Prints out the variables of the curent Ink to the console
+	 */
+	public void printAll()
+	{
+		System.out.println("Brand is: " + Brand);
+		System.out.println("Cartridge size is: " + cartridgeSize);
+		System.out.println("Color is: " + ColorofInk);
+		System.out.println("Capacity is: " + capacity);
+		System.out.println("Date Created is: " + DateCreated);
+		System.out.println("Identification number is: " + IDENTIFICATION);
+		System.out.println("Price is: " + price);
+		System.out.println("Amount of Ink Cartridges: " + amountOfInkCartridges);
+	}
+	
+	
+	
+}

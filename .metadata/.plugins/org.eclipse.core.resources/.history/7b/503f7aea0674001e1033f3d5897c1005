@@ -1,0 +1,12 @@
+
+public class SunglassesDriver 
+{
+	public static void main(String[] args) 
+	{
+		Sunglasses S1 = new Sunglasses();
+		
+		Sunglasses S2 = new Sunglasses(true, "Masermind INC");
+		
+		System.out.println("Gibson Holben");
+	}
+}

@@ -1,0 +1,58 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
+import java.util.Scanner;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.Timer;
+
+public class draw
+{
+
+	 public static void main(String[] args)
+	 {
+	        JFrame frame = new JFrame("My first JFrame");
+	        frame.setSize(1200, 1200);  
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+	        frame.getContentPane().add(new ShapeDrawing ());
+	        frame.setVisible(true);
+	        
+
+	        
+	       	
+	        
+	 }
+	 
+
+	
+	 
+}
+
+Timer t = new Timer();
+t.schedule(new TimerTask() {
+    @Override
+    public void run() {
+       System.out.println("Hello World");
+    }
+}, 0, 5000);
+
+	 
+class ShapeDrawing extends JComponent 
+{
+	  
+	 public void paint(Graphics g)
+	 {
+		 
+		 Point p = MouseInfo.getPointerInfo().getLocation();
+    	 int x = p.x;
+    	 int y = p.y;
+    	 System.out.print(x);
+    	 
+	     Graphics2D g2 = (Graphics2D) g;
+	     g2.drawRect(x, y, 200, 200);
+	     
+	    
+	 }   
+	    
+}	

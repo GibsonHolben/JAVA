@@ -1,0 +1,29 @@
+import java.time.LocalDate;
+
+/**
+ * Calculates an Identfication number with the passed in amount + the date created
+ * @author CTEHolbenG46
+ *
+ */
+public class Id 
+{
+	
+	/**
+	 * Calculates the identification number of the Printer
+	 * id = number of printers + curent date (yyyy/mm/dd)
+	 * @return An identification number
+	 */
+	public static int CalculateIdentification(int amount) 
+	{
+		LocalDate DateCreated;
+		//Gets the curent date
+		DateCreated = LocalDate.now();
+		
+		//Creates an id number 
+		String S = amount + DateCreated.toString();
+		String NewS = S.replace("-", "");
+		
+		//Returns the newly created identification number
+		return Integer.parseInt(NewS);		
+	}
+}

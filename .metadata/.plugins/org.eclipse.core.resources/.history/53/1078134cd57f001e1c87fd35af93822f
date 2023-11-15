@@ -1,0 +1,17 @@
+/**
+ * My personal tests
+ * @author CTEHolbenG46
+ *
+ */
+public class Tests
+{
+	Ink i = new Ink();
+	
+	private static int amountOfInks
+	
+	
+	Tests()
+	{
+		
+	}
+}

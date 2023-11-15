@@ -1,0 +1,13 @@
+/**
+ * Creates a simple building that can be used as a base for others
+ * @author Gibson Holben
+ * @version
+ *
+ */
+public class Building
+{
+	short numberOfFloors = 0;
+	
+	String FoundationType = "";
+	
+}

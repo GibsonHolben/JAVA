@@ -1,0 +1,622 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+/**
+ *  <h1>Computer Generator</h1>
+ * @author Gibson Holben
+ * @version 0.2.5
+ *  <p> A simple class used to fill in the specs for a computer.</p>
+ *  Contains several functions that can be used 
+ *  print the specs or to write it to a file
+ */
+public class Computer
+{
+	//***********************************************
+	//Variables
+	//***********************************************
+	 /** The case of the computer */
+	public String Case;
+	 /** The CPU of the computer */
+	public String CPU;
+	 /** The GPU of the computer */
+	public String GPU;
+	 /** The HDD of the computer */
+	public String HDD;
+	 /** The size of the internal HDD (gb) */
+	public short hddValue;
+	 /** The motherboard of the computer */
+	public String Motherboard;
+	/** Contains the pre built computers*/
+	public static String[] PreBuilts = {"Intel", "AMD"};
+	
+	public String[] test = new String[4];
+	 /** The RAM of the computer */
+	public String RAM;
+	 /** The the amout on RAM the computer has (gb)*/
+	public byte ramValue;
+	 /** The SSD of the computer */
+	public String SSD;
+	 /** The size of the internal SSD (gb)*/
+	public short ssdValue;
+	
+	//***********************************************
+	//Overode default Constructor
+	//***********************************************
+	
+	/** A constuctor that creates a simple Computer with empty specs
+	 * CPU = ""
+	 * GPU = ""
+	 * RAM = ""
+	 * SSD = ""
+	 * HDD = ""
+	 * Case = ""
+	 * Motherboard = ""
+	 */
+	Computer()
+	{
+		CPU = "";
+		GPU = "";
+		RAM = "";
+		SSD = "";
+		HDD = "";
+		Case = "";
+		Motherboard = "";
+	}
+	
+	//***********************************************
+	//Overload Constructors
+	//***********************************************
+	
+	/**
+	 * Creates a Computer from a pre built pc
+	 * <p>If the user enters a invalid value it throws an
+	 *  error and stops the program</p>
+	 * @param PreBuilt The pre built pc that the user 
+	 * wants (Intel or AMD)
+	 */
+	Computer(String PreBuilt)
+	{
+		if(PreBuilt == PreBuilts[0])
+		{
+					 CPU = "Intel i9";
+					 GPU = "Intel Arc 7";
+					 RAM = "DDR4-3200";
+				ramValue = (byte) 16;
+					 SSD = "Samsung";
+				ssdValue = (short) 1000;
+					 HDD = "Samsung";
+				hddValue = (short) 1000;
+					Case = "Lian Li Lancool";
+			 Motherboard = "ASUS ROG Maximus Z790";
+		}
+		else if(PreBuilt == PreBuilts[1])
+		{
+			CPU = "AMD 6500";
+			GPU = "AMD 7600xt";
+			RAM = "DDR4-3200";
+			ramValue = (byte) 16;  
+			
+			SSD = "Samsung";
+			ssdValue = (short) 1000;
+			HDD = "Samsung";
+			hddValue = (short) 500;
+			
+			Case = "Lian Li Lancool";
+			Motherboard = "ASUS ROG Maximus Z790";
+		}
+		else
+		{
+			 throw new IllegalArgumentException("You must use "
+			 									+ "one of the following: AMD, Intel");
+		}		
+	}
+	
+	/**
+	 * A constructor that takes in 7 Strings, a byte, and 2 shorts
+	 *  and creates a Computer with all the specified specs
+	 * @param procsser The computers processer
+	 * @param Graphics The computer graphics card
+	 * @param SolidState The computers Solid state drive
+	 * @param HardDisk The computers hard disk
+	 * @param Memory The computers memory
+	 * @param Motherboard The computers motherboard
+	 * @param Case The computers case
+	 * @param ramV The amount of RAM the computer has (gb)
+	 * @param ssdV The size of the internal SSD (gb)
+	 * @param hddV The size of the internal HDD (gb)
+	 */
+	Computer(String procsser, String Graphics, String SolidState, String HardDisk,
+			String Memory, String Motherboard, String Case,
+			byte ramV, short ssdV, short hddV)
+	{
+		try
+		{
+			//Set the default variables
+			this.Case = Case;
+			CPU = procsser;
+			GPU = Graphics;
+			HDD = HardDisk;
+			this.Motherboard = Motherboard;
+			RAM = Memory;
+			SSD = SolidState;
+			ramValue = ramV;
+			ssdValue = ssdV;
+			hddValue = hddV;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Please specify all the variables");
+		}
+		
+	}
+	
+	
+	
+	//***********************************************
+	//Methods
+	//***********************************************
+	
+	/**
+	 * Creates a Computer by asking the user in
+	 * the console and setting the specs to the input
+	 */
+	public void askSpecs()
+	{
+		askCPU();
+		
+		askGPU();
+		
+		askRAM();
+		
+		askRamValue();
+		
+		askHDD();
+		
+		askHDDValue();
+		
+		askSSD();
+		
+		askSSDValue();
+		
+		askCase();
+		
+		askMotherboard();	
+			
+	}
+	
+	
+	/**
+	 * A function use to change the string variables of the Computer
+	 * @param ToChange The spec to be changed
+	 * @param NewValue The value of the new spec
+	 */
+	public void ChangeSpecs(String ToChange,String NewValue) 
+	{
+		//changes the specified variable
+		switch(ToChange)
+		{
+			case "CPU":
+				CPU = NewValue;
+				break;
+			case "GPU":
+				GPU = NewValue;
+				break;
+			case "HDD":
+				HDD = NewValue;
+				break;
+			case "RAM":
+				RAM = NewValue;
+				break;
+			case "SSD":
+				SSD = NewValue;
+				break;
+			case "Motherboard":
+				Motherboard = NewValue;
+				break;
+			case "Case":
+				Case = NewValue;
+				break;
+			default:
+				throw new IllegalArgumentException("Please use one of the following:"
+						+ " CPU, GPU, RAM, SSD, HDD, Motherboard, Case");	
+		}			
+		
+		
+	}
+	
+	/**
+	 * A overload function used to change the amount of RAM 
+	 * and the size of the SSD and HDD of the Computer
+	 * @param ToChange The spec to be changed
+	 * @param value The value of the new spec
+	 */
+	public void ChangeSpecs(String ToChange, short value) 
+	{
+		//changes the specified variable
+		switch(ToChange)
+		{
+			case "RAM":
+				ramValue = (byte) value;
+				break;
+			case "SSD":
+				ssdValue = value;
+				break;
+			case "HDD":
+				hddValue = value;
+				break;
+			default:
+				throw new IllegalArgumentException("Please use one of"
+						+ " the following: RAM, SSD, HDD");
+		}
+	}
+	
+	
+	/**
+	 * Prints the specs of the Computer to the console
+	 */
+	public void PrintSpecs()
+	{
+		System.out.println("CPU: " + CPU);
+		System.out.println("GPU: " + GPU);
+		System.out.println("RAM: " + RAM + " (" + ramValue + "gb) ");
+		System.out.println("SSD: " + SSD + " (" + ssdValue + "gb) ");
+		System.out.println("HDD: " + HDD + " (" + hddValue + "gb) ");
+		System.out.println("Case: " + Case);
+		System.out.println("MotherBoard: " + Motherboard);
+	}
+	
+	
+	
+	/**
+	 * Saves the computer specs to a txt file at the default location
+	 * (Documents)
+	 *  with a user specified name
+	 *  @param name Name that the user would like the file to be called
+	 */
+	public void SaveSpecs(String name)
+	{
+		if( name == "" || name == " ")
+			name = "Computer";
+		try
+		{
+			String home = System.getProperty("user.home");
+			File f = new File(home +"/Documents/" + name + ".txt");	
+			if(!f.exists()) 
+			{
+				File myFile = new File(home +"/Documents/" + name + ".txt"); 	  
+				myFile.createNewFile();  
+			}
+			FileWriter myWriter = new FileWriter(home +
+					"/Documents/" + name + ".txt");
+		    String Print1 = " CPU: " + CPU + " GPU: " + GPU;
+			String Print2 =  " RAM: " + RAM +" ("+ ramValue + "gb)";
+			String Print3 = " SSD: "+ SSD +" ("+ ssdValue + "gb)";
+			String Print4 = " HDD: " + HDD +" ("+ hddValue + "gb)";
+			String Print5 =  " Motherboard: " + Motherboard + " Case: " + Case;
+			String Masterprint1 = Print1 + " " + Print2 + " " + Print3;
+			String Masterprint2 = Print4  + " " + Print5;
+			myWriter.write(Masterprint1 + Masterprint2);
+			myWriter.close();
+			System.out.println("Saved the file to " +
+			home +"/Documents/" + name + ".txt");
+			
+			 
+		}
+		catch (FileNotFoundException e)
+		{
+			//If the file cannot be found then print this error
+			System.out.println("The file could not be found");
+		}
+		catch (IOException e)
+		{
+			System.out.println("Could not save the file");
+		}
+	}
+	
+	
+	 /**
+	  * An overload method that saves the computer specs to a 
+	  * txt file at the
+	  *  user specified path with a user specified name
+	  * @param path The path to the folder where the user wants the text file
+	  * @param name Name that the user would like the file to be called
+	  */
+	public void SaveSpecs( String name, String path)
+	{
+		if( name == "" || name == " ")
+			name = "Ccomputer";
+		try
+		{
+			File f = new File(path + name + ".txt");	
+			if(!f.exists()) 
+			{
+				//Creates a new file if it does not exist
+				File myFile = new File(path + name + ".txt"); 	  
+				myFile.createNewFile();  
+			}
+			FileWriter myWriter = new FileWriter(path + name + ".txt");
+		    String Print1 = " CPU: " + CPU + " GPU: " + GPU;
+		    String Print2 =  " RAM: " + RAM +" ("+ ramValue + "gb)";
+			String Print3 = " SSD: "+ SSD +" ("+ ssdValue + "gb)";
+			String Print4 = " HDD: " + HDD +" ("+ hddValue + "gb)";
+			String Print5 =  " Motherboard: " + Motherboard + " Case: " + Case;		
+			  
+			String Masterprint1 = Print1 + " " + Print2 + " " + Print3;
+			String Masterprint2 = Print4  + " " + Print5;
+			myWriter.write(Masterprint1 + Masterprint2);
+			myWriter.close();
+			System.out.println("Saved the file to " +path + name + ".txt");
+			
+			 
+		}
+		catch (FileNotFoundException e)
+		{
+			//If the file cannot be found then print this error
+			System.out.println("The file could not be found");
+		}
+		catch (IOException e)
+		{
+			System.out.println("Could not save the file");
+		}
+	}
+	
+	
+	/**
+	 * This method returns the value of the ramValue as megabytes insted of gigabytes
+	 * @param Read The value that you want to read
+	 * @return the megabyte value of the variable
+	 */
+	public int getMb(String Read)
+	{
+		if(Read == "RAM")
+		{
+			int mb = ramValue * 1000;
+			return mb;
+		}
+		else if(Read == "HDD")
+		{
+			int mb = hddValue * 1000;
+			return mb;
+		}
+		else if(Read == "SSD")
+		{
+			int mb = ssdValue * 1000;
+			return mb;
+		}
+		else
+		{
+			 throw new IllegalArgumentException("Read must use one"
+			 				+ " of the following: RAM, SSD, or HDD ");
+		}
+		
+	}
+	
+	/**
+	 * Asks the user in the console what CPU they would like
+	 */
+	public void askCPU()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the CPU you want:  ");
+		try
+		{
+			CPU = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console what GPU they would like
+	 */
+	public void askGPU()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the GPU you want:  ");
+		try
+		{
+			GPU = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console what HDD they would like
+	 */
+	public void askHDD()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the HDD you want:  ");
+		try
+		{
+			HDD = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console how much ram they want (gb)
+	 */
+	public void askHDDValue()
+	{
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		boolean repeat = true;
+		repeat = true;
+		 while(repeat)
+		 {	
+
+				try
+	 	    	{
+					System.out.println("Enter how big the HDD should be"
+										+ " (gb):  ");
+					hddValue = (short)  Integer.parseInt(br.readLine());
+					repeat = false;
+	 	    	}
+	 	    	catch (Exception e)
+	 	    	{
+	 	    		System.out.println("Invalid input");
+	 	    	}
+			
+		    }   
+	}
+	
+	/**
+	 * Asks the user in the console what SSD they would like
+	 */
+	public void askSSD()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the SSD you want:  ");
+		try
+		{
+			SSD = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console how much ram they want (gb)
+	 */
+	public void askSSDValue()
+	{
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		boolean repeat = true;
+		repeat = true;
+		 while(repeat)
+		 {	
+
+				try
+	 	    	{
+					System.out.println("Enter how big the SSD should be"
+										+ " (gb):  ");
+					ssdValue = (short)  Integer.parseInt(br.readLine());
+					repeat = false;
+	 	    	}
+	 	    	catch (Exception e)
+	 	    	{
+	 	    		System.out.println("Invalid input");
+	 	    	}
+			
+		    }   
+	}
+	
+	/**
+	 * Asks the user in the console what RAM they would like
+	 */
+	public void askRAM()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the RAM you want:  ");
+		try
+		{
+			RAM = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console how much ram they want (gb)
+	 */
+	public void askRamValue()
+	{
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		boolean repeat = true;
+		repeat = true;
+		 while(repeat)
+		 {	
+
+				try
+	 	    	{
+					System.out.println("Enter how many gigabytes"
+							+ " of RAM do you want (gb):  ");
+					ramValue = (byte)  Integer.parseInt(br.readLine());
+					repeat = false;
+	 	    	}
+	 	    	catch (Exception e)
+	 	    	{
+	 	    		System.out.println("Invalid input");
+	 	    	}
+			
+		    }   
+	}
+	
+	/**
+	 * Asks the user in the console what Case they would like
+	 */
+	public void askCase()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the Case you want:  ");
+		try
+		{
+			Case = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+	/**
+	 * Asks the user in the console what Motherboard they would like
+	 */
+	public void askMotherboard()
+	{	
+		//Creates a buffered reader 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Uses the reader to ask the console the specs they want
+	    System.out.println("Enter the Motherboard you want:  ");
+		try
+		{
+			Motherboard = br.readLine();
+		} 
+		catch (IOException e)
+		{
+			 System.out.println("An error has occored");
+		}	
+	}
+	
+}

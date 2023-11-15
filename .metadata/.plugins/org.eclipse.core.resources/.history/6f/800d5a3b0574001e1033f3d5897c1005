@@ -1,0 +1,12 @@
+
+public class Sunglasses
+{
+	private String Color = "Black";
+	//has a
+	private Manufaturer M1;
+	
+	private float price = 0f;
+	
+	
+	
+}

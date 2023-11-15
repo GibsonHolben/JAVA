@@ -1,0 +1,22 @@
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.JComponent;
+public class draw {
+
+	 public static void main(String[] args) {
+	        JFrame frame = new JFrame("My first JFrame");
+	        frame.setSize(600, 600);  
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);          frame.setVisible(true);  
+	    }
+
+}
+
+
+class ShapeDrawing extends JComponent {
+	  
+    public void paint(Graphics g)
+    {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawRect(100, 150, 60, 200);
+    }
+}

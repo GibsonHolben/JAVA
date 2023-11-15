@@ -1,0 +1,52 @@
+
+public class fillInTheBlank
+{
+	public static void main(String[] args)
+    {
+
+			
+			try 
+			{
+				String ln6 =  \n";		
+				String ln7 =  "Once back in he kitchen, " +
+				args[1] + " pulled out a " + args[15] + " " + args[16] + " and began\n";
+				String ln8 =  args[17] + " the " + args[9] +  
+						". Prepering " + args[18] + " always makes my \n"; 
+				String ln9 =  args[19] + " " + args[20] + " "+ 
+						args[0] + " said. Finaly the "+ args[21] + " was done \n";
+				String ln10 =  args[22] + " in the oven and " + 
+						args[3] + " came home from " + args[23] + " \n";
+				String ln11 =  args[24] + " something smells " +
+						args[25] +  " in here, said " + args[3]  ;
+				String ln12 =  " . Everyone " + args[26] + " down "
+						+ "and started " + args[27] + " the " + args[2] + " \n"; 
+				String ln13 =  "complete with sides of " + args[28] +
+						" " + args[7] + " and " + args[14] + "!\n";
+				
+			//	System.out.println(ln1 +ln2+ ln3+ ln4+ ln5+ ln6 + ln7 + ln8 + ln9+ ln10 + ln11 + ln12 + ln13);	
+				
+				System.out.print("One day " + args[0] + " and " + args[1]);
+				System.out.print(" wanted to cook " + args[2] + " for ");
+				System.out.print(args[3] + " They wanted to");
+				System.out.print("make the meal very " + args[4]);
+				System.out.println(" so they went to the " + args[5] +" store.");
+				System.out.print("When they got there they saw a shelf ");
+				System.out.print("full of " +  args[6] + " " + args[7] + " and ");
+				System.out.println(args[8] + " " + args[9] + " This ");
+				System.out.print(args[10]+ " " + args[11] + " would go ");
+				System.out.print( args[12] +  " with the " + args[13]);
+				System.out.print(" " +  args[14] + " ");
+				System.out.print(args[0] + " Explained");
+				
+			}
+			catch (Exception e)
+			{
+				System.out.println("(!) You did not fill in all the arguments (!) ");
+			}
+			
+				
+				
+    }
+	   
+	   
+}

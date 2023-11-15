@@ -1,0 +1,74 @@
+/**
+ * A simple class that is used to test the Printer class
+ * @author Gibson Holben
+ * @version 0.0.2
+ */
+public class PrinterDriver
+{
+
+	public static void main(String[] args) 
+	{
+		//Default
+		System.out.println("**************************P1");
+		Printer P1 = new Printer();
+		System.out.println(P1);
+		System.out.println("**************************\n");
+		
+		//Overloaded 1
+		System.out.println("**************************P2");
+		Printer P2 = new Printer("HP", (short) 21,
+				"Red", (byte) 100, 99.99f);
+		System.out.println(P2);
+		System.out.println("**************************\n");
+		
+
+		//Overloaded 2
+		System.out.println("**************************P3");
+		
+		Ink I1 = new Ink("HP", (short) 21,
+				"Yellow", (byte) 100, 99.99f);
+		Printer P3 = new Printer(I1, "HP", "Red", true,
+				(short) 15, 49.99f, (short) 910, (byte ) 10);
+		System.out.println(P3);
+		System.out.println("**************************\n");
+		
+		//Overloaded 3
+		System.out.println("**************************P4");
+		
+		Ink I2 = new Ink("HP", (short) 21,
+				"Pink", (byte) 100, 99.99f);
+		Ink I3 = new Ink("HP", (short) 21,
+				"Green", (byte) 100, 99.99f);
+		Ink I4 = new Ink("HP", (short) 21,
+				"Blue", (byte) 100, 99.99f);
+		Ink I5 = new Ink("HP", (short) 21,
+				"Purple", (byte) 100, 99.99f);
+		Ink I6 = new Ink("HP", (short) 21,
+				"Orange", (byte) 100, 99.99f);
+		
+		
+		//passing an array that is at the max size
+		Ink[] Inkr = {I1,I2,I3,I4,I5};
+		Printer P4 = new Printer(Inkr, "HP", "Red", true,
+				(short) 15, 49.99f, (short) 910, (byte ) 10);
+		
+		System.out.println("**************************\n");
+		
+		System.out.println("**************************P5");
+		
+		//passing an array that is above max size
+		Ink[] Inkr2 = {I1,I2,I3,I4,I5,I6};
+		Printer P5 = new Printer(Inkr2, "HP", "Red", true,
+				(short) 15, 49.99f, (short) 910, (byte ) 10);
+		
+		System.out.println("**************************\n");
+		
+		System.out.println("**************************P6");
+		//passing an array that is below max size
+		Ink[] Inkr3 = {I1,I2,I3,I4};
+		Printer P6 = new Printer(Inkr3, "HP", "Red", true,
+				(short) 15, 49.99f, (short) 910, (byte ) 10);
+		System.out.println("**************************\n");
+	}
+
+}

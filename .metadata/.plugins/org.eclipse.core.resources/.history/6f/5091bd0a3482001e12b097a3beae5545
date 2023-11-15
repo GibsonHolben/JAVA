@@ -1,0 +1,34 @@
+/**
+ * Creates a simple building that can be used as a base for others
+ * @author Gibson Holben
+ * @version 0.1.2
+ */
+public class Building
+{
+	/** Keeps track of the amount of buildings that exist
+	 */
+	private static int counter;
+	
+	/**The type of foundation the building has
+	 *Default = blank*/
+	private String FoundationType = "";
+	
+	/**The length of the building
+	 *Default = 0.0*/
+	private float length = 0.0f;
+	
+	/**The number of floors in the building
+	 *Default = 0*/
+	private short numberOfFloors = 0;
+	
+	/**The width of the building
+	 *Default = 0.0*/
+	private float width = 0.0f;
+
+	
+	
+	Building()
+	{
+		
+	}
+}

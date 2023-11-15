@@ -1,0 +1,7 @@
+
+public class Sunglasses
+{
+	 Manufaturer M1;
+	 
+	 M1 = new  Manufaturer();
+}

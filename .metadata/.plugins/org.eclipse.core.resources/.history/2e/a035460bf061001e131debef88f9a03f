@@ -1,0 +1,32 @@
+
+public class fillInTheBlank
+{
+	public static void main(String[] args)
+    {
+
+			
+			
+			
+			String ln1 =  "One day " + args[0] + " and " + args[1] + " wanted to cook " + args[2] + " for " +  args[3] + " They wanted to\n";
+			String ln2 =  "make the meal very " + args[4] + " so they went to the " + args[5] +" store.\n";
+			String ln3 =  "When they got there they saw a shelf full of " +  args[6] + " " + args[7] + " and\n";
+			String ln4 =  args[8] + " " + args[9] + " This "+  args[10]+ " " + args[11] + " would go " +  args[12] +  " with the " + args[13] + " " +  args[14] + " " + args[0] + " Explained\n";		
+			String ln5 =  "Once back in he kitchen, " + args[1] + " pulled out a " + args[15] + " " + args[16] + " and began\n";
+			String ln6 =  args[17] + " the " + args[9] +  ". Prepering " + args[18] + " always makes my \n"; 
+			String ln7 =  args[19] + " " + args[20] + " "+  args[0] + " said. Finaly the "+ args[21] + " was done \n";
+			String ln8 =  args[22] + " in the oven and " + args[3] + " came home from " + args[23] + " \n";
+			String ln9 =  args[24] + " something smells " + args[25] +  " in here, said " + args[3] + " . Everyone " + args[26] + " down and started " + args[27] + " the " + args[2] + " \n"; 
+			String ln10 =  "complete with sides of " + args[28] + " " + args[7] + " and " + args[9] + " !\n";
+			
+			System.out.println(ln1 +ln2+ ln3+ ln4+ ln5+ ln6 + ln7 + ln8 + ln9+ ln10);		
+//		}
+//		catch (Exception e)
+//		{
+//			System.out.println("You did not input all the variables");
+//		}
+		
+		
+    }
+	   
+	   
+}

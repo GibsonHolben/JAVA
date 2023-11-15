@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Story2nd/src/StoryMainDriver.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="StoryMainDriver"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="small cat michigan&#13;&#10;blue 5 fish run &quot;twinkle twinkle little star&quot;&#13;&#10;sad japanese happy"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Story2nd"/>
+</launchConfiguration>

@@ -1,0 +1,21 @@
+
+public class Sunglasses
+{
+	private String Color = "Black";
+	
+	//HasA
+	private Manufaturer M1;
+	
+	private float price = 0f;
+	
+	
+	//**static**
+	public static int numberOfGlasses = 0;
+	
+	
+	Sunglasses()
+	{
+		 M1 = new  Manufaturer();
+		 numberOfGlasses;
+	}
+}

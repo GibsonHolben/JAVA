@@ -1,0 +1,14 @@
+
+public class AddressDriver
+{
+
+	public static void main(String[] args) 
+	{
+		//Testing the dafualt constructor
+		Address A1 = new Address();
+		
+		//Testing the overloaded constructor
+		Address A2 = new Address();
+	}
+
+}

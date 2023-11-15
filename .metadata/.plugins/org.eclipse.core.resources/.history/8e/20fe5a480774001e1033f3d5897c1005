@@ -1,0 +1,36 @@
+
+public class Sunglasses
+{
+	//**************************************************
+	//Var
+	//**************************************************
+	
+	private String Color = "Black";
+	
+	//HasA
+	private Manufaturer M1;
+	
+	private float price = 0f;
+	
+	
+	//**static**
+	public static int numberOfGlasses = 0;
+	
+	
+	//**************************************************
+	//Constructors
+	//**************************************************
+	
+	Sunglasses()
+	{
+		 M1 = new  Manufaturer();
+		 Sunglasses.numberOfGlasses += 1;
+	}
+	
+	Sunglasses(boolean isTraded, String namer, String col, float price)
+	{
+		 M1 = new  Manufaturer(isTraded, namer);
+		 Color = col;
+		 this.price = price;
+	}
+}

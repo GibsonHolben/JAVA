@@ -1,0 +1,10 @@
+
+public class AddressDriver
+{
+
+	public static void main(String[] args) 
+	{
+		Address A1 = new Address();
+	}
+
+}

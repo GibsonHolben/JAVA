@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;ld&apos; in &apos;Sunglasses&apos; to &apos;Date&apos;&#x0D;&#x0A;- Original project: &apos;4.1.2HasARelationshipInheritence&apos;&#x0D;&#x0A;- Original element: &apos;Sunglasses.ld&apos;&#x0D;&#x0A;- Renamed element: &apos;Sunglasses.Date&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;ld&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{Sunglasses.java[Sunglasses^ld" name="Date" references="true" setter="false" stamp="1699275561599" textual="false" version="1.0"/>
+</session>

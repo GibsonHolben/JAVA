@@ -1,0 +1,41 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
+import java.util.Scanner;
+
+public class draw
+{
+
+	 public static void main(String[] args)
+	 {
+	        JFrame frame = new JFrame("My first JFrame");
+	        frame.setSize(600, 600);  
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+	        frame.getContentPane().add(new ShapeDrawing ());
+	        frame.setVisible(true);
+	        
+	   
+	 }
+	
+	 
+}
+
+
+	 
+class ShapeDrawing extends JComponent 
+{
+	  
+	 public void paint(Graphics g)
+	 {
+	     Graphics2D g2 = (Graphics2D) g;
+	     g2.drawRect(100, 150, 200, 200);
+	     
+	     Point p = MouseInfo.getPointerInfo().getLocation();
+	   	 int x = p.x;
+	   	 int y = p.y;
+	   	 System.out.print(x);
+	 }   
+	    
+}	

@@ -1,0 +1,258 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+/**
+ * A simple class used to create a printer with several instance variables
+ * 
+ * @author Gibson Holben
+ * @version 0.0.3
+ */
+public class Printer 
+{
+	/**The amount of printers that have been created
+	 * Default = 0*/
+	private static int 		amountOfPrinters = 0;
+	
+	/**The Brand that created the printer
+	 * Default = Blank*/
+	private String 			Brand = "";
+	
+	/**The color of the printer
+	 * Default = Blank*/
+	private String 			Color = "";
+	
+	/**The date that this printer was created*/
+	private LocalDate 		DateCreated;
+	
+	/**The id number of the curent printer*/
+	private final int 		IDENTIFICATION_NUMBER; 
+	
+	/**A array of referances to the Ink object
+	 * Default array length is 1*/
+	private Ink[] 			InkCartridge = new Ink[1];
+	
+	/**Is the printer turned on
+	 * Default = false*/
+	private boolean 		isPrinterOn = false;
+	
+	/**The amount of paper in the printer
+	 * Default = 0
+	 * Maximum = 100*/
+	private short 			paper = 0;
+	
+	/**The price of the product
+	 * Default = 0.0*/
+	private float 			price = 0.0f;
+	
+	/**The size of the printer ink cartridge port
+	 *limited to 67, 910, and 21>
+	 *Default = 0*/
+	private short 			portSize = 0;
+	
+	/**How many sheets of paper the printer can print at once
+	 * Default = 0*/
+	private byte 			sheetsPerMin = 0;
+	
+	/**
+	 * Creates a basic printer with a default
+	 * ink and the default values. 
+	 */
+	Printer()
+	{
+		Printer.amountOfPrinters++;
+		InkCartridge[0] = new Ink();
+		IDENTIFICATION_NUMBER = CalculateIdentification();
+	}
+	
+	/**
+	 * Creates a printer with the default settings and a 
+	 * fully created Ink
+	 * @param Brnd The Ink's brand
+	 * @param cSize The Ink's cartridge size
+	 * @param InkCol The Ink's color
+	 * @param cap The Ink's capacity 
+	 * @param p The Ink's price
+	 */
+	Printer(String Brand, short cSize, String InkColor, byte capacity, float price)
+	{
+		Printer.amountOfPrinters++;
+		
+		InkCartridge[0] = new Ink(Brand, cSize,
+									InkColor, capacity, price);
+		
+		IDENTIFICATION_NUMBER = CalculateIdentification();
+		
+	}
+	
+	/**
+	 * Creates a Printer with used passed in values and
+	 *  assigns the ink to a use passed in Ink
+	 * @param i The Ink
+	 * @param Brnd The Brand of the printer
+	 * @param Col The color of the printer
+	 * @param ipo Is the printer turned on
+	 * @param papr How much paper the printer has
+	 * @param p The price of the printer
+	 * @param pSize The port size of the printer
+	 * @param spm how many sheetes of paper the printer 
+	 * can print in one min
+	 */
+	Printer(Ink Ink, String Brand, String Color, boolean isPrinterOn, 
+			short paper, float price, short portSize, byte sheetesPerMin)
+	{
+		Printer.amountOfPrinters++;
+		
+		InkCartridge[0] = Ink;
+		
+		this.Brand = Brand;
+		this.Color = Color;
+		this.isPrinterOn = isPrinterOn;
+		this.paper = paper;
+		this.price = price;
+		this.portSize = portSize;
+		this.sheetsPerMin = sheetesPerMin;
+		
+		IDENTIFICATION_NUMBER = CalculateIdentification();
+	}
+	
+	
+	/**
+	 * Creates a Printer with used passed in array of Inks 
+	 * WARNING: If the passed in array is greater that 5 it will be set to 5!
+	 * @param i The Ink array
+	 * @param Brnd The Brand of the printer
+	 * @param Col The color of the printer
+	 * @param ipo Is the printer turned on
+	 * @param papr How much paper the printer has
+	 * @param p The price of the printer
+	 * @param pSize The port size of the printer
+	 * @param spm how many sheetes of paper the
+	 *  printer can print in one min
+	 */
+	Printer(Ink[] i, String Brand, String Color, boolean isPrinterOn, 
+			short paper,float price, short portSize, byte sheetesPerMin)
+	{
+		Printer.amountOfPrinters++;
+		
+		InkCartridge = new Ink[i.length];
+		
+		if(InkCartridge.length > 5)
+		{
+			InkCartridge = new Ink[5];
+			System.out.println("WARNING: You have exeded the max length."
+					+ " Data will be lost!");
+		}
+		
+		//Loops through an array of Inks
+		for(int i2 = 0; i2 < i.length && i2 < 5; i2++)
+		{
+			//Assigns InkCartridge to be the passed in array
+			InkCartridge[i2] = i[i2];
+		}
+		
+		this.Brand = Brand;
+		this.Color = Color;
+		this.isPrinterOn = isPrinterOn;
+		this.paper = paper;
+		this.price = price;
+		this.portSize = portSize;
+		this.sheetsPerMin = sheetesPerMin;
+		
+		IDENTIFICATION_NUMBER = CalculateIdentification();
+	}
+	
+	
+	/**
+	 * Calculates the identification number of the Printer
+	 * id = number of printers + curent date (yyyy/mm/dd)
+	 * @return An identification number
+	 */
+	private int CalculateIdentification() 
+	{
+		
+		//Gets the date
+		DateCreated = LocalDate.now();
+		
+		//Creates an id number 
+		String S = Printer.amountOfPrinters + DateCreated.toString();
+		String NewS = S.replace("-", "");
+		
+		//Returns the newly created identification number
+		return Integer.parseInt(NewS);		
+	}
+	
+	/**
+	 * Prints all the variables to the console in an orderly fashion
+	 */
+	public void printAll()
+	{
+		System.out.println("Brand: " + Brand);
+		System.out.println("Color: " + Color);
+		System.out.println("isPrinterOn: " + isPrinterOn);
+		System.out.println("paper: " + paper);
+		System.out.println("price: " + price);
+		System.out.println("IDENTIFICATION_NUMBER: " + IDENTIFICATION_NUMBER);
+		System.out.println("portSize: " + portSize);
+		System.out.println("sheetesPerMin: " + sheetsPerMin);
+		System.out.println("DateCreated: " + DateCreated);
+		System.out.println("amountOfPrinter: " + Printer.amountOfPrinters);
+		
+	}
+	
+	/**
+	 * Returns the variables of the curent Printer as a CVS formated String
+	 * @return The variables as a String
+	 */
+	public String toString()
+	{
+		String s1 = Brand + "|" + Color + "|" + isPrinterOn + "|";
+		String s2 = paper + "|" + price + "|" + IDENTIFICATION_NUMBER;
+		String s3 = "|"  + portSize + "|" + sheetsPerMin;
+		String s4 = "|" + DateCreated;
+		return s1 + s2 + s3 + s4;
+	}
+	
+	/**
+	 * Saves the variables on an array of Printers to a text file at a user specified path in a CVS format
+	 * @param printer An array of printers that are saved to a file
+	 * @param Path The path to the file
+	 * @param Name The name of of the file
+	 */
+	public static void saveToString(Printer[] printer, String Path, String Name)
+	{
+		try
+		{
+			File f = new File(Path + Name + ".txt");	
+			if(f.exists()) 
+			{
+				//Creates a new file if it does not exist
+				File myFile = new File(Path + Name + ".txt"); 	  
+				myFile.createNewFile();  
+			}
+			
+			FileWriter myWriter = new FileWriter(Path +  Name + ".txt");
+			for(int i = 0; i < printer.length; i++)
+			{
+				String s1 = printer[i].Brand + "|" + printer[i].Color + "|" + printer[i].isPrinterOn + "|";
+				String s2 = printer[i].paper + "|" + printer[i].price + "|" + printer[i].IDENTIFICATION_NUMBER;
+				String s3 = "|" +printer[i]. portSize + "|" + printer[i].sheetsPerMin;
+				String s4 = "|" + printer[i].DateCreated;
+				myWriter.write(s1 + s2 + s3 + s4 + "\n");	
+			}
+			myWriter.close();
+			System.out.println("Saved file to: " + Path + Name + ".txt");
+		}
+		catch (FileNotFoundException e)
+		{
+			//If the file cannot be found then print this error
+			System.out.println("The file could not be found");
+		}
+		catch (IOException e)
+		{
+			System.out.println("Could not save the file");
+		}
+		
+	}
+}	

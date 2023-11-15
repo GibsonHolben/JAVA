@@ -1,0 +1,12 @@
+
+public class SunglassesDriver 
+{
+
+	public static void main(String[] args) 
+	{
+		Sunglasses S1 = new Sunglasses();
+		
+		System.out.println("Gibson Holben");
+	}
+
+}
