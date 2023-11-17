@@ -60,13 +60,13 @@
 		<item key="nonavbar" value="false"/>
 		<item key="openinbrowser" value="false"/>
 		<item key="source" value="1.8"/>
-		<item key="antpath" value="H:\JAVA\4.1.2IsARelationshipInheritence\javadoc.xml"/>
-		<item key="destdir" value="H:\JAVA\4.1.2IsARelationshipInheritence\doc"/>
+		<item key="antpath" value="H:\JAVA\IsAGroupProject\javadoc.xml"/>
+		<item key="destdir" value="H:\JAVA\IsAGroupProject\doc"/>
 		<section name="projects">
-			<section name="4.1.2IsARelationshipInheritence">
-				<item key="href" value="file:/H:/JAVA/4.1.2IsARelationshipInheritence/doc/"/>
-				<item key="destdir" value="H:\JAVA\4.1.2IsARelationshipInheritence\doc"/>
-				<item key="antpath" value="H:\JAVA\4.1.2IsARelationshipInheritence\javadoc.xml"/>
+			<section name="IsAGroupProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="H:\JAVA\IsAGroupProject\doc"/>
+				<item key="antpath" value="H:\JAVA\IsAGroupProject\javadoc.xml"/>
 			</section>
 		</section>
 	</section>
@@ -103,6 +103,9 @@
 		<item key="LimitValue" value="10"/>
 		<item key="SkipNull" value="false"/>
 		<item key="ToStringTemplateSelected" value="0"/>
+		<item key="InstanceOf" value="false"/>
+		<item key="Blocks" value="false"/>
+		<item key="Objects.equals &amp; Objects.hash" value="false"/>
 	</section>
 	<section name="AddGetterSetterDialog">
 		<item key="SortOrdering" value="false"/>
@@ -146,6 +149,39 @@
 		<item key="DIALOG_Y_ORIGIN" value="190"/>
 		<item key="DIALOG_WIDTH" value="611"/>
 		<item key="DIALOG_HEIGHT" value="300"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="SourceActionDialog.constructors">
+		<item key="VisibilityModifier" value="1"/>
+		<item key="FinalModifier" value="false"/>
+		<item key="SynchronizedModifier" value="false"/>
+		<item key="Comments" value="true"/>
+	</section>
+	<section name="AddUnimplementedConstructorsDialog">
+		<item key="OmitCallToSuper" value="false"/>
+	</section>
+	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
+		<item key="DIALOG_X_ORIGIN" value="710"/>
+		<item key="DIALOG_Y_ORIGIN" value="130"/>
+		<item key="DIALOG_WIDTH" value="517"/>
+		<item key="DIALOG_HEIGHT" value="627"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="OverrideMethodDialog">
+		<item key="showtypes" value="true"/>
+	</section>
+	<section name="DialogBounds_OverrideMethodDialog">
+		<item key="DIALOG_X_ORIGIN" value="706"/>
+		<item key="DIALOG_Y_ORIGIN" value="206"/>
+		<item key="DIALOG_WIDTH" value="524"/>
+		<item key="DIALOG_HEIGHT" value="513"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="DialogBounds_GenerateHashCodeEqualsDialog">
+		<item key="DIALOG_X_ORIGIN" value="710"/>
+		<item key="DIALOG_Y_ORIGIN" value="152"/>
+		<item key="DIALOG_WIDTH" value="516"/>
+		<item key="DIALOG_HEIGHT" value="594"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>

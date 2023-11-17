@@ -12,4 +12,5 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.text.Format"/>
 </qualifiedTypeNameHistroy>
