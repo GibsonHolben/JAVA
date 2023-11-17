@@ -11,6 +11,7 @@
 	<item key="TypeHierarchyViewPart.qualifiednames" value="false"/>
 	<item key="TypeHierarchyViewPart.linkeditors" value="false"/>
 	<item key="TypeHierarchyViewPart.orientation" value="3"/>
+	<item key="filters_last_used" value="filter_imports;"/>
 	<list key="SearchScopeActionGroup.working_set">
 	</list>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
@@ -59,13 +60,13 @@
 		<item key="nonavbar" value="false"/>
 		<item key="openinbrowser" value="false"/>
 		<item key="source" value="1.8"/>
-		<item key="antpath" value="H:\JAVA\4.1.2-HAS-A-OYO-Project\javadoc.xml"/>
-		<item key="destdir" value="H:\JAVA\4.1.2-HAS-A-OYO-Project\doc"/>
+		<item key="antpath" value="H:\JAVA\4.1.2IsARelationshipInheritence\javadoc.xml"/>
+		<item key="destdir" value="H:\JAVA\4.1.2IsARelationshipInheritence\doc"/>
 		<section name="projects">
-			<section name="4.1.2-HAS-A-OYO-Project">
-				<item key="href" value="file:/H:/JAVA/4.1.2-HAS-A-OYO-Project/doc/"/>
-				<item key="destdir" value="H:\JAVA\4.1.2-HAS-A-OYO-Project\doc"/>
-				<item key="antpath" value="H:\JAVA\4.1.2-HAS-A-OYO-Project\javadoc.xml"/>
+			<section name="4.1.2IsARelationshipInheritence">
+				<item key="href" value="file:/H:/JAVA/4.1.2IsARelationshipInheritence/doc/"/>
+				<item key="destdir" value="H:\JAVA\4.1.2IsARelationshipInheritence\doc"/>
+				<item key="antpath" value="H:\JAVA\4.1.2IsARelationshipInheritence\javadoc.xml"/>
 			</section>
 		</section>
 	</section>
@@ -95,7 +96,7 @@
 		<item key="VisibilityModifier" value="1"/>
 		<item key="FinalModifier" value="false"/>
 		<item key="SynchronizedModifier" value="false"/>
-		<item key="Comments" value="false"/>
+		<item key="Comments" value="true"/>
 		<item key="LimitElements" value="false"/>
 		<item key="IgnoreDefault" value="true"/>
 		<item key="StringStyle" value="0"/>
@@ -121,6 +122,30 @@
 		<item key="DIALOG_Y_ORIGIN" value="88"/>
 		<item key="DIALOG_WIDTH" value="516"/>
 		<item key="DIALOG_HEIGHT" value="691"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="JavaSearchPage">
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="INCLUDE_MASK" value="11"/>
+		<item key="HISTORY_SIZE" value="1"/>
+		<section name="HISTORY0">
+			<item key="searchFor" value="0"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="getters "/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="11"/>
+			<list key="workingSets">
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="33"/>
+		<item key="DIALOG_Y_ORIGIN" value="190"/>
+		<item key="DIALOG_WIDTH" value="611"/>
+		<item key="DIALOG_HEIGHT" value="300"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>
