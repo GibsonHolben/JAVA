@@ -6514,3 +6514,19 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/4.1.2IsARelat
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1432)
 !SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2023-11-20 09:48:45.834
 !MESSAGE Cannot determine URI for '/4.1.2IsARelationshipInheritence/src/Building.java'.
+!SESSION 2023-11-20 09:52:48.688 -----------------------------------------------
+eclipse.buildId=4.11.0.I20190307-0500
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.egit.core 1 0 2023-11-20 09:52:59.687
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-11-20 09:53:04.490
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'H:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

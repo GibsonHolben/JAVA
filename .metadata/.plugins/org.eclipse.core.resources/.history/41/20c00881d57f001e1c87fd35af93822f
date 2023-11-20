@@ -1,8 +1,0 @@
-
-public class TestInk 
-{
-	public static void main(String[] args)
-	{
-		Tests t = new Tests();
-	}
-}
