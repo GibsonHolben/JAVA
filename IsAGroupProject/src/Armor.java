@@ -1,7 +1,6 @@
 import java.time.LocalDate;
-
 /**
- * Used to create a armor that is used by a clone
+ * Creates an Armor that is used by a clone
  * @author Gibson Holben
  * @version 0.0.0.1
  */
@@ -25,8 +24,9 @@ public class Armor
 	
 
 	/**The level of protection that the armor has
-	 * Default = 3*/
-	private short 				protectionLvl = 3;
+	 * Range: 0 - 100
+	 * Default = 50*/
+	private short 				protectionLvl = 50;
 	
 	//*****************************
 	//Constructors
@@ -107,8 +107,8 @@ public class Armor
 	}
 
 	/**
-	 * Returns dATECREATED 
-	 * @return the dATECREATED
+	 * Returns DATECREATED 
+	 * @return the DATECREATED
 	 */
 	public LocalDate getDateCreated() {
 		return DATECREATED;
@@ -125,10 +125,10 @@ public class Armor
 	 */
 	public void printAll()
 	{
-		System.out.println("Armor Type: " + ArmorType);
-		System.out.println("Date Created: " + DATECREATED);
+		System.out.println("Armor Type: " 		+ ArmorType);
+		System.out.println("Date Created: "		+ DATECREATED);
 		System.out.println("Protection Level: " + protectionLvl);
-		System.out.println("Is bullet proof: " + isBulletProof);
+		System.out.println("Is bullet proof: "  + isBulletProof);
 	}
 	
 

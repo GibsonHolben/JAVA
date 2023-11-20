@@ -1,5 +1,5 @@
 /**
- * Test case for armor
+ * Test case for Armor
  * @author Gibson Holben
  * @version 0.0.0.1
  */
