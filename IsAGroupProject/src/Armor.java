@@ -6,6 +6,7 @@ import java.time.LocalDate;
  */
 public class Armor 
 {
+	
 	//*****************************
 	//Instance vars
 	//*****************************
