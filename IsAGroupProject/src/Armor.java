@@ -46,7 +46,7 @@ public class Armor
 	}
 	
 	/**
-	 * Overloaded constructor that takes in all the variables
+	 * <p>Overloaded constructor that takes in all the variables</p>
 	 * @param ArmorType		The type of armor that the curent armor is
 	 * @param isBulletProof Is the armor bulletproof
 	 * @param protectionLvl The level of protection that the armor has
@@ -66,22 +66,24 @@ public class Armor
 	//Methods
 	//*****************************
 	/**
-	 * Prints the instance variables to the console in an orderly fassion
+	 * <p>Prints the instance variables to
+	 * the console in an orderly fassion</p>
 	 */
 	public void printAll()
 	{
-		System.out.println("Armor Type: " 		+ ArmorType);
-		System.out.println("Date Created: "		+ DATECREATED);
-		System.out.println("Protection Level: " + protectionLvl);
-		System.out.println("Is bullet proof: "  + isBulletProof);
-		System.out.println("Material: " + Material);
+		System.out.println("ArmorType: " 		+ ArmorType);
+		System.out.println("DateCreated: "		+ DATECREATED);
+		System.out.println("ProtectionLevel: " 	+ protectionLvl);
+		System.out.println("IsBulletProof: "  	+ isBulletProof);
+		System.out.println("Material: " 		+ Material);
 	}
 	
 
 	/**
-	 * Returns the instance variables in a CSV format
-	 * @return The variables in a CSV format
+	 * <p>Returns the instance variables in a CSV format</p>
 	 * Deliminator = |
+	 * @return The variables in a CSV format
+	 * 
 	 */
 	public String toString()
 	{
