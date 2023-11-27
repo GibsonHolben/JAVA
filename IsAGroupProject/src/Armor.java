@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 /**
- * Creates an Armor that is used by a clone
+ * Creates an Armor that used by a clone
  * @author Gibson Holben
- * @version 0.0.0.1
+ * @version 0.0.6.3
  */
 public class Armor 
 {
@@ -10,29 +10,32 @@ public class Armor
 	//*****************************
 	//Instance vars
 	//*****************************
+	/**<p>The type of armor that the curent armor is  
+	 * Examples include: flight, shock, burning, etc... 
+	 * Default = Dull</p>*/
+	public String 				ArmorType = "Dull";
 	
-	/**The type of armor that the curent armor is 
-	 *Examples include: flight, shock, burning, etc...
-	 * Default = blank*/
-	private String 				ArmorType = "";
+	/**The date that the armor was created */
+	public final LocalDate 		DATECREATED;
 	
-	/**The date that the armor was created*/
-	private final LocalDate 	DATECREATED;
+	/**<p>Is the armor bulletproof
+	 * Default = false</p>*/
+	public boolean 				isBulletProof = false;
 	
-	/**Is the armor bulletproof
-	 * Default = false*/
-	private boolean 			isBulletProof = false;
-	
+	/**<p>The material that the armor is made out of 
+	 * Default = Metal </p>*/
+	public String 				Material = "Metal";
 
-	/**The level of protection that the armor has
-	 * Range: 0 - 100
-	 * Default = 50*/
-	private short 				protectionLvl = 50;
+	/**<p>The level of protection that the armor has 
+	 * Range: 0 - 100 
+	 * Default = 50</p>*/
+	public short 				protectionLvl = 50;
+	
+	
 	
 	//*****************************
 	//Constructors
 	//*****************************
-	
 	/**
 	 * <p>The default constructor</p>
 	 * <p>Sets the date created</p>
@@ -47,82 +50,23 @@ public class Armor
 	 * @param ArmorType		The type of armor that the curent armor is
 	 * @param isBulletProof Is the armor bulletproof
 	 * @param protectionLvl The level of protection that the armor has
+	 * @param Material The material that the armor is made out of
 	 */
-	Armor(String ArmorType, boolean isBulletProof, short protectionLvl)
+	Armor(String ArmorType, boolean isBulletProof, short protectionLvl, String Material)
 	{
 		DATECREATED 		= LocalDate.now();
 		this.ArmorType 		= ArmorType;
 		this.isBulletProof 	= isBulletProof;
-		this.protectionLvl 	= protectionLvl;		
+		this.protectionLvl 	= protectionLvl;	
+		this.Material = Material;
 	}
-	
-	//*****************************
-	//Getters and Setters
-	//*****************************
-	/**
-	 * Returns armorType 
-	 * @return the armorType
-	 */
-	public String getArmorType() {
-		return ArmorType;
-	}
-
-	/**
-	 * Sets armorType
-	 * @param armorType the new armorType 
-	 */
-	public void setArmorType(String armorType) {
-		ArmorType = armorType;
-	}
-
-	/**
-	 * Returns isBulletProof 
-	 * @return the isBulletProof
-	 */
-	public boolean getisBulletProof() {
-		return isBulletProof;
-	}
-
-	/**
-	 * Sets isBulletProof
-	 * @param isBulletProof the new isBulletProof 
-	 */
-	public void setBulletProof(boolean isBulletProof) {
-		this.isBulletProof = isBulletProof;
-	}
-
-	/**
-	 * Returns protectionLvl 
-	 * @return the protectionLvl
-	 */
-	public short getProtectionLvl() {
-		return protectionLvl;
-	}
-
-	/**
-	 * Sets protectionLvl
-	 * @param protectionLvl the new protectionLvl 
-	 */
-	public void setProtectionLvl(short protectionLvl) {
-		this.protectionLvl = protectionLvl;
-	}
-
-	/**
-	 * Returns DATECREATED 
-	 * @return the DATECREATED
-	 */
-	public LocalDate getDateCreated() {
-		return DATECREATED;
-	}
-
 	
 	
 	//*****************************
 	//Methods
 	//*****************************
-	
 	/**
-	 * Prints the instance pariables to the console in an orderly fassion
+	 * Prints the instance variables to the console in an orderly fassion
 	 */
 	public void printAll()
 	{
@@ -130,18 +74,23 @@ public class Armor
 		System.out.println("Date Created: "		+ DATECREATED);
 		System.out.println("Protection Level: " + protectionLvl);
 		System.out.println("Is bullet proof: "  + isBulletProof);
+		System.out.println("Material: " + Material);
 	}
 	
 
 	/**
 	 * Returns the instance variables in a CSV format
 	 * @return The variables in a CSV format
+	 * Deliminator = |
 	 */
 	public String toString()
 	{
-		String S1 = ArmorType + "|" + DATECREATED + "|" + protectionLvl + "|" + isBulletProof;
+		String S1 = ArmorType + "|" + DATECREATED + "|" + 
+				protectionLvl + "|" + isBulletProof + "|" + Material;
 		return S1;
 	}
+
+	
 	
 	
 }

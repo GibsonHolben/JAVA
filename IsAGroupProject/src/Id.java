@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 /**
  * Calculates an Identfication number with the 
- * passed in amount + the date created
+ * passed in amount + date created or count + date created
  * @author Gibson Holben
  * @version 1.2.7
  */
@@ -9,7 +9,7 @@ public class Id
 {
 	
 	/**The amount of times the id has been created*/
-	private static int amt;
+	private static int count;
 	
 	
 	/** Calculates an idntification number and then returns it
@@ -17,7 +17,7 @@ public class Id
 	 * @return amount + curent date (yyyy/mm/dd)*/
 	public static int CalculateIdentification() 
 	{
-		amt +=1;
+		count +=1;
 		//Creates a new date created
 		LocalDate DateCreated;
 		
@@ -25,7 +25,7 @@ public class Id
 		DateCreated = LocalDate.now();
 		
 		//Creates an id number 
-		String S = amt + DateCreated.toString();
+		String S = count + DateCreated.toString();
 		String NewS = S.replace("-", "");
 		
 		//Returns the newly created identification number
