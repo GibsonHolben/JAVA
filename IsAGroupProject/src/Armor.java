@@ -90,9 +90,9 @@ public class Armor
 		String S1 = ArmorType + "|" + DATECREATED + "|" + 
 				protectionLvl + "|" + isBulletProof + "|" + Material;
 		return S1;
-	}
+	}	
 
-	
+		
 	
 	
 }
