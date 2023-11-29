@@ -22,7 +22,7 @@ public class MeleeWeapon
 	
 	
 	/**
-	 * Overiden default construtor
+	 * Default construtor
 	 */
 	MeleeWeapon()
 	{
@@ -31,9 +31,9 @@ public class MeleeWeapon
 	
 	/**
 	 * Creates a MeleeWeapon with all instance variables
-	 * @param MeleeWeapon The weapon that the clone uses 
-	 * @param Shinnyness The Shinnyness of the Melee Weapon
-	 * @param MeleeWeaponMaterial The material of the weapon
+	 * @param MeleeWeapon The weapon that the clone uses (String)
+	 * @param Shinnyness The Shinnyness of the Melee Weapon (byte)
+	 * @param MeleeWeaponMaterial The material of the weapon (String)
 	 */
 	MeleeWeapon(String Weapon,
 				byte Shinnyness,
@@ -54,16 +54,31 @@ public class MeleeWeapon
 		}
 		
 		//Shinyness edits
-		if()
+		if(Shinnyness > 0 && Shinnyness < 101)
 		{
 			this.Shinnyness = Shinnyness;
 		}
 		else
 		{
-			throw new IllegalArgumentException("peramiter must be between 1 and 100");
+			throw new IllegalArgumentException("Input must be between 1 and 100");
 		}
 	
-		
-		this.MeleeWeaponMaterial = MeleeWeaponMaterial;
+		//Weapon material edits
+		if(MeleeWeaponMaterial == "Gold" ||
+				MeleeWeaponMaterial == "Metal" ||
+				MeleeWeaponMaterial == "Plastic" ||
+				MeleeWeaponMaterial == "Crystal" ||
+				MeleeWeaponMaterial == "Vibranium")
+		{
+			this.MeleeWeaponMaterial = MeleeWeaponMaterial;
+		}
+		else
+		{
+			throw new IllegalArgumentException("Please use one of the following:"
+					+ "Gold, Metal, Plastic, Crystal, or Vibranium");
+		}
 	}
+	
+		
+		
 }

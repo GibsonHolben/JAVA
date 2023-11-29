@@ -9,6 +9,6 @@ public class MeleeWeaponDriver
 	{
 		MeleeWeapon MeleeWeaopn1 = new MeleeWeapon();
 		
-		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon("Sword", (byte) 75, "Gold");
+		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon("Sword", (byte) 100, "Vibranium");
 	}
 }
