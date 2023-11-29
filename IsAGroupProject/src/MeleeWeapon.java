@@ -1,7 +1,7 @@
 /**
  * Creates a melee 
  * @author Gibson Holben
- * @version 0.0.1
+ * @version 0.0.7
  */
 public class MeleeWeapon 
 {

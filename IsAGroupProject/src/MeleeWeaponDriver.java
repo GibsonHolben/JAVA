@@ -9,6 +9,7 @@ public class MeleeWeaponDriver
 	{
 		MeleeWeapon MeleeWeaopn1 = new MeleeWeapon();
 		
+		System.out.println("**************************************");
 		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon("Sword", (byte) 100, "Vibranium");
 	}
 }
