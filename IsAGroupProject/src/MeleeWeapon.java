@@ -1,7 +1,7 @@
 /**
  * Creates a melee 
  * @author Gibson Holben
- * @version 0.0.7
+ * @version 0.1.2
  */
 public class MeleeWeapon 
 {
@@ -39,17 +39,9 @@ public class MeleeWeapon
 				byte Shinnyness,
 				String MeleeWeaponMaterial)
 	{
-		
-		
-		// (!) ADD NULL CHECKS (!)
-		
-		
-		
-		//Weapon edits
-		if(Weapon == "Spear" 
-				|| Weapon == "Sword"
-				|| Weapon == "Hammer" 
-				|| Weapon == "Scythe")
+		//Weapon
+		if(Weapon == "Spear"|| Weapon =="Sword"||
+				Weapon =="Hammer"|| Weapon =="Scythe")
 		{
 			this.Weapon = Weapon;
 		}
@@ -58,18 +50,16 @@ public class MeleeWeapon
 			throw new IllegalArgumentException("Please use one of the following:"
 					+ " Spear, Sword, Hammer, or Scythe");
 		}
-		
-		//Shinyness edits
+		//Shinnyness
 		if(Shinnyness > 0 && Shinnyness < 101)
 		{
 			this.Shinnyness = Shinnyness;
 		}
-		else
+		else 
 		{
-			throw new IllegalArgumentException("Input must be between 1 and 100");
+			throw new IllegalArgumentException("Value must be between 0 and 100");
 		}
-	
-		//Weapon material edits
+		//MeleeWeaponMaterial
 		if(MeleeWeaponMaterial == "Gold" ||
 				MeleeWeaponMaterial == "Metal" ||
 				MeleeWeaponMaterial == "Plastic" ||
@@ -81,10 +71,39 @@ public class MeleeWeapon
 		else
 		{
 			throw new IllegalArgumentException("Please use one of the following:"
-					+ "Gold, Metal, Plastic, Crystal, or Vibranium");
+					+ " Gold, Metal, Plastic, Crystal, and Vibranium");
 		}
+		
 	}
 	
-		
-		
+	
+
+	public String toString()
+	{
+		return new String("Temp");
+	}
+	
+	/**
+	 * Pritnts the variables to the console in an orderly fashion
+	 */
+	public void printAll()
+	{
+		System.out.println("Weapon: " + Weapon);
+		System.out.println("Shinnyness: " + Shinnyness);
+		System.out.println("MeleeWeaponMaterial: " + MeleeWeaponMaterial);
+	}
+	
+	public boolean equals(MeleeWeapon MeleeWeapon)
+	{
+		if(this.Weapon == MeleeWeapon.Weapon
+				&& this.Shinnyness == MeleeWeapon.Shinnyness
+				&& this.MeleeWeaponMaterial == MeleeWeapon.MeleeWeaponMaterial)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
