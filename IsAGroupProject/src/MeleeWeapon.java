@@ -39,6 +39,12 @@ public class MeleeWeapon
 				byte Shinnyness,
 				String MeleeWeaponMaterial)
 	{
+		
+		
+		// (!) ADD NULL CHECKS (!)
+		
+		
+		
 		//Weapon edits
 		if(Weapon == "Spear" 
 				|| Weapon == "Sword"

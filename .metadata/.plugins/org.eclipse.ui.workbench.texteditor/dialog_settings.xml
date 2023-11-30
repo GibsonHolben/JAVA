@@ -6,9 +6,20 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="args[4]"/>
 		<list key="findhistory">
+			<item value="args[3]"/>
+			<item value="if(args[3].trim().isEmpty())"/>
+			<item value="args[2]"/>
+			<item value="args[0]"/>
+			<item value="args[1]"/>
 		</list>
 		<list key="replacehistory">
+			<item value="args[4]"/>
+			<item value="args[3]"/>
+			<item value="Value"/>
+			<item value="args[2]"/>
+			<item value="args[1]"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
