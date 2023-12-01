@@ -93,6 +93,12 @@ public class MeleeWeapon
 		System.out.println("MeleeWeaponMaterial: " + MeleeWeaponMaterial);
 	}
 	
+	/**
+	 * Compares a passed in MeleeWeapons to the one this function is called on
+	 * and returns true if they match and visa versa
+	 * @param MeleeWeapon the passed in MeleeWeapon
+	 * @return does the passed in MeleeWeapon match this MeleeWeapon
+	 */
 	public boolean equals(MeleeWeapon MeleeWeapon)
 	{
 		if(this.Weapon == MeleeWeapon.Weapon
