@@ -7,37 +7,20 @@ public class MeleeWeaponDriver
 {
 	public static void main(String[] args) 
 	{
+
+		
+		//Builder class testing
 		System.out.println("**************************************");
-		MeleeWeapon MeleeWeaopn1 = new MeleeWeapon();
-		MeleeWeaopn1.printAll();
+		MeleeWeapon MeleeWeaopn = new MeleeWeapon.Builder().Build("Hammer", 
+																		  (byte) 100, 
+																		  "Metal");
+		//null
+		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon.Builder().Build("happy", 
+				  (byte) 101, 
+				  "cruise ship");
+		MeleeWeaopn.printAll();
 		System.out.println("**************************************\n");
 		
-		System.out.println("**************************************");
-		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon("Sword", (byte) 100, "Vibranium");
-		MeleeWeaopn2.printAll();
-		System.out.println("**************************************\n");
-		
-		System.out.println("**************************************");
-		MeleeWeapon MeleeWeaopn3 = new MeleeWeapon("Sword", (byte) 100, "Vibranium");
-		MeleeWeaopn3.printAll();
-		System.out.println("**************************************\n");
-		
-		if(MeleeWeaopn3.equals(MeleeWeaopn2))
-		{
-			System.out.println("Good");
-		}
-		else 
-		{
-			System.out.println("False");
-		}
-		
-		if(MeleeWeaopn1.equals(MeleeWeaopn2))
-		{
-			System.out.println("Good");
-		}
-		else 
-		{
-			System.out.println("False");
-		}
+	
 	}
 }

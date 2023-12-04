@@ -1,3 +1,10 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * Creates a melee 
  * @author Gibson Holben
@@ -5,6 +12,12 @@
  */
 public class MeleeWeapon 
 {
+	/**
+		 * @author CTEHolbenG46
+		 * @version 0.0.1
+		 */
+	
+
 	/**The weapon that the clone uses 
 	 * Must be a Spear, Sword, Hammer, or Scythe
 	 * Default = Spear*/
@@ -22,68 +35,32 @@ public class MeleeWeapon
 	
 	
 	/**
-	 * Default construtor
-	 */
-	MeleeWeapon()
-	{
-		
-	}
-	
-	/**
 	 * Creates a MeleeWeapon with all instance variables
 	 * @param MeleeWeapon The weapon that the clone uses (String)
 	 * @param Shinnyness The Shinnyness of the Melee Weapon (byte)
 	 * @param MeleeWeaponMaterial The material of the weapon (String)
 	 */
-	MeleeWeapon(String Weapon,
+	private MeleeWeapon(String Weapon,
 				byte Shinnyness,
-				String MeleeWeaponMaterial)
+				String MeleeWeaponMaterial)					
 	{
-		//Weapon (change to switch
-		if(Weapon == "Spear"|| Weapon =="Sword"||
-				Weapon =="Hammer"|| Weapon =="Scythe")
-		{
-			this.Weapon = Weapon;
-		}
-		else
-		{
-			throw new IllegalArgumentException("Please use one of the following:"
-					+ " Spear, Sword, Hammer, or Scythe");
-		}
-		//Shinnyness
-		if(Shinnyness > 0 && Shinnyness < 101)
-		{
-			this.Shinnyness = Shinnyness;
-		}
-		else 
-		{
-			throw new IllegalArgumentException("Value must be between 0 and 100");
-		}
-		//MeleeWeaponMaterial
-		switch(MeleeWeaponMaterial)
-		{
-			case "Gold": 
-			case "Metal": 
-			case "Plastic": 
-			case "Crystal": 
-			case "Vibranium": 
-				this.MeleeWeaponMaterial = MeleeWeaponMaterial;
-				break;
-			default:
-				throw new IllegalArgumentException("Please use one of the following:"
-						+ " Gold, Metal, Plastic, Crystal, and Vibranium");
-		}
+		this.Weapon = Weapon;
+		this.Shinnyness = Shinnyness;
+		this.MeleeWeaponMaterial = MeleeWeaponMaterial;
 	}
 	
-	
 
+
+	/**
+	 * Returns the variables of MeleeWeapon in a csv format
+	 */
 	public String toString()
 	{
-		return new String("Temp");
+		return Weapon + "|" + Shinnyness + "|" + MeleeWeaponMaterial;
 	}
 	
 	/**
-	 * Pritnts the variables to the console in an orderly fashion
+	 * Prints the variables to the console in an orderly fashion
 	 */
 	public void printAll()
 	{
@@ -111,4 +88,124 @@ public class MeleeWeapon
 			return false;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Builder class for meleeWeapon
+	 * @author Gibson Holben
+	 * @version 0.0.4
+	 */
+	public static class Builder
+	{
+		public MeleeWeapon Build(String Weapon,
+									byte Shinnyness,
+									String MeleeWeaponMaterial)
+		{
+			
+		 boolean isGood = true;
+
+			switch(Weapon)
+			{
+				case "Spear":
+				case "Sword":
+				case "Hammer": 
+				case "Scythe":
+					break;
+				default:
+					isGood = false;
+			}
+			if(Shinnyness > 0 && Shinnyness < 101)
+			{
+			}
+			else
+			{
+				isGood = false;
+				
+			}			
+			switch(MeleeWeaponMaterial)
+			{
+				case "Gold":
+				case "Metal":
+				case "Plastic": 
+				case "Vibranium":
+					break;
+				default:
+					isGood = false;
+					
+			}
+			if(isGood)
+			{
+				File file = new File(
+						"C:/Users/CTEHolbenG46/Documents/MeleeWeapon/OutputAmount.txt");
+			        Scanner sc;
+					try 
+					{
+						sc = new Scanner(file);
+						String s = sc.nextLine();
+						 goodReport("report" + s, "C:/Users/CTEHolbenG46/Documents/MeleeWeapon/", Weapon, Shinnyness, MeleeWeaponMaterial);
+					} 
+					catch (FileNotFoundException e) 
+					{
+				
+					}
+			 
+			       
+				
+				return new MeleeWeapon(Weapon, Shinnyness, MeleeWeaponMaterial);
+				
+			}
+			else
+			{
+				return null;
+			}
+		
+		}
+		
+		public void goodReport(String name, String path, String Weapon,
+				byte Shinnyness,
+				String MeleeWeaponMaterial)
+		{
+			
+			
+			if( name == "" || name == " ")
+				name = "GoodReport";
+			try
+			{
+				File f = new File(path + name + ".txt");	
+				if(!f.exists()) 
+				{
+					File myFile = new File(path + name+ ".txt"); 	  
+					myFile.createNewFile();  
+				}
+				FileWriter myWriter = new FileWriter(path + name+ ".txt");
+			    String s = "Report has come back good\n" + "Weapon: " + Weapon;
+				myWriter.write(s);
+				myWriter.close();
+				System.out.println("Saved the file to " +
+						path + name+ ".txt");
+				
+				 
+			}
+			catch (FileNotFoundException e)
+			{
+				//If the file cannot be found then print this error
+				System.out.println("The file could not be found");
+			}
+			catch (IOException e)
+			{
+				System.out.println("Could not save the file");
+			}
+		}
+	}
+
+	
 }
+
+
