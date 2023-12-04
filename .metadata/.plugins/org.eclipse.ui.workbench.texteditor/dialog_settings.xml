@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=" Value10S "/>
+		<item key="selection" value="Size4"/>
 		<list key="findhistory">
+			<item value="Size3"/>
+			<item value="SIze4"/>
+			<item value="Input7"/>
+			<item value="Size2"/>
+			<item value="Input6"/>
+			<item value="Size"/>
 			<item value=" Value8S "/>
 			<item value=" Value7S "/>
 			<item value="Value6S"/>
@@ -19,6 +25,12 @@
 			<item value="args[1]"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Size4"/>
+			<item value="SIze4"/>
+			<item value="Input8"/>
+			<item value="Size3"/>
+			<item value="Input7"/>
+			<item value="Size2"/>
 			<item value=" Value10S "/>
 			<item value=" Value9S "/>
 			<item value="Value8S"/>

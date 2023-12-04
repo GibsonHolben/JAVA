@@ -18,6 +18,7 @@
 		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="H:\JAVA\InputEdits"/>
 			<item value="H:\JAVA\1.1.3TestQuestions"/>
 			<item value="H:\JAVA\1.1.3BTestQuestions"/>
 			<item value="H:\JAVA\1.1.3ATestQuestions"/>

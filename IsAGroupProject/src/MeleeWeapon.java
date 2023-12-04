@@ -39,7 +39,7 @@ public class MeleeWeapon
 				byte Shinnyness,
 				String MeleeWeaponMaterial)
 	{
-		//Weapon
+		//Weapon (change to switch
 		if(Weapon == "Spear"|| Weapon =="Sword"||
 				Weapon =="Hammer"|| Weapon =="Scythe")
 		{
@@ -60,20 +60,19 @@ public class MeleeWeapon
 			throw new IllegalArgumentException("Value must be between 0 and 100");
 		}
 		//MeleeWeaponMaterial
-		if(MeleeWeaponMaterial == "Gold" ||
-				MeleeWeaponMaterial == "Metal" ||
-				MeleeWeaponMaterial == "Plastic" ||
-				MeleeWeaponMaterial == "Crystal" ||
-				MeleeWeaponMaterial == "Vibranium")
+		switch(MeleeWeaponMaterial)
 		{
-			this.MeleeWeaponMaterial = MeleeWeaponMaterial;
+			case "Gold": 
+			case "Metal": 
+			case "Plastic": 
+			case "Crystal": 
+			case "Vibranium": 
+				this.MeleeWeaponMaterial = MeleeWeaponMaterial;
+				break;
+			default:
+				throw new IllegalArgumentException("Please use one of the following:"
+						+ " Gold, Metal, Plastic, Crystal, and Vibranium");
 		}
-		else
-		{
-			throw new IllegalArgumentException("Please use one of the following:"
-					+ " Gold, Metal, Plastic, Crystal, and Vibranium");
-		}
-		
 	}
 	
 	
