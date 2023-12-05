@@ -22,7 +22,7 @@ public class MeleeWeaponDriver
 		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon.Builder().Build("happy", 
 				  (byte) 101, 
 				  "cruise ship");
-		MeleeWeaopn.printAll();
+		System.out.println("\n");
 		System.out.println("**************************************\n");
 		
 	

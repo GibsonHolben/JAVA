@@ -204,7 +204,8 @@ public class MeleeWeapon
 					String s = Scanner.nextLine();
 					Scanner.close();
 					badReport("Report" + s, "C:/Users/CTEHolbenG46/Documents/"
-							+ "MeleeWeapon/", Weapon, Shinnyness, MeleeWeaponMaterial);
+							+ "MeleeWeapon/", Weapon, Shinnyness, 
+							MeleeWeaponMaterial);
 				}
 				catch (FileNotFoundException e) 
 				{
@@ -244,7 +245,6 @@ public class MeleeWeapon
 					
 					myWriter.write(number.toString());
 					myWriter.close();
-					System.out.println("55");
 				} 
 				catch (IOException e) 
 				{
