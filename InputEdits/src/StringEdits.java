@@ -86,11 +86,28 @@ public class StringEdits
 			//i = 0
 			//i stands for index	j, k
 			
-			
-			for(int i = 0; i < Sizes1.length; i++)
-			{
-				System.out.println("Curent index: " + i);
-			}
+//			for(int i = 0; i <= Sizes1.length; i++) //crash
+//			{
+//				System.out.println("Curent size: " + Sizes1[i]);
+//				//java.lang.ArrayIndexOutOfBoundsException: 6
+//				//at StringEdits.main(StringEdits.java:91) 
+//				//Will cause an out of bounds error
+//
+//			}
+//			for(int i = 0; i < Sizes1.length; i++) //Good one
+//			{
+//				System.out.println("Curent index: " + i);
+//			}
+//			
+//			for(int i = 0; i <= Sizes1.length(); i++) //compiler error
+//			{
+//				System.out.println("Curent size: " + Sizes1[i]);
+//			}
+//			
+//			for(int i = 0; i <= Sizes1.length -1; i++) //good
+//			{
+//				System.out.println("Curent size: " + Sizes1[i]);
+//			}
 			
 			//							i
 			//							0
