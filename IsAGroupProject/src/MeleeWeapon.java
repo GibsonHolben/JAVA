@@ -21,17 +21,17 @@ public class MeleeWeapon
 	/**The weapon that the clone uses 
 	 * Must be a Spear, Sword, Hammer, or Scythe
 	 * Default = Spear*/
-	String Weapon = "Spear";
+	String Weapon 					= "Spear";
 	
 	/**The Shinnyness of the Melee Weapon
 	 * Min: 1 Max: 100
 	 * Default = 100*/
-	byte Shinnyness = 100;
+	byte Shinnyness 				= 100;
 	
 	/**The material that the melee weapon is made out of
 	 * Must be Gold, Metal, Plastic, Crystal, and Vibranium
 	 * Default = Metal*/
-	String MeleeWeaponMaterial = "Metal";
+	String MeleeWeaponMaterial 		= "Metal";
 	
 	
 	/**
@@ -41,12 +41,12 @@ public class MeleeWeapon
 	 * @param MeleeWeaponMaterial The material of the weapon (String)
 	 */
 	private MeleeWeapon(String Weapon,
-				byte Shinnyness,
-				String MeleeWeaponMaterial)					
+						byte Shinnyness,
+						String MeleeWeaponMaterial)					
 	{
-		this.Weapon = Weapon;
-		this.Shinnyness = Shinnyness;
-		this.MeleeWeaponMaterial = MeleeWeaponMaterial;
+		this.Weapon 				= Weapon;
+		this.Shinnyness 			= Shinnyness;
+		this.MeleeWeaponMaterial 	= MeleeWeaponMaterial;
 	}
 	
 
@@ -64,9 +64,11 @@ public class MeleeWeapon
 	 */
 	public void printAll()
 	{
-		System.out.println("Weapon: " + Weapon);
-		System.out.println("Shinnyness: " + Shinnyness);
-		System.out.println("MeleeWeaponMaterial: " + MeleeWeaponMaterial);
+
+		System.out.println("Weapon: " 				+ Weapon);
+		System.out.println("Shinnyness: " 			+ Shinnyness);
+		System.out.println("MeleeWeaponMaterial: " 	+ MeleeWeaponMaterial);
+
 	}
 	
 	/**
@@ -77,9 +79,9 @@ public class MeleeWeapon
 	 */
 	public boolean equals(MeleeWeapon MeleeWeapon)
 	{
-		if(this.Weapon == MeleeWeapon.Weapon
-				&& this.Shinnyness == MeleeWeapon.Shinnyness
-				&& this.MeleeWeaponMaterial == MeleeWeapon.MeleeWeaponMaterial)
+		if(this.Weapon 					== MeleeWeapon.Weapon
+			&& this.Shinnyness 			== MeleeWeapon.Shinnyness
+			&& this.MeleeWeaponMaterial == MeleeWeapon.MeleeWeaponMaterial)
 		{
 			return true;
 		}
@@ -179,8 +181,8 @@ public class MeleeWeapon
 					String s = Scanner.nextLine();
 					Scanner.close();
 					goodReport("Report" + s, "C:/Users/CTEHolbenG46/"
-							+ "Documents/MeleeWeapon/", Weapon, Shinnyness, 
-							MeleeWeaponMaterial);
+									+ "Documents/MeleeWeapon/", Weapon, Shinnyness, 
+									MeleeWeaponMaterial);
 				} 
 				catch (FileNotFoundException e) 
 				{
@@ -204,8 +206,8 @@ public class MeleeWeapon
 					String s = Scanner.nextLine();
 					Scanner.close();
 					badReport("Report" + s, "C:/Users/CTEHolbenG46/Documents/"
-							+ "MeleeWeapon/", Weapon, Shinnyness, 
-							MeleeWeaponMaterial);
+								+ "MeleeWeapon/", Weapon, Shinnyness, 
+								MeleeWeaponMaterial);
 				}
 				catch (FileNotFoundException e) 
 				{

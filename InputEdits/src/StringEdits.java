@@ -36,6 +36,104 @@ public class StringEdits
 		//2. equals		valid options....
 
 		
+		//Array - multi - same datatype
+		//			      objects
+		//			 	  primitve data types...
+		
+		
+		//String object single dimention Array
+		//arraylist		-	 grow and shrink... dynamic
+		//array			- 	static array... does not grow
+		
+		//String[] Sizes0;
+		//				  list elements
+		String Sizes1[] = {"S", "M", "L", "XL", "XS", "XXL"};	//watch the for ; using literal
+		String Sizes2[] = {new String("S"), 
+							new String("M"),
+							new String("L"),
+							new String("XL"),
+							new String("XS"), 
+							new String("XXL")};
+		
+		
+		Scanner Input9 = new Scanner(System.in);
+		System.out.println("Please enter test data");
+		String  Size5 = Input9.nextLine();
+		Size5 = Size5.trim().toUpperCase();
+		
+		boolean  validSize2 = false;	//lives withing the main braces
+		
+		if(Size5.isEmpty())
+		{
+			System.out.println("Please enter a selection. " + Size5);
+			//System.out.println("Good. Size: " + Size5);
+			//System.out.println("Not Valid Selection Please Try Again. " + Size5);
+		}
+		else
+		{
+			
+			//in the else statment I can referance ValidState2
+			validSize2 = true;		//Can look out
+			
+			//good stuff starts here
+			boolean  validSize = false;	//primer (lives within the else braces... then deleted
+			
+//			for(initilization; when to stop; incrementer / deincrementer)
+//			{
+//				
+//			}
+			
+			//i = 0
+			//i stands for index	j, k
+			
+			
+			for(int i = 0; i < Sizes1.length; i++)
+			{
+				System.out.println("Curent index: " + i);
+			}
+			
+			//							i
+			//							0
+			//1.	 int i = 0;
+			//2.	 i < Sizes1.length;
+			//3.	 System.out.println("Curent index: " + i);			Curent index: 0
+			//4.	 i++;
+			//							1
+			//5.	 i < Sizes1.length;
+			//6.	 System.out.println("Curent index: " + i);			Curent index: 1
+			//7.	 i++;
+			//							2
+			//8.	 i < Sizes1.length;
+			//9.	 System.out.println("Curent index: " + i);			Curent index: 2
+			//10.	 i++;
+			//							3
+			//11.	 i < Sizes1.length;
+			//12.	 System.out.println("Curent index: " + i);			Curent index: 3
+			//13.	 i++;
+			//							4
+			//14.	 i < Sizes1.length;
+			//15.	 System.out.println("Curent index: " + i);			Curent index: 2
+			//16.	 i++;
+			//							5
+			//17.	 i < Sizes1.length;
+			//18.	 System.out.println("Curent index: " + i);			Curent index: 3
+			//19.	 i++;
+			//							6
+			//20.	 i < Sizes1.length;		FALSE
+			//executed 6 times
+
+			
+		}		
+		
+		//validState = true; //cant look inward (can't be resolved to a type)
+		
+		System.out.println("Stop");
+		
+		
+		
+		
+		
+		
 		
 		
 		//****************************************************************************
@@ -57,32 +155,32 @@ public class StringEdits
 		//Rules	- no if structures greater that 3 deep
 
 		
-		Scanner Input8 = new Scanner(System.in);
-		System.out.println("Please enter test data");
-		String  Size4 = Input8.nextLine();
-		Size4 = Size4.trim().toUpperCase();
-		
-		if(Size4.isEmpty())
-		{
-			System.out.println("Please enter a selection. " + Size4);
-		}
-		else
-		{
-			//breaks is switch statments
-			switch(Size4)
-			{
-				case "S": 	
-				case "XS": 
-				case "M": 	
-				case "L": 	
-				case "XL": 	
-				case "XXL": System.out.println("Good. Size: " + Size4);
-							break;
-				default: 	System.out.println("Not Valid Selection Please Try Again. " + Size4);
-							break;
-			}
-		}		
-		
+//		Scanner Input8 = new Scanner(System.in);
+//		System.out.println("Please enter test data");
+//		String  Size4 = Input8.nextLine();
+//		Size4 = Size4.trim().toUpperCase();
+//		
+//		if(Size4.isEmpty())
+//		{
+//			System.out.println("Please enter a selection. " + Size4);
+//		}
+//		else
+//		{
+//			//breaks is switch statments
+//			switch(Size4)
+//			{
+//				case "S": 	
+//				case "XS": 
+//				case "M": 	
+//				case "L": 	
+//				case "XL": 	
+//				case "XXL": System.out.println("Good. Size: " + Size4);
+//							break;
+//				default: 	System.out.println("Not Valid Selection Please Try Again. " + Size4);
+//							break;
+//			}
+//		}		
+//		
 		//***************************************************************************************************
 		
 		
