@@ -12,26 +12,21 @@ import java.util.Scanner;
  */
 public class MeleeWeapon 
 {
-	/**
-		 * @author CTEHolbenG46
-		 * @version 0.0.1
-		 */
 	
-
-	/**The weapon that the clone uses 
-	 * Must be a Spear, Sword, Hammer, or Scythe
-	 * Default = Spear*/
-	String Weapon 					= "Spear";
+	/**The material that the melee weapon is made out of
+	 * Must be Gold, Metal, Plastic, Crystal, and Vibranium
+	 * Default = Metal*/
+	String MeleeWeaponMaterial 		= "Metal";
 	
 	/**The Shinnyness of the Melee Weapon
 	 * Min: 1 Max: 100
 	 * Default = 100*/
 	byte Shinnyness 				= 100;
 	
-	/**The material that the melee weapon is made out of
-	 * Must be Gold, Metal, Plastic, Crystal, and Vibranium
-	 * Default = Metal*/
-	String MeleeWeaponMaterial 		= "Metal";
+	/**The weapon that the clone uses 
+	 * Must be a Spear, Sword, Hammer, or Scythe
+	 * Default = Spear*/
+	String Weapon 					= "Spear";
 	
 	
 	/**
@@ -56,7 +51,7 @@ public class MeleeWeapon
 	 */
 	public String toString()
 	{
-		return Weapon + "|" + Shinnyness + "|" + MeleeWeaponMaterial;
+		return MeleeWeaponMaterial + "|" + Shinnyness + "|" + Weapon;
 	}
 	
 	/**
@@ -65,9 +60,9 @@ public class MeleeWeapon
 	public void printAll()
 	{
 
-		System.out.println("Weapon: " 				+ Weapon);
-		System.out.println("Shinnyness: " 			+ Shinnyness);
 		System.out.println("MeleeWeaponMaterial: " 	+ MeleeWeaponMaterial);
+		System.out.println("Shinnyness: " 			+ Shinnyness);
+		System.out.println("Weapon: " 				+ Weapon);
 
 	}
 	
@@ -80,8 +75,10 @@ public class MeleeWeapon
 	public boolean equals(MeleeWeapon MeleeWeapon)
 	{
 		if(this.Weapon 					== MeleeWeapon.Weapon
-			&& this.Shinnyness 			== MeleeWeapon.Shinnyness
-			&& this.MeleeWeaponMaterial == MeleeWeapon.MeleeWeaponMaterial)
+											&& this.Shinnyness 			== 
+											MeleeWeapon.Shinnyness
+											&& this.MeleeWeaponMaterial == 
+											MeleeWeapon.MeleeWeaponMaterial)
 		{
 			return true;
 		}
@@ -102,7 +99,7 @@ public class MeleeWeapon
 	 * @author Gibson Holben
 	 * @version 0.0.4
 	 */
-	public static class Builder
+	public static class MeleeWeaponBuilder
 	{
 		
 		
@@ -118,55 +115,21 @@ public class MeleeWeapon
 		 * @return a built  MeleeWeapon is good and null id bad
 		 */
 		public MeleeWeapon Build(String Weapon,
-									byte Shinnyness,
-									String MeleeWeaponMaterial)
+							 	 byte Shinnyness,
+								 String MeleeWeaponMaterial)
 		{
 			//Trims the variables
-			Weapon = Weapon.trim();
-			MeleeWeaponMaterial = MeleeWeaponMaterial.trim();
+			Weapon 				= Weapon.trim();
+			MeleeWeaponMaterial = 
+					MeleeWeaponMaterial.trim();
 			
 			
-			//Is the object good
-			boolean isGood = true;
-		 	
-			//Checks the weapon
-			switch(Weapon)
-			{
-				case "Spear":
-				case "Sword":
-				case "Hammer": 
-				case "Scythe":
-					break;
-				default:
-					isGood = false;
-			}
-			
-			//Checks the shinnyness 
-			if(Shinnyness > 0 && Shinnyness < 101)
-			{
-				
-			}
-			else
-			{
-				isGood = false;
-				
-			}		
-			
-			//Checks the MeleeWeaponMaterial
-			switch(MeleeWeaponMaterial)
-			{
-				case "Gold":
-				case "Metal":
-				case "Plastic": 
-				case "Vibranium":
-					break;
-				default:
-					isGood = false;
-					
-			}
 			
 			
-			if(isGood)
+			
+			if(weaponEdits(Weapon) == true && 
+				shinnynessEdits(Shinnyness) == true &&
+				weaponMaterialEdits(MeleeWeaponMaterial) == true)
 			{
 				//If the object values are good then create
 				//a good report and build the object
@@ -219,12 +182,61 @@ public class MeleeWeapon
 		}
 		
 		
+		/**
+		 * Checks the Weapon variable and makes sure it is good
+		 * @param weapon The weapon that the clone uses 
+		 * @return if the variables are good
+		 */
+		private boolean weaponEdits(String weapon)
+		{
+			switch(weapon)
+			{
+				case "Spear":
+				case "Sword":
+				case "Hammer": 
+				case "Scythe": return true;
+				default: 	return false;
+					
+			}
+		}
 		
+		/**
+		 * Checks the Shinnyness variable and makes sure it is good
+		 * @param shinnyness The Shinnyness of the Melee Weapon
+		 * @return  if the variables are good
+		 */
+		private boolean shinnynessEdits(byte shinnyness)
+		{
+			if(shinnyness > 0 && shinnyness < 101)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+				
+			}		
+			
+		}
 		
-		
-		
-		
-		
+		/**
+		 * Checks the MeleeWeaponMaterial variable and makes sure it is good
+		 * @param MeleeWeaponMaterial The material that the melee weapon is made out of
+		 * @return  if the variables are good
+		 */
+		private boolean weaponMaterialEdits(String MeleeWeaponMaterial)
+		{
+			switch(MeleeWeaponMaterial)
+			{
+				case "Gold":
+				case "Metal":
+				case "Plastic": 
+				case "Vibranium": return true;
+				default: return false;
+					
+					
+			}
+		}
 		
 		
 		/**

@@ -11,7 +11,7 @@ public class MeleeWeaponDriver
 		
 		//Builder class testing
 		System.out.println("**************************************MW1");
-		MeleeWeapon MeleeWeaopn = new MeleeWeapon.Builder().Build("Hammer", 
+		MeleeWeapon MeleeWeaopn = new MeleeWeapon.MeleeWeaponBuilder().Build("Hammer", 
 																		  (byte) 99, 
 																		  "Metal");
 		MeleeWeaopn.printAll();
@@ -21,13 +21,13 @@ public class MeleeWeaponDriver
 		//null
 		
 		System.out.println("**************************************MW2");
-		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon.Builder().Build("happy", 
+		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon.MeleeWeaponBuilder().Build("happy", 
 				  (byte) 101, 
 				  "cruise ship");
 		System.out.println("**************************************\n");
 		
 		System.out.println("**************************************MW3");
-		MeleeWeapon MeleeWeaopn3 = new MeleeWeapon.Builder().Build("Sword",
+		MeleeWeapon MeleeWeaopn3 = new MeleeWeapon.MeleeWeaponBuilder().Build("Sword",
 																	(byte) 65,
 																	"Gold");
 		MeleeWeaopn3.printAll();
