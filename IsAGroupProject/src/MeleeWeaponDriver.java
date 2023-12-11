@@ -19,7 +19,6 @@ public class MeleeWeaponDriver
 		System.out.println("**************************************\n");
 		
 		//null
-		
 		System.out.println("**************************************MW2");
 		MeleeWeapon MeleeWeaopn2 = new MeleeWeapon.MeleeWeaponBuilder().Build("happy", 
 				  (byte) 101, 

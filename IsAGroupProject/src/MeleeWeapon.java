@@ -244,26 +244,24 @@ public class MeleeWeapon
 		 */
 		public void increeseCounter()
 		{
-
-
-				try 
-				{
-					Scanner scanner = new Scanner(new File("C:/Users/CTEHolbenG46/"
-							+ "Documents/MeleeWeapon/OutputAmount.txt"));
-					
-					Integer number = scanner.nextInt();
-					number++;
-					FileWriter myWriter = new FileWriter("C:/Users/CTEHolbenG46/"
-							+ "Documents/"
-							+ "MeleeWeapon/OutputAmount.txt");
-					
-					myWriter.write(number.toString());
-					myWriter.close();
-				} 
-				catch (IOException e) 
-				{
-
-				}
+			try 
+			{
+				Scanner scanner = new Scanner(new File("C:/Users/CTEHolbenG46/"
+						+ "Documents/MeleeWeapon/OutputAmount.txt"));
+				
+				Integer number = scanner.nextInt();
+				number++;
+				FileWriter myWriter = new FileWriter("C:/Users/CTEHolbenG46/"
+						+ "Documents/"
+						+ "MeleeWeapon/OutputAmount.txt");
+				
+				myWriter.write(number.toString());
+				myWriter.close();
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}	
 
 		}
 		
@@ -360,7 +358,7 @@ public class MeleeWeapon
 				File f = new File(path + name + ".txt");	
 				if(!f.exists()) 
 				{
-					File myFile = new File(path + name+ ".txt"); 	  
+					File myFile = new File(path + name + ".txt"); 	  
 					myFile.createNewFile();  
 				}
 				FileWriter myWriter = new FileWriter(path + name+ ".txt");
@@ -383,7 +381,7 @@ public class MeleeWeapon
 			}
 			catch (IOException e)
 			{
-				System.out.println("Could not save the file (bad)");
+				System.out.println("Could not save the file");
 			}
 		}
 	}
