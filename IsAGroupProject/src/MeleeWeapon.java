@@ -21,7 +21,7 @@ public class MeleeWeapon
 	/**The Shinnyness of the Melee Weapon
 	 * Min: 1 Max: 100
 	 * Default = 100*/
-	byte Shinnyness 				= 100;
+	byte Sharpness 				= 100;
 	
 	/**The weapon that the clone uses 
 	 * Must be a Spear, Sword, Hammer, or Scythe
@@ -40,7 +40,7 @@ public class MeleeWeapon
 						String MeleeWeaponMaterial)					
 	{
 		this.Weapon 				= Weapon;
-		this.Shinnyness 			= Shinnyness;
+		this.Sharpness 			= Shinnyness;
 		this.MeleeWeaponMaterial 	= MeleeWeaponMaterial;
 	}
 	
@@ -51,7 +51,7 @@ public class MeleeWeapon
 	 */
 	public String toString()
 	{
-		return MeleeWeaponMaterial + "|" + Shinnyness + "|" + Weapon;
+		return MeleeWeaponMaterial + "|" + Sharpness + "|" + Weapon;
 	}
 	
 	/**
@@ -60,9 +60,9 @@ public class MeleeWeapon
 	public void printAll()
 	{
 
-		System.out.println("MeleeWeaponMaterial: " 	+ MeleeWeaponMaterial);
-		System.out.println("Shinnyness: " 			+ Shinnyness);
-		System.out.println("Weapon: " 				+ Weapon);
+		System.out.format("%-20s%9s%n", "MeleeWeaponMaterial:" , MeleeWeaponMaterial);
+		System.out.format("%-20s%9s%n", "Shinnyness: ",          Sharpness);
+		System.out.format("%-20s%9s%n", "Weapon: ", 			  Weapon);
 
 	}
 	
@@ -75,8 +75,8 @@ public class MeleeWeapon
 	public boolean equals(MeleeWeapon MeleeWeapon)
 	{
 		if(this.Weapon 					== MeleeWeapon.Weapon
-											&& this.Shinnyness 			== 
-											MeleeWeapon.Shinnyness
+											&& this.Sharpness 			== 
+											MeleeWeapon.Sharpness
 											&& this.MeleeWeaponMaterial == 
 											MeleeWeapon.MeleeWeaponMaterial)
 		{
