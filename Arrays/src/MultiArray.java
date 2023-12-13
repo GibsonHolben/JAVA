@@ -1,8 +1,9 @@
 public class MultiArray
 {
+	//Testing my code
 	public static void main(String[] args) 
 	{
-		//most common error
+		//Most common error
 		//for(int j = 0;j < mArray1.length; j++);	do not have a terminator at the end
 		
 		int[] sArray1 = {1,2,3};	//single dimentional array {} row 	3
