@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="java.util.TimerTask"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.text.Format"/>
 <fullyQualifiedTypeName name="StringEdits"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
@@ -18,4 +17,6 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.IllegalFormatConversionException"/>
 </qualifiedTypeNameHistroy>

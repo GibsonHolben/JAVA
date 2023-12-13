@@ -21,32 +21,29 @@ public class StringFormat
 		System.out.format("%s", "Gibson");	//6 charecters
 		System.out.format("%s%n", "Kids");	//4 charecters
 		
-		//**************************************************************
 		System.out.println("***********************************************************");
 		
 		System.out.format("%s", "Gibson");	//6 charecters
 		System.out.format("%s   %n", "Kids");	//4 charecters
 		
-		//**************************************************************
 		System.out.println("***********************************************************");
 		
 		//If you put charecters in the first argument then they will show up after the string
 		System.out.format("%s", "Gibson");	//6 charecters
 		System.out.format("%s$$$$$%n", "Kids");	//4 charecters
 		
-		//**************************************************************
 		System.out.println("***********************************************************");
 		
 		System.out.format("%s", "Gibson");	//6 charecters
 		System.out.format("%s%n", "Kids");	//4 charecters
 		
-		//**************************************************************
+
 		System.out.println("***********************************************************");
 		
 		System.out.println("**Format 1 String, 1 format calls**");
 		System.out.format("%s%s%n", "Gibson", "Kids");	
 		
-		//**************************************************************
+
 		System.out.println("***********************************************************");
 		
 		System.out.println("**Right allignment concerns**");
@@ -56,14 +53,14 @@ public class StringFormat
 		System.out.format("%9s%s%n", "Gib", "Kids");	//right alignment
 		System.out.format("%9s%s%n", "1234567890", "Kids");	
 		
-		//**************************************************************
+
 		System.out.println("***********************************************************");
 		
 		System.out.format("%12s%9s%n", "Gibson", "Kids");	
 		System.out.format("%12s%9s%n", "Gib", "7890123");	//right alignment
 		System.out.format("%12s%9s%n", "1234567890", "99999999");	
 		
-		//**************************************************************
+
 		System.out.println("***********************************************************");
 				
 		System.out.println("**Left allignment concerns**");

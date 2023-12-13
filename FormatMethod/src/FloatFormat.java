@@ -61,7 +61,7 @@ public class FloatFormat
 		
 		System.out.println("******************************************************");
 		System.out.println("positive sign");
-		String prefix5 = "%+13f	%n";
+		String prefix5 = "%+13f	%n";	//switched to a variable for the formating code
 		System.out.format(prefix5, float1);
 		System.out.format(prefix5, float2);
 		System.out.format(prefix5, float3);
