@@ -1,7 +1,7 @@
 public class MultiArray
 {
 	//Testing my code
- //testing mobile 
+ 	//testing mobile 
 	public static void main(String[] args) 
 	{
 		//Most common error
