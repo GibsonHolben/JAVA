@@ -12,7 +12,7 @@ public class MultiArray
 		{
 			
 		}
-
+		
 		
 		int[][] mArray1 =  {{1,2,3},		//{} is a new row	, is a new column
 							{4,5,6},	
