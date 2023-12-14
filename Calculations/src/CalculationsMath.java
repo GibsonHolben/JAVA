@@ -3,7 +3,7 @@ public class CalculationsMath
 {
 	/**
 	 * Used so that I dont have to write System.out
-	 * @param string	the passed in string
+	 * @param string The String that prints
 	 */
 	public static void print(String string)
 	{
@@ -12,6 +12,123 @@ public class CalculationsMath
 	
 	public static void main(String[] args) 
 	{
+		
+		//++X	X++
+		int num10A 	 = 5;	//6	//7
+		int num10B 	 = 3;
+		int num10C 	 = 2;
+		int num10D 	 = 1;
+		int resault10A = 0;
+		int resault10B = 0;
+		
+		
+		resault10A = ++num10A + num10C - num10A++;	//2? Final awnser	I was right!!!!
+		//			   num10A + num10C - num10A++
+		//				 6	  +   2	   - num10A++
+		//				      8	       -    6  ++
+		//					  2
+		//								 6++ = 7				  
+		
+		num10A 	 = 5;	
+		num10B 	 = 3;
+						//6
+		resault10B = ++num10A + num10C - ++num10A;	//1 Final awnser	I was right!!!!
+		//			 ++num10A
+		//			   num10A + num10C - ++num10A
+		//			     6    +   2 - ++num10A
+		//			          8 	- ++num10A
+		//			           		  ++num10A
+		//			          8 	- 	  7
+		//							1
+		
+		print("resault10A: "   	+ resault10A);
+		print("resault10B: "   	+ resault10B);
+		print("num10A: " 		+ num10A);
+		print("num10B: " 		+ num10B);
+		print("num10C: " 		+ num10C);
+		print("num10D: " 		+ num10D);
+		
+		
+		print("**************************************************");			
+		
+		
+		//++X	X++
+		int num9A 	 = 5;	//6
+		int num9B 	 = 3;	//4
+		int num9C 	 = 2;
+		int num9D 	 = 1;
+		int resault9A = 0;
+		int resault9B = 0;
+		
+		
+		resault9A = ++num9A + num9C;	//8?
+		//			  num9A + num9C
+		//				6	+	2
+
+		resault9B = num9B++ + num9C;	//6?	++ has to be at the begining or the end
+		//			  3	++	+ num9C
+		//			  3		+ num9C
+		//	5 =	  	  3		+ num9C
+		
+		
+		print("resault9A: "   	+ resault9A);
+		print("resault9B: "   	+ resault9B);
+		print("num9A: " 		+ num9A);
+		print("num9B: " 		+ num9B);
+		print("num9C: " 		+ num9C);
+		print("num9D: " 		+ num9D);
+		
+		
+		print("**************************************************");	
+		
+		//++X	X++
+		int num8A 	 = 5;
+		int num8B 	 = 3;
+		int num8C 	 = 2;
+		int num8D 	 = 1;
+		int resault8A = 0;
+		int resault8B = 0;
+		
+		
+		resault8A = ++num8A;	//6
+		//		6		6
+		//				++5
+		//		3		4
+		
+		resault8B = num8B++;	//3		//warning bell
+		//		0 = 3++		
+		//		3		4
+		
+		
+		
+		print("resault8A: "   	+ resault8A);
+		print("resault8B: "   	+ resault8B);
+		print("num8A: " 		+ num8A);
+		print("num8B: " 		+ num8B);
+		print("num8C: " 		+ num8C);
+		print("num8D: " 		+ num8D);
+		
+		
+		print("**************************************************");	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		print("MODULO");
+		
 		//%	   ++	--
 		//PEMD%AS
 
