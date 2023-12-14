@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="prefix8"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="&#x09;&#x09;//**************************************************************"/>
 			<item value="prefix7"/>
 			<item value="prefix6"/>
 			<item value="prefix5"/>
@@ -22,9 +23,9 @@
 			<item value=" Value8S "/>
 			<item value=" Value7S "/>
 			<item value="Value6S"/>
-			<item value="Value5S"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 			<item value="prefix8"/>
 			<item value="prefix7"/>
 			<item value="prefix6"/>
@@ -39,7 +40,6 @@
 			<item value=" Value10S "/>
 			<item value=" Value9S "/>
 			<item value="Value8S"/>
-			<item value="Value7S"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
