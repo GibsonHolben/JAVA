@@ -6,40 +6,40 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="t10"/>
 		<list key="findhistory">
-			<item value="&#x09;&#x09;//**************************************************************"/>
-			<item value="prefix7"/>
-			<item value="prefix6"/>
-			<item value="prefix5"/>
-			<item value="prefix"/>
-			<item value="Size4"/>
-			<item value="Size3"/>
-			<item value="SIze4"/>
-			<item value="Input7"/>
-			<item value="Size2"/>
-			<item value="Input6"/>
-			<item value="Size"/>
-			<item value=" Value8S "/>
-			<item value=" Value7S "/>
-			<item value="Value6S"/>
+			<item value="t8"/>
+			<item value="m8"/>
+			<item value="t7"/>
+			<item value="m7"/>
+			<item value="t6"/>
+			<item value="m6"/>
+			<item value="t5"/>
+			<item value="m5"/>
+			<item value="t4"/>
+			<item value="m4"/>
+			<item value="//% remander&#x09;modulus"/>
+			<item value="t3"/>
+			<item value="m3"/>
+			<item value="t2"/>
+			<item value="m2"/>
 		</list>
 		<list key="replacehistory">
-			<item value=""/>
-			<item value="prefix8"/>
-			<item value="prefix7"/>
-			<item value="prefix6"/>
-			<item value="prefix5"/>
-			<item value="Size5"/>
-			<item value="Size4"/>
-			<item value="SIze4"/>
-			<item value="Input8"/>
-			<item value="Size3"/>
-			<item value="Input7"/>
-			<item value="Size2"/>
-			<item value=" Value10S "/>
-			<item value=" Value9S "/>
-			<item value="Value8S"/>
+			<item value="t10"/>
+			<item value="m10"/>
+			<item value="t9"/>
+			<item value="m9"/>
+			<item value="t8"/>
+			<item value="m8"/>
+			<item value="t7"/>
+			<item value="m7"/>
+			<item value="t6"/>
+			<item value="m6"/>
+			<item value="t5"/>
+			<item value="m5"/>
+			<item value="t4"/>
+			<item value="m4"/>
+			<item value="t3"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
