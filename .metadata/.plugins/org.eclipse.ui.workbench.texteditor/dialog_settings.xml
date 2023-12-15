@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="t10"/>
+		<item key="selection" value="answer2"/>
 		<list key="findhistory">
+			<item value="answer"/>
+			<item value="ic"/>
+			<item value="ic2"/>
 			<item value="t8"/>
 			<item value="m8"/>
 			<item value="t7"/>
@@ -20,11 +23,11 @@
 			<item value="m4"/>
 			<item value="//% remander&#x09;modulus"/>
 			<item value="t3"/>
-			<item value="m3"/>
-			<item value="t2"/>
-			<item value="m2"/>
 		</list>
 		<list key="replacehistory">
+			<item value="answer2"/>
+			<item value="ic1"/>
+			<item value="ic3"/>
 			<item value="t10"/>
 			<item value="m10"/>
 			<item value="t9"/>
@@ -37,9 +40,6 @@
 			<item value="m6"/>
 			<item value="t5"/>
 			<item value="m5"/>
-			<item value="t4"/>
-			<item value="m4"/>
-			<item value="t3"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
