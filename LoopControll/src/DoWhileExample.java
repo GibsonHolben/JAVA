@@ -8,8 +8,12 @@ public class DoWhileExample
 		
 		//Y	  S	  N
 		//Y	  N
+		//S	  N
 		//N
 		//B
+		//y
+		//y s n
+		//y n
 		
 		Scanner Input2 = new Scanner(System.in);
 		
