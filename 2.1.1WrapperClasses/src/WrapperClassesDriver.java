@@ -33,7 +33,8 @@ public class WrapperClassesDriver
 		BigDecimal Am11a = new BigDecimal("11");
 		BigDecimal Am11 = new BigDecimal("12");  //ma 31
 		BigDecimal Am12 = Am11;  //ma 32			Only one object exists but three variables exist
-		Am11 = Am11.add(Am09);  //Only one memory adress changes		3 objects
+		Am11 = Am11.add(Am09);  
+// Only one memory adress changes		3 objects
 		
 		
 		
