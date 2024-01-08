@@ -14,14 +14,16 @@ public class MainGameLoop
 	public static void main(String[] args) 
 	{
 		initGame();
+		MainDeck.PrintDeck();
+		System.out.println("End");
 	}
 	
 	
 	public static void initGame()
 	{
 		MainDeck = new Deck(CreateCards());
-		
-		System.out.println("End");
+		MainDeck.Shuffle();
+
 	}
 	
 	
