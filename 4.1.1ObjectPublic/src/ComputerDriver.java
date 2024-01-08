@@ -55,8 +55,8 @@ public class ComputerDriver
 		PcUserEnter.SaveSpecs("user entered","C:/Users/CTEHolbenG46/Documents/" );
 		
 		//Tests the derived method getMb;
-				int ramMB = PcUserEnter.getMb("RAM");
-				System.out.println("User entered Computer ram is "
+		int ramMB = PcUserEnter.getMb("RAM");
+		System.out.println("User entered Computer ram is "
 									+ PcUserEnter.RAM + " " + ramMB + "(mb)");
 	}
 }
