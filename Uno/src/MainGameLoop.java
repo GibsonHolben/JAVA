@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class MainGameLoop
 {
-	
+	//If you see this then you did it!
 	/**The curent color of the game
 	 * Default = blank*/
 	public static String 			CurentColor = "";
