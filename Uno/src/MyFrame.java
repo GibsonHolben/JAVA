@@ -69,10 +69,11 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		panel.remove(Start);
 		SetupButton(FlipMainDeck);
-		SetupButton(Play,100,400);
-		SetupButton(FlipCurentHand,300,400);
+		SetupButton(Play,90,400);
+		SetupButton(FlipCurentHand,290,400);
 		this.setVisible(true);
 		panel.repaint();
+		this.setVisible(true);
 	}
 	
 	/**
@@ -87,10 +88,11 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		panel.remove(Start);
 		SetupButton(FlipMainDeck);
-		SetupButton(Play,100,400);
-		SetupButton(FlipCurentHand,300,400);
+		SetupButton(Play,90,400);
+		SetupButton(FlipCurentHand,290,400);
 		this.setVisible(true);
 		panel.repaint();
+		this.setVisible(true);
 	}
 	
 	/**
@@ -119,6 +121,7 @@ public class MyFrame extends JFrame implements ActionListener
 		{
 			MainGameLoop.CurentPlayer.play();
 			this.setVisible(true);
+			Play.setVisible(true);
 		}
 		
 	}
@@ -130,11 +133,12 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		
 		panel.setLayout(null);
-		Button.setBounds(200,400,100,60);
+		Button.setBounds(190,400,100,60);
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
+		Play.setVisible(true);
 	}
 	
 	/**
@@ -150,7 +154,9 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
+		
 		panel.setComponentZOrder(Button, 0);
+		Play.setVisible(true);
 	}
 	
 	

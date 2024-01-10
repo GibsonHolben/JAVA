@@ -61,7 +61,14 @@ public class MyPannel extends JPanel
 	 */
 	public void paint(Graphics g)
 	{
+
 		g2D = (Graphics2D) g;
+		g2D.setStroke(new BasicStroke(10));
+		g2D.setPaint(Color.black);
+		g2D.drawRect(400, 300, 100, 200);
+		g2D.drawRect(0, 0, 100, 200);
+		
+		g2D.setStroke(new BasicStroke(1));
 		g2D.setPaint(MainDeckColor);
 		g2D.fillRect(0, 0, 100, 200);
 		g2D.setPaint(Color.black);
