@@ -10,24 +10,19 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame implements ActionListener
 {
 	/**
-	 * The main panel
+	 * A JButton that calls flipTheCurentDeck
 	 */
-	MyPannel panel;
+	static JButton FlipCurentHand = new JButton("Flip Hand");
 	
 	/**
 	 * A JButton that calls flip
 	 */
-	static JButton FlipMainDeck = new JButton("Flip");
+	static JButton FlipMainDeck = new JButton("Skip");
 	
 	/**
-	 * A JButton that calls start
+	 * The main panel
 	 */
-	static JButton Start = new JButton("Start");
-	
-	/**
-	 * A JButton that calls flipTheCurentDeck
-	 */
-	static JButton FlipCurentHand = new JButton("Flip Hand");
+	MyPannel panel;
 	
 	/**
 	 * A JButton that calls play on the curent player
@@ -35,7 +30,13 @@ public class MyFrame extends JFrame implements ActionListener
 	static JButton Play = new JButton("Play");
 	
 	/**
-	 * 
+	 * A JButton that calls start
+	 */
+	static JButton Start = new JButton("Start");
+	
+	
+	/**
+	 * Creates the frame
 	 * @param newColor	the color of the main deck
 	 * @param newText	the number of the main deck
 	 */
@@ -48,22 +49,31 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setLocationRelativeTo(null);
 		this.setAlwaysOnTop(true);
 		this.setName("UNO");
+		this.setResizable(false);
+		panel.setLayout(null);
 		FlipMainDeck.addActionListener(this);
 		FlipCurentHand.addActionListener(this);
 		Play.addActionListener(this);
 		Start.addActionListener(this);
-		panel.setLayout(null);
 		SetupButton(Start);
-		this.setVisible(true);
+
+
 	}
 	
 	/**
-	 * Redraws the JFrame 
+	 * Redraws the JFrame (start of the game)
 	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */
 	public void reset(Color newColor, String newText)
 	{
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(panel);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setName("UNO");
+		panel.repaint();
 		panel.MainDeckColor = newColor;
 		panel.MainDeckText = newText;
 		panel.setLayout(null);
@@ -72,7 +82,7 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
 		this.setVisible(true);
-		panel.repaint();
+		
 		this.setVisible(true);
 	}
 	
@@ -83,6 +93,13 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
 	{
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(panel);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setName("UNO");
+		panel.repaint();
 		panel.PlayerDeckColor = newColor;
 		panel.PlayerDeckText = newText;
 		panel.setLayout(null);
@@ -91,7 +108,7 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
 		this.setVisible(true);
-		panel.repaint();
+		
 		this.setVisible(true);
 	}
 	
@@ -102,7 +119,7 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		if(e.getSource() == FlipMainDeck)
 		{
-			MainGameLoop.Flip();
+			MainGameLoop.CurentPlayer.Skip();
 			FlipMainDeck.setVisible(true);
 			this.setVisible(true);
 		}
@@ -128,6 +145,7 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	/**
 	 * Sets up the button 
+	 * Button the button to setup
 	 */
 	public void SetupButton(JButton Button)
 	{
@@ -154,7 +172,6 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
-		
 		panel.setComponentZOrder(Button, 0);
 		Play.setVisible(true);
 	}

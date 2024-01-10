@@ -14,69 +14,74 @@ import javax.swing.*;
 public class MainGameLoop
 {
 	
-	/**The main deck of the game*/
-	static Deck MainDeck;
-	
-	/**Is the game running?*/
-	public static boolean isRunning = true;
-	
 	/**The curent color of the game
 	 * Default = blank*/
-	public static String CurentColor = "";
+	public static String 			CurentColor = "";
+	
+	/**The player that is playing*/
+	public static Player 			CurentPlayer;
 	
 	/**the main frame*/
-	public static MyFrame frame;
+	public static MyFrame 			frame;
+	
+	/**Is the game running?*/
+	public static boolean 			isRunning = true;
+	
+	/**The main deck of the game*/
+	static Deck 					MainDeck;
 	
 	/**An array of players*/
 	public static ArrayList<Player> Players;
 	
-	public static Player CurentPlayer;
+
 
 	/**Controlls the game
 	 * @param args Unused*/
 	public static void main(String[] args) 
 	{
+		//Creates the players
 		Players = new ArrayList<Player>();
 		initGame();
 
+		//Main loop
 		while(isRunning == true)
 		{
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
 			String input = sc.nextLine();
 			
-			if(input.equals("ff"))
+			//Commands
+			switch(input)
 			{
-				isRunning = false;
+				case "ff": isRunning = false;
+				break;
+				case "flip": Flip();
+				break;
+				case "hand":
+					System.out.println(CurentPlayer.Name);
+				CurentPlayer.MyDeck.PrintDeck();
+				break;
+				case "p":
+				System.out.println("Pause");
+				break;
 			}
-			if(input.equals("flip"))
-			{
-				Flip();
-				
-			}
-			if(input.equals("view"))
-			{
-				MainDeck.PrintDeck();
-			}
-			if(input.equals("p"))
-			{
-				System.out.println("ok");
-			}
-			
-			if(input.equals("MyHand"))
-			{
-				System.out.println("which player?");
-				String input2 = sc.nextLine();
-				Players.get(Integer.parseInt(input2)).MyDeck.PrintDeck();
-			}
-			
-			
-			
 		}
+		
 		
 		System.out.println("End");
 	}
 	
+	/**
+	 * sets the next player
+	 */
+	public static void nextPlayer()
+	{
+		Players.add(Players.get(0));
+		Players.remove(0);
+		CurentPlayer = Players.get(0);
+		UpdateGraphicsFlip();
+		UpdateGraphicsPlayer();
+	}
 	
 	/**
 	 * Starts the game
@@ -162,6 +167,7 @@ public class MainGameLoop
 					for(int i = 0; i < Integer.parseInt(input); i++)
 					{
 						Player p = new Player();
+						p.Name = "Player" + Integer.toString(i);
 						Players.add(p);
 						
 						for(int j = 0; j < 7; j++)

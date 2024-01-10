@@ -10,6 +10,12 @@ public class Player
 	public Deck MyDeck;
 	
 	/**
+	 * The name of the player
+	 * Default = blank
+	 */
+	public String Name = "";
+	
+	/**
 	 * Creates 
 	 */
 	Player()
@@ -17,6 +23,19 @@ public class Player
 		MyDeck = new Deck(new ArrayList<Card>());
 	}
 	
+	/**
+	 * Skips the players turn
+	 */
+	public void Skip()
+	{
+		MainGameLoop.UpdateGraphicsFlip();
+		MainGameLoop.UpdateGraphicsPlayer();
+		MainGameLoop.nextPlayer();
+	}
+	
+	/**
+	 * Players the curent active card and goes to the next player
+	 */
 	public void play()
 	{
 		
@@ -29,6 +48,7 @@ public class Player
 			if(MyDeck.Cards.size() < 1)
 			{
 				System.out.println("Game over");
+				System.out.println(Name + " Wins");
 				MainGameLoop.isRunning = false;
 				System.exit(0);
 			}
@@ -38,6 +58,7 @@ public class Player
 				MainGameLoop.UpdateGraphicsPlayer();
 			}
 			
+			MainGameLoop.nextPlayer();
 		}
 	}
 

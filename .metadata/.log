@@ -4922,3 +4922,6 @@ java.lang.IllegalArgumentException
 
 !ENTRY org.eclipse.jdt.debug 2 0 2024-01-10 09:03:51.870
 !MESSAGE Unable to find location of java.lang.Thread.setName() in debuggee JVM, for type java.lang.Thread
+
+!ENTRY org.eclipse.jdt.debug 2 0 2024-01-10 09:49:14.526
+!MESSAGE Unable to find location of java.lang.Thread.setName() in debuggee JVM, for type java.lang.Thread

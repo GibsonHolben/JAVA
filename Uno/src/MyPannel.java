@@ -11,36 +11,44 @@ import javax.swing.JPanel;
  */
 public class MyPannel extends JPanel 
 {
+	/**
+	 * The graphics handeler
+	 */
+	Graphics2D g2D;
+	
 	//Main Deck
 	/**
 	 * The color of the main deck
 	 * Default = red
 	 */
-	public Color MainDeckColor = Color.red;
+	public Color 	MainDeckColor = Color.red;
 	
 	/**
 	 * The text on the main deck
 	 * Default = 0
 	 */
-	public String MainDeckText= "0";
+	public String 	MainDeckText= "0";
 	
 	//Player Deck
 	/**
 	 * The color of the main deck
 	 * Default = red
 	 */ 
-	public Color PlayerDeckColor = Color.red;
+	public Color 	PlayerDeckColor = Color.red;
 	
 	/**
 	 * The text on the main deck
 	 * Default = 0
 	 */
-	public String PlayerDeckText = "0";
+	public String 	PlayerDeckText = "0";
+	
+
 	
 	/**
-	 * The graphics handeler
+	 * Has the scene been drawn
+	 * Default = false
 	 */
-	Graphics2D g2D;
+	public boolean doneOnce = false;
 	
 	/**
 	 * Creates a Panel with 2 cards
@@ -57,11 +65,11 @@ public class MyPannel extends JPanel
 	
 	
 	/**
-	 * Sets up the main painting
+	 * Paints the game window
 	 */
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
-
+		super.paintComponent(g);
 		g2D = (Graphics2D) g;
 		g2D.setStroke(new BasicStroke(10));
 		g2D.setPaint(Color.black);
@@ -75,13 +83,16 @@ public class MyPannel extends JPanel
 		g2D.setFont(new Font(null, Font.BOLD,50));
 		g2D.drawString(MainDeckText, 0, 50);
 		
-		
 		g2D.setPaint(PlayerDeckColor);
 		g2D.fillRect(400, 300, 100, 200);
 		g2D.setPaint(Color.black);
 		g2D.setFont(new Font(null, Font.BOLD,50));
 		g2D.drawString(PlayerDeckText, 430, 350);
+		
+		g2D.drawString(MainGameLoop.CurentPlayer.Name, 300, 100);
 			
+		
+		
 	}
 	
 }
