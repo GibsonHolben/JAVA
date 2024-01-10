@@ -27,8 +27,10 @@ public class MainGameLoop
 	/**the main frame*/
 	public static MyFrame frame;
 	
-	
+	/**An array of players*/
 	public static ArrayList<Player> Players;
+	
+	public static Player CurentPlayer;
 
 	/**Controlls the game
 	 * @param args Unused*/
@@ -50,7 +52,7 @@ public class MainGameLoop
 			if(input.equals("flip"))
 			{
 				Flip();
-				UpdateGraphics();
+				
 			}
 			if(input.equals("view"))
 			{
@@ -68,14 +70,65 @@ public class MainGameLoop
 				Players.get(Integer.parseInt(input2)).MyDeck.PrintDeck();
 			}
 			
+			
+			
 		}
+		
 		System.out.println("End");
 	}
 	
+	
 	/**
-	 * Updates the graphics and fames a new frame
+	 * Starts the game
 	 */
-	public static void UpdateGraphics()
+	public static void Start()
+	{
+		UpdateGraphicsFlip();
+		UpdateGraphicsPlayer();
+	}
+	
+	/**
+	 * Flips the curent players hand
+	 */
+	public static void FlipCurentHand()
+	{
+		CurentPlayer.MyDeck.Cards.add(CurentPlayer.MyDeck.Cards.get(0));
+		CurentPlayer.MyDeck.Cards.remove(0);
+		UpdateGraphicsPlayer();
+	}
+	/**
+	 * Updates the graphics for the players hand
+	 */
+	public static void UpdateGraphicsPlayer()
+	{
+		switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
+		{
+			case "Red":	frame.resetPlayerhand(Color.red, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+			break;
+			case "Blue":frame.resetPlayerhand(Color.blue, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+			break;
+			case "Green":frame.resetPlayerhand(Color.green, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+			break;
+			case "Yellow":frame.resetPlayerhand(Color.yellow, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+			break;
+				
+		}
+
+	}
+
+	/**
+	 * Flips the top card and updates the graphics
+	 */
+	public static void Flip()
+	{
+		MainDeck.Cards.add(MainDeck.Cards.get(0));
+		MainDeck.Cards.remove(0);
+		UpdateGraphicsFlip();
+	}
+	/**
+	 * Updates the graphics for the main deck
+	 */
+	public static void UpdateGraphicsFlip()
 	{
 		switch(MainDeck.Cards.get(0).colorValue)
 		{
@@ -92,39 +145,52 @@ public class MainGameLoop
 
 	}
 	
-	/**
-	 * Flips the top card and updates the graphics
-	 */
-	public static void Flip()
-	{
-		MainDeck.Cards.add(MainDeck.Cards.get(0));
-		MainDeck.Cards.remove(0);
-	}
-	
 	/**Starts the game*/
 	public static void initGame()
 	{
-		MainDeck = new Deck(CreateCards());
-		MainDeck.Shuffle();
-		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("How many players");
 		String input = sc.nextLine();
-		
-		for(int i = 0; i < Integer.parseInt(input); i++)
+		if(!input.isEmpty())
 		{
-			Player p = new Player();
-			Players.add(p);
-			
-			for(int j = 0; j < 7; j++)
+			if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > 0)
 			{
-				p.MyDeck.Cards.add(MainDeck.Cards.get(0));
-				MainDeck.Cards.remove(0);
+				try
+				{
+					MainDeck = new Deck(CreateCards());
+					MainDeck.Shuffle();
+					for(int i = 0; i < Integer.parseInt(input); i++)
+					{
+						Player p = new Player();
+						Players.add(p);
+						
+						for(int j = 0; j < 7; j++)
+						{
+							p.MyDeck.Cards.add(MainDeck.Cards.get(0));
+							MainDeck.Cards.remove(0);
+						}
+					}
+					SettupGraphics();
+					CurentPlayer = Players.get(0);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Please enter a valid number");
+					initGame();
+				}
 			}
+			else
+			{
+				System.out.println("Please enter a valid number (1-4)");
+				initGame();
+			}
+			
+			
 		}
-		System.out.println("Hello");
 		
-		SettupGraphics();
+		
+		
+	
 	}
 	
 	/**
