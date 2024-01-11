@@ -34,6 +34,26 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			Start = new JButton("Start");
 	
+	//ColorChanges
+	/**
+	 * Changes the color of the main deck to red
+	 */
+	static JButton 			Red = new JButton("Red");
+	
+	/**
+	 * Changes the color of the main deck to blue
+	 */
+	static JButton 			Blue = new JButton("Blue");
+	
+	/**
+	 * Changes the color of the main deck to green
+	 */
+	static JButton 			Green = new JButton("Green");
+	
+	/**
+	 * Changes the color of the main deck to yellow
+	 */
+	static JButton 			Yellow = new JButton("Yellow");
 	
 	/**
 	 * Creates the frame
@@ -138,6 +158,40 @@ public class MyFrame extends JFrame implements ActionListener
 		}
 		
 	}
+	
+	
+	public void SettupColorButtons()
+	{
+		panel.setLayout(null);
+		
+		//Red
+		Red.setBounds(190,400,100,60);
+		panel.setComponentZOrder(Red, 0);
+		panel.add(Red);
+		
+		//Blue
+		Blue.setBounds(190,400,100,60);
+		panel.setComponentZOrder(Blue, 0);
+		panel.add(Blue);
+		
+		//Green
+		Green.setBounds(190,400,100,60);
+		panel.setComponentZOrder(Green, 0);
+		panel.add(Green);
+		
+		//Yellow
+		Yellow.setBounds(190,400,100,60);
+		panel.setComponentZOrder(Yellow, 0);
+		panel.add(Yellow);
+		
+		
+		Red.setVisible(true);
+		Blue.setVisible(true);
+		Green.setVisible(true);
+		Yellow.setVisible(true);
+		this.setVisible(true);
+	}
+	
 	
 	/**
 	 * Sets up the button 

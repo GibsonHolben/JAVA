@@ -125,6 +125,8 @@ public class MainGameLoop
 				break;
 				case "Yellow":frame.resetPlayerhand(Color.yellow, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
+				case "Black":frame.resetPlayerhand(Color.gray, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
 			}
 		}
 		else
@@ -139,6 +141,8 @@ public class MainGameLoop
 				case "Green":frame.resetPlayerhand(Color.green, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Yellow":frame.resetPlayerhand(Color.yellow, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Black":frame.resetPlayerhand(Color.gray, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 			}
 		}
@@ -174,6 +178,8 @@ public class MainGameLoop
 				break;
 				case "Yellow":
 					frame.reset(Color.yellow,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+				case "Black":
+					frame.reset(Color.gray,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 					
 			}
@@ -193,6 +199,8 @@ public class MainGameLoop
 				break;
 				case "Yellow":
 					frame.reset(Color.yellow,	MainDeck.Cards.get(0).SpecialEffect);
+				case "Black":
+					frame.reset(Color.gray,	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 					
 			}
@@ -226,8 +234,8 @@ public class MainGameLoop
 				}
 				catch(Exception e)
 				{
-					System.out.println("Please enter a valid number");
-					initGame();
+					System.out.println("Error");
+					e.printStackTrace();
 				}
 			}
 			else
@@ -274,6 +282,8 @@ public class MainGameLoop
 			break;
 			case "Yellow":	frame = new MyFrame(Color.yellow, Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
+			case "Black":	frame = new MyFrame(Color.gray, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
 				
 		}
 	}
@@ -298,7 +308,7 @@ public class MainGameLoop
 		
 		for(int i = 0; i < colors.length; i++)
 		{
-			for(int j = 1; j < 4; j++)
+			for(int j = 1; j < 3; j++)
 			{
 				Cards.add(new Card(colors[i], specials[j]));
 			}
