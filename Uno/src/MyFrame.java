@@ -166,28 +166,28 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Red);
 		Red.addActionListener(this);
 		Red.setFocusPainted(false);
-		Red.setBackground(Color.white);
+		Red.setBackground(Color.red);
 		
 		//Blue
 		Blue.setBounds(90,position,100,60);
 		panel.add(Blue);
 		Blue.addActionListener(this);
 		Blue.setFocusPainted(false);
-		Blue.setBackground(Color.white);
+		Blue.setBackground(Color.blue);
 		
 		//Green
 		Green.setBounds(190,position,100,60);
 		panel.add(Green);
 		Green.addActionListener(this);
 		Green.setFocusPainted(false);
-		Green.setBackground(Color.white);
+		Green.setBackground(Color.green);
 		
 		//Yellow
 		Yellow.setBounds(290,position,100,60);
 		panel.add(Yellow);
 		Yellow.addActionListener(this);
 		Yellow.setFocusPainted(false);
-		Yellow.setBackground(Color.white);
+		Yellow.setBackground(Color.yellow);
 		
 		Red.setVisible(true);
 		Blue.setVisible(true);
