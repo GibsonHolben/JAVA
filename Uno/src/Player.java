@@ -30,6 +30,7 @@ public class Player
 	{
 		MainGameLoop.UpdateGraphicsFlip();
 		MainGameLoop.UpdateGraphicsPlayer();
+		DrawCard(1);
 		MainGameLoop.nextPlayer();
 	}
 	
@@ -39,11 +40,14 @@ public class Player
 	public void play()
 	{
 		
-		if(MyDeck.Cards.get(0).colorValue == MainGameLoop.MainDeck.Cards.get(0).colorValue ||
-				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue)
+		if(MyDeck.Cards.get(0).colorValue == MainGameLoop.CurentColor ||
+				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue ||
+				MyDeck.Cards.get(0).colorValue.equals("Black"));
 		{
+			MyDeck.Cards.get(0).onPlay();
 			MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(0));
 			MyDeck.Cards.remove(0);
+			
 			
 			if(MyDeck.Cards.size() < 1)
 			{
@@ -60,6 +64,20 @@ public class Player
 			
 			MainGameLoop.nextPlayer();
 		}
+	}
+	
+	/**
+	 * Caused the player to draw the amout of cards specifed
+	 * @param toDraw the amount of cards to draw
+	 */
+	public void DrawCard(int toDraw)
+	{
+		for(int i = 0; i < toDraw; i++)
+		{
+			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(MainGameLoop.MainDeck.Cards.size() - 1));
+			MainGameLoop.MainDeck.Cards.remove(MainGameLoop.MainDeck.Cards.size() - 1);
+		}
+		
 	}
 
 }

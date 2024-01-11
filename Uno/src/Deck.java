@@ -32,7 +32,15 @@ public class Deck
 	{
 		for(int i = 0; i < Cards.size(); i++)
 		{
-			System.out.println(Cards.get(i).colorValue + " " + Cards.get(i).numberValue);
+			if((Cards.get(i).SpecialEffect.equals("")))
+			{
+				System.out.println(Cards.get(i).colorValue + " " + Cards.get(i).numberValue);
+			}
+			else 
+			{
+				System.out.println(Cards.get(i).colorValue + " " + Cards.get(i).SpecialEffect);
+			}
+			
 		}
 	}
 }

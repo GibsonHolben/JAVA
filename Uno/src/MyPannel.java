@@ -75,21 +75,28 @@ public class MyPannel extends JPanel
 		g2D.setPaint(Color.black);
 		g2D.drawRect(400, 300, 100, 200);
 		g2D.drawRect(0, 0, 100, 200);
-		
 		g2D.setStroke(new BasicStroke(1));
 		g2D.setPaint(MainDeckColor);
 		g2D.fillRect(0, 0, 100, 200);
 		g2D.setPaint(Color.black);
-		g2D.setFont(new Font(null, Font.BOLD,50));
-		g2D.drawString(MainDeckText, 0, 50);
-		
+		g2D.setFont(new Font(null, Font.BOLD,40));
+		g2D.drawString(MainDeckText, 0, 45);
 		g2D.setPaint(PlayerDeckColor);
 		g2D.fillRect(400, 300, 100, 200);
 		g2D.setPaint(Color.black);
-		g2D.setFont(new Font(null, Font.BOLD,50));
-		g2D.drawString(PlayerDeckText, 430, 350);
-		
+		g2D.setFont(new Font(null, Font.BOLD,40));
+		g2D.drawString(PlayerDeckText, 400, 350);
 		g2D.drawString(MainGameLoop.CurentPlayer.Name, 300, 100);
+		
+		if(!doneOnce)
+		{
+			g2D.fillRect(0, 0, 500, 500);
+			doneOnce = true;
+		}
+		else
+		{
+			
+		}
 			
 		
 		

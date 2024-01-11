@@ -12,27 +12,27 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 */
-	static JButton FlipCurentHand = new JButton("Flip Hand");
+	static JButton 			FlipCurentHand = new JButton("Flip Hand");
 	
 	/**
 	 * A JButton that calls flip
 	 */
-	static JButton FlipMainDeck = new JButton("Skip");
+	static JButton 			SkipTurn = new JButton("Skip");
 	
 	/**
 	 * The main panel
 	 */
-	MyPannel panel;
+	MyPannel 				panel;
 	
 	/**
 	 * A JButton that calls play on the curent player
 	 */
-	static JButton Play = new JButton("Play");
+	static JButton 			Play = new JButton("Play");
 	
 	/**
 	 * A JButton that calls start
 	 */
-	static JButton Start = new JButton("Start");
+	static JButton 			Start = new JButton("Start");
 	
 	
 	/**
@@ -51,7 +51,7 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setName("UNO");
 		this.setResizable(false);
 		panel.setLayout(null);
-		FlipMainDeck.addActionListener(this);
+		SkipTurn.addActionListener(this);
 		FlipCurentHand.addActionListener(this);
 		Play.addActionListener(this);
 		Start.addActionListener(this);
@@ -78,11 +78,9 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.MainDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		SetupButton(FlipMainDeck);
+		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
-		this.setVisible(true);
-		
 		this.setVisible(true);
 	}
 	
@@ -104,11 +102,9 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.PlayerDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		SetupButton(FlipMainDeck);
+		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
-		SetupButton(FlipCurentHand,290,400);
-		this.setVisible(true);
-		
+		SetupButton(FlipCurentHand,290,400);	
 		this.setVisible(true);
 	}
 	
@@ -117,10 +113,10 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource() == FlipMainDeck)
+		if(e.getSource() == SkipTurn)
 		{
 			MainGameLoop.CurentPlayer.Skip();
-			FlipMainDeck.setVisible(true);
+			SkipTurn.setVisible(true);
 			this.setVisible(true);
 		}
 		if(e.getSource() == Start)

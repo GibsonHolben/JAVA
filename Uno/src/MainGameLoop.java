@@ -53,16 +53,22 @@ public class MainGameLoop
 			//Commands
 			switch(input)
 			{
-				case "ff": isRunning = false;
+				case "ff":
+					isRunning = false;
+					System.exit(0);
 				break;
-				case "flip": Flip();
+				case "flip":
+					Flip();
 				break;
 				case "hand":
 					System.out.println(CurentPlayer.Name);
-				CurentPlayer.MyDeck.PrintDeck();
+					CurentPlayer.MyDeck.PrintDeck();
 				break;
 				case "p":
-				System.out.println("Pause");
+					System.out.println("Pause");
+				break;
+				case "view":
+					MainDeck.PrintDeck();
 				break;
 			}
 		}
@@ -76,6 +82,7 @@ public class MainGameLoop
 	 */
 	public static void nextPlayer()
 	{
+		CurentColor = MainDeck.Cards.get(0).colorValue;
 		Players.add(Players.get(0));
 		Players.remove(0);
 		CurentPlayer = Players.get(0);
@@ -106,19 +113,36 @@ public class MainGameLoop
 	 */
 	public static void UpdateGraphicsPlayer()
 	{
-		switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
+		if(CurentPlayer.MyDeck.Cards.get(0).SpecialEffect.isEmpty())
 		{
-			case "Red":	frame.resetPlayerhand(Color.red, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-			break;
-			case "Blue":frame.resetPlayerhand(Color.blue, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-			break;
-			case "Green":frame.resetPlayerhand(Color.green, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-			break;
-			case "Yellow":frame.resetPlayerhand(Color.yellow, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-			break;
-				
+			switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
+			{
+				case "Red":	frame.resetPlayerhand(Color.red, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
+				case "Blue":frame.resetPlayerhand(Color.blue, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
+				case "Green":frame.resetPlayerhand(Color.green,	 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
+				case "Yellow":frame.resetPlayerhand(Color.yellow, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
+			}
 		}
-
+		else
+		{
+			
+			switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
+			{
+				case "Red":	frame.resetPlayerhand(Color.red, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Blue":frame.resetPlayerhand(Color.blue, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Green":frame.resetPlayerhand(Color.green, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Yellow":frame.resetPlayerhand(Color.yellow, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+			}
+		}
+	
 	}
 
 	/**
@@ -135,18 +159,45 @@ public class MainGameLoop
 	 */
 	public static void UpdateGraphicsFlip()
 	{
-		switch(MainDeck.Cards.get(0).colorValue)
+		if(MainDeck.Cards.get(0).SpecialEffect.isEmpty())
 		{
-			case "Red":	frame.reset(Color.red, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Blue":frame.reset(Color.blue, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Green":frame.reset(Color.green, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Yellow":frame.reset(Color.yellow, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-				
+			switch(MainDeck.Cards.get(0).colorValue)
+			{
+				case "Red":
+					frame.reset(Color.red, 		Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
+				case "Blue":
+					frame.reset(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
+				case "Green":
+					frame.reset(Color.green, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
+				case "Yellow":
+					frame.reset(Color.yellow,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
+					
+			}
 		}
+		else
+		{
+			switch(MainDeck.Cards.get(0).colorValue)
+			{
+				case "Red":
+					frame.reset(Color.red, 		MainDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Blue":
+					frame.reset(Color.blue, 	MainDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Green":
+					frame.reset(Color.green, 	MainDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Yellow":
+					frame.reset(Color.yellow,	MainDeck.Cards.get(0).SpecialEffect);
+				break;
+					
+			}
+		}
+		
 
 	}
 	
@@ -158,24 +209,18 @@ public class MainGameLoop
 		String input = sc.nextLine();
 		if(!input.isEmpty())
 		{
+			//Check if the corect amount of players is entered
 			if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > 0)
 			{
+				
 				try
 				{
+					//Settup main deck
 					MainDeck = new Deck(CreateCards());
 					MainDeck.Shuffle();
-					for(int i = 0; i < Integer.parseInt(input); i++)
-					{
-						Player p = new Player();
-						p.Name = "Player" + Integer.toString(i);
-						Players.add(p);
-						
-						for(int j = 0; j < 7; j++)
-						{
-							p.MyDeck.Cards.add(MainDeck.Cards.get(0));
-							MainDeck.Cards.remove(0);
-						}
-					}
+					
+					
+					settupDeck(input);
 					SettupGraphics();
 					CurentPlayer = Players.get(0);
 				}
@@ -190,13 +235,28 @@ public class MainGameLoop
 				System.out.println("Please enter a valid number (1-4)");
 				initGame();
 			}
-			
-			
 		}
-		
-		
-		
+		CurentColor = MainDeck.Cards.get(0).colorValue;
+	}
 	
+	/**
+	 * Sets up the player hands
+	 * @param input the amount of players
+	 */
+	public static void settupDeck(String input)
+	{
+		for(int i = 0; i < Integer.parseInt(input); i++)
+		{
+			Player p = new Player();
+			p.Name = "Player" + Integer.toString(i);
+			Players.add(p);
+			
+			for(int j = 0; j < 7; j++)
+			{
+				p.MyDeck.Cards.add(MainDeck.Cards.get(0));
+				MainDeck.Cards.remove(0);
+			}
+		}
 	}
 	
 	/**
@@ -233,6 +293,26 @@ public class MainGameLoop
 				Cards.add(new Card(j, colors[i]));
 			}
 		}
+		
+		String[] specials = { "+2", "R", "S"};
+		
+		for(int i = 0; i < colors.length; i++)
+		{
+			for(int j = 1; j < 4; j++)
+			{
+				Cards.add(new Card(colors[i], specials[j]));
+			}
+		}
+		
+		Cards.add(new Card("Black", "W"));
+		Cards.add(new Card("Black", "W"));
+		Cards.add(new Card("Black", "W"));
+		Cards.add(new Card("Black", "W"));
+		Cards.add(new Card("Black", "W+4"));
+		Cards.add(new Card("Black", "W+4"));
+		Cards.add(new Card("Black", "W+4"));
+		Cards.add(new Card("Black", "W+4"));
+		
 		
 		return Cards;
 	
