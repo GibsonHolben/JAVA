@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.*;
@@ -72,25 +73,26 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 
+		//Sets the image 
+		ImageIcon img = new ImageIcon("src/Uno.png");
+		this.setIconImage(img.getImage());
+		
 		panel = new MyPannel(newColor, newText);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(panel);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setAlwaysOnTop(true);
-		this.setName("UNO");
+		windowSettup();
 		this.setResizable(false);
-		panel.setLayout(null);
-		SkipTurn.addActionListener(this);
-		FlipCurentHand.addActionListener(this);
-		FlipCurentHandBack.addActionListener(this);
-		Play.addActionListener(this);
-		Start.addActionListener(this);
+		panel.setLayout(					  null);
+		Play.addActionListener(			   	  this);
+		Start.addActionListener(			  this);
+		SkipTurn.addActionListener(			  this);
+		FlipCurentHand.addActionListener(	  this);
+		FlipCurentHandBack.addActionListener( this);
+	
+		Start.setFocusPainted(false);
+		Start.setBackground(Color.white);
 		SetupButton(Start);
-
-
 	}
 	
+	//Resets ************************************************************
 	/**
 	 * Redraws the JFrame (start of the game)
 	 * @param newColor the new color of tha card
@@ -98,12 +100,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void reset(Color newColor, String newText)
 	{
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(panel);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setAlwaysOnTop(true);
-		this.setName("UNO");
+		windowSettup();
 		panel.repaint();
 		panel.MainDeckColor = newColor;
 		panel.MainDeckText = newText;
@@ -123,12 +120,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
 	{
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(panel);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setAlwaysOnTop(true);
-		this.setName("UNO");
+		
+		windowSettup();
 		panel.repaint();
 		panel.PlayerDeckColor = newColor;
 		panel.PlayerDeckText = newText;
@@ -139,6 +132,10 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(FlipCurentHand,290,400);	
 		SetupButton(FlipCurentHandBack,0,400);
 		
+		Play.setFocusPainted(				false);
+		SkipTurn.setFocusPainted(			false);
+		FlipCurentHand.setFocusPainted(		false);
+		FlipCurentHandBack.setFocusPainted(	false);
 		Play.setBackground(					Color.white);
 		SkipTurn.setBackground(				Color.white);
 		FlipCurentHand.setBackground(		Color.white);
@@ -146,6 +143,16 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 	}
 	
+	//Settups ****************************************************************
+	public void windowSettup()
+	{
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(panel);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setName("UNO");
+	}
 	
 	/**
 	 * Sets up the wild card buttons
@@ -158,21 +165,29 @@ public class MyFrame extends JFrame implements ActionListener
 		Red.setBounds(0,position,100,60);
 		panel.add(Red);
 		Red.addActionListener(this);
+		Red.setFocusPainted(false);
+		Red.setBackground(Color.white);
 		
 		//Blue
 		Blue.setBounds(100,position,100,60);
 		panel.add(Blue);
 		Blue.addActionListener(this);
+		Blue.setFocusPainted(false);
+		Blue.setBackground(Color.white);
 		
 		//Green
 		Green.setBounds(200,position,100,60);
 		panel.add(Green);
 		Green.addActionListener(this);
+		Green.setFocusPainted(false);
+		Green.setBackground(Color.white);
 		
 		//Yellow
 		Yellow.setBounds(300,position,100,60);
 		panel.add(Yellow);
 		Yellow.addActionListener(this);
+		Yellow.setFocusPainted(false);
+		Yellow.setBackground(Color.white);
 		
 		Red.setVisible(true);
 		Blue.setVisible(true);
@@ -217,7 +232,7 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	
 	
-	
+	//Actions **********************************************************************************
 	/**
 	 * Is called the button is clicked
 	 */
@@ -288,15 +303,7 @@ public class MyFrame extends JFrame implements ActionListener
 				canPlay = true;
 				MainGameLoop.nextPlayer();
 				SettupColorButtons(-1000);
-			}
-			
+			}	
 		}
-		
-		
-		
-		
-		
 	}
-	
-	
 }

@@ -129,6 +129,30 @@ public class MainGameLoop
 		CurentPlayer.MyDeck.Cards.remove(CurentPlayer.MyDeck.Cards.size() - 1);
 		UpdateGraphicsPlayer();
 	}
+	
+	/**
+	 * Sets up he graphics
+	 */
+	public static void SettupGraphics()
+	{
+		switch(MainDeck.Cards.get(0).colorValue)
+		{
+			case "Red":	frame = new MyFrame(	Color.red, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Blue":	frame = new MyFrame(Color.blue, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Green":	frame = new MyFrame(Color.green, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Yellow":	frame = new MyFrame(Color.yellow, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Black":	frame = new MyFrame(Color.gray, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+				
+		}
+	}
+
+	
+	
 	/**
 	 * Updates the graphics for the players hand
 	 */
@@ -146,7 +170,7 @@ public class MainGameLoop
 				break;
 				case "Yellow":frame.resetPlayerhand(Color.yellow, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Black":frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 			}
 		}
@@ -163,7 +187,7 @@ public class MainGameLoop
 				break;
 				case "Yellow":frame.resetPlayerhand(Color.yellow, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Black":frame.resetPlayerhand(Color.gray, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 			}
 		}
@@ -199,8 +223,9 @@ public class MainGameLoop
 				break;
 				case "Yellow":
 					frame.reset(Color.yellow,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
 				case "Black":
-					frame.reset(Color.gray,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.gray,	 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 					
 			}
@@ -220,8 +245,9 @@ public class MainGameLoop
 				break;
 				case "Yellow":
 					frame.reset(Color.yellow,	MainDeck.Cards.get(0).SpecialEffect);
+				break;
 				case "Black":
-					frame.reset(Color.gray,	MainDeck.Cards.get(0).SpecialEffect);
+					frame.reset(Color.gray,		MainDeck.Cards.get(0).SpecialEffect);
 				break;
 					
 			}
@@ -288,28 +314,7 @@ public class MainGameLoop
 		}
 	}
 	
-	/**
-	 * Sets up he graphics
-	 */
-	public static void SettupGraphics()
-	{
-		switch(MainDeck.Cards.get(0).colorValue)
-		{
-			case "Red":	frame = new MyFrame(Color.red, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Blue":	frame = new MyFrame(Color.blue, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Green":	frame = new MyFrame(Color.green, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Yellow":	frame = new MyFrame(Color.yellow, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Black":	frame = new MyFrame(Color.gray, Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-				
-		}
-	}
 
-	
 	/**Creates a ArrayList of cards and returns them
 	 * @return An ArrayList of cards */
 	public static ArrayList<Card> CreateCards()
