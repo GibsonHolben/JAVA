@@ -69,7 +69,11 @@ public class MainGameLoop
 				break;
 				case "view":
 					MainDeck.PrintDeck();
-				break;
+				case "test":
+					frame.SettupColorButtons(300);
+				case "cc":
+					System.out.println(CurentColor);
+;				break;
 			}
 		}
 		
@@ -82,7 +86,15 @@ public class MainGameLoop
 	 */
 	public static void nextPlayer()
 	{
-		CurentColor = MainDeck.Cards.get(0).colorValue;
+		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
+		{
+			
+		}
+		else
+		{
+			CurentColor = MainDeck.Cards.get(0).colorValue;
+		}
+
 		Players.add(Players.get(0));
 		Players.remove(0);
 		CurentPlayer = Players.get(0);
@@ -106,6 +118,15 @@ public class MainGameLoop
 	{
 		CurentPlayer.MyDeck.Cards.add(CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
+		UpdateGraphicsPlayer();
+	}
+	/**
+	 * Flips the curent players hand backwards
+	 */
+	public static void FlipCurentHandBack()
+	{
+		CurentPlayer.MyDeck.Cards.add(0, CurentPlayer.MyDeck.Cards.get(CurentPlayer.MyDeck.Cards.size() - 1));
+		CurentPlayer.MyDeck.Cards.remove(CurentPlayer.MyDeck.Cards.size() - 1);
 		UpdateGraphicsPlayer();
 	}
 	/**

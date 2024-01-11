@@ -55,6 +55,8 @@ public class Card
 		
 		if(SpecialEffect.equals("W+4"))
 		{
+			MainGameLoop.frame.canPlay = false;
+			MainGameLoop.frame.SettupColorButtons(300);
 			MainGameLoop.Players.get(1).DrawCard(4);
 		}
 		
@@ -65,7 +67,8 @@ public class Card
 		
 		if(SpecialEffect.equals("W"))
 		{
-			
+			MainGameLoop.frame.canPlay = false;
+			MainGameLoop.frame.SettupColorButtons(300);
 		}
 	}
 }

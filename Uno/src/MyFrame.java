@@ -12,7 +12,11 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 */
-	static JButton 			FlipCurentHand = new JButton("Flip Hand");
+	static JButton 			FlipCurentHand = new JButton("Flip >");
+	/**
+	 * A JButton that calls flipTheCurentDeck backwards
+	 */
+	static JButton 			FlipCurentHandBack = new JButton("Flip <");
 	
 	/**
 	 * A JButton that calls flip
@@ -56,6 +60,12 @@ public class MyFrame extends JFrame implements ActionListener
 	static JButton 			Yellow = new JButton("Yellow");
 	
 	/**
+	 * Can the user play
+	 * default = true
+	 */
+	boolean canPlay = true;
+	
+	/**
 	 * Creates the frame
 	 * @param newColor	the color of the main deck
 	 * @param newText	the number of the main deck
@@ -73,6 +83,7 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		SkipTurn.addActionListener(this);
 		FlipCurentHand.addActionListener(this);
+		FlipCurentHandBack.addActionListener(this);
 		Play.addActionListener(this);
 		Start.addActionListener(this);
 		SetupButton(Start);
@@ -101,6 +112,7 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
+		SetupButton(FlipCurentHandBack,0,400);
 		this.setVisible(true);
 	}
 	
@@ -125,65 +137,42 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);	
+		SetupButton(FlipCurentHandBack,0,400);
+		
+		Play.setBackground(					Color.white);
+		SkipTurn.setBackground(				Color.white);
+		FlipCurentHand.setBackground(		Color.white);
+		FlipCurentHandBack.setBackground(	Color.white);
 		this.setVisible(true);
 	}
 	
+	
 	/**
-	 * Is called the button is clicked
+	 * Sets up the wild card buttons
 	 */
-	public void actionPerformed(ActionEvent e)
-	{
-		if(e.getSource() == SkipTurn)
-		{
-			MainGameLoop.CurentPlayer.Skip();
-			SkipTurn.setVisible(true);
-			this.setVisible(true);
-		}
-		if(e.getSource() == Start)
-		{
-			MainGameLoop.Start();
-			Start.setVisible(true);
-			this.setVisible(true);
-		}
-		if(e.getSource() == FlipCurentHand)
-		{
-			MainGameLoop.FlipCurentHand();
-			this.setVisible(true);
-		}
-		if(e.getSource() == Play)
-		{
-			MainGameLoop.CurentPlayer.play();
-			this.setVisible(true);
-			Play.setVisible(true);
-		}
-		
-	}
-	
-	
-	public void SettupColorButtons()
+	public void SettupColorButtons(int position)
 	{
 		panel.setLayout(null);
 		
 		//Red
-		Red.setBounds(190,400,100,60);
-		panel.setComponentZOrder(Red, 0);
+		Red.setBounds(0,position,100,60);
 		panel.add(Red);
+		Red.addActionListener(this);
 		
 		//Blue
-		Blue.setBounds(190,400,100,60);
-		panel.setComponentZOrder(Blue, 0);
+		Blue.setBounds(100,position,100,60);
 		panel.add(Blue);
+		Blue.addActionListener(this);
 		
 		//Green
-		Green.setBounds(190,400,100,60);
-		panel.setComponentZOrder(Green, 0);
+		Green.setBounds(200,position,100,60);
 		panel.add(Green);
+		Green.addActionListener(this);
 		
 		//Yellow
-		Yellow.setBounds(190,400,100,60);
-		panel.setComponentZOrder(Yellow, 0);
+		Yellow.setBounds(300,position,100,60);
 		panel.add(Yellow);
-		
+		Yellow.addActionListener(this);
 		
 		Red.setVisible(true);
 		Blue.setVisible(true);
@@ -224,6 +213,89 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
 		Play.setVisible(true);
+	}
+	
+	
+	
+	
+	/**
+	 * Is called the button is clicked
+	 */
+	public void actionPerformed(ActionEvent e)
+	{
+		if(canPlay == true)
+		{
+			if(e.getSource().equals(SkipTurn))
+			{
+				MainGameLoop.CurentPlayer.Skip();
+				SkipTurn.setVisible(true);
+				this.setVisible(true);
+				
+			}
+			if(e.getSource().equals(Start))
+			{
+				MainGameLoop.Start();
+				Start.setVisible(true);
+				this.setVisible(true);
+			}
+			if(e.getSource().equals(FlipCurentHand))
+			{
+				MainGameLoop.FlipCurentHand();
+				this.setVisible(true);
+			}
+			if(e.getSource().equals(FlipCurentHandBack))
+			{
+				MainGameLoop.FlipCurentHandBack();
+				this.setVisible(true);
+			}
+			if(e.getSource().equals(Play))
+			{
+				MainGameLoop.CurentPlayer.play();
+				this.setVisible(true);
+				Play.setVisible(true);
+			}
+		}
+		else
+		{
+			if(e.getSource().equals(Red))
+			{
+				//System.out.println("RED");
+				MainGameLoop.CurentColor = "Red";
+				canPlay = true;
+				MainGameLoop.nextPlayer();
+				SettupColorButtons(-1000);
+			}
+			
+			if(e.getSource().equals(Blue))
+			{
+				MainGameLoop.CurentColor = "Blue";
+				canPlay = true;
+				MainGameLoop.nextPlayer();
+				SettupColorButtons(-1000);
+			}
+			
+			if(e.getSource().equals(Green))
+			{
+				MainGameLoop.CurentColor = "Green";
+				canPlay = true;
+				MainGameLoop.nextPlayer();
+				SettupColorButtons(-1000);
+			}
+			
+			if(e.getSource().equals(Yellow))
+			{
+				MainGameLoop.CurentColor = "Yellow";
+				canPlay = true;
+				MainGameLoop.nextPlayer();
+				SettupColorButtons(-1000);
+			}
+			
+		}
+		
+		
+		
+		
+		
 	}
 	
 	

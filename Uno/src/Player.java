@@ -39,11 +39,14 @@ public class Player
 	 */
 	public void play()
 	{
-		
-		if(MyDeck.Cards.get(0).colorValue == MainGameLoop.CurentColor ||
-				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue ||
-				MyDeck.Cards.get(0).colorValue.equals("Black"));
+		String sf = MyDeck.Cards.get(0).SpecialEffect;
+		if(MyDeck.Cards.get(0).colorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
+				MyDeck.Cards.get(0).colorValue.equals("Black"))
+				
+				
 		{
+			System.out.println("Played card");
 			MyDeck.Cards.get(0).onPlay();
 			MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(0));
 			MyDeck.Cards.remove(0);
@@ -62,7 +65,11 @@ public class Player
 				MainGameLoop.UpdateGraphicsPlayer();
 			}
 			
-			MainGameLoop.nextPlayer();
+			if(!sf.equals("W+4")||!sf.equals("W"))
+			{
+				MainGameLoop.nextPlayer();
+			}
+			
 		}
 	}
 	
