@@ -169,21 +169,21 @@ public class MyFrame extends JFrame implements ActionListener
 		Red.setBackground(Color.white);
 		
 		//Blue
-		Blue.setBounds(100,position,100,60);
+		Blue.setBounds(90,position,100,60);
 		panel.add(Blue);
 		Blue.addActionListener(this);
 		Blue.setFocusPainted(false);
 		Blue.setBackground(Color.white);
 		
 		//Green
-		Green.setBounds(200,position,100,60);
+		Green.setBounds(190,position,100,60);
 		panel.add(Green);
 		Green.addActionListener(this);
 		Green.setFocusPainted(false);
 		Green.setBackground(Color.white);
 		
 		//Yellow
-		Yellow.setBounds(300,position,100,60);
+		Yellow.setBounds(290,position,100,60);
 		panel.add(Yellow);
 		Yellow.addActionListener(this);
 		Yellow.setFocusPainted(false);
@@ -238,6 +238,16 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
+		if(e.getSource().equals(FlipCurentHand))
+		{
+			MainGameLoop.FlipCurentHand();
+			this.setVisible(true);
+		}
+		if(e.getSource().equals(FlipCurentHandBack))
+		{
+			MainGameLoop.FlipCurentHandBack();
+			this.setVisible(true);
+		}
 		if(canPlay == true)
 		{
 			if(e.getSource().equals(SkipTurn))
@@ -251,16 +261,6 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.Start();
 				Start.setVisible(true);
-				this.setVisible(true);
-			}
-			if(e.getSource().equals(FlipCurentHand))
-			{
-				MainGameLoop.FlipCurentHand();
-				this.setVisible(true);
-			}
-			if(e.getSource().equals(FlipCurentHandBack))
-			{
-				MainGameLoop.FlipCurentHandBack();
 				this.setVisible(true);
 			}
 			if(e.getSource().equals(Play))
