@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 /**
  * @author CTEHolbenG46
  * @version 0.0.1
@@ -48,22 +50,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * Changes the color of the main deck to red
 	 */
-	static JButton 			Red = new JButton("Red");
+	static JButton 			Red = new JButton(MainGameLoop.colorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 */
-	static JButton 			Blue = new JButton("Blue");
+	static JButton 			Blue = new JButton(MainGameLoop.colorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 */
-	static JButton 			Green = new JButton("Green");
+	static JButton 			Green = new JButton(MainGameLoop.colorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 */
-	static JButton 			Yellow = new JButton("Yellow");
+	static JButton 			Yellow = new JButton(MainGameLoop.colorsBackup[3]);
 	
 	/**
 	 * Can the user play
@@ -176,30 +178,24 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Red);
 		Red.addActionListener(this);
 		Red.setFocusPainted(false);
-		Red.setForeground(Color.white);
-		Red.setBackground(Color.red);
 		
 		//Blue
 		Blue.setBounds(90,position,100,60);
 		panel.add(Blue);
 		Blue.addActionListener(this);
 		Blue.setFocusPainted(false);
-		Blue.setForeground(Color.white);
-		Blue.setBackground(Color.blue);
 		
 		//Green
 		Green.setBounds(190,position,100,60);
 		panel.add(Green);
 		Green.addActionListener(this);
 		Green.setFocusPainted(false);
-		Green.setBackground(Color.green);
 		
 		//Yellow
 		Yellow.setBounds(290,position,100,60);
 		panel.add(Yellow);
 		Yellow.addActionListener(this);
 		Yellow.setFocusPainted(false);
-		Yellow.setBackground(Color.yellow);
 		
 		Red.setVisible(true);
 		Blue.setVisible(true);
@@ -301,13 +297,16 @@ public class MyFrame extends JFrame implements ActionListener
 				this.setVisible(true);
 				Play.setVisible(true);
 			}
+			if(e.getSource().equals(Settings))
+			{
+				ShowSettings();
+			}
 		}
 		else
 		{
 			if(e.getSource().equals(Red))
 			{
-				//System.out.println("RED");
-				MainGameLoop.CurentColor = "Red";
+				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[0];
 				canPlay = true;
 				MainGameLoop.nextPlayer();
 				SettupColorButtons(-1000);
@@ -315,7 +314,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Blue))
 			{
-				MainGameLoop.CurentColor = "Blue";
+				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[1];
 				canPlay = true;
 				MainGameLoop.nextPlayer();
 				SettupColorButtons(-1000);
@@ -323,7 +322,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Green))
 			{
-				MainGameLoop.CurentColor = "Green";
+				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[2];
 				canPlay = true;
 				MainGameLoop.nextPlayer();
 				SettupColorButtons(-1000);
@@ -331,11 +330,37 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Yellow))
 			{
-				MainGameLoop.CurentColor = "Yellow";
+				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[3];
 				canPlay = true;
 				MainGameLoop.nextPlayer();
 				SettupColorButtons(-1000);
 			}	
 		}
+	}
+	
+	
+	public void ShowSettings()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+			String FilePath = System.getProperty("user.home");
+			FilePath = FilePath + "/Documents/Settings.txt";
+		    try 
+		    {
+		    	System.out.println("Only four colors are used");
+		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Magenta, & Cyan");
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting settings file");
+		}
+		this.setVisible(true);
+		Settings.setVisible(true);
 	}
 }

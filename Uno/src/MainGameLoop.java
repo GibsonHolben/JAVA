@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.*;
+import java.io.File;  
+import java.io.IOException;
+import java.io.FileWriter; 
 
 /**
  * @author CTEHolbenG46
@@ -32,6 +35,9 @@ public class MainGameLoop
 	
 	/**An array of players*/
 	public static ArrayList<Player> Players;
+	
+	/**The colors of the cards*/
+	static String[] colorsBackup;
 	
 
 
@@ -86,9 +92,9 @@ public class MainGameLoop
 	 */
 	public static void nextPlayer()
 	{
-		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
+		if(!MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || !MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
 		{
-			
+			System.out.println("Wild cards played...");
 		}
 		else
 		{
@@ -137,15 +143,19 @@ public class MainGameLoop
 	{
 		switch(MainDeck.Cards.get(0).colorValue)
 		{
-			case "Red":	frame = new MyFrame(	Color.red, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Red":	frame = new MyFrame(	Color.red, 		Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Blue":	frame = new MyFrame(Color.blue, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Blue":	frame = new MyFrame(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Green":	frame = new MyFrame(Color.green, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Green":	frame = new MyFrame(Color.green, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Yellow":	frame = new MyFrame(Color.yellow, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Yellow":	frame = new MyFrame(Color.yellow, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Black":	frame = new MyFrame(Color.gray, Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Magenta":	frame = new MyFrame(Color.magenta, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Cyan":	frame = new MyFrame(Color.cyan, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Black":	frame = new MyFrame(Color.gray, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
 				
 		}
@@ -170,6 +180,10 @@ public class MainGameLoop
 				break;
 				case "Yellow":frame.resetPlayerhand(Color.yellow, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
+				case "Magenta":frame.resetPlayerhand(Color.magenta, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
+				case "Cyan":frame.resetPlayerhand(Color.cyan, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				break;
 				case "Black":frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 			}
@@ -179,15 +193,19 @@ public class MainGameLoop
 			
 			switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
 			{
-				case "Red":	frame.resetPlayerhand(Color.red, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Red":	frame.resetPlayerhand(Color.red, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Blue":frame.resetPlayerhand(Color.blue, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Blue":frame.resetPlayerhand(Color.blue, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Green":frame.resetPlayerhand(Color.green, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Green":frame.resetPlayerhand(Color.green, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Yellow":frame.resetPlayerhand(Color.yellow, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Yellow":frame.resetPlayerhand(Color.yellow, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Magenta":frame.resetPlayerhand(Color.magenta, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Cyan":frame.resetPlayerhand(Color.cyan, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Black":frame.resetPlayerhand(Color.gray, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 			}
 		}
@@ -213,19 +231,25 @@ public class MainGameLoop
 			switch(MainDeck.Cards.get(0).colorValue)
 			{
 				case "Red":
-					frame.reset(Color.red, 		Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.red, 		 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Blue":
-					frame.reset(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.blue, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Green":
-					frame.reset(Color.green, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.green, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Yellow":
 					frame.reset(Color.yellow,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
+				case "Magenta":
+					frame.reset(Color.magenta,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
+				case "Cyan":
+					frame.reset(Color.cyan,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+				break;
 				case "Black":
-					frame.reset(Color.gray,	 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.gray,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 					
 			}
@@ -246,6 +270,12 @@ public class MainGameLoop
 				case "Yellow":
 					frame.reset(Color.yellow,	MainDeck.Cards.get(0).SpecialEffect);
 				break;
+				case "Magenta":
+					frame.reset(Color.magenta,	MainDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Cyan":
+					frame.reset(Color.cyan,		MainDeck.Cards.get(0).SpecialEffect);
+				break;
 				case "Black":
 					frame.reset(Color.gray,		MainDeck.Cards.get(0).SpecialEffect);
 				break;
@@ -259,9 +289,15 @@ public class MainGameLoop
 	/**Starts the game*/
 	public static void initGame()
 	{
+		//Creates the settings file
+		CreateFile();
+		
+		//Ask how many players are wanted 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("How many players");
 		String input = sc.nextLine();
+		
+		
 		if(!input.isEmpty())
 		{
 			//Check if the corect amount of players is entered
@@ -272,9 +308,7 @@ public class MainGameLoop
 				{
 					//Settup main deck
 					MainDeck = new Deck(CreateCards());
-					MainDeck.Shuffle();
-					
-					
+					MainDeck.Shuffle();			
 					settupDeck(input);
 					SettupGraphics();
 					CurentPlayer = Players.get(0);
@@ -316,12 +350,62 @@ public class MainGameLoop
 	
 
 	/**Creates a ArrayList of cards and returns them
-	 * @return An ArrayList of cards */
+	 * @return An ArrayList of cards 
+	 * @return an array of cards */
 	public static ArrayList<Card> CreateCards()
 	{
-		ArrayList<Card> Cards = new ArrayList<Card>();
-		String[] colors = {"Red", "Blue", "Green", "Yellow"};
+		//Reads the users settings and sets the color array to the proper colors
+		String[] colors = new String[4];
+		String data;
+		String FilePath = System.getProperty("user.home");
 		
+		
+		FilePath = FilePath + "/Documents/Settings.txt";
+		try 
+		{
+			//Reads the file
+			 File myObj = new File(FilePath);
+		     Scanner myReader = new Scanner(myObj);
+		     while (myReader.hasNextLine()) 
+		     {
+		    	 //Splits the colors
+		    	 data = myReader.nextLine();
+		    	 System.out.println(data);
+		    	 colors = data.split(",");
+		    	
+		    	 if(colors.length > 4)
+		    	 {
+		    		 myReader.close();   
+		    		 myObj = new File(FilePath);
+		    		 System.out.println("More that four colors were inputed...");
+		    		 System.out.println("Refactoring colors...");
+		    		 if (myObj.delete())
+		    		 { 
+		    		     System.out.println("Deleted the file: " + myObj.getName());
+		    		     CreateFile();
+		    		 } 
+		    		 else 
+		    		 {
+		    		     System.out.println("Failed to delete the file.");
+		    		 } 
+		    		 System.out.println("Game will not be launched...");
+		    		 System.out.println("Please restart the game...");
+		    		 System.exit(0);
+		    	 }
+		    	 colorsBackup = colors;
+		     }
+		     myReader.close();   
+		   
+		} 
+		catch (FileNotFoundException e) 
+		{
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		}
+		
+		ArrayList<Card> Cards = new ArrayList<Card>();
+	
+		//Creates the basic cards
 		for(int i = 0; i < colors.length; i++)
 		{
 			for(int j = 1; j < 14; j++)
@@ -330,8 +414,8 @@ public class MainGameLoop
 			}
 		}
 		
+		//Creates the special cards
 		String[] specials = { "+2", "R", "S"};
-		
 		for(int i = 0; i < colors.length; i++)
 		{
 			for(int j = 1; j < 3; j++)
@@ -340,6 +424,7 @@ public class MainGameLoop
 			}
 		}
 		
+		//Creates wild cards
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
@@ -348,9 +433,53 @@ public class MainGameLoop
 		Cards.add(new Card("Black", "W+4"));
 		Cards.add(new Card("Black", "W+4"));
 		Cards.add(new Card("Black", "W+4"));
-		
-		
+
 		return Cards;
+	}
 	
+	/**
+	 * Creates a settings file and writes the setings to it
+	 */
+	public static void CreateFile()
+	{
+		
+		String FilePath = System.getProperty("user.home");
+		FilePath = FilePath + "/Documents/Settings.txt";
+		try 
+		{
+			File myObj = new File(FilePath);
+		    if (myObj.createNewFile()) 
+		    {
+		       System.out.println("File created: " + myObj.getName());
+		       
+		       try
+		       {
+		    	   FileWriter myWriter = new FileWriter(FilePath);
+			       myWriter.write("Red,Blue,Green,Yellow");
+			       myWriter.close();
+			       System.out.println("Successfully wrote to the file.");
+		       }
+		       catch (IOException e)
+		       {
+		    	   System.out.println("An error occurred while saving the file");
+				      e.printStackTrace();
+		       }
+		       catch (Exception e) 
+			   {
+				      System.out.println("An error occurred.");
+				      e.printStackTrace();
+			   }
+		     
+		    } 
+		    else 
+		    {
+		      System.out.println("File already exists.");
+		    }
+		}       
+		catch (IOException e) 
+		{
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		}
 	}
 }
