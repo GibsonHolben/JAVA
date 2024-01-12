@@ -69,7 +69,7 @@ public class Player
 				MainGameLoop.UpdateGraphicsPlayer();
 			}
 			
-			if(!sf.equals("W+4")||!sf.equals("W"))
+			if(!sf.equals("W+4")&&!sf.equals("W"))
 			{
 				MainGameLoop.nextPlayer();
 			}
