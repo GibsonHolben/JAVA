@@ -72,8 +72,8 @@ public class MyPannel extends JPanel
 	{
 		super.paintComponent(g);
 		g2D = (Graphics2D) g;
-		Image img = new ImageIcon("src/Wood.png").getImage();
-		g2D.drawImage(img, 0, 0, null);
+		//Image img = new ImageIcon("src/Wood.png").getImage();
+		//g2D.drawImage(img, 0, 0, null);
 		g2D.setStroke(new BasicStroke(10));
 		g2D.setPaint(Color.black);
 		g2D.drawRect(400, 300, 100, 200);

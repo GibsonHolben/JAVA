@@ -39,6 +39,11 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			Start = new JButton("Start");
 	
+	/**
+	 * A JButton that shows the settings
+	 */
+	static JButton 			Settings = new JButton("Settings");
+	
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
@@ -83,12 +88,16 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(					  null);
 		Play.addActionListener(			   	  this);
 		Start.addActionListener(			  this);
+		Settings.addActionListener(			  this);
 		SkipTurn.addActionListener(			  this);
 		FlipCurentHand.addActionListener(	  this);
 		FlipCurentHandBack.addActionListener( this);
 	
 		Start.setFocusPainted(false);
 		Start.setBackground(Color.white);
+		
+		Settings.setFocusPainted(false);
+		Settings.setBackground(Color.white);
 		SetupButton(Start);
 	}
 	
@@ -106,6 +115,7 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.MainDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
+		SetupButton(Settings, 0, 480, 20, 20);
 		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
@@ -166,6 +176,7 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Red);
 		Red.addActionListener(this);
 		Red.setFocusPainted(false);
+		Red.setForeground(Color.white);
 		Red.setBackground(Color.red);
 		
 		//Blue
@@ -173,6 +184,7 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Blue);
 		Blue.addActionListener(this);
 		Blue.setFocusPainted(false);
+		Blue.setForeground(Color.white);
 		Blue.setBackground(Color.blue);
 		
 		//Green
@@ -223,6 +235,26 @@ public class MyFrame extends JFrame implements ActionListener
 	{	
 		panel.setLayout(null);
 		Button.setBounds(x, y, 100,60);
+		panel.add(Button);
+		Button.setVisible(true);
+		this.setVisible(true);
+		panel.setComponentZOrder(Button, 0);
+		Play.setVisible(true);
+	}
+	
+	
+	/**
+	 * Sets up the button with x and y cordenants and with  a size
+	 * @param Button the button to setup
+	 * @param x the x cor of the button
+	 * @param y the y cor of the button
+	 * @param sizeX the horizontal size of the button
+	 * @param sizeY the vertical size of the button
+	 */
+	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
+	{	
+		panel.setLayout(null);
+		Button.setBounds(x, y, sizeX, sizeY);
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
