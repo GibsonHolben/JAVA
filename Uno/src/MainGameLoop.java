@@ -92,7 +92,7 @@ public class MainGameLoop
 	 */
 	public static void nextPlayer()
 	{
-		if(!MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || !MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
+		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
 		{
 			System.out.println("Wild cards played...");
 		}
@@ -220,10 +220,6 @@ public class MainGameLoop
 		MainDeck.Cards.add(MainDeck.Cards.get(0));
 		MainDeck.Cards.remove(0);
 		UpdateGraphicsFlip();
-		if(MainDeck.Cards.get(0).colorValue.equals("Black"))
-		{
-			Flip();
-		}
 	}
 	/**
 	 * Updates the graphics for the main deck
@@ -313,10 +309,6 @@ public class MainGameLoop
 					//Settup main deck
 					MainDeck = new Deck(CreateCards());
 					MainDeck.Shuffle();			
-					if(MainDeck.Cards.get(0).colorValue.equals("Black"))
-					{
-						Flip();
-					}
 					settupDeck(input);
 					SettupGraphics();
 					CurentPlayer = Players.get(0);

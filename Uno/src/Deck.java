@@ -25,6 +25,12 @@ public class Deck
 	public void Shuffle()
 	{
 		Collections.shuffle(Cards);
+		if(!Cards.get(0).SpecialEffect.isEmpty())
+		{
+			Cards.add(Cards.get(0));
+			Cards.remove(0);
+		}
+
 	}
 	
 	/**Prints the contents of the deck to the console*/
