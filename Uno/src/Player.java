@@ -46,6 +46,10 @@ public class Player
 				
 				
 		{
+			if(sf != "W" && sf != "W+4")
+			{
+				MainGameLoop.CurentColor = MyDeck.Cards.get(0).colorValue;
+			}
 			System.out.println("Played card");
 			MyDeck.Cards.get(0).onPlay();
 			MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(0));
