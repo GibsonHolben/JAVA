@@ -442,7 +442,7 @@ public class MainGameLoop
 		//Creates the basic cards
 		for(int i = 0; i < colors.length; i++)
 		{
-			for(int j = 1; j < 14; j++)
+			for(int j = 0; j < 14; j++)
 			{
 				Cards.add(new Card(j, colors[i]));
 			}
