@@ -16,13 +16,16 @@ import java.io.FileWriter;
  */
 public class MainGameLoop
 {
-	//If you see this then you did it!
 	/**The curent color of the game
 	 * Default = blank*/
 	public static String 			CurentColor = "";
 	
 	/**The player that is playing*/
 	public static Player 			CurentPlayer;
+	
+	/**The player that has won
+	 * Default = blank player*/
+	public static Player 			CurentWinPlayer = new Player();
 	
 	/**the main frame*/
 	public static MyFrame 			frame;
@@ -37,7 +40,7 @@ public class MainGameLoop
 	public static ArrayList<Player> Players;
 	
 	/**The colors of the cards*/
-	static String[] colorsBackup;
+	static String[] 				colorsBackup;
 	
 
 
@@ -61,7 +64,7 @@ public class MainGameLoop
 			{
 				case "ff":
 					isRunning = false;
-					System.exit(0);
+					
 				break;
 				case "flip":
 					Flip();
@@ -79,18 +82,83 @@ public class MainGameLoop
 					frame.SettupColorButtons(300);
 				case "cc":
 					System.out.println(CurentColor);
-;				break;
+				break;
+				case "toS":
+					System.out.println(MainDeck.toString());
+				case "Help":
+					System.out.println("ff, hand, p, view, test, cc, toS, Help");
+				break;
+				default: System.out.println("Invalid input: Help for commands");
 			}
 		}
 		
+		//Shows who wins
+		while(isRunning == false)
+		{
+			frame.hideButtons();
+			frame.repaint();
 		
+		}
+		
+		System.exit(0);
 		System.out.println("End");
+	}
+	
+	
+	/**Starts the game*/
+	public static void initGame()
+	{
+		//Creates the files
+		CreateFiles();
+		
+		//Ask how many players are wanted 
+		Scanner sc = new Scanner(System.in);
+		System.out.println("How many players");
+		String input = sc.nextLine();
+		
+		
+		if(!input.isEmpty())
+		{
+			//Check if the corect amount of players is entered
+			if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > 0)
+			{
+				
+				try
+				{
+					//Settup main deck
+					MainDeck = new Deck(CreateCards());
+					MainDeck.Shuffle();			
+					settupDeck(input);
+					SettupGraphics();
+					CurentPlayer = Players.get(0);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Error");
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				System.out.println("Please enter a valid number (1-4)");
+				initGame();
+			}
+		}
+		
+		if(MainDeck.Cards.get(0).ColorValue.equals("Black"))
+		{
+			System.out.println("Wild card was on top... \n fliping the deck...");
+			MainDeck.Cards.add(MainDeck.Cards.get(0));
+			MainDeck.Cards.remove(0);
+			
+		}
+		CurentColor = MainDeck.Cards.get(0).ColorValue;
 	}
 	
 	/**
 	 * sets the next player
 	 */
-	public static void nextPlayer()
+	public static void NextPlayer()
 	{
 		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
 		{
@@ -98,7 +166,7 @@ public class MainGameLoop
 		}
 		else
 		{
-			CurentColor = MainDeck.Cards.get(0).colorValue;
+			CurentColor = MainDeck.Cards.get(0).ColorValue;
 		}
 
 		Players.add(Players.get(0));
@@ -136,81 +204,6 @@ public class MainGameLoop
 		UpdateGraphicsPlayer();
 	}
 	
-	/**
-	 * Sets up he graphics
-	 */
-	public static void SettupGraphics()
-	{
-		switch(MainDeck.Cards.get(0).colorValue)
-		{
-			case "Red":	frame = new MyFrame(	Color.red, 		Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Blue":	frame = new MyFrame(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Green":	frame = new MyFrame(Color.green, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Yellow":	frame = new MyFrame(Color.yellow, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Magenta":	frame = new MyFrame(Color.magenta, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Cyan":	frame = new MyFrame(Color.cyan, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-			case "Black":	frame = new MyFrame(Color.gray, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
-			break;
-				
-		}
-	}
-
-	
-	
-	/**
-	 * Updates the graphics for the players hand
-	 */
-	public static void UpdateGraphicsPlayer()
-	{
-		if(CurentPlayer.MyDeck.Cards.get(0).SpecialEffect.isEmpty())
-		{
-			switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
-			{
-				case "Red":	frame.resetPlayerhand(Color.red, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Blue":frame.resetPlayerhand(Color.blue, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Green":frame.resetPlayerhand(Color.green,	 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Yellow":frame.resetPlayerhand(Color.yellow, 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Magenta":frame.resetPlayerhand(Color.magenta, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Cyan":frame.resetPlayerhand(Color.cyan, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
-				break;
-			}
-		}
-		else
-		{
-			
-			switch(CurentPlayer.MyDeck.Cards.get(0).colorValue)
-			{
-				case "Red":	frame.resetPlayerhand(Color.red, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Blue":frame.resetPlayerhand(Color.blue, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Green":frame.resetPlayerhand(Color.green, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Yellow":frame.resetPlayerhand(Color.yellow, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Magenta":frame.resetPlayerhand(Color.magenta, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Cyan":frame.resetPlayerhand(Color.cyan, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-			}
-		}
-	
-	}
 
 	/**
 	 * Flips the top card and updates the graphics
@@ -221,6 +214,8 @@ public class MainGameLoop
 		MainDeck.Cards.remove(0);
 		UpdateGraphicsFlip();
 	}
+	
+	
 	/**
 	 * Updates the graphics for the main deck
 	 */
@@ -228,35 +223,35 @@ public class MainGameLoop
 	{
 		if(MainDeck.Cards.get(0).SpecialEffect.isEmpty())
 		{
-			switch(MainDeck.Cards.get(0).colorValue)
+			switch(MainDeck.Cards.get(0).ColorValue)
 			{
 				case "Red":
-					frame.reset(Color.red, 		 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.red, 		 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Blue":
-					frame.reset(Color.blue, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.blue, 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Green":
-					frame.reset(Color.green, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.green, 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Yellow":
-					frame.reset(Color.yellow,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(new Color(255, 239, 66),	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Magenta":
-					frame.reset(Color.magenta,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.magenta,	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Cyan":
-					frame.reset(Color.cyan,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.cyan,	 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 				case "Black":
-					frame.reset(Color.gray,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					frame.reset(Color.gray,	 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
 				break;
 					
 			}
 		}
 		else
 		{
-			switch(MainDeck.Cards.get(0).colorValue)
+			switch(MainDeck.Cards.get(0).ColorValue)
 			{
 				case "Red":
 					frame.reset(Color.red, 		MainDeck.Cards.get(0).SpecialEffect);
@@ -268,7 +263,7 @@ public class MainGameLoop
 					frame.reset(Color.green, 	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Yellow":
-					frame.reset(Color.yellow,	MainDeck.Cards.get(0).SpecialEffect);
+					frame.reset(new Color(255, 239, 66),	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Magenta":
 					frame.reset(Color.magenta,	MainDeck.Cards.get(0).SpecialEffect);
@@ -286,47 +281,83 @@ public class MainGameLoop
 
 	}
 	
-	/**Starts the game*/
-	public static void initGame()
+	/**
+	 * Sets up he graphics
+	 */
+	public static void SettupGraphics()
 	{
-		//Creates the settings file
-		CreateFile();
-		
-		//Ask how many players are wanted 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("How many players");
-		String input = sc.nextLine();
-		
-		
-		if(!input.isEmpty())
+		switch(MainDeck.Cards.get(0).ColorValue)
 		{
-			//Check if the corect amount of players is entered
-			if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > 0)
-			{
+			case "Red":	frame = new MyFrame(	Color.red, 		Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Blue":	frame = new MyFrame(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Green":	frame = new MyFrame(Color.green, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Yellow":	frame = new MyFrame(new Color(255, 239, 66), 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Magenta":	frame = new MyFrame(Color.magenta, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Cyan":	frame = new MyFrame(Color.cyan, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
+			case "Black":	frame = new MyFrame(Color.gray, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			break;
 				
-				try
-				{
-					//Settup main deck
-					MainDeck = new Deck(CreateCards());
-					MainDeck.Shuffle();			
-					settupDeck(input);
-					SettupGraphics();
-					CurentPlayer = Players.get(0);
-				}
-				catch(Exception e)
-				{
-					System.out.println("Error");
-					e.printStackTrace();
-				}
-			}
-			else
+		}
+	}
+
+	
+	
+	/**
+	 * Updates the graphics for the players hand
+	 */
+	public static void UpdateGraphicsPlayer()
+	{
+		if(CurentPlayer.MyDeck.Cards.get(0).SpecialEffect.isEmpty())
+		{
+			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
-				System.out.println("Please enter a valid number (1-4)");
-				initGame();
+				case "Red":	frame.resetPlayerhand(Color.red, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Blue":frame.resetPlayerhand(Color.blue, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Green":frame.resetPlayerhand(Color.green,	 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Yellow":frame.resetPlayerhand(new Color(255, 239, 66), 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Magenta":frame.resetPlayerhand(Color.magenta, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Cyan":frame.resetPlayerhand(Color.cyan, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
+				case "Black":frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				break;
 			}
 		}
-		CurentColor = MainDeck.Cards.get(0).colorValue;
+		else
+		{
+			
+			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
+			{
+				case "Red":	frame.resetPlayerhand(Color.red, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Blue":frame.resetPlayerhand(Color.blue, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Green":frame.resetPlayerhand(Color.green, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Yellow":frame.resetPlayerhand(new Color(255, 239, 66), 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Magenta":frame.resetPlayerhand(Color.magenta, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Cyan":frame.resetPlayerhand(Color.cyan, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+				case "Black":frame.resetPlayerhand(Color.gray, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;
+			}
+		}
+	
 	}
+	
+	
 	
 	/**
 	 * Sets up the player hands
@@ -337,7 +368,7 @@ public class MainGameLoop
 		for(int i = 0; i < Integer.parseInt(input); i++)
 		{
 			Player p = new Player();
-			p.Name = "Player" + Integer.toString(i);
+			p.Name = "Player" + Integer.toString(i + 1);
 			Players.add(p);
 			
 			for(int j = 0; j < 7; j++)
@@ -358,9 +389,9 @@ public class MainGameLoop
 		String[] colors = new String[4];
 		String data;
 		String FilePath = System.getProperty("user.home");
-		
-		
 		FilePath = FilePath + "/Documents/Settings.txt";
+		
+		
 		try 
 		{
 			//Reads the file
@@ -375,6 +406,7 @@ public class MainGameLoop
 		    	
 		    	 if(colors.length > 4)
 		    	 {
+		    		 //Checks the colors and makes sure they are right
 		    		 myReader.close();   
 		    		 myObj = new File(FilePath);
 		    		 System.out.println("More that four colors were inputed...");
@@ -382,7 +414,7 @@ public class MainGameLoop
 		    		 if (myObj.delete())
 		    		 { 
 		    		     System.out.println("Deleted the file: " + myObj.getName());
-		    		     CreateFile();
+		    		     CreateFiles();
 		    		 } 
 		    		 else 
 		    		 {
@@ -415,10 +447,10 @@ public class MainGameLoop
 		}
 		
 		//Creates the special cards
-		String[] specials = { "+2", "R", "S"};
+		String[] specials = { "+2", "S"};
 		for(int i = 0; i < colors.length; i++)
 		{
-			for(int j = 1; j < 3; j++)
+			for(int j = 0; j < 2; j++)
 			{
 				Cards.add(new Card(colors[i], specials[j]));
 			}
@@ -438,26 +470,28 @@ public class MainGameLoop
 	}
 	
 	/**
-	 * Creates a settings file and writes the setings to it
+	 * Creates all the files needed for the game
 	 */
-	public static void CreateFile()
+	public static void CreateFiles()
 	{
 		
 		String FilePath = System.getProperty("user.home");
 		FilePath = FilePath + "/Documents/Settings.txt";
+
 		try 
 		{
 			File myObj = new File(FilePath);
+
 		    if (myObj.createNewFile()) 
 		    {
 		       System.out.println("File created: " + myObj.getName());
-		       
+
 		       try
 		       {
 		    	   FileWriter myWriter = new FileWriter(FilePath);
 			       myWriter.write("Red,Blue,Green,Yellow");
 			       myWriter.close();
-			       System.out.println("Successfully wrote to the file.");
+			       System.out.println("Successfully wrote to the file.");		     
 		       }
 		       catch (IOException e)
 		       {
@@ -468,8 +502,62 @@ public class MainGameLoop
 			   {
 				      System.out.println("An error occurred.");
 				      e.printStackTrace();
-			   }
-		     
+			   }   
+		    } 
+		    else 
+		    {
+		      System.out.println("File already exists.");
+		    }
+		}       
+		catch (IOException e) 
+		{
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		}
+		
+		
+		String FilePath2 = System.getProperty("user.home");
+		FilePath2 = FilePath2 + "/Documents/HTP.txt";
+
+		try 
+		{
+			File myObj2 = new File(FilePath2);
+
+		    if (myObj2.createNewFile()) 
+		    {
+		       System.out.println("File created: " + myObj2.getName());
+
+		       try
+		       {
+		    	   FileWriter myWriter2 = new FileWriter(FilePath2);
+			       myWriter2.write("How do you play the game of UNO?\r\n" + 
+			       		"\r\n" + 
+			       		"On your turn:\r\n" + 
+			       		"	You can play a card when it matches either the color or number of the card, or if you have any wild cards.\r\n" + 
+			       		" 	If you have no playable cards, you must draw a card from the draw pile.\r\n" + 
+			       		"\r\n" + 
+			       		"Goal:\r\n" + 
+			       		" 	The aim of UNO is to be the first player to get rid of all of your cards so you'll want to avoid picking up cards as best you can.\r\n" + 
+			       		"\r\n" + 
+			       		"Cards:\r\n" + 
+			       		"	1-13 numbers\r\n" + 
+			       		"	S: Skips the next player\r\n" + 
+			       		"	+2:  Forces the next player to draw 2 cards\r\n" + 
+			       		"	W: Lets you change the color to your choice\r\n" + 
+			       		"	W+4 Lets you change the color to your choice and forces the next player to draw 4 cards");
+			       myWriter2.close();
+			       System.out.println("Successfully wrote to the file.");		     
+		       }
+		       catch (IOException e)
+		       {
+		    	   System.out.println("An error occurred while saving the file");
+				      e.printStackTrace();
+		       }
+		       catch (Exception e) 
+			   {
+				      System.out.println("An error occurred.");
+				      e.printStackTrace();
+			   }   
 		    } 
 		    else 
 		    {

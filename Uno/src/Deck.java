@@ -33,6 +33,15 @@ public class Deck
 
 	}
 	
+	/**
+	 * Prints the variables on the object
+	 */
+	public String toString()
+	{
+		String s = Cards.toString();
+		return s;
+	}
+	
 	/**Prints the contents of the deck to the console*/
 	public void PrintDeck()
 	{
@@ -40,11 +49,11 @@ public class Deck
 		{
 			if((Cards.get(i).SpecialEffect.equals("")))
 			{
-				System.out.println(Cards.get(i).colorValue + " " + Cards.get(i).numberValue);
+				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).NumberValue);
 			}
 			else 
 			{
-				System.out.println(Cards.get(i).colorValue + " " + Cards.get(i).SpecialEffect);
+				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).SpecialEffect);
 			}
 			
 		}

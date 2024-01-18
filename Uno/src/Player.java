@@ -7,16 +7,16 @@ import java.util.ArrayList;
 public class Player
 {
 	/**An arraylist of cards*/
-	public Deck MyDeck;
+	public Deck 	MyDeck;
 	
 	/**
 	 * The name of the player
 	 * Default = blank
 	 */
-	public String Name = "";
+	public String 	Name = "";
 	
 	/**
-	 * Creates 
+	 * Creates a player with an empty deck
 	 */
 	Player()
 	{
@@ -24,14 +24,14 @@ public class Player
 	}
 	
 	/**
-	 * Skips the players turn
+	 * Skips the players turn and adds 1 card to their deck
 	 */
 	public void Skip()
 	{
 		MainGameLoop.UpdateGraphicsFlip();
 		MainGameLoop.UpdateGraphicsPlayer();
 		DrawCard(1);
-		MainGameLoop.nextPlayer();
+		MainGameLoop.NextPlayer();
 	}
 	
 	/**
@@ -40,15 +40,15 @@ public class Player
 	public void play()
 	{
 		String sf = MyDeck.Cards.get(0).SpecialEffect;
-		if(MyDeck.Cards.get(0).colorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
-				MyDeck.Cards.get(0).colorValue.equals("Black"))
+		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(0).NumberValue == MainGameLoop.MainDeck.Cards.get(0).NumberValue||
+				MyDeck.Cards.get(0).ColorValue.equals("Black"))
 				
 				
 		{
 			if(sf != "W" && sf != "W+4")
 			{
-				MainGameLoop.CurentColor = MyDeck.Cards.get(0).colorValue;
+				MainGameLoop.CurentColor = MyDeck.Cards.get(0).ColorValue;
 			}
 			System.out.println("Played card");
 			MyDeck.Cards.get(0).onPlay();
@@ -58,10 +58,11 @@ public class Player
 			
 			if(MyDeck.Cards.size() < 1)
 			{
+				MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
 				System.out.println("Game over");
 				System.out.println(Name + " Wins");
 				MainGameLoop.isRunning = false;
-				System.exit(0);
+				
 			}
 			else 
 			{
@@ -71,7 +72,7 @@ public class Player
 			
 			if(!sf.equals("W+4")&&!sf.equals("W"))
 			{
-				MainGameLoop.nextPlayer();
+				MainGameLoop.NextPlayer();
 			}
 			
 		}
@@ -90,5 +91,15 @@ public class Player
 		}
 		
 	}
+	
+	
+	/**
+	 * Prints the variables on the object
+	 */
+	public String toString()
+	{
+		String s = Name + "," + MyDeck.toString();
+		return s;
+ 	}
 
 }

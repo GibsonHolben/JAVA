@@ -1,17 +1,28 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import  sun.audio.*;
 /**
  * @author CTEHolbenG46
  * @version 0.0.1
  */
 public class MyFrame extends JFrame implements ActionListener
 {
+	/**
+	 * Can the user play
+	 * default = true
+	 */
+	boolean canPlay = true;
+	
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 */
@@ -46,6 +57,11 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			Settings = new JButton("Settings");
 	
+	/**
+	 * A JButton that shows the how to play 
+	 */
+	static JButton 			HowToPlay = new JButton("How to play");
+	
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
@@ -67,11 +83,19 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			Yellow = new JButton(MainGameLoop.colorsBackup[3]);
 	
+	
+	
+	//SFX
 	/**
-	 * Can the user play
-	 * default = true
+	 * The audio clip of the button click
 	 */
-	boolean canPlay = true;
+	Clip 					clip;
+	
+	/**2
+	 * the audio stream of the button click
+	 */
+	AudioInputStream 		AudioStream;
+      
 	
 	/**
 	 * Creates the frame
@@ -80,6 +104,29 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 
+		//sets the sfx 
+		File file = new File("src/ButttonClick.wav");
+		try 
+		{
+			AudioStream = AudioSystem.getAudioInputStream(file);
+			clip = AudioSystem.getClip();
+			clip.open(AudioStream);
+		} 
+		catch (UnsupportedAudioFileException e) 
+		{
+			e.printStackTrace();
+		}
+		catch ( LineUnavailableException e)
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		
+
 		//Sets the image 
 		ImageIcon img = new ImageIcon("src/Uno.png");
 		this.setIconImage(img.getImage());
@@ -92,6 +139,7 @@ public class MyFrame extends JFrame implements ActionListener
 		Start.addActionListener(			  this);
 		Settings.addActionListener(			  this);
 		SkipTurn.addActionListener(			  this);
+		HowToPlay.addActionListener(          this);
 		FlipCurentHand.addActionListener(	  this);
 		FlipCurentHandBack.addActionListener( this);
 	
@@ -100,6 +148,10 @@ public class MyFrame extends JFrame implements ActionListener
 		
 		Settings.setFocusPainted(false);
 		Settings.setBackground(Color.white);
+		
+		HowToPlay.setFocusPainted(false);
+		HowToPlay.setBackground(Color.white);
+		
 		SetupButton(Start);
 	}
 	
@@ -117,7 +169,8 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.MainDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		SetupButton(Settings, 0, 480, 20, 20);
+		SetupButton(Settings, 0, 480, 100, 20);
+		SetupButton(HowToPlay, 100, 480, 100, 20);
 		SetupButton(SkipTurn);
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);
@@ -143,6 +196,7 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(Play,90,400);
 		SetupButton(FlipCurentHand,290,400);	
 		SetupButton(FlipCurentHandBack,0,400);
+
 		
 		Play.setFocusPainted(				false);
 		SkipTurn.setFocusPainted(			false);
@@ -156,6 +210,10 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	//Settups ****************************************************************
+	
+	/**
+	 * Sets up the window format
+	 */
 	public void windowSettup()
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -168,6 +226,7 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	/**
 	 * Sets up the wild card buttons
+	 * @param position the position of the button
 	 */
 	public void SettupColorButtons(int position)
 	{
@@ -207,7 +266,7 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	/**
 	 * Sets up the button 
-	 * Button the button to setup
+	 * @param Button the button to setup
 	 */
 	public void SetupButton(JButton Button)
 	{
@@ -266,8 +325,11 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
+		
+		PlayClick();
 		if(e.getSource().equals(FlipCurentHand))
 		{
+			
 			MainGameLoop.FlipCurentHand();
 			this.setVisible(true);
 		}
@@ -308,7 +370,7 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[0];
 				canPlay = true;
-				MainGameLoop.nextPlayer();
+				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
 			}
 			
@@ -316,7 +378,7 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[1];
 				canPlay = true;
-				MainGameLoop.nextPlayer();
+				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
 			}
 			
@@ -324,7 +386,7 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[2];
 				canPlay = true;
-				MainGameLoop.nextPlayer();
+				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
 			}
 			
@@ -332,13 +394,22 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[3];
 				canPlay = true;
-				MainGameLoop.nextPlayer();
+				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
 			}	
 		}
+		
+		if(e.getSource().equals(HowToPlay))
+		{
+			ShowHowToPlay();
+		}
+		
+
 	}
 	
-	
+	/**
+	 * Shows the settings file
+	 */
 	public void ShowSettings()
 	{
 		if (Desktop.isDesktopSupported()) 
@@ -362,5 +433,53 @@ public class MyFrame extends JFrame implements ActionListener
 		}
 		this.setVisible(true);
 		Settings.setVisible(true);
+	}
+	
+	/**
+	 * Shows the how to play  file
+	 */
+	public void ShowHowToPlay()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+			String FilePath = System.getProperty("user.home");
+			FilePath = FilePath + "/Documents/HTP.txt";
+		    try 
+		    {
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting file");
+		}
+		this.setVisible(true);
+		Settings.setVisible(true);
+	}
+	
+	/**
+	 * Hides the buttons
+	 */
+	public void hideButtons()
+	{
+		SetupButton(Settings, -1111, 480, 100, 20);
+		SetupButton(HowToPlay,-1111, 480, 100, 20);
+		SetupButton(SkipTurn, -1111, 0);
+		SetupButton(Play,-1111,400);
+		SetupButton(FlipCurentHand,-1111,400);
+		SetupButton(FlipCurentHandBack,-1111,400);
+	}
+	
+	/**
+	 * Plays the button click
+	 */
+	public void PlayClick()
+	{
+		clip.start();
+		clip.setMicrosecondPosition(0);
 	}
 }

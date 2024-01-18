@@ -7,10 +7,10 @@ public class Card
 {	
 	/**The value of the card
 	 * Default = 0*/
-	public int 		numberValue = 0;
+	public int 		NumberValue = 0;
 	
 	/**The color of the card*/
-	public String 	colorValue = "Red";
+	public String 	ColorValue = "Red";
 	
 	/**
 	 * Card special effects
@@ -20,27 +20,43 @@ public class Card
 	
 	
 	/**
-	 * Creates a card with user passed in values
+	 * Creates a card with passed in values
 	 * @param newValue the value of the card
 	 * @param newColor the color of the card
 	 */
 	Card(int newValue, String newColor)
 	{
-		numberValue = newValue;
-		colorValue 	= newColor;
+		NumberValue = newValue;
+		ColorValue 	= newColor;
 	}
 	
 	
 	/**
-	 * 
-	 * @param newValue the value of the card
+	 * creates a card with the passe in values and speial effects
 	 * @param newColor the color of the card
 	 * @param special the cards special effect
 	 */
 	Card(String newColor, String special)
 	{
 		SpecialEffect = special;
-		colorValue 	  = newColor;
+		ColorValue 	  = newColor;
+	}
+	
+	/**
+	 * Prints the variables on the object
+	 */
+	public String toString()
+	{
+		if(SpecialEffect.isEmpty())
+		{
+			String s = NumberValue + "," + ColorValue;
+			return s;
+		}
+		else
+		{
+			String s = NumberValue + "," + ColorValue + "," + SpecialEffect;
+			return s;
+		}
 	}
 	
 	/**
