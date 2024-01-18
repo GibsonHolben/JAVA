@@ -16,6 +16,8 @@ import java.io.FileWriter;
  */
 public class MainGameLoop
 {
+	//************************************
+	//ADD EDITS OF THE SETTINGS
 	/**The curent color of the game
 	 * Default = blank*/
 	public static String 			CurentColor = "";
