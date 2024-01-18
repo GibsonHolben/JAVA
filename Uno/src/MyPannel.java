@@ -76,16 +76,21 @@ public class MyPannel extends JPanel
 		//g2D.drawImage(img, 0, 0, null);
 		g2D.setStroke(new BasicStroke(10));
 		g2D.setPaint(Color.black);
-		g2D.drawRect(400, 300, 100, 200);
-		g2D.drawRect(0, 0, 100, 200);
+		g2D.drawRoundRect(395, 300, 100, 200, 20,20);
+		g2D.drawRoundRect(0, 0, 100, 200, 20,20);
 		g2D.setStroke(new BasicStroke(1));
 		g2D.setPaint(MainDeckColor);
-		g2D.fillRect(0, 0, 100, 200);
+		g2D.fillRoundRect(0, 0, 100, 200, 20,20);
 		g2D.setPaint(Color.black);
 		g2D.setFont(new Font(null, Font.BOLD,40));
 		g2D.drawString(MainDeckText, 0, 45);
 		g2D.setPaint(PlayerDeckColor);
-		g2D.fillRect(400, 300, 100, 200);
+		g2D.fillRoundRect(395, 300, 100, 200, 20,20);
+		
+		g2D.setPaint(Color.white);
+		Image img = new ImageIcon("src/Uno2.png").getImage();
+		g2D.drawImage(img, 390, 320, null);
+
 		g2D.setPaint(Color.black);
 		g2D.setFont(new Font(null, Font.BOLD,40));
 		g2D.drawString(PlayerDeckText, 400, 350);
