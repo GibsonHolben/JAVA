@@ -31,4 +31,9 @@
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioSystem"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioInputStream"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
 </qualifiedTypeNameHistroy>

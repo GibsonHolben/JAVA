@@ -66,22 +66,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * Changes the color of the main deck to red
 	 */
-	static JButton 			Red = new JButton(MainGameLoop.colorsBackup[0]);
+	static JButton 			Red = new JButton(MainGameLoop.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 */
-	static JButton 			Blue = new JButton(MainGameLoop.colorsBackup[1]);
+	static JButton 			Blue = new JButton(MainGameLoop.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 */
-	static JButton 			Green = new JButton(MainGameLoop.colorsBackup[2]);
+	static JButton 			Green = new JButton(MainGameLoop.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 */
-	static JButton 			Yellow = new JButton(MainGameLoop.colorsBackup[3]);
+	static JButton 			Yellow = new JButton(MainGameLoop.ColorsBackup[3]);
 	
 	
 	
@@ -368,7 +368,7 @@ public class MyFrame extends JFrame implements ActionListener
 		{
 			if(e.getSource().equals(Red))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[0];
+				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[0];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -376,7 +376,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Blue))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[1];
+				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[1];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -384,7 +384,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Green))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[2];
+				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[2];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -392,7 +392,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Yellow))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.colorsBackup[3];
+				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[3];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -481,5 +481,13 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		clip.start();
 		clip.setMicrosecondPosition(0);
+	}
+	
+	
+	public String toString()
+	{
+		String s = canPlay + "," + panel;
+		
+		return s;
 	}
 }

@@ -41,7 +41,7 @@ public class Player
 	{
 		String sf = MyDeck.Cards.get(0).SpecialEffect;
 		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).NumberValue == MainGameLoop.MainDeck.Cards.get(0).NumberValue||
+				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
 				MyDeck.Cards.get(0).ColorValue.equals("Black"))
 				
 				

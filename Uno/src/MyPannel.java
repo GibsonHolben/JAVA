@@ -167,4 +167,11 @@ public class MyPannel extends JPanel
 		g2D.drawImage(img, -7, 20, null);
 	}
 	
+	public String toString()
+	{
+		String s = MainDeckColor.toString() + "," + MainDeckText + "," + PlayerDeckColor.toString()  + "," + PlayerDeckText;
+				
+		return s;
+	}
+	
 }

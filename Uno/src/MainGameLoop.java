@@ -30,7 +30,7 @@ public class MainGameLoop
 	public static Player 			CurentWinPlayer = new Player();
 	
 	/**the main frame*/
-	public static MyFrame 			frame;
+	public static MyFrame 			Frame;
 	
 	/**Is the game running?*/
 	public static boolean 			isRunning = true;
@@ -42,7 +42,7 @@ public class MainGameLoop
 	public static ArrayList<Player> Players;
 	
 	/**The colors of the cards*/
-	static String[] 				colorsBackup;
+	static String[] 				ColorsBackup;
 	
 
 
@@ -81,12 +81,12 @@ public class MainGameLoop
 				case "view":
 					MainDeck.PrintDeck();
 				case "test":
-					frame.SettupColorButtons(300);
+					Frame.SettupColorButtons(300);
 				case "cc":
 					System.out.println(CurentColor);
 				break;
 				case "toS":
-					System.out.println(MainDeck.toString());
+					System.out.println(Frame.toString());
 				case "Help":
 					System.out.println("ff, hand, p, view, test, cc, toS, Help");
 				break;
@@ -97,8 +97,8 @@ public class MainGameLoop
 		//Shows who wins
 		while(isRunning == false)
 		{
-			frame.hideButtons();
-			frame.repaint();
+			Frame.hideButtons();
+			Frame.repaint();
 		
 		}
 		
@@ -228,25 +228,25 @@ public class MainGameLoop
 			switch(MainDeck.Cards.get(0).ColorValue)
 			{
 				case "Red":
-					frame.reset(Color.red, 		 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.red, 		 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Blue":
-					frame.reset(Color.blue, 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.blue, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Green":
-					frame.reset(Color.green, 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.green, 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Yellow":
-					frame.reset(new Color(255, 239, 66),	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(new Color(255, 239, 66),	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Magenta":
-					frame.reset(Color.magenta,	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.magenta,	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Cyan":
-					frame.reset(Color.cyan,	 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.cyan,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Black":
-					frame.reset(Color.gray,	 	 Integer.toString(MainDeck.Cards.get(0).NumberValue));
+					Frame.reset(Color.gray,	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 					
 			}
@@ -256,25 +256,25 @@ public class MainGameLoop
 			switch(MainDeck.Cards.get(0).ColorValue)
 			{
 				case "Red":
-					frame.reset(Color.red, 		MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.red, 		MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Blue":
-					frame.reset(Color.blue, 	MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.blue, 	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Green":
-					frame.reset(Color.green, 	MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.green, 	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Yellow":
-					frame.reset(new Color(255, 239, 66),	MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(new Color(255, 239, 66),	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Magenta":
-					frame.reset(Color.magenta,	MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.magenta,	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Cyan":
-					frame.reset(Color.cyan,		MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.cyan,		MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Black":
-					frame.reset(Color.gray,		MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(Color.gray,		MainDeck.Cards.get(0).SpecialEffect);
 				break;
 					
 			}
@@ -290,19 +290,19 @@ public class MainGameLoop
 	{
 		switch(MainDeck.Cards.get(0).ColorValue)
 		{
-			case "Red":	frame = new MyFrame(	Color.red, 		Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Red":	Frame = new MyFrame(	Color.red, 		Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Blue":	frame = new MyFrame(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Blue":	Frame = new MyFrame(Color.blue, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Green":	frame = new MyFrame(Color.green, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Green":	Frame = new MyFrame(Color.green, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Yellow":	frame = new MyFrame(new Color(255, 239, 66), 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Yellow":	Frame = new MyFrame(new Color(255, 239, 66), 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Magenta":	frame = new MyFrame(Color.magenta, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Magenta":	Frame = new MyFrame(Color.magenta, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Cyan":	frame = new MyFrame(Color.cyan, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Cyan":	Frame = new MyFrame(Color.cyan, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Black":	frame = new MyFrame(Color.gray, 	Integer.toString(MainDeck.Cards.get(0).NumberValue));
+			case "Black":	Frame = new MyFrame(Color.gray, 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
 				
 		}
@@ -319,19 +319,19 @@ public class MainGameLoop
 		{
 			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
-				case "Red":	frame.resetPlayerhand(Color.red, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Red":	Frame.resetPlayerhand(Color.red, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Blue":frame.resetPlayerhand(Color.blue, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Blue":Frame.resetPlayerhand(Color.blue, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Green":frame.resetPlayerhand(Color.green,	 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Green":Frame.resetPlayerhand(Color.green,	 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Yellow":frame.resetPlayerhand(new Color(255, 239, 66), 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Yellow":Frame.resetPlayerhand(new Color(255, 239, 66), 	Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Magenta":frame.resetPlayerhand(Color.magenta, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Magenta":Frame.resetPlayerhand(Color.magenta, Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Cyan":frame.resetPlayerhand(Color.cyan, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Cyan":Frame.resetPlayerhand(Color.cyan, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).NumberValue));
+				case "Black":Frame.resetPlayerhand(Color.gray, 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 			}
 		}
@@ -340,19 +340,19 @@ public class MainGameLoop
 			
 			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
-				case "Red":	frame.resetPlayerhand(Color.red, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Red":	Frame.resetPlayerhand(Color.red, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Blue":frame.resetPlayerhand(Color.blue, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Blue":Frame.resetPlayerhand(Color.blue, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Green":frame.resetPlayerhand(Color.green, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Green":Frame.resetPlayerhand(Color.green, 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Yellow":frame.resetPlayerhand(new Color(255, 239, 66), 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Yellow":Frame.resetPlayerhand(new Color(255, 239, 66), 		CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Magenta":frame.resetPlayerhand(Color.magenta, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Magenta":Frame.resetPlayerhand(Color.magenta, 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Cyan":frame.resetPlayerhand(Color.cyan, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Cyan":Frame.resetPlayerhand(Color.cyan, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Black":frame.resetPlayerhand(Color.gray, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Black":Frame.resetPlayerhand(Color.gray, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 			}
 		}
@@ -426,7 +426,7 @@ public class MainGameLoop
 		    		 System.out.println("Please restart the game...");
 		    		 System.exit(0);
 		    	 }
-		    	 colorsBackup = colors;
+		    	 ColorsBackup = colors;
 		     }
 		     myReader.close();   
 		   

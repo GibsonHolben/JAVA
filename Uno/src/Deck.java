@@ -49,7 +49,7 @@ public class Deck
 		{
 			if((Cards.get(i).SpecialEffect.equals("")))
 			{
-				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).NumberValue);
+				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).numberValue);
 			}
 			else 
 			{

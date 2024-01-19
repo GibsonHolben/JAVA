@@ -7,7 +7,7 @@ public class Card
 {	
 	/**The value of the card
 	 * Default = 0*/
-	public int 		NumberValue = 0;
+	public int 		numberValue = 0;
 	
 	/**The color of the card*/
 	public String 	ColorValue = "Red";
@@ -22,24 +22,24 @@ public class Card
 	/**
 	 * Creates a card with passed in values
 	 * @param newValue the value of the card
-	 * @param newColor the color of the card
+	 * @param NewColor the color of the card
 	 */
-	Card(int newValue, String newColor)
+	Card(int newValue, String NewColor)
 	{
-		NumberValue = newValue;
-		ColorValue 	= newColor;
+		numberValue = newValue;
+		ColorValue 	= NewColor;
 	}
 	
 	
 	/**
 	 * creates a card with the passe in values and speial effects
-	 * @param newColor the color of the card
-	 * @param special the cards special effect
+	 * @param NewColor the color of the card
+	 * @param Special the cards special effect
 	 */
-	Card(String newColor, String special)
+	Card(String NewColor, String Special)
 	{
-		SpecialEffect = special;
-		ColorValue 	  = newColor;
+		SpecialEffect = Special;
+		ColorValue 	  = NewColor;
 	}
 	
 	/**
@@ -49,12 +49,12 @@ public class Card
 	{
 		if(SpecialEffect.isEmpty())
 		{
-			String s = NumberValue + "," + ColorValue;
+			String s = numberValue + "," + ColorValue;
 			return s;
 		}
 		else
 		{
-			String s = NumberValue + "," + ColorValue + "," + SpecialEffect;
+			String s = numberValue + "," + ColorValue + "," + SpecialEffect;
 			return s;
 		}
 	}
@@ -71,20 +71,20 @@ public class Card
 		
 		if(SpecialEffect.equals("W+4"))
 		{
-			MainGameLoop.frame.canPlay = false;
-			MainGameLoop.frame.SettupColorButtons(300);
+			MainGameLoop.Frame.canPlay = false;
+			MainGameLoop.Frame.SettupColorButtons(300);
 			MainGameLoop.Players.get(1).DrawCard(4);
 		}
 		
-		if(SpecialEffect.equals("R"))
+		if(SpecialEffect.equals("S"))
 		{
 			
 		}
 		
 		if(SpecialEffect.equals("W"))
 		{
-			MainGameLoop.frame.canPlay = false;
-			MainGameLoop.frame.SettupColorButtons(300);
+			MainGameLoop.Frame.canPlay = false;
+			MainGameLoop.Frame.SettupColorButtons(300);
 		}
 	}
 }
