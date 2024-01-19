@@ -82,7 +82,24 @@ public class MyFrame extends JFrame implements ActionListener
 	 * Changes the color of the main deck to yellow
 	 */
 	static JButton 			Yellow = new JButton(MainGameLoop.ColorsBackup[3]);
+	//Player select
 	
+	/**
+	 * Sets the amount of players to 1
+	 */
+	static JButton 			P1 = new JButton("1 Player");
+	/**
+	 * Sets the amount of players to 2
+	 */
+	static JButton 			P2 = new JButton("2 Players");
+	/**
+	 * Sets the amount of players to 3
+	 */
+	static JButton 			P3 = new JButton("3 Players");
+	/**
+	 * Sets the amount of players to 4
+	 */
+	static JButton 			P4 = new JButton("4 Players");
 	
 	
 	//SFX
@@ -135,6 +152,10 @@ public class MyFrame extends JFrame implements ActionListener
 		windowSettup();
 		this.setResizable(false);
 		panel.setLayout(					  null);
+		P1.addActionListener(                 this);
+		P2.addActionListener(                 this);
+		P3.addActionListener(                 this);
+		P4.addActionListener(                 this);
 		Play.addActionListener(			   	  this);
 		Start.addActionListener(			  this);
 		Settings.addActionListener(			  this);
@@ -142,17 +163,20 @@ public class MyFrame extends JFrame implements ActionListener
 		HowToPlay.addActionListener(          this);
 		FlipCurentHand.addActionListener(	  this);
 		FlipCurentHandBack.addActionListener( this);
-	
-		Start.setFocusPainted(false);
-		Start.setBackground(Color.white);
-		
-		Settings.setFocusPainted(false);
-		Settings.setBackground(Color.white);
-		
-		HowToPlay.setFocusPainted(false);
-		HowToPlay.setBackground(Color.white);
 		
 		SetupButton(Start);
+		SetupButton(Settings, 0, 480, 100, 20);
+		SetupButton(HowToPlay, 100, 480, 100, 20);
+		SetupButton(P1, 0,0);
+		SetupButton(P2, 0,60);
+		SetupButton(P3, 0,120);
+		SetupButton(P4, 0,180);
+		P1.setVisible(true);
+		P2.setVisible(true);
+		P3.setVisible(true);
+		P4.setVisible(true);
+		this.setVisible(true);
+		
 	}
 	
 	//Resets ************************************************************
@@ -169,6 +193,10 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.MainDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
+		panel.remove(P1);
+		panel.remove(P2);
+		panel.remove(P3);
+		panel.remove(P4);
 		SetupButton(Settings, 0, 480, 100, 20);
 		SetupButton(HowToPlay, 100, 480, 100, 20);
 		SetupButton(SkipTurn);
@@ -193,9 +221,9 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		panel.remove(Start);
 		SetupButton(SkipTurn);
-		SetupButton(Play,90,400);
-		SetupButton(FlipCurentHand,290,400);	
-		SetupButton(FlipCurentHandBack,0,400);
+		SetupButton(Play,				90,400);
+		SetupButton(FlipCurentHand,		290,400);	
+		SetupButton(FlipCurentHandBack,	0,400);
 
 		
 		Play.setFocusPainted(				false);
@@ -237,24 +265,28 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.add(Red);
 		Red.addActionListener(this);
 		Red.setFocusPainted(false);
+		Red.setBackground(Color.white);
 		
 		//Blue
 		Blue.setBounds(90,position,100,60);
 		panel.add(Blue);
 		Blue.addActionListener(this);
 		Blue.setFocusPainted(false);
+		Blue.setBackground(Color.white);
 		
 		//Green
 		Green.setBounds(190,position,100,60);
 		panel.add(Green);
 		Green.addActionListener(this);
 		Green.setFocusPainted(false);
+		Green.setBackground(Color.white);
 		
 		//Yellow
 		Yellow.setBounds(290,position,100,60);
 		panel.add(Yellow);
 		Yellow.addActionListener(this);
 		Yellow.setFocusPainted(false);
+		Yellow.setBackground(Color.white);
 		
 		Red.setVisible(true);
 		Blue.setVisible(true);
@@ -270,14 +302,15 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button)
 	{
-		
+		Button.setFocusPainted(false);
+		Button.setBackground(Color.white);
 		panel.setLayout(null);
 		Button.setBounds(190,400,100,60);
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
-		Play.setVisible(true);
+		Button.setVisible(true);
 	}
 	
 	/**
@@ -288,13 +321,15 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y)
 	{	
+		Button.setFocusPainted(false);
+		Button.setBackground(Color.white);
 		panel.setLayout(null);
 		Button.setBounds(x, y, 100,60);
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
-		Play.setVisible(true);
+		Button.setVisible(true);
 	}
 	
 	
@@ -308,13 +343,15 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
 	{	
+		Button.setFocusPainted(false);
+		Button.setBackground(Color.white);
 		panel.setLayout(null);
 		Button.setBounds(x, y, sizeX, sizeY);
 		panel.add(Button);
 		Button.setVisible(true);
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
-		Play.setVisible(true);
+		Button.setVisible(true);
 	}
 	
 	
@@ -325,8 +362,34 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		
 		PlayClick();
+		if(e.getSource().equals(P1))
+		{
+			ChangePlayers("1");
+			P1.setVisible(true);
+			this.setVisible(true);
+		}
+		if(e.getSource().equals(P2))
+		{
+			ChangePlayers("2");
+			P2.setVisible(true);
+			this.setVisible(true);
+		}
+		if(e.getSource().equals(P3))
+		{
+			ChangePlayers("3");
+			P3.setVisible(true);
+			this.setVisible(true);
+		}
+		if(e.getSource().equals(P4))
+		{
+			ChangePlayers("4");
+			P4.setVisible(true);
+			this.setVisible(true);
+		}
+				
+				
+				
 		if(e.getSource().equals(FlipCurentHand))
 		{
 			
@@ -338,6 +401,7 @@ public class MyFrame extends JFrame implements ActionListener
 			MainGameLoop.FlipCurentHandBack();
 			this.setVisible(true);
 		}
+		
 		if(canPlay == true)
 		{
 			if(e.getSource().equals(SkipTurn))
@@ -349,6 +413,7 @@ public class MyFrame extends JFrame implements ActionListener
 			}
 			if(e.getSource().equals(Start))
 			{
+				MainGameLoop.initGame();
 				MainGameLoop.Start();
 				Start.setVisible(true);
 				this.setVisible(true);
@@ -459,6 +524,23 @@ public class MyFrame extends JFrame implements ActionListener
 		}
 		this.setVisible(true);
 		Settings.setVisible(true);
+	}
+	
+	public void ChangePlayers(String input)
+	{
+		try 
+		{
+			String FilePath3 = System.getProperty("user.home");
+			FilePath3 = FilePath3 + "/Documents/Players.txt";
+			FileWriter myWriter3 = new FileWriter(FilePath3);
+		    myWriter3.write(input);
+		    myWriter3.close();
+		}       
+		catch (IOException e2) 
+		{
+		      System.out.println("An error occurred.");
+		      e2.printStackTrace();
+		}
 	}
 	
 	/**
