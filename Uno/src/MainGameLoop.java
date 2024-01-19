@@ -44,6 +44,8 @@ public class MainGameLoop
 	/**The colors of the cards*/
 	static String[] 				ColorsBackup;
 	
+	/**The acceptable colors for the cards*/
+	static String[] 				AcceptedColors = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan"};
 
 
 	/**Controlls the game
@@ -381,6 +383,38 @@ public class MainGameLoop
 		}
 	}
 	
+	public static void fixColors()
+	{
+		try 
+		{
+			String FilePath = System.getProperty("user.home");
+			FilePath = FilePath + "/Documents/Settings.txt";
+			 File myObj = new File(FilePath);
+		     Scanner myReader = new Scanner(myObj);
+			 myReader.close();   
+			 myObj = new File(FilePath);
+			 
+			 System.out.println("incorect colors were inputed");
+			 System.out.println("Refactoring colors...");
+			 if (myObj.delete())
+			 { 
+			     System.out.println("Deleted the file: " + myObj.getName());
+			     CreateFiles();
+			 } 
+			 else 
+			 {
+			     System.out.println("Failed to delete the file.");
+			 } 
+			 System.out.println("Game will not be launched...");
+			 System.out.println("Please restart the game...");
+			 System.exit(0);
+		} 
+		catch (FileNotFoundException e) 
+		{
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		}
+	}
 
 	/**Creates a ArrayList of cards and returns them
 	 * @return An ArrayList of cards 
@@ -405,13 +439,14 @@ public class MainGameLoop
 		    	 data = myReader.nextLine();
 		    	 System.out.println(data);
 		    	 colors = data.split(",");
-		    	
+		    
 		    	 if(colors.length > 4)
 		    	 {
 		    		 //Checks the colors and makes sure they are right
 		    		 myReader.close();   
 		    		 myObj = new File(FilePath);
-		    		 System.out.println("More that four colors were inputed...");
+		    		 
+		    		 System.out.println("incorect colors were inputed");
 		    		 System.out.println("Refactoring colors...");
 		    		 if (myObj.delete())
 		    		 { 
@@ -425,10 +460,29 @@ public class MainGameLoop
 		    		 System.out.println("Game will not be launched...");
 		    		 System.out.println("Please restart the game...");
 		    		 System.exit(0);
+		    			
+		    	 }
+		    	 else
+		    	 {
+		    		 String Color1 = colors[0];
+		    		 String Color2 = colors[0];
+		    		 String Color3 = colors[0];
+		    		 String Color4 = colors[0];
+		    		 
+		    		 if(Color1.equals(AcceptedColors[0]) ||Color1.equals(AcceptedColors[1])||Color1.equals(AcceptedColors[2])||Color1.equals(AcceptedColors[3]))
+		    		 {
+		    			
+		    		 }
+		    		 else
+		    		 {
+		    			myReader.close();   
+		    			fixColors();
+		    		 }
 		    	 }
 		    	 ColorsBackup = colors;
 		     }
-		     myReader.close();   
+		     myReader.close();  
+		  
 		   
 		} 
 		catch (FileNotFoundException e) 
