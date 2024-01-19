@@ -78,7 +78,7 @@ public class Card
 		
 		if(SpecialEffect.equals("S"))
 		{
-			
+			MainGameLoop.NextPlayer();
 		}
 		
 		if(SpecialEffect.equals("W"))

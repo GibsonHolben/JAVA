@@ -383,6 +383,9 @@ public class MainGameLoop
 		}
 	}
 	
+	/**
+	 * Fix the colors if they are incorect
+	 */
 	public static void fixColors()
 	{
 		try 
@@ -426,8 +429,7 @@ public class MainGameLoop
 		String data;
 		String FilePath = System.getProperty("user.home");
 		FilePath = FilePath + "/Documents/Settings.txt";
-		
-		
+
 		try 
 		{
 			//Reads the file
@@ -439,45 +441,37 @@ public class MainGameLoop
 		    	 data = myReader.nextLine();
 		    	 System.out.println(data);
 		    	 colors = data.split(",");
-		    
+		    	 
+		    	 
+		    	//Checks the colors and makes sure they are right
 		    	 if(colors.length > 4)
 		    	 {
-		    		 //Checks the colors and makes sure they are right
-		    		 myReader.close();   
-		    		 myObj = new File(FilePath);
-		    		 
-		    		 System.out.println("incorect colors were inputed");
-		    		 System.out.println("Refactoring colors...");
-		    		 if (myObj.delete())
-		    		 { 
-		    		     System.out.println("Deleted the file: " + myObj.getName());
-		    		     CreateFiles();
-		    		 } 
-		    		 else 
-		    		 {
-		    		     System.out.println("Failed to delete the file.");
-		    		 } 
-		    		 System.out.println("Game will not be launched...");
-		    		 System.out.println("Please restart the game...");
-		    		 System.exit(0);
+		    		
+		    		myReader.close();   
+		    		fixColors();
 		    			
 		    	 }
 		    	 else
 		    	 {
-		    		 String Color1 = colors[0];
-		    		 String Color2 = colors[0];
-		    		 String Color3 = colors[0];
-		    		 String Color4 = colors[0];
+		    		 for(int i = 0; i < colors.length; i++)
+		    		 {
+		    			if( colors[i].equals(AcceptedColors[0])||
+		    				colors[i].equals(AcceptedColors[1])||
+		    				colors[i].equals(AcceptedColors[2])||
+		    				colors[i].equals(AcceptedColors[3])||
+		    				colors[i].equals(AcceptedColors[4])||
+		    				colors[i].equals(AcceptedColors[5]))
+		    			{
+		    				System.out.println("Corect: " + colors[i]);
+		    			}
+		    			else
+		    			{
+		    				myReader.close();   
+			    			fixColors();
+		    			}
+		    		 }
+		    		
 		    		 
-		    		 if(Color1.equals(AcceptedColors[0]) ||Color1.equals(AcceptedColors[1])||Color1.equals(AcceptedColors[2])||Color1.equals(AcceptedColors[3]))
-		    		 {
-		    			
-		    		 }
-		    		 else
-		    		 {
-		    			myReader.close();   
-		    			fixColors();
-		    		 }
 		    	 }
 		    	 ColorsBackup = colors;
 		     }
@@ -596,7 +590,7 @@ public class MainGameLoop
 			       		" 	The aim of UNO is to be the first player to get rid of all of your cards so you'll want to avoid picking up cards as best you can.\r\n" + 
 			       		"\r\n" + 
 			       		"Cards:\r\n" + 
-			       		"	1-13 numbers\r\n" + 
+			       		"	0-13 numbers\r\n" + 
 			       		"	S: Skips the next player\r\n" + 
 			       		"	+2:  Forces the next player to draw 2 cards\r\n" + 
 			       		"	W: Lets you change the color to your choice\r\n" + 

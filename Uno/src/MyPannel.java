@@ -158,6 +158,9 @@ public class MyPannel extends JPanel
 		
 	}
 	
+	/**
+	 * Draws the image on the cards
+	 */
 	public void CardDecals()
 	{
 		g2D.setPaint(Color.white);
@@ -167,6 +170,9 @@ public class MyPannel extends JPanel
 		g2D.drawImage(img, -7, 20, null);
 	}
 	
+	/**
+	 * Shows the variables as a string
+	 */
 	public String toString()
 	{
 		String s = MainDeckColor.toString() + "," + MainDeckText + "," + PlayerDeckColor.toString()  + "," + PlayerDeckText;
