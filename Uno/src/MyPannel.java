@@ -139,7 +139,9 @@ public class MyPannel extends JPanel
 				g2D.fillRect(0, 0, 550, 550);
 				g2D.setPaint(Color.white);
 				g2D.setFont(new Font(null, Font.BOLD,100));
-				g2D.drawString("UNO", 130, 250);
+				g2D.drawString("UNO", 145, 250);
+				g2D.setFont(new Font(null, Font.BOLD,20));
+				g2D.drawString("By Gibson Holben", 170, 300);
 				doneOnce = true;
 			}
 		}
@@ -157,6 +159,8 @@ public class MyPannel extends JPanel
 		
 		
 	}
+	
+	
 	
 	/**
 	 * Draws the image on the cards

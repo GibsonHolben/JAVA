@@ -123,7 +123,7 @@ public class MainGameLoop
 		
 		//Reads the file
 		String FilePath = System.getProperty("user.home");
-		FilePath = FilePath + "/Documents/Players.txt";
+		FilePath = FilePath + "/Documents/Players.json";
 		File myObj = new File(FilePath);
 	    Scanner myReader;
 		try 
@@ -427,7 +427,7 @@ public class MainGameLoop
 		try 
 		{
 			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/Settings.txt";
+			FilePath = FilePath + "/Documents/Settings.json";
 			 File myObj = new File(FilePath);
 		     Scanner myReader = new Scanner(myObj);
 			 myReader.close();   
@@ -464,7 +464,7 @@ public class MainGameLoop
 		String[] colors = new String[4];
 		String data;
 		String FilePath = System.getProperty("user.home");
-		FilePath = FilePath + "/Documents/Settings.txt";
+		FilePath = FilePath + "/Documents/Settings.json";
 
 		try 
 		{
@@ -563,7 +563,7 @@ public class MainGameLoop
 	{
 		
 		String FilePath = System.getProperty("user.home");
-		FilePath = FilePath + "/Documents/Settings.txt";
+		FilePath = FilePath + "/Documents/Settings.json";
 		
 		
 
@@ -606,7 +606,7 @@ public class MainGameLoop
 		
 		
 		String FilePath2 = System.getProperty("user.home");
-		FilePath2 = FilePath2 + "/Documents/HTP.txt";
+		FilePath2 = FilePath2 + "/Documents/HTP.json";
 
 		try 
 		{
@@ -660,7 +660,7 @@ public class MainGameLoop
 		}
 		
 		String FilePath3 = System.getProperty("user.home");
-		FilePath3 = FilePath3 + "/Documents/Players.txt";
+		FilePath3 = FilePath3 + "/Documents/Players.json";
 		try 
 		{
 			File myObj3 = new File(FilePath3);

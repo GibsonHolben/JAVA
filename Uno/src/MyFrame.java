@@ -142,7 +142,7 @@ public class MyFrame extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 		
-		
+		this.setTitle("UNO");
 
 		//Sets the image 
 		ImageIcon img = new ImageIcon("src/Uno.png");
@@ -152,34 +152,43 @@ public class MyFrame extends JFrame implements ActionListener
 		windowSettup();
 		this.setResizable(false);
 		panel.setLayout(					  null);
-		P1.addActionListener(                 this);
-		P2.addActionListener(                 this);
-		P3.addActionListener(                 this);
-		P4.addActionListener(                 this);
-		Play.addActionListener(			   	  this);
-		Start.addActionListener(			  this);
-		Settings.addActionListener(			  this);
-		SkipTurn.addActionListener(			  this);
-		HowToPlay.addActionListener(          this);
-		FlipCurentHand.addActionListener(	  this);
-		FlipCurentHandBack.addActionListener( this);
 		
-		SetupButton(Start);
 		SetupButton(Settings, 0, 480, 100, 20);
 		SetupButton(HowToPlay, 100, 480, 100, 20);
-		SetupButton(P1, 0,0);
-		SetupButton(P2, 0,60);
-		SetupButton(P3, 0,120);
-		SetupButton(P4, 0,180);
+		SetupButton(P1, 2,400);
+		SetupButton(P2, 104,400);
+		SetupButton(Start, 206,400);
+		SetupButton(P3, 308,400);
+		SetupButton(P4, 410,400);
+		P1.repaint();
+		P2.repaint();
+		P3.repaint();
+		P4.repaint();
+		Start.repaint();
 		P1.setVisible(true);
 		P2.setVisible(true);
 		P3.setVisible(true);
 		P4.setVisible(true);
 		this.setVisible(true);
-		
+		setupPlayeBttonColors();
 	}
 	
 	//Resets ************************************************************
+	
+	/**
+	 * Resets the colors of the buttons
+	 * @param Button the button that is held down
+	 */
+	public void ResetPlayerButtons(JButton Button)
+	{
+		P1.setBackground(Color.white);
+		P2.setBackground(Color.white);
+		P3.setBackground(Color.white);
+		P4.setBackground(Color.white);
+		
+		Button.setBackground(Color.lightGray);
+	}
+	
 	/**
 	 * Redraws the JFrame (start of the game)
 	 * @param newColor the new color of tha card
@@ -205,6 +214,8 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(FlipCurentHandBack,0,400);
 		this.setVisible(true);
 	}
+	
+	
 	
 	/**
 	 * Redraws the JFrame 
@@ -302,6 +313,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button)
 	{
+		Button.addActionListener(this);
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -321,6 +333,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y)
 	{	
+		Button.addActionListener(this);
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -343,6 +356,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
 	{	
+		Button.addActionListener(this);
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -354,6 +368,28 @@ public class MyFrame extends JFrame implements ActionListener
 		Button.setVisible(true);
 	}
 	
+	/**
+	 * Sets up the player selector colors on startup
+	 */
+	public void setupPlayeBttonColors()
+	{
+		System.out.println(MainGameLoop.Players.size());
+		switch(MainGameLoop.Players.size())
+		{
+			case 1: ResetPlayerButtons(P1);
+			break;
+			case 2: ResetPlayerButtons(P2);
+			break;
+			case 3: ResetPlayerButtons(P3);
+			break;
+			case 4: ResetPlayerButtons(P4);
+			break;
+			default: ResetPlayerButtons(P1);
+			break;
+			
+		}
+	}
+	
 	
 	
 	//Actions **********************************************************************************
@@ -363,36 +399,41 @@ public class MyFrame extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		PlayClick();
+		
+		//Player select buttons
 		if(e.getSource().equals(P1))
 		{
 			ChangePlayers("1");
 			P1.setVisible(true);
 			this.setVisible(true);
+			ResetPlayerButtons(P1);
 		}
 		if(e.getSource().equals(P2))
 		{
 			ChangePlayers("2");
 			P2.setVisible(true);
 			this.setVisible(true);
+			ResetPlayerButtons(P2);
 		}
 		if(e.getSource().equals(P3))
 		{
 			ChangePlayers("3");
 			P3.setVisible(true);
 			this.setVisible(true);
+			ResetPlayerButtons(P3);
 		}
 		if(e.getSource().equals(P4))
 		{
 			ChangePlayers("4");
 			P4.setVisible(true);
 			this.setVisible(true);
+			ResetPlayerButtons(P4);
 		}
 				
 				
-				
+		//Flip through hand buttons
 		if(e.getSource().equals(FlipCurentHand))
 		{
-			
 			MainGameLoop.FlipCurentHand();
 			this.setVisible(true);
 		}
@@ -402,8 +443,10 @@ public class MyFrame extends JFrame implements ActionListener
 			this.setVisible(true);
 		}
 		
+		
 		if(canPlay == true)
 		{
+			//Action buttons
 			if(e.getSource().equals(SkipTurn))
 			{
 				MainGameLoop.CurentPlayer.Skip();
@@ -424,13 +467,11 @@ public class MyFrame extends JFrame implements ActionListener
 				this.setVisible(true);
 				Play.setVisible(true);
 			}
-			if(e.getSource().equals(Settings))
-			{
-				ShowSettings();
-			}
+			
 		}
 		else
 		{
+			//Wild card buttons
 			if(e.getSource().equals(Red))
 			{
 				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[0];
@@ -464,9 +505,14 @@ public class MyFrame extends JFrame implements ActionListener
 			}	
 		}
 		
+		//Help buttons
 		if(e.getSource().equals(HowToPlay))
 		{
 			ShowHowToPlay();
+		}
+		if(e.getSource().equals(Settings))
+		{
+			ShowSettings();
 		}
 		
 
@@ -480,11 +526,11 @@ public class MyFrame extends JFrame implements ActionListener
 		if (Desktop.isDesktopSupported()) 
 		{
 			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/Settings.txt";
+			FilePath = FilePath + "/Documents/Settings.json";
 		    try 
 		    {
 		    	System.out.println("Only four colors are used");
-		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Magenta, & Cyan");
+		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Orange, Magenta, & Cyan");
 				Desktop.getDesktop().edit(new File(FilePath));
 			} 
 		    catch (IOException e1) 
@@ -508,7 +554,7 @@ public class MyFrame extends JFrame implements ActionListener
 		if (Desktop.isDesktopSupported()) 
 		{
 			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/HTP.txt";
+			FilePath = FilePath + "/Documents/HTP.json";
 		    try 
 		    {
 				Desktop.getDesktop().edit(new File(FilePath));
@@ -531,7 +577,7 @@ public class MyFrame extends JFrame implements ActionListener
 		try 
 		{
 			String FilePath3 = System.getProperty("user.home");
-			FilePath3 = FilePath3 + "/Documents/Players.txt";
+			FilePath3 = FilePath3 + "/Documents/Players.json";
 			FileWriter myWriter3 = new FileWriter(FilePath3);
 		    myWriter3.write(input);
 		    myWriter3.close();
