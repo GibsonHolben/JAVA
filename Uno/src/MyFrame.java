@@ -115,13 +115,13 @@ public class MyFrame extends JFrame implements ActionListener
       
 	
 	/**
-	 * Creates the frame
+	 * Creates the frame and gets the buttons setup
 	 * @param newColor	the color of the main deck
 	 * @param newText	the number of the main deck
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 
-		//sets the sfx 
+		//setups the sfx 
 		File file = new File("src/ButttonClick.wav");
 		try 
 		{
@@ -142,17 +142,20 @@ public class MyFrame extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 		
-		this.setTitle("UNO");
+	
 
-		//Sets the image 
+		//Setups the top bar
 		ImageIcon img = new ImageIcon("src/Uno.png");
 		this.setIconImage(img.getImage());
+		this.setTitle("UNO");
 		
+		//Sets up the panel
 		panel = new MyPannel(newColor, newText);
 		windowSettup();
 		this.setResizable(false);
 		panel.setLayout(					  null);
 		
+		//Setups the buttons
 		SetupButton(Settings, 0, 480, 100, 20);
 		SetupButton(HowToPlay, 100, 480, 100, 20);
 		SetupButton(P1, 2,400);
@@ -160,6 +163,17 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(Start, 206,400);
 		SetupButton(P3, 308,400);
 		SetupButton(P4, 410,400);
+		P1.addActionListener(                 this);
+		P2.addActionListener(                 this);
+		P3.addActionListener(                 this);
+		P4.addActionListener(                 this);
+		Play.addActionListener(			   	  this);
+		Start.addActionListener(			  this);
+		Settings.addActionListener(			  this);
+		SkipTurn.addActionListener(			  this);
+		HowToPlay.addActionListener(          this);
+		FlipCurentHand.addActionListener(	  this);
+		FlipCurentHandBack.addActionListener( this);
 		P1.repaint();
 		P2.repaint();
 		P3.repaint();
@@ -313,7 +327,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button)
 	{
-		Button.addActionListener(this);
+		
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -323,6 +337,7 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
 		Button.setVisible(true);
+		
 	}
 	
 	/**
@@ -333,7 +348,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y)
 	{	
-		Button.addActionListener(this);
+	
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -356,7 +371,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
 	{	
-		Button.addActionListener(this);
+		
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
