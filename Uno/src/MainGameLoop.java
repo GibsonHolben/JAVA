@@ -46,7 +46,7 @@ public class MainGameLoop
 	
 	//The settings
 	/**Holds the settings Ex: card colors, wild card draw */
-	public static String[] 				Settings = new String[2];
+	public static String[] 				Settings = new String[4];
 
 
 	/**Controlls the game
@@ -94,6 +94,9 @@ public class MainGameLoop
 				case "Help":
 					System.out.println("ff, hand, p, view, test, cc, toS, Help");
 				break;
+				case "Settings": 
+					PrintSettings();
+					break;
 				default: System.out.println("Invalid input: Help for commands");
 			}
 		}
@@ -195,7 +198,7 @@ public class MainGameLoop
 	{
 		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
 		{
-			System.out.println("Wild cards played...");
+			System.out.println("Wild card played...");
 		}
 		else
 		{
@@ -246,6 +249,17 @@ public class MainGameLoop
 		MainDeck.Cards.add(MainDeck.Cards.get(0));
 		MainDeck.Cards.remove(0);
 		UpdateGraphicsFlip();
+	}
+	
+	/**
+	 * Prints the settings of the game
+	 */
+	public static void PrintSettings()
+	{
+		for(int i = 0; i < Settings.length; i++)
+		{
+			System.out.println(Settings[i]);
+		}
 	}
 	
 	
@@ -327,7 +341,7 @@ public class MainGameLoop
 	{
 		switch(MainDeck.Cards.get(0).ColorValue)
 		{
-			case "Red":	Frame = new MyFrame(	Color.red, 					Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Red":		Frame = new MyFrame(	Color.red, 					Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;			
 			case "Blue":	Frame = new MyFrame(Color.blue, 				Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
@@ -358,21 +372,21 @@ public class MainGameLoop
 		{
 			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
-				case "Red":	Frame.resetPlayerhand(Color.red, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Red":		Frame.resetPlayerhand(Color.red, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Blue":Frame.resetPlayerhand(Color.blue, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Blue":	Frame.resetPlayerhand(Color.blue, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Green":Frame.resetPlayerhand(Color.green,	 					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Green":	Frame.resetPlayerhand(Color.green,	 					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Yellow":Frame.resetPlayerhand(new Color(255, 239, 66), 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Yellow":	Frame.resetPlayerhand(new Color(255, 239, 66), 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Magenta":Frame.resetPlayerhand(Color.magenta,					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Magenta":	Frame.resetPlayerhand(Color.magenta,					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Cyan":Frame.resetPlayerhand(Color.cyan, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Cyan":	Frame.resetPlayerhand(Color.cyan, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Orange":Frame.resetPlayerhand(new  Color(252, 148, 20), Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Orange":	Frame.resetPlayerhand(new  Color(252, 148, 20), Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Black":Frame.resetPlayerhand(Color.gray, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Black":	Frame.resetPlayerhand(Color.gray, 						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 			}
 		}
@@ -381,21 +395,21 @@ public class MainGameLoop
 			
 			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
-				case "Red":	Frame.resetPlayerhand(Color.red, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Red":		Frame.resetPlayerhand(Color.red, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Blue":Frame.resetPlayerhand(Color.blue, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Blue":	Frame.resetPlayerhand(Color.blue, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Green":Frame.resetPlayerhand(Color.green, 				CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Green":	Frame.resetPlayerhand(Color.green, 				CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Yellow":Frame.resetPlayerhand(new Color(255, 239, 66), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Yellow":	Frame.resetPlayerhand(new Color(255, 239, 66), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Magenta":Frame.resetPlayerhand(Color.magenta, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Magenta":	Frame.resetPlayerhand(Color.magenta, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Cyan":Frame.resetPlayerhand(Color.cyan, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Cyan":	Frame.resetPlayerhand(Color.cyan, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;	
-				case "Orange":Frame.resetPlayerhand(new  Color(252, 148, 20), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
-				break;
-				case "Black":Frame.resetPlayerhand(Color.gray, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Orange":	Frame.resetPlayerhand(new  Color(252, 148, 20), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				break;	
+				case "Black":	Frame.resetPlayerhand(Color.gray, 					CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 			}
 		}
@@ -425,13 +439,13 @@ public class MainGameLoop
 	}
 	
 	/**
-	 * Fix the colors if they are incorect
+	 * Fix the Settings if they are incorect
 	 */
 	public static void fixColors()
 	{
 
-		 String FilePath = System.getProperty("user.home");
-		 FilePath = FilePath + "/Documents/Settings.json";
+		 
+		String FilePath = FileManager.Home + "/Settings.json";
 		 File myObj = new File(FilePath);
 		 myObj = new File(FilePath);
 		 
@@ -453,8 +467,7 @@ public class MainGameLoop
 	}
 
 	/**Creates a ArrayList of cards and returns them
-	 * @return An ArrayList of cards 
-	 * @return an array of cards */
+	 * @return An ArrayList of cards */
 	public static ArrayList<Card> CreateCards()
 	{
 		//Reads the users settings and sets the color array to the proper colors
@@ -482,6 +495,13 @@ public class MainGameLoop
 		    	 {
 		    		 myReader.close();   
 		    		 JOptionPane.showMessageDialog(Frame, "Invalid Settings... Wild card value must be less than 10... Refactoring...");
+		    		 fixColors();
+		    	 }
+		    	 
+		    	 if(Integer.parseInt(Settings[2]) > 99 || Integer.parseInt(Settings[2]) < 1)
+		    	 {
+		    		 myReader.close();   
+		    		 JOptionPane.showMessageDialog(Frame, "Invalid Settings... Card count must be between 1 and 100... Refactoring...");
 		    		 fixColors();
 		    	 }
 		    	 
@@ -536,7 +556,7 @@ public class MainGameLoop
 		//Creates the basic cards
 		for(int i = 0; i < colors.length; i++)
 		{
-			for(int j = 0; j < 11; j++)
+			for(int j = 0; j < Integer.parseInt(Settings[2]); j++)
 			{
 				Cards.add(new Card(j, colors[i]));
 			}
@@ -558,6 +578,8 @@ public class MainGameLoop
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
+		
+		//Creates wild + &SETTING& cards
 		Cards.add(new Card("Black", "W+" + Settings[1]));
 		Cards.add(new Card("Black", "W+" + Settings[1]));
 		Cards.add(new Card("Black", "W+" + Settings[1]));

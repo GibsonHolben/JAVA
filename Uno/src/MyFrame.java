@@ -311,39 +311,17 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		panel.setLayout(null);
 		
-		//Red
-		Red.setBounds(				0, position, 100, 60);
-		panel.add(					Red);
-		Red.addActionListener(		this);
-		Red.setFocusPainted(		false);
-		Red.setBackground(			Color.white);
-		
-		//Blue
-		Blue.setBounds(				90, position, 100, 60);
-		panel.add(					Blue);
-		Blue.addActionListener(		this);
-		Blue.setFocusPainted(		false);
-		Blue.setBackground(			Color.white);
-		
-		//Green
-		Green.setBounds(			190, position, 100, 60);
-		panel.add(					Green);
-		Green.addActionListener(	this);
-		Green.setFocusPainted(		false);
-		Green.setBackground(		Color.white);
-		
-		//Yellow
-		Yellow.setBounds(			290, position, 100, 60);
-		panel.add(Yellow);
-		Yellow.addActionListener(	this);
-		Yellow.setFocusPainted(		false);
-		Yellow.setBackground(		Color.white);
-		
-		Red.setVisible(				true);
-		Blue.setVisible(			true);
-		Green.setVisible(			true);
-		Yellow.setVisible(			true);
-		this.setVisible(			true);
+		JButton[] ColorB = {Red, Blue, Green, Yellow};
+		for(int i = 0; i < ColorB.length; i++)
+		{
+			ColorB[i].setBounds(				(i * 100) +  (i * 4), position, 100, 60);
+			panel.add(					ColorB[i]);
+			ColorB[i].addActionListener(		this);
+			ColorB[i].setFocusPainted(		false);
+			ColorB[i].setBackground(			Color.white);
+			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
+			resetFonts(ColorB[i], 15);
+		}
 	}
 	
 	
@@ -439,7 +417,11 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		PlayClick();
+		if(MainGameLoop.Settings[3].equals("true"))
+		{
+			PlayClick();
+		}
+		
 		
 		//Player select buttons
 		if(e.getSource().equals(P1))
@@ -613,6 +595,10 @@ public class MyFrame extends JFrame implements ActionListener
 		Settings.setVisible(true);
 	}
 	
+	/**
+	 * Changes the amount of players
+	 * @param input the new amount of players
+	 */
 	public void ChangePlayers(String input)
 	{
 		try 
@@ -656,7 +642,9 @@ public class MyFrame extends JFrame implements ActionListener
 
 	}
 	
-	
+	/**
+	 * Returns the object as a string
+	 */
 	public String toString()
 	{
 		String s = canPlay + "," + panel;

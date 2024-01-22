@@ -1,31 +1,39 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileManager 
 {
+	/**A path to the uno game directory*/
 	public static String Home;
 	
+	/**The default settings of the game*/
+	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true";
+	
+	/**
+	 * Creates all the files for the game
+	 */
 	public static void CreateFiles()
 	{
-		
+		//Setup variables
 		Home = System.getProperty("user.home")+ "/Documents/Uno";
 		File Uno = new File(Home);
+		Path path = Paths.get(Home);
 		
+		//Create the files if needed
+		if(Files.notExists(path))
+		{
+			CreateDir(Uno);
+		}
+		else
+		{
+			System.out.println("Directory exists: " + Uno.toString());
+		}
 		
-		boolean file = Uno.mkdir();  
-		if(file)
-		{  
-	        System.out.println("Folder is created successfully");  
-	    }
-	    else
-	    {  
-	       System.out.println("File already exists/an error has occored");  
-	    }      
 		String FilePath = Home + "/Settings.json";
-		
-		
-
 		try 
 		{
 			File myObj = new File(FilePath);
@@ -37,7 +45,7 @@ public class FileManager
 		       try
 		       {
 		    	   FileWriter myWriter = new FileWriter(FilePath);
-			       myWriter.write("Red,Blue,Green,Yellow/4");
+			       myWriter.write(DefaultSettings);
 			       myWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }
@@ -147,5 +155,22 @@ public class FileManager
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Creates the directory
+	 * @param File the file that is created
+	 */
+	static void CreateDir(File File)
+	{
+		boolean file = File.mkdir();  
+		if(file)
+		{  
+	        System.out.println("Folder is created successfully");  
+	    }
+	    else
+	    {  
+	       System.out.println("File already exists/an error has occored");  
+	    }      
 	}
 }
