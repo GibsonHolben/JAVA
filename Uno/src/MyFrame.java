@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.URL;
+
 import  sun.audio.*;
 /**
  * @author CTEHolbenG46
@@ -124,6 +126,7 @@ public class MyFrame extends JFrame implements ActionListener
 	MyFrame(Color newColor, String newText)
 	{ 
 		//setups the sfx 
+
 		File file = new File("src/ButttonClick.wav");
 		try 
 		{
@@ -147,7 +150,8 @@ public class MyFrame extends JFrame implements ActionListener
 	
 
 		//Setups the top bar
-		ImageIcon img = new ImageIcon("src/Uno.png");
+		URL url = MyPannel.class.getResource("Uno.png");
+		ImageIcon img = new ImageIcon(url);
 		this.setIconImage(img.getImage());
 		this.setTitle("UNO");
 		
@@ -644,8 +648,12 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void PlayClick()
 	{
-		clip.start();
-		clip.setMicrosecondPosition(0);
+		if(clip != null)
+		{
+			clip.start();
+			clip.setMicrosecondPosition(0);
+		}
+
 	}
 	
 	

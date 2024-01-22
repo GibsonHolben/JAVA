@@ -36,4 +36,7 @@
 <fullyQualifiedTypeName name="javax.sound.sampled.AudioSystem"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.AudioInputStream"/>
 <fullyQualifiedTypeName name="javax.sound.sampled.Clip"/>
+<fullyQualifiedTypeName name="javax.swing.border.LineBorder"/>
+<fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
 </qualifiedTypeNameHistroy>

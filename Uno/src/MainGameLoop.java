@@ -180,7 +180,7 @@ public class MainGameLoop
 		while(MainDeck.Cards.get(0).ColorValue.equals("Black"))
 		{
 			//Flips the deck if they are on top
-			System.out.println("Wild card was on top... \n fliping the deck...");
+			System.out.println("Wild card was on top... \nfliping the deck...");
 			MainDeck.Cards.add(MainDeck.Cards.get(0));
 			MainDeck.Cards.remove(0);
 			
@@ -603,10 +603,6 @@ public class MainGameLoop
 				      e.printStackTrace();
 			   }   
 		    } 
-		    else 
-		    {
-		      System.out.println("File already exists.");
-		    }
 		}       
 		catch (IOException e) 
 		{
@@ -660,10 +656,7 @@ public class MainGameLoop
 				      e.printStackTrace();
 			   }   
 		    } 
-		    else 
-		    {
-		      System.out.println("File already exists.");
-		    }
+
 		}       
 		catch (IOException e) 
 		{
@@ -699,10 +692,6 @@ public class MainGameLoop
 				      e.printStackTrace();
 			   }   
 		    } 
-		    else 
-		    {
-		      System.out.println("File already exists.");
-		    }
 		}       
 		catch (IOException e) 
 		{

@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -77,7 +78,8 @@ public class MyPannel extends JPanel
 		{
 			if(doneOnce)
 			{
-				Image img = new ImageIcon("src/Wood.jpg").getImage();
+				URL url = MyPannel.class.getResource("Wood.jpg");
+				Image img = new ImageIcon(url).getImage();
 				g2D.drawImage(img, 0, 0, null);
 				g2D.setStroke(new BasicStroke(10));
 				g2D.setPaint(Color.black);
@@ -149,8 +151,10 @@ public class MyPannel extends JPanel
 		}
 		else
 		{
-			Image img = new ImageIcon("src/Party.jpg").getImage();
-			g2D.drawImage(img, 0, 0, null);
+			URL url = MyPannel.class.getResource("Party.jpg");
+			Image img = new ImageIcon(url).getImage();
+
+			g2D.drawImage(img , 0, 0, null);
 			
 			g2D.setPaint(Color.black);
 			g2D.setFont(new Font(null, Font.BOLD,40));
