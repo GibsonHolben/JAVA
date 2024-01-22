@@ -172,11 +172,6 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(Start, 206, 400);
 		SetupButton(P3, 308,400);
 		SetupButton(P4, 410,400);
-		Start.repaint();
-		P1.repaint();
-		P2.repaint();
-		P3.repaint();
-		P4.repaint();
 		P1.setVisible(true);
 		P2.setVisible(true);
 		P3.setVisible(true);
@@ -211,7 +206,7 @@ public class MyFrame extends JFrame implements ActionListener
 		SetupButton(FlipCurentHandBack,0,400);
 		this.setVisible(true);
 	}
-
+	
 	/**
 	 * Redraws the JFrame 
 	 * @param newColor the new color of tha card
@@ -257,21 +252,6 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setAlwaysOnTop(true);
 		this.setName("UNO");
 	}
-	
-	/**
-	 * Resets the colors of the buttons
-	 * @param Button the button that is held down
-	 */
-	public void ResetPlayerButtons(JButton Button)
-	{
-		P1.setBackground(Color.white);
-		P2.setBackground(Color.white);
-		P3.setBackground(Color.white);
-		P4.setBackground(Color.white);
-		
-		Button.setBackground(Color.lightGray);
-	}
-			
 	
 	/**
 	 * Sets up the wild card buttons
@@ -389,28 +369,24 @@ public class MyFrame extends JFrame implements ActionListener
 			ChangePlayers("1");
 			P1.setVisible(true);
 			this.setVisible(true);
-			ResetPlayerButtons(P1);
 		}
 		if(e.getSource().equals(P2))
 		{
 			ChangePlayers("2");
 			P2.setVisible(true);
 			this.setVisible(true);
-			ResetPlayerButtons(P2);
 		}
 		if(e.getSource().equals(P3))
 		{
 			ChangePlayers("3");
 			P3.setVisible(true);
 			this.setVisible(true);
-			ResetPlayerButtons(P3);
 		}
 		if(e.getSource().equals(P4))
 		{
 			ChangePlayers("4");
 			P4.setVisible(true);
 			this.setVisible(true);
-			ResetPlayerButtons(P4);
 		}
 				
 				

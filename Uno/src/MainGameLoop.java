@@ -110,7 +110,6 @@ public class MainGameLoop
 	/**Starts the game*/
 	public static void initGame()
 	{
-		
 		//Checks if the players are greater that 0
 		if(Players.size() > 0)
 		{
