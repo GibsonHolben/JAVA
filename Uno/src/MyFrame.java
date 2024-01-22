@@ -157,7 +157,7 @@ public class MyFrame extends JFrame implements ActionListener
 		P3.addActionListener(                 this);
 		P4.addActionListener(                 this);
 		Play.addActionListener(			   	  this);
-		Start.addActionListener(			  this);
+		//Start.addActionListener(			  this);
 		Settings.addActionListener(			  this);
 		SkipTurn.addActionListener(			  this);
 		HowToPlay.addActionListener(          this);
@@ -438,10 +438,9 @@ public class MyFrame extends JFrame implements ActionListener
 			}
 			if(e.getSource().equals(Start))
 			{
+				System.out.println("Clicking...");
 				MainGameLoop.initGame();
 				MainGameLoop.Start();
-				Start.setVisible(true);
-				this.setVisible(true);
 			}
 			if(e.getSource().equals(Play))
 			{
