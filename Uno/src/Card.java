@@ -1,7 +1,8 @@
 
 /**
+ * A standard UNO card, used when determining what to do when the card is played
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.1.4
  */
 public class Card 
 {	
@@ -9,7 +10,8 @@ public class Card
 	 * Default = 0*/
 	public int 		numberValue = 0;
 	
-	/**The color of the card*/
+	/**The color of the card
+	 * Defualt = Red*/
 	public String 	ColorValue = "Red";
 	
 	/**

@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
 /**
+ * A player in the game, contains the basic functions for playing the game
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 1.4.2
  */
 public class Player
 {
-	/**An arraylist of cards*/
+	/**An ArrayList of cards*/
 	public Deck 	MyDeck;
 	
 	/**
@@ -35,23 +36,19 @@ public class Player
 	}
 	
 	/**
-	 * Players the curent active card and goes to the next player
+	 * Players the current active card and goes to the next player
 	 */
 	public void play()
 	{
 		//Gets the special effect of the card
-		String sf = MyDeck.Cards.get(0).SpecialEffect;
+		String SpecialEffect = MyDeck.Cards.get(0).SpecialEffect;
 		
 		//Checks if the card is playable
-		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
-				MyDeck.Cards.get(0).ColorValue.equals("Black"))
-				
-				
+		if(cardMatch())	
 		{
 			
 			//Sets the main deck color if not a wild card
-			if(sf != "W" && sf != "W+4")
+			if(SpecialEffect != "W" && SpecialEffect != "W+4")
 			{
 				MainGameLoop.CurentColor = MyDeck.Cards.get(0).ColorValue;
 			}
@@ -78,7 +75,7 @@ public class Player
 			}
 			
 			//Runs next player becuase main game loop doesnt run it if its a wild card
-			if(!sf.equals("W+" + MainGameLoop.Settings[1]) &&!sf.equals("W"))
+			if(!SpecialEffect.equals("W+" + MainGameLoop.Settings[1]) &&!SpecialEffect.equals("W"))
 			{
 				MainGameLoop.NextPlayer();
 			}
@@ -97,12 +94,29 @@ public class Player
 			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(MainGameLoop.MainDeck.Cards.size() - 1));
 			MainGameLoop.MainDeck.Cards.remove(MainGameLoop.MainDeck.Cards.size() - 1);
 		}
-		
+	}
+	
+	/**
+	 * Determines weather the card in the active players hand match the top card in the main deck
+	 * @return true if the cards match, false if they do not
+	 */
+	public boolean cardMatch()
+	{
+		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
+				MyDeck.Cards.get(0).ColorValue.equals("Black"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	
 	/**
-	 * Prints the variables on the object
+	 * Returns the object as a string
 	 */
 	public String toString()
 	{

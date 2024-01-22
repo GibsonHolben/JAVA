@@ -5,9 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Used to create the Settings, Players, and instructions
+ * @author CTEHolbenG46
+ * @version 0.0.6
+ *
+ */
 public class FileManager 
 {
-	/**A path to the uno game directory*/
+	/**A path to the UNO game directory*/
 	public static String Home;
 	
 	/**The default settings of the game*/

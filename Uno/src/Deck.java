@@ -2,19 +2,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * A deck of cards and can be shuffled and printed
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.0.6
  * 
  * A deck that can hold cards
  */
 public class Deck 
 {
-	/**An arraylist of cards*/
+	/**An ArrayList of cards*/
 	public ArrayList<Card> Cards = new ArrayList<Card>();
 	
 	/**
 	 * Creates a Deck
-	 * @param newCards an arraylist of cards
+	 * @param newCards an ArrayList of cards
 	 */
 	Deck(ArrayList<Card> newCards)
 	{

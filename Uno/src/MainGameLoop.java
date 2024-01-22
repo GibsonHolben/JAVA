@@ -2,20 +2,19 @@
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import javax.swing.*; 
 
 /**
+ * Controls the whole game. including the card creation, player creation, and update loop
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.6.2
  */
 public class MainGameLoop
 {
 	//*********************FIX THE INSTRUCTONS
 	
-	/**The curent color of the game
+	/**The current color of the main deck
 	 * Default = blank*/
 	public static String 			CurentColor = "";
 	
@@ -44,13 +43,13 @@ public class MainGameLoop
 	/**The acceptable colors for the cards*/
 	static String[] 				AcceptedColors = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
 	
-	//The settings
-	/**Holds the settings Ex: card colors, wild card draw */
-	public static String[] 				Settings = new String[4];
+	/**Holds the settings Example: card colors, wild card draw */
+	public static String[] 			Settings = new String[4];
 
 
-	/**Controlls the game
+	/**Controls the game
 	 * @param args Unused*/
+	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
 		//Creates the players
@@ -64,6 +63,7 @@ public class MainGameLoop
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
 			String input = sc.nextLine();
+			
 			
 			//Commands
 			switch(input)
@@ -99,11 +99,13 @@ public class MainGameLoop
 					break;
 				default: System.out.println("Invalid input: Help for commands");
 			}
+			
 		}
 		
 		//Shows who wins
 		while(isRunning == false)
 		{
+			
 			Frame.hideButtons();
 			Frame.repaint();
 		

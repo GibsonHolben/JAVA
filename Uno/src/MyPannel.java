@@ -1,20 +1,19 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.net.URL;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
+ * Used for drawing the low level graphics and controlling the overall look of the game
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 5.2.4
  */
+
+@SuppressWarnings("serial")
 public class MyPannel extends JPanel 
 {
 	/**
-	 * The graphics handeler
+	 * The graphics handler
 	 */
 	Graphics2D 		g2D;
 	
@@ -52,7 +51,7 @@ public class MyPannel extends JPanel
 	
 	
 	/**
-	 * Creates a Panel with 2 cards
+	 * Creates a Panel
 	 * @param newColor	the color of the main deck
 	 * @param newText	the number of the main deck
 	 */
@@ -66,8 +65,8 @@ public class MyPannel extends JPanel
 	
 	
 	/**
-	 * Paints the graphics on the screen
-	 * @param g the graphics 
+	 * Paints the games graphics on the screen
+	 * @param g the graphics component
 	 */
 	public void paintComponent(Graphics g)
 	{
@@ -180,7 +179,7 @@ public class MyPannel extends JPanel
 	}
 	
 	/**
-	 * Shows the variables as a string
+	 * returns the object as a string
 	 */
 	public String toString()
 	{

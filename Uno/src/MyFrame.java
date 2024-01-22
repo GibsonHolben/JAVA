@@ -7,18 +7,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
 
-import  sun.audio.*;
 /**
+ * Used for the high level graphics such as the Buttons and holding all the button actions
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 13.3.7
  */
+@SuppressWarnings("serial")
 public class MyFrame extends JFrame implements ActionListener
 {
 	/**
@@ -617,7 +617,7 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Hides the buttons
+	 * Hides the buttons on game end
 	 */
 	public void hideButtons()
 	{
