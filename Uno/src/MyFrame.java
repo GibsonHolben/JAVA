@@ -164,14 +164,13 @@ public class MyFrame extends JFrame implements ActionListener
 		FlipCurentHand.addActionListener(	  this);
 		FlipCurentHandBack.addActionListener( this);
 		
-		
+		SetupButton(Start);
 		SetupButton(Settings, 0, 480, 100, 20);
 		SetupButton(HowToPlay, 100, 480, 100, 20);
-		SetupButton(P1, 2,400);
-		SetupButton(P2, 104,400);
-		SetupButton(Start, 206, 400);
-		SetupButton(P3, 308,400);
-		SetupButton(P4, 410,400);
+		SetupButton(P1, 0,0);
+		SetupButton(P2, 0,60);
+		SetupButton(P3, 0,120);
+		SetupButton(P4, 0,180);
 		P1.setVisible(true);
 		P2.setVisible(true);
 		P3.setVisible(true);
@@ -308,10 +307,10 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		Button.setBounds(190,400,100,60);
 		panel.add(Button);
+		Button.setVisible(true);
 		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
 		Button.setVisible(true);
-		panel.setVisible(true);
 	}
 	
 	/**
@@ -325,12 +324,12 @@ public class MyFrame extends JFrame implements ActionListener
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
-		this.setVisible(true);
-		Button.setBounds(x, y ,100,60);
+		Button.setBounds(x, y, 100,60);
 		panel.add(Button);
-		Button.addActionListener(this);
-		Button.setFocusPainted(false);
-		Button.setBackground(Color.white);
+		Button.setVisible(true);
+		this.setVisible(true);
+		panel.setComponentZOrder(Button, 0);
+		Button.setVisible(true);
 	}
 	
 	
