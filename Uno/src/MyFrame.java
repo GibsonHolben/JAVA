@@ -566,8 +566,8 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		if (Desktop.isDesktopSupported()) 
 		{
-			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/Settings.json";
+		
+			String FilePath = FileManager.Home + "/Settings.json";
 		    try 
 		    {
 		    	System.out.println("Only four colors are used");
@@ -594,8 +594,8 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		if (Desktop.isDesktopSupported()) 
 		{
-			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/HTP.json";
+			
+			String FilePath  = FileManager.Home + "/HTP.json";
 		    try 
 		    {
 				Desktop.getDesktop().edit(new File(FilePath));
@@ -617,8 +617,8 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String FilePath3 = System.getProperty("user.home");
-			FilePath3 = FilePath3 + "/Documents/Players.json";
+		
+			String FilePath3  = FileManager.Home + "/Players.json";
 			FileWriter myWriter3 = new FileWriter(FilePath3);
 		    myWriter3.write(input);
 		    myWriter3.close();
