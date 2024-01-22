@@ -158,6 +158,7 @@ public class MyPannel extends JPanel
 		
 	}
 	
+	
 	/**
 	 * Draws the image on the cards
 	 */
