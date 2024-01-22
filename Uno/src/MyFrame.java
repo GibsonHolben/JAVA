@@ -6,6 +6,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,10 +32,10 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
 	 */
-	static JButton 			FlipCurentHandBack = new JButton("Flip <");
+	static JButton 			FlipCurentHandBack = new JButton("< Flip");
 	
 	/**
-	 * A JButton that calls flip
+	 * A JButton that skips the active players turn
 	 */
 	static JButton 			SkipTurn = new JButton("Skip");
 	
@@ -45,7 +47,7 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls play on the curent player
 	 */
-	static JButton 			Play = new JButton("Play");
+	static JButton 			Play = new JButton("(Play)");
 	
 	/**
 	 * A JButton that calls start
@@ -156,13 +158,13 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(					  null);
 		
 		//Setups the buttons
-		SetupButton(Settings, 0, 480, 100, 20);
-		SetupButton(HowToPlay, 100, 480, 100, 20);
-		SetupButton(P1, 2,400);
-		SetupButton(P2, 104,400);
-		SetupButton(Start, 206,400);
-		SetupButton(P3, 308,400);
-		SetupButton(P4, 410,400);
+		SetupButton(Settings, 	0, 480, 100, 20);
+		SetupButton(HowToPlay, 	100, 480, 100, 20);
+		SetupButton(P1, 		2,400, Color.black);
+		SetupButton(P2, 		104,400, Color.black);
+		SetupButton(Start,		206,400, Color.black);
+		SetupButton(P3, 		308,400, Color.black);
+		SetupButton(P4, 		410,400, Color.black);
 		P1.addActionListener(                 this);
 		P2.addActionListener(                 this);
 		P3.addActionListener(                 this);
@@ -204,6 +206,16 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	/**
+	 * Sets the font on a jbutton
+	 * @param Jb the button that the font is changed on
+	 * @param fontsize the new size of the font
+	 */
+	public void resetFonts(JButton Jb, int fontsize)
+	{
+		Jb.setFont(new Font("Arial", Font.BOLD, fontsize));
+	}
+	
+	/**
 	 * Redraws the JFrame (start of the game)
 	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
@@ -220,12 +232,17 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.remove(P2);
 		panel.remove(P3);
 		panel.remove(P4);
-		SetupButton(Settings, 0, 480, 100, 20);
-		SetupButton(HowToPlay, 100, 480, 100, 20);
-		SetupButton(SkipTurn);
-		SetupButton(Play,90,400);
-		SetupButton(FlipCurentHand,290,400);
-		SetupButton(FlipCurentHandBack,0,400);
+		SetupButton(Settings, 			0, 480, 100, 20);
+		SetupButton(HowToPlay, 			104, 480, 100, 20);
+		SetupButton(SkipTurn, 			104, 400, Color.black);
+		SetupButton(Play,				395, 300, 100, 200);
+		SetupButton(FlipCurentHand,		294,400, Color.black);
+		SetupButton(FlipCurentHandBack,	0,400, Color.black);
+		
+		Play.setOpaque(false);
+		Play.setContentAreaFilled(false);
+		Play.setBorderPainted(false);
+		resetFonts(Play, 10);
 		this.setVisible(true);
 	}
 	
@@ -245,10 +262,11 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.PlayerDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		SetupButton(SkipTurn);
-		SetupButton(Play,				90,400);
-		SetupButton(FlipCurentHand,		290,400);	
-		SetupButton(FlipCurentHandBack,	0,400);
+		SetupButton(Play,				395, 300, 100, 200);
+		SetupButton(FlipCurentHandBack,	0,400, Color.black);
+		SetupButton(SkipTurn, 			104, 400, Color.black);
+		SetupButton(FlipCurentHand, 	208,400, Color.black);
+
 
 		
 		Play.setFocusPainted(				false);
@@ -259,6 +277,10 @@ public class MyFrame extends JFrame implements ActionListener
 		SkipTurn.setBackground(				Color.white);
 		FlipCurentHand.setBackground(		Color.white);
 		FlipCurentHandBack.setBackground(	Color.white);
+		
+		Play.setOpaque(false);
+		Play.setContentAreaFilled(false);
+		Play.setBorderPainted(false);
 		this.setVisible(true);
 	}
 	
@@ -286,38 +308,38 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(null);
 		
 		//Red
-		Red.setBounds(0,position,100,60);
-		panel.add(Red);
-		Red.addActionListener(this);
-		Red.setFocusPainted(false);
-		Red.setBackground(Color.white);
+		Red.setBounds(				0, position, 100, 60);
+		panel.add(					Red);
+		Red.addActionListener(		this);
+		Red.setFocusPainted(		false);
+		Red.setBackground(			Color.white);
 		
 		//Blue
-		Blue.setBounds(90,position,100,60);
-		panel.add(Blue);
-		Blue.addActionListener(this);
-		Blue.setFocusPainted(false);
-		Blue.setBackground(Color.white);
+		Blue.setBounds(				90, position, 100, 60);
+		panel.add(					Blue);
+		Blue.addActionListener(		this);
+		Blue.setFocusPainted(		false);
+		Blue.setBackground(			Color.white);
 		
 		//Green
-		Green.setBounds(190,position,100,60);
-		panel.add(Green);
-		Green.addActionListener(this);
-		Green.setFocusPainted(false);
-		Green.setBackground(Color.white);
+		Green.setBounds(			190, position, 100, 60);
+		panel.add(					Green);
+		Green.addActionListener(	this);
+		Green.setFocusPainted(		false);
+		Green.setBackground(		Color.white);
 		
 		//Yellow
-		Yellow.setBounds(290,position,100,60);
+		Yellow.setBounds(			290, position, 100, 60);
 		panel.add(Yellow);
-		Yellow.addActionListener(this);
-		Yellow.setFocusPainted(false);
-		Yellow.setBackground(Color.white);
+		Yellow.addActionListener(	this);
+		Yellow.setFocusPainted(		false);
+		Yellow.setBackground(		Color.white);
 		
-		Red.setVisible(true);
-		Blue.setVisible(true);
-		Green.setVisible(true);
-		Yellow.setVisible(true);
-		this.setVisible(true);
+		Red.setVisible(				true);
+		Blue.setVisible(			true);
+		Green.setVisible(			true);
+		Yellow.setVisible(			true);
+		this.setVisible(			true);
 	}
 	
 	
@@ -327,17 +349,18 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button)
 	{
+		resetFonts(Button, 15);
 		
+
+		Button.setBounds(190,400,100,60);
+		Button.setBorder(new LineBorder(Color.BLACK, 2));
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
+		Button.setVisible(true);
 		panel.setLayout(null);
-		Button.setBounds(190,400,100,60);
 		panel.add(Button);
-		Button.setVisible(true);
-		this.setVisible(true);
 		panel.setComponentZOrder(Button, 0);
-		Button.setVisible(true);
-		
+		this.setVisible(true);
 	}
 	
 	/**
@@ -346,9 +369,10 @@ public class MyFrame extends JFrame implements ActionListener
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
 	 */
-	public void SetupButton(JButton Button, int x, int y)
+	public void SetupButton(JButton Button, int x, int y, Color BorderColor)
 	{	
-	
+		resetFonts(Button, 15);
+		Button.setBorder(new LineBorder(BorderColor, 2));
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -362,7 +386,7 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	
 	/**
-	 * Sets up the button with x and y cordenants and with  a size
+	 * Sets up the button with x and y cordenants and with a size
 	 * @param Button the button to setup
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
@@ -371,7 +395,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
 	{	
-		
+		resetFonts(Button, 15);
+		Button.setBorder(new LineBorder(Color.BLACK, 2));
 		Button.setFocusPainted(false);
 		Button.setBackground(Color.white);
 		panel.setLayout(null);
@@ -384,7 +409,7 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Sets up the player selector colors on startup
+	 * Sets up the player selector colors on startup based on what was saved from last use
 	 */
 	public void setupPlayeBttonColors()
 	{
@@ -401,15 +426,15 @@ public class MyFrame extends JFrame implements ActionListener
 			break;
 			default: ResetPlayerButtons(P1);
 			break;
-			
 		}
 	}
 	
 	
-	
 	//Actions **********************************************************************************
+	
 	/**
-	 * Is called the button is clicked
+	 * Called when any button is clicked
+	 * @param e used to find the source of the call
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
@@ -611,10 +636,10 @@ public class MyFrame extends JFrame implements ActionListener
 	{
 		SetupButton(Settings, -1111, 480, 100, 20);
 		SetupButton(HowToPlay,-1111, 480, 100, 20);
-		SetupButton(SkipTurn, -1111, 0);
-		SetupButton(Play,-1111,400);
-		SetupButton(FlipCurentHand,-1111,400);
-		SetupButton(FlipCurentHandBack,-1111,400);
+		SetupButton(SkipTurn, -1111, 0, Color.black);
+		SetupButton(Play, -1111, 400, Color.black);
+		SetupButton(FlipCurentHand,-1111,400, Color.black);
+		SetupButton(FlipCurentHandBack, -1111,400, Color.black);
 	}
 	
 	/**

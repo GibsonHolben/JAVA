@@ -633,7 +633,9 @@ public class MainGameLoop
 			       		"	S: Skips the next player\r\n" + 
 			       		"	+2:  Forces the next player to draw 2 cards\r\n" + 
 			       		"	W: Lets you change the color to your choice\r\n" + 
-			       		"	W+4 Lets you change the color to your choice and forces the next player to draw 4 cards");
+			       		"	W+4 Lets you change the color to your choice and forces the next player to draw 4 cards\\r\\n" + 
+			       		"How to use interface: \r\n" + 
+			       		"	To play this UNO game, simple select you desired py		");
 			       myWriter2.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }

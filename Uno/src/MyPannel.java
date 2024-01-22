@@ -88,7 +88,7 @@ public class MyPannel extends JPanel
 				g2D.fillRoundRect(0, 0, 100, 200, 20,20);
 				
 				
-				//Main deck tet
+				//Main deck draw
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font(null, Font.BOLD,40));
 				g2D.drawString(MainDeckText, 0, 47);
@@ -107,7 +107,7 @@ public class MyPannel extends JPanel
 				
 				CardDecals();
 
-				//Player card test
+				//Player card draw
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font(null, Font.BOLD,40));
 				g2D.drawString(PlayerDeckText, 398, 352);
@@ -128,6 +128,8 @@ public class MyPannel extends JPanel
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 110, 20);
 				
 				g2D.setFont(new Font(null, Font.BOLD,40));
+				
+				
 				
 			}
 			
