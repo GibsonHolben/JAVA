@@ -69,11 +69,11 @@ public class Card
 			MainGameLoop.Players.get(1).DrawCard(2);
 		}
 		
-		if(SpecialEffect.equals("W+4"))
+		if(SpecialEffect.equals("W+" + MainGameLoop.Settings[1]))
 		{
 			MainGameLoop.Frame.canPlay = false;
 			MainGameLoop.Frame.SettupColorButtons(300);
-			MainGameLoop.Players.get(1).DrawCard(4);
+			MainGameLoop.Players.get(1).DrawCard(Integer.parseInt(MainGameLoop.Settings[1]));
 		}
 		
 		if(SpecialEffect.equals("S"))

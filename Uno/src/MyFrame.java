@@ -349,18 +349,16 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button)
 	{
-		resetFonts(Button, 15);
-		
-
-		Button.setBounds(190,400,100,60);
-		Button.setBorder(new LineBorder(Color.BLACK, 2));
-		Button.setFocusPainted(false);
-		Button.setBackground(Color.white);
-		Button.setVisible(true);
-		panel.setLayout(null);
-		panel.add(Button);
-		panel.setComponentZOrder(Button, 0);
-		this.setVisible(true);
+		resetFonts(						Button, 15);
+		Button.setBounds(				190, 400, 100, 60);
+		Button.setBorder(				new LineBorder(Color.BLACK, 2));
+		Button.setBackground(			Color.white);
+		Button.setFocusPainted(			false);
+		Button.setVisible(				true);
+		panel.setLayout(				null);
+		panel.add(						Button);
+		panel.setComponentZOrder(		Button, 0);
+		this.setVisible(				true);
 	}
 	
 	/**
@@ -371,17 +369,16 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, Color BorderColor)
 	{	
-		resetFonts(Button, 15);
-		Button.setBorder(new LineBorder(BorderColor, 2));
-		Button.setFocusPainted(false);
-		Button.setBackground(Color.white);
-		panel.setLayout(null);
-		Button.setBounds(x, y, 100,60);
-		panel.add(Button);
-		Button.setVisible(true);
-		this.setVisible(true);
-		panel.setComponentZOrder(Button, 0);
-		Button.setVisible(true);
+		resetFonts(						Button, 15);
+		Button.setBorder(				new LineBorder(BorderColor, 2));
+		Button.setFocusPainted(			false);
+		Button.setBackground(			Color.white);
+		Button.setBounds(				x, y, 100,60);
+		Button.setVisible(				true);
+		panel.setLayout(				null);
+		panel.add(						Button);
+		panel.setComponentZOrder(		Button, 0);
+		this.setVisible(				true);
 	}
 	
 	
@@ -395,17 +392,17 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
 	{	
-		resetFonts(Button, 15);
-		Button.setBorder(new LineBorder(Color.BLACK, 2));
-		Button.setFocusPainted(false);
-		Button.setBackground(Color.white);
-		panel.setLayout(null);
-		Button.setBounds(x, y, sizeX, sizeY);
-		panel.add(Button);
-		Button.setVisible(true);
-		this.setVisible(true);
-		panel.setComponentZOrder(Button, 0);
-		Button.setVisible(true);
+		resetFonts(						Button, 15);
+		Button.setBorder(				new LineBorder(Color.BLACK, 2));
+		Button.setFocusPainted(			false);
+		Button.setBackground(			Color.white);
+		Button.setBounds(				x, y, sizeX, sizeY);
+		Button.setVisible(				true);
+		panel.setLayout(				null);
+		panel.add(						Button);
+		panel.setComponentZOrder(		Button, 0);
+		this.setVisible(				true);
+	
 	}
 	
 	/**

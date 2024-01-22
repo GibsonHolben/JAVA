@@ -43,6 +43,10 @@ public class MainGameLoop
 	
 	/**The acceptable colors for the cards*/
 	static String[] 				AcceptedColors = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
+	
+	//The settings
+	/**Holds the settings Ex: card colors, wild card draw */
+	public static String[] 				Settings = new String[2];
 
 
 	/**Controlls the game
@@ -102,6 +106,7 @@ public class MainGameLoop
 		
 		}
 		
+		//Exit the game
 		System.exit(0);
 		System.out.println("End");
 	}
@@ -424,35 +429,27 @@ public class MainGameLoop
 	 */
 	public static void fixColors()
 	{
-		try 
-		{
-			String FilePath = System.getProperty("user.home");
-			FilePath = FilePath + "/Documents/Settings.json";
-			 File myObj = new File(FilePath);
-		     Scanner myReader = new Scanner(myObj);
-			 myReader.close();   
-			 myObj = new File(FilePath);
-			 
-			 System.out.println("incorect colors were inputed");
-			 System.out.println("Refactoring colors...");
-			 if (myObj.delete())
-			 { 
-			     System.out.println("Deleted the file: " + myObj.getName());
-			     CreateFiles();
-			 } 
-			 else 
-			 {
-			     System.out.println("Failed to delete the file.");
-			 } 
-			 System.out.println("Game will not be launched...");
-			 System.out.println("Please restart the game...");
-			 System.exit(0);
-		} 
-		catch (FileNotFoundException e) 
-		{
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		}
+
+		 String FilePath = System.getProperty("user.home");
+		 FilePath = FilePath + "/Documents/Settings.json";
+		 File myObj = new File(FilePath);
+		 myObj = new File(FilePath);
+		 
+		 System.out.println("incorect settings were inputed");
+		 System.out.println("Refactoring settings...");
+		 if (myObj.delete())
+		 { 
+		     System.out.println("Deleted the file: " + myObj.getName());
+		     CreateFiles();
+		 } 
+		 else 
+		 {
+		     System.out.println("Failed to delete the file.");
+		 } 
+		 System.out.println("Game will not be launched...");
+		 System.out.println("Please restart the game...");
+		 System.exit(0);	
+
 	}
 
 	/**Creates a ArrayList of cards and returns them
@@ -475,8 +472,18 @@ public class MainGameLoop
 		     {
 		    	 //Splits the colors
 		    	 data = myReader.nextLine();
+		    	 Settings = data.split("/");
 		    	 System.out.println(data);
-		    	 colors = data.split(",");
+		    	 
+		    	 colors = Settings[0].split(",");
+		    	 System.out.println(Settings[1]);
+		    	 
+		    	 if(Integer.parseInt(Settings[1]) > 9 || Integer.parseInt(Settings[1]) < 1)
+		    	 {
+		    		 myReader.close();   
+		    		 JOptionPane.showMessageDialog(Frame, "Invalid Settings... Wild card value must be less than 10... Refactoring...");
+		    		 fixColors();
+		    	 }
 		    	 
 		    	 
 		    	//Checks the colors and makes sure they are right
@@ -484,6 +491,7 @@ public class MainGameLoop
 		    	 {
 		    		
 		    		myReader.close();   
+		    		 JOptionPane.showMessageDialog(Frame, "Invalid Settings... Only four colors are supported Refactoring...");
 		    		fixColors();
 		    			
 		    	 }
@@ -504,6 +512,7 @@ public class MainGameLoop
 		    			else
 		    			{
 		    				myReader.close();   
+		    				JOptionPane.showMessageDialog(Frame, "Invalid Settings... Supported colors are: Red, Blue, Green, Yellow, Orange, Magenta, & Cyan.. Refactoring...");
 			    			fixColors();
 		    			}
 		    		 }
@@ -532,6 +541,7 @@ public class MainGameLoop
 				Cards.add(new Card(j, colors[i]));
 			}
 		}
+				
 		
 		//Creates the special cards
 		String[] specials = { "+2", "S"};
@@ -548,10 +558,10 @@ public class MainGameLoop
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
-		Cards.add(new Card("Black", "W+4"));
-		Cards.add(new Card("Black", "W+4"));
-		Cards.add(new Card("Black", "W+4"));
-		Cards.add(new Card("Black", "W+4"));
+		Cards.add(new Card("Black", "W+" + Settings[1]));
+		Cards.add(new Card("Black", "W+" + Settings[1]));
+		Cards.add(new Card("Black", "W+" + Settings[1]));
+		Cards.add(new Card("Black", "W+" + Settings[1]));
 
 		return Cards;
 	}
@@ -578,7 +588,7 @@ public class MainGameLoop
 		       try
 		       {
 		    	   FileWriter myWriter = new FileWriter(FilePath);
-			       myWriter.write("Red,Blue,Green,Yellow");
+			       myWriter.write("Red,Blue,Green,Yellow/4");
 			       myWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }
