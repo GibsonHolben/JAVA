@@ -11,7 +11,7 @@ public class Card
 	public int 		numberValue = 0;
 	
 	/**The color of the card
-	 * Defualt = Red*/
+	 * Default = Red*/
 	public String 	ColorValue = "Red";
 	
 	/**
