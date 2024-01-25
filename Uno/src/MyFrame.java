@@ -275,7 +275,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void LoopMusic()
 	{
-		if(MainGameLoop.Settings[3].equals("true"));
+		
+		if(MainGameLoop.Settings[3].equals("true"))
 		{
 			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
 			clipMusic.start();
