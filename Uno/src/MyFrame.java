@@ -49,7 +49,7 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls play on the curent player
 	 */
-	static JButton 			Play = new JButton("(Play)");
+	static JButton 			Play = new JButton();
 	
 	/**
 	 * A JButton that calls start
@@ -216,7 +216,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void resetFonts(JButton Jb, int fontsize)
 	{
-		Jb.setFont(new Font("Arial", Font.BOLD, fontsize));
+		Jb.setFont(new Font("URW Grotesk", Font.BOLD, fontsize));
 	}
 	
 	/**
@@ -285,6 +285,7 @@ public class MyFrame extends JFrame implements ActionListener
 		Play.setOpaque(false);
 		Play.setContentAreaFilled(false);
 		Play.setBorderPainted(false);
+		Play.setForeground(Color.white);
 		this.setVisible(true);
 	}
 	

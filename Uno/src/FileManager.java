@@ -102,9 +102,16 @@ public class FileManager
 			       		"	S: Skips the next player\r\n" + 
 			       		"	+2:  Forces the next player to draw 2 cards\r\n" + 
 			       		"	W: Lets you change the color to your choice\r\n" + 
-			       		"	W+4 Lets you change the color to your choice and forces the next player to draw 4 cards\\r\\n" + 
+			       		"	W+4 Lets you change the color to your choice and forces the next player to draw 4 cards\r\n" + 
+			       		"\r\n" + 
 			       		"How to use interface: \r\n" + 
-			       		"	To play this UNO game, simple select you desired py		");
+			       		"	To start this UNO game, simple select you desired amount of players and press [Start].\r\n" + 
+			       		"	Next use the [Flip>] and [<Flip] buttons to look through your hand of cards.\r\n" + 
+			       		"	After the card that is on the top of your hand is the card that you wish to play, simply\r\n" + 
+			       		"	click the card and it will be automaticly played.\r\n" + 
+			       		"	If you are unable to take your turn due to not having a playable card thn you may press the \r\n" + 
+			       		"	[Skip] Button. This button will draw a card for you and the game will move on to the next player\r\n" + 
+			       		"		");
 			       myWriter2.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }

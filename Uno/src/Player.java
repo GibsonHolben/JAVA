@@ -16,6 +16,9 @@ public class Player
 	 */
 	public String 	Name = "";
 	
+	/**The index of the card*/
+	public int curentCardIndex;
+	
 	/**
 	 * Creates a player with an empty deck
 	 */

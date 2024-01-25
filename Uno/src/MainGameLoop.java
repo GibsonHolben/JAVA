@@ -284,7 +284,7 @@ public class MainGameLoop
 					Frame.reset(Color.green, 					 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Yellow":
-					Frame.reset(new Color(255, 239, 66),	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
+					Frame.reset(new Color(255, 206, 71),	 	 Integer.toString(MainDeck.Cards.get(0).numberValue));
 				break;
 				case "Magenta":
 					Frame.reset(Color.magenta,	 				 Integer.toString(MainDeck.Cards.get(0).numberValue));
@@ -315,7 +315,7 @@ public class MainGameLoop
 					Frame.reset(Color.green, 				MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Yellow":
-					Frame.reset(new Color(255, 239, 66),	MainDeck.Cards.get(0).SpecialEffect);
+					Frame.reset(new Color(255, 206, 71),	MainDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Magenta":
 					Frame.reset(Color.magenta,				MainDeck.Cards.get(0).SpecialEffect);
@@ -349,7 +349,7 @@ public class MainGameLoop
 			break;
 			case "Green":	Frame = new MyFrame(Color.green, 				Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Yellow":	Frame = new MyFrame(new Color(255, 239, 66), 	Integer.toString(MainDeck.Cards.get(0).numberValue));
+			case "Yellow":	Frame = new MyFrame(new Color(255, 206, 71), 	Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
 			case "Magenta":	Frame = new MyFrame(Color.magenta, 				Integer.toString(MainDeck.Cards.get(0).numberValue));
 			break;
@@ -380,7 +380,7 @@ public class MainGameLoop
 				break;
 				case "Green":	Frame.resetPlayerhand(Color.green,	 					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
-				case "Yellow":	Frame.resetPlayerhand(new Color(255, 239, 66), 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+				case "Yellow":	Frame.resetPlayerhand(new Color(255, 206, 71), 		Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Magenta":	Frame.resetPlayerhand(Color.magenta,					Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
@@ -403,7 +403,7 @@ public class MainGameLoop
 				break;
 				case "Green":	Frame.resetPlayerhand(Color.green, 				CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
-				case "Yellow":	Frame.resetPlayerhand(new Color(255, 239, 66), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				case "Yellow":	Frame.resetPlayerhand(new Color(255, 206, 71), 	CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
 				case "Magenta":	Frame.resetPlayerhand(Color.magenta, 			CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
 				break;
