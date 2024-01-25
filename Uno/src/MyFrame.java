@@ -553,6 +553,8 @@ public class MyFrame extends JFrame implements ActionListener
 			String FilePath = FileManager.Home + "/Settings.json";
 		    try 
 		    {
+		    	System.out.println("Settings are deliminated as follows");
+		    	System.out.println("Colors/Wild Draw Amount/Amount of each color card/Play Sound Effect");
 		    	System.out.println("Only four colors are used");
 		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Orange, Magenta, & Cyan");
 				Desktop.getDesktop().edit(new File(FilePath));

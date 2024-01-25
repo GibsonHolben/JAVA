@@ -96,15 +96,42 @@ public class MyPannel extends JPanel
 				//Main deck draw
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
-				g2D.drawString(MainDeckText, 5, 37);
-				g2D.setPaint(Color.white);
-				g2D.drawString(MainDeckText, 7, 35);
 				
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
-				g2D.setPaint(Color.black);
-				g2D.drawString(MainDeckText, 100, 160);
-				g2D.setPaint(Color.white);
-				g2D.drawString(MainDeckText, 98, 158);
+				
+				
+				if(MainDeckText.equals("W"))
+				{
+					URL url2 = MyPannel.class.getResource("Uno4.png");
+					Image img2 = new ImageIcon(url2).getImage();
+					g2D.drawImage(img2, 0, 0, null);
+					g2D.setPaint(Color.white);
+				
+				}
+				else if(MainDeckText.equals("W+4"))
+				{
+					g2D.drawString("+4", 5, 37);
+					g2D.setPaint(Color.white);
+					g2D.drawString("+4", 7, 35);
+					
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
+					g2D.setPaint(Color.black);
+					g2D.drawString("+4", 100, 160);
+					g2D.setPaint(Color.white);
+					g2D.drawString("+4", 98, 158);
+				}
+				else
+				{
+					g2D.drawString(MainDeckText, 5, 37);
+					g2D.setPaint(Color.white);
+					g2D.drawString(MainDeckText, 7, 35);
+					
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
+					g2D.setPaint(Color.black);
+					g2D.drawString(MainDeckText, 100, 160);
+					g2D.setPaint(Color.white);
+					g2D.drawString(MainDeckText, 98, 158);
+				}
+			
 				
 				g2D.setFont(new Font(null, Font.BOLD,40));
 				g2D.setPaint(PlayerDeckColor);
@@ -113,17 +140,43 @@ public class MyPannel extends JPanel
 				CardDecals();
 
 				//Player card draw
-				g2D.setPaint(Color.black);
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
-				g2D.drawString(PlayerDeckText, 398, 342);
-				g2D.setPaint(Color.white);
-				g2D.drawString(PlayerDeckText, 400, 340);
 				
-				g2D.setPaint(Color.black);
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
-				g2D.drawString(PlayerDeckText, 490, 460);
-				g2D.setPaint(Color.white);
-				g2D.drawString(PlayerDeckText, 488, 462);
+				if(PlayerDeckText.equals("W"))
+				{
+					URL url2 = MyPannel.class.getResource("Uno4.png");
+					Image img2 = new ImageIcon(url2).getImage();
+					g2D.drawImage(img2, 390, 300, null);
+					g2D.setPaint(Color.white);
+				}
+				else if(PlayerDeckText.equals("W+4"))
+				{
+					g2D.setPaint(Color.black);
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
+					g2D.drawString("+4", 398, 342);
+					g2D.setPaint(Color.white);
+					g2D.drawString("+4", 400, 340);
+					
+					g2D.setPaint(Color.black);
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
+					g2D.drawString("+4", 490, 460);
+					g2D.setPaint(Color.white);
+					g2D.drawString("+4", 488, 462);
+				}
+				else
+				{
+					g2D.setPaint(Color.black);
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
+					g2D.drawString(PlayerDeckText, 398, 342);
+					g2D.setPaint(Color.white);
+					g2D.drawString(PlayerDeckText, 400, 340);
+					
+					g2D.setPaint(Color.black);
+					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
+					g2D.drawString(PlayerDeckText, 490, 460);
+					g2D.setPaint(Color.white);
+					g2D.drawString(PlayerDeckText, 488, 462);
+				}
+				
 				
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
 				
