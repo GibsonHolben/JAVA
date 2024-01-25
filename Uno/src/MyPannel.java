@@ -132,53 +132,7 @@ public class MyPannel extends JPanel
 				g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 110, 40);
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 110, 20);
 				
-				
-				//Draws the middle number on the player deck
-				if(PlayerDeckText.length() == 2)
-				{
-					g2D.setFont(new Font("URW Grotesk", Font.BOLD, 50));
-					g2D.drawString(PlayerDeckText, 415, 417);
-					g2D.setPaint(Color.white);
-					g2D.drawString(PlayerDeckText, 417, 415);
-				}
-				else if(PlayerDeckText.equals("W")|| PlayerDeckText.equals("W+4")|| PlayerDeckText.equals("S"))
-				{
-					
-				}
-				else
-				{
-					g2D.setFont(new Font("URW Grotesk", Font.BOLD,60));
-					g2D.drawString(PlayerDeckText, 428, 417);
-					g2D.setPaint(Color.white);
-					g2D.drawString(PlayerDeckText, 430, 415);
-				}
-				
-				g2D.setPaint(Color.black);
-				
-				
-				//Draws the middle number on the main deck
-				if(MainDeckText.length() == 2)
-				{
-					g2D.setFont(new Font("URW Grotesk", Font.BOLD, 50));
-					g2D.drawString(MainDeckText, 23, 122);
-					g2D.setPaint(Color.white);
-					g2D.drawString(MainDeckText, 25, 120);
-				}
-				else if(MainDeckText.equals("W")|| MainDeckText.equals("W+4")|| MainDeckText.equals("S"))
-				{
-					
-				}
-				else
-				{
-					g2D.setFont(new Font("URW Grotesk", Font.BOLD,60));
-					g2D.drawString(MainDeckText, 38, 122);
-					g2D.setPaint(Color.white);
-					g2D.drawString(MainDeckText, 40, 120);
-				}
-				
-				
-				
-				
+				DrawMiddleNumber();
 			}
 			
 			
@@ -212,6 +166,54 @@ public class MyPannel extends JPanel
 		
 	}
 	
+	/**
+	 * Draws the middle number of the UNO card
+	 */
+	public void DrawMiddleNumber()
+	{
+		//Draws the middle number on the player deck
+		if(PlayerDeckText.length() == 2)
+		{
+			g2D.setFont(new Font("URW Grotesk", Font.BOLD, 50));
+			g2D.drawString(PlayerDeckText, 415, 417);
+			g2D.setPaint(Color.white);
+			g2D.drawString(PlayerDeckText, 417, 415);
+		}
+		else if(PlayerDeckText.equals("W")|| PlayerDeckText.equals("W+4")|| PlayerDeckText.equals("S"))
+		{
+			
+		}
+		else
+		{
+			g2D.setFont(new Font("URW Grotesk", Font.BOLD,60));
+			g2D.drawString(PlayerDeckText, 428, 417);
+			g2D.setPaint(Color.white);
+			g2D.drawString(PlayerDeckText, 430, 415);
+		}
+		
+		g2D.setPaint(Color.black);
+		
+		
+		//Draws the middle number on the main deck
+		if(MainDeckText.length() == 2)
+		{
+			g2D.setFont(new Font("URW Grotesk", Font.BOLD, 50));
+			g2D.drawString(MainDeckText, 23, 122);
+			g2D.setPaint(Color.white);
+			g2D.drawString(MainDeckText, 25, 120);
+		}
+		else if(MainDeckText.equals("W")|| MainDeckText.equals("W+4")|| MainDeckText.equals("S"))
+		{
+			
+		}
+		else
+		{
+			g2D.setFont(new Font("URW Grotesk", Font.BOLD,60));
+			g2D.drawString(MainDeckText, 38, 122);
+			g2D.setPaint(Color.white);
+			g2D.drawString(MainDeckText, 40, 120);
+		}
+	}
 	
 	
 	/**
