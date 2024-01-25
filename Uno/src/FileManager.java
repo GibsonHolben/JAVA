@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +19,82 @@ public class FileManager
 	
 	/**The default settings of the game*/
 	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true";
+	
+	/**
+	 * Shows the settings file and prints the instructions on how to use said settings
+	 */
+	public static void ShowSettings()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+		
+			String FilePath = FileManager.Home + "/Settings.json";
+		    try 
+		    {
+		    	System.out.println("Opening with notepad...");
+		    	System.out.println("Settings are deliminated as follows");
+		    	System.out.println("Colors/Wild Draw Amount/Amount of each color card/Play Sound Effect");
+		    	System.out.println("Only four colors are used");
+		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Orange, Magenta, & Cyan");
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting settings file");
+		}
+		
+	}
+	
+	/**
+	 * Shows the how to play file
+	 */
+	public static void ShowHowToPlay()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+			
+			String FilePath  = FileManager.Home + "/HTP.json";
+		    try 
+		    {
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting file");
+		}
+		
+	}
+	
+	/**
+	 * Changes the amount of players
+	 * @param input the new amount of players
+	 */
+	public static void ChangePlayers(String input)
+	{
+		try 
+		{
+			String FilePath3  = FileManager.Home + "/Players.json";
+			FileWriter myWriter3 = new FileWriter(FilePath3);
+		    myWriter3.write(input);
+		    myWriter3.close();
+		}       
+		catch (IOException e2) 
+		{
+		      System.out.println("An error occurred.");
+		      e2.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * Creates all the files for the game

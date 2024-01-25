@@ -60,45 +60,45 @@ public class MainGameLoop
 		//Main loop
 		while(isRunning == true)
 		{
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Please enter a command");
-			String input = sc.nextLine();
+			//Scanner sc = new Scanner(System.in);
+			//System.out.println("Please enter a command");
+			//String input = sc.nextLine();
+			//String input = "";
 			
-			
-			//Commands
-			switch(input)
-			{
-				case "ff":
-					isRunning = false;
-					
-				break;
-				case "flip":
-					Flip();
-				break;
-				case "hand":
-					System.out.println(CurentPlayer.Name);
-					CurentPlayer.MyDeck.PrintDeck();
-				break;
-				case "p":
-					System.out.println("Pause");
-				break;
-				case "view":
-					MainDeck.PrintDeck();
-				case "test":
-					Frame.SettupColorButtons(300);
-				case "cc":
-					System.out.println(CurentColor);
-				break;
-				case "toS":
-					System.out.println(Frame.toString());
-				case "Help":
-					System.out.println("ff, hand, p, view, test, cc, toS, Help");
-				break;
-				case "Settings": 
-					PrintSettings();
-					break;
-				default: System.out.println("Invalid input: Help for commands");
-			}
+//			//Commands
+//			switch(input)
+//			{
+//				case "ff":
+//					isRunning = false;
+//					
+//				break;
+//				case "flip":
+//					Flip();
+//				break;
+//				case "hand":
+//					System.out.println(CurentPlayer.Name);
+//					CurentPlayer.MyDeck.PrintDeck();
+//				break;
+//				case "p":
+//					System.out.println("Pause");
+//				break;
+//				case "view":
+//					MainDeck.PrintDeck();
+//				case "test":
+//					Frame.SettupColorButtons(300);
+//				case "cc":
+//					System.out.println(CurentColor);
+//				break;
+//				case "toS":
+//					System.out.println(Frame.toString());
+//				case "Help":
+//					System.out.println("ff, hand, p, view, test, cc, toS, Help");
+//				break;
+//				case "Settings": 
+//					PrintSettings();
+//					break;
+//				default: System.out.println("Invalid input: Help for commands");
+//			}
 			
 		}
 		

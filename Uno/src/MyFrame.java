@@ -10,6 +10,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.*;
 import java.net.URL;
 
@@ -110,12 +112,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * The audio clip of the button click
 	 */
-	Clip 					clip;
+	Clip 					clipButton;
 	
 	/**2
 	 * the audio stream of the button click
 	 */
-	AudioInputStream 		AudioStream;
+	AudioInputStream 		AudioStreamButton;
+	
+	/**
+	 * The audio clip of the music
+	 */
+	Clip 					clipMusic;
+	
+	/**2
+	 * the audio stream of the music
+	 */
+	AudioInputStream 		AudioStreamMusic;	
       
 	
 	/**
@@ -125,14 +137,21 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 
+		//Key listener
+		this.requestFocus();
+		
 		//setups the sfx 
-
 		File file = new File("src/ButttonClick.wav");
+		File file2 = new File("src/Bkg.wav");
 		try 
 		{
-			AudioStream = AudioSystem.getAudioInputStream(file);
-			clip = AudioSystem.getClip();
-			clip.open(AudioStream);
+			AudioStreamButton = AudioSystem.getAudioInputStream(file);
+			clipButton = AudioSystem.getClip();
+			clipButton.open(AudioStreamButton);
+			
+			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
+			clipMusic = AudioSystem.getClip();
+			clipMusic.open(AudioStreamMusic);
 		} 
 		catch (UnsupportedAudioFileException e) 
 		{
@@ -147,8 +166,7 @@ public class MyFrame extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 		
-	
-
+		
 		//Setups the top bar
 		URL url = MyPannel.class.getResource("Uno.png");
 		ImageIcon img = new ImageIcon(url);
@@ -226,6 +244,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void reset(Color newColor, String newText)
 	{
+		LoopMusic();
+		this.requestFocus();
 		windowSettup();
 		panel.repaint();
 		panel.MainDeckColor = newColor;
@@ -250,6 +270,17 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Loops the background music
+	 */
+	public void LoopMusic()
+	{
+		if(MainGameLoop.Settings[3].equals("true"));
+		{
+			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
+			clipMusic.start();
+		}
+	}
 	
 	
 	/**
@@ -259,7 +290,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
 	{
-		
+		this.requestFocus();
 		windowSettup();
 		panel.repaint();
 		panel.PlayerDeckColor = newColor;
@@ -423,32 +454,31 @@ public class MyFrame extends JFrame implements ActionListener
 			PlayClick();
 		}
 		
-		
 		//Player select buttons
 		if(e.getSource().equals(P1))
 		{
-			ChangePlayers("1");
+			FileManager.ChangePlayers("1");
 			P1.setVisible(true);
 			this.setVisible(true);
 			ResetPlayerButtons(P1);
 		}
 		if(e.getSource().equals(P2))
 		{
-			ChangePlayers("2");
+			FileManager.ChangePlayers("2");
 			P2.setVisible(true);
 			this.setVisible(true);
 			ResetPlayerButtons(P2);
 		}
 		if(e.getSource().equals(P3))
 		{
-			ChangePlayers("3");
+			FileManager.ChangePlayers("3");
 			P3.setVisible(true);
 			this.setVisible(true);
 			ResetPlayerButtons(P3);
 		}
 		if(e.getSource().equals(P4))
 		{
-			ChangePlayers("4");
+			FileManager.ChangePlayers("4");
 			P4.setVisible(true);
 			this.setVisible(true);
 			ResetPlayerButtons(P4);
@@ -532,92 +562,17 @@ public class MyFrame extends JFrame implements ActionListener
 		//Help buttons
 		if(e.getSource().equals(HowToPlay))
 		{
-			ShowHowToPlay();
+			FileManager.ShowHowToPlay();
 		}
 		if(e.getSource().equals(Settings))
 		{
-			ShowSettings();
+			FileManager.ShowSettings();
 		}
 		
 
 	}
 	
-	/**
-	 * Shows the settings file
-	 */
-	public void ShowSettings()
-	{
-		if (Desktop.isDesktopSupported()) 
-		{
-		
-			String FilePath = FileManager.Home + "/Settings.json";
-		    try 
-		    {
-		    	System.out.println("Settings are deliminated as follows");
-		    	System.out.println("Colors/Wild Draw Amount/Amount of each color card/Play Sound Effect");
-		    	System.out.println("Only four colors are used");
-		    	System.out.println("Supported colors are: Red, Blue, Green, Yellow, Orange, Magenta, & Cyan");
-				Desktop.getDesktop().edit(new File(FilePath));
-			} 
-		    catch (IOException e1) 
-		    {
-				e1.printStackTrace();
-			}
-		} 
-		else 
-		{
-		   System.out.println("Error getting settings file");
-		}
-		this.setVisible(true);
-		Settings.setVisible(true);
-	}
 	
-	/**
-	 * Shows the how to play  file
-	 */
-	public void ShowHowToPlay()
-	{
-		if (Desktop.isDesktopSupported()) 
-		{
-			
-			String FilePath  = FileManager.Home + "/HTP.json";
-		    try 
-		    {
-				Desktop.getDesktop().edit(new File(FilePath));
-			} 
-		    catch (IOException e1) 
-		    {
-				e1.printStackTrace();
-			}
-		} 
-		else 
-		{
-		   System.out.println("Error getting file");
-		}
-		this.setVisible(true);
-		Settings.setVisible(true);
-	}
-	
-	/**
-	 * Changes the amount of players
-	 * @param input the new amount of players
-	 */
-	public void ChangePlayers(String input)
-	{
-		try 
-		{
-		
-			String FilePath3  = FileManager.Home + "/Players.json";
-			FileWriter myWriter3 = new FileWriter(FilePath3);
-		    myWriter3.write(input);
-		    myWriter3.close();
-		}       
-		catch (IOException e2) 
-		{
-		      System.out.println("An error occurred.");
-		      e2.printStackTrace();
-		}
-	}
 	
 	/**
 	 * Hides the buttons on game end
@@ -637,10 +592,10 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void PlayClick()
 	{
-		if(clip != null)
+		if(clipButton != null)
 		{
-			clip.start();
-			clip.setMicrosecondPosition(0);
+			clipButton.start();
+			clipButton.setMicrosecondPosition(0);
 		}
 
 	}
@@ -654,4 +609,8 @@ public class MyFrame extends JFrame implements ActionListener
 		
 		return s;
 	}
+
+	
+	
+	
 }

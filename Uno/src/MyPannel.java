@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -10,7 +12,7 @@ import javax.swing.JPanel;
  */
 
 @SuppressWarnings("serial")
-public class MyPannel extends JPanel 
+public class MyPannel extends JPanel
 {
 	/**
 	 * The graphics handler
@@ -77,20 +79,25 @@ public class MyPannel extends JPanel
 		{
 			if(doneOnce)
 			{
-				g2D.setRenderingHint(
-				        RenderingHints.KEY_TEXT_ANTIALIASING,
-				        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+				//Enables anti aliasing on the graphics component
+				RenderingHints qualityHints = new RenderingHints(
+						  RenderingHints.KEY_ANTIALIASING,
+						  RenderingHints.VALUE_ANTIALIAS_ON );
+				qualityHints.put(
+						  RenderingHints.KEY_RENDERING,
+						  RenderingHints.VALUE_RENDER_QUALITY );		
+				g2D.setRenderingHints( qualityHints );
 				
 				URL url = MyPannel.class.getResource("Wood.jpg");
 				Image img = new ImageIcon(url).getImage();
 				g2D.drawImage(img, 0, 0, null);
 				g2D.setStroke(new BasicStroke(10));
 				g2D.setPaint(Color.white);
-				g2D.drawRoundRect(395, 300, 100, 200, 20,20);
-				g2D.drawRoundRect(5, 0, 100, 200, 20,20);
+				g2D.drawRoundRect(395, 295, 100, 200, 20,20);
+				g2D.drawRoundRect(5, 5, 100, 200, 20,20);
 				g2D.setStroke(new BasicStroke(1));
 				g2D.setPaint(MainDeckColor);
-				g2D.fillRoundRect(5, 0, 100, 200, 20,20);
+				g2D.fillRoundRect(5, 5, 100, 200, 20,20);
 				
 				
 				//Main deck draw
@@ -103,39 +110,46 @@ public class MyPannel extends JPanel
 				{
 					URL url2 = MyPannel.class.getResource("Uno4.png");
 					Image img2 = new ImageIcon(url2).getImage();
-					g2D.drawImage(img2, 0, 0, null);
+					g2D.drawImage(img2, 0, 5, null);
 					g2D.setPaint(Color.white);
 				
 				}
+				else if(MainDeckText.equals("S"))
+				{
+					URL url2 = MyPannel.class.getResource("Uno5.png");
+					Image img2 = new ImageIcon(url2).getImage();
+					g2D.drawImage(img2, -2, -7	, null);
+					g2D.setPaint(Color.white);
+				}
 				else if(MainDeckText.equals("W+4"))
 				{
-					g2D.drawString("+4", 5, 37);
+					g2D.drawString("+4", 5, 37 + 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+4", 7, 35);
+					g2D.drawString("+4", 7, 35+ 5);
 					
 					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
 					g2D.setPaint(Color.black);
-					g2D.drawString("+4", 100, 160);
+					g2D.drawString("+4", 100, 160+ 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+4", 98, 158);
+					g2D.drawString("+4", 98, 158+ 5);
 				}
 				else
 				{
-					g2D.drawString(MainDeckText, 5, 37);
+					g2D.drawString(MainDeckText, 5, 37+ 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString(MainDeckText, 7, 35);
+					g2D.drawString(MainDeckText, 7, 35+ 5);
 					
 					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
 					g2D.setPaint(Color.black);
-					g2D.drawString(MainDeckText, 100, 160);
+					g2D.drawString(MainDeckText, 100, 160+ 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString(MainDeckText, 98, 158);
+					g2D.drawString(MainDeckText, 98, 158+ 5);
 				}
 			
 				
 				g2D.setFont(new Font(null, Font.BOLD,40));
 				g2D.setPaint(PlayerDeckColor);
-				g2D.fillRoundRect(395, 300, 100, 200, 20,20);
+				g2D.fillRoundRect(395, 295, 100, 200, 20,20);
 				
 				CardDecals();
 
@@ -146,6 +160,13 @@ public class MyPannel extends JPanel
 					URL url2 = MyPannel.class.getResource("Uno4.png");
 					Image img2 = new ImageIcon(url2).getImage();
 					g2D.drawImage(img2, 390, 300, null);
+					g2D.setPaint(Color.white);
+				}
+				else if(PlayerDeckText.equals("S"))
+				{
+					URL url2 = MyPannel.class.getResource("Uno5.png");
+					Image img2 = new ImageIcon(url2).getImage();
+					g2D.drawImage(img2, 388, 287, null);
 					g2D.setPaint(Color.white);
 				}
 				else if(PlayerDeckText.equals("W+4"))
@@ -178,17 +199,20 @@ public class MyPannel extends JPanel
 				}
 				
 				
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
+				g2D.setFont(new Font("URW Grotesk", Font.BOLD,20));
 				
 				g2D.setPaint(Color.black);
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,20));
-				g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 110, 40);
-				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 110, 20);
+				g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 118.5f, 41.5f);
+				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 118.5f, 21.5f);
+				
+				g2D.setPaint(Color.white);
+				g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 120, 40);
+				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 120, 20);
 				
 				DrawMiddleNumber();
 			}
 			
-			
+			//If it is the first call of paint then show the main menu
 			if(!doneOnce)
 			{
 
@@ -224,6 +248,7 @@ public class MyPannel extends JPanel
 	 */
 	public void DrawMiddleNumber()
 	{
+		g2D.setPaint(Color.black);
 		//Draws the middle number on the player deck
 		if(PlayerDeckText.length() == 2)
 		{
@@ -274,32 +299,36 @@ public class MyPannel extends JPanel
 	 */
 	public void CardDecals()
 	{
-		if(PlayerDeckText.equals("W")||PlayerDeckText.equals("W+4"))
+		if(!PlayerDeckText.equals("S"))
 		{
-			g2D.setPaint(Color.white);
-			Image img = new ImageIcon("src/Uno3.png").getImage();
-			g2D.drawImage(img, 387, 320, null);
-			
-		}
-		else
-		{
-			g2D.setPaint(Color.white);
-			Image img = new ImageIcon("src/Uno2.png").getImage();
-			g2D.drawImage(img, 387, 320, null);
+			if(PlayerDeckText.equals("W")||PlayerDeckText.equals("W+4"))
+			{
+				g2D.setPaint(Color.white);
+				Image img = new ImageIcon("src/Uno3.png").getImage();
+				g2D.drawImage(img, 387, 320, null);
+				
+			}
+			else
+			{
+				g2D.setPaint(Color.white);
+				Image img = new ImageIcon("src/Uno2.png").getImage();
+				g2D.drawImage(img, 387, 320, null);
+			}
 		}
 		
-		if(MainDeckText.equals("W")||MainDeckText.equals("W+4"))
+		if(!MainDeckText.equals("S"))
 		{
-			Image img = new ImageIcon("src/Uno3.png").getImage();
-			g2D.drawImage(img, -2, 20, null);
+			if(MainDeckText.equals("W")||MainDeckText.equals("W+4"))
+			{
+				Image img = new ImageIcon("src/Uno3.png").getImage();
+				g2D.drawImage(img, -2, 20, null);
+			}
+			else
+			{
+				Image img = new ImageIcon("src/Uno2.png").getImage();
+				g2D.drawImage(img, -2, 20, null);
+			}
 		}
-		else
-		{
-			Image img = new ImageIcon("src/Uno2.png").getImage();
-			g2D.drawImage(img, -2, 20, null);
-		}
-	
-		
 	}
 	
 	/**
@@ -311,5 +340,6 @@ public class MyPannel extends JPanel
 				
 		return s;
 	}
+	
 	
 }
