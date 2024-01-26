@@ -112,22 +112,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * The audio clip of the button click
 	 */
-	Clip 					clipButton;
+	public Clip 					clipButton;
 	
 	/**2
 	 * the audio stream of the button click
 	 */
-	AudioInputStream 		AudioStreamButton;
+	public AudioInputStream 		AudioStreamButton;
 	
 	/**
 	 * The audio clip of the music
 	 */
-	Clip 					clipMusic;
+	public Clip 					clipMusic;
 	
-	/**2
+	/**
 	 * the audio stream of the music
 	 */
-	AudioInputStream 		AudioStreamMusic;	
+	public AudioInputStream 		AudioStreamMusic;	
       
 	
 	/**
@@ -140,32 +140,8 @@ public class MyFrame extends JFrame implements ActionListener
 		//Key listener
 		this.requestFocus();
 		
-		//setups the sfx 
-		File file = new File("src/ButttonClick.wav");
-		File file2 = new File("src/Bkg.wav");
-		try 
-		{
-			AudioStreamButton = AudioSystem.getAudioInputStream(file);
-			clipButton = AudioSystem.getClip();
-			clipButton.open(AudioStreamButton);
-			
-			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
-			clipMusic = AudioSystem.getClip();
-			clipMusic.open(AudioStreamMusic);
-		} 
-		catch (UnsupportedAudioFileException e) 
-		{
-			e.printStackTrace();
-		}
-		catch ( LineUnavailableException e)
-		{
-			e.printStackTrace();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-		
+		System.out.println(MainGameLoop.Settings[3]);
+		SetSfx();
 		
 		//Setups the top bar
 		URL url = MyPannel.class.getResource("Uno.png");
@@ -244,7 +220,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void reset(Color newColor, String newText)
 	{
-		LoopMusic();
+		
+		
 		this.requestFocus();
 		windowSettup();
 		panel.repaint();
@@ -322,6 +299,40 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	//Settups ****************************************************************
+	
+	/**
+	 * Sets up the music
+	 */
+	public void SetSfx()
+	{
+		//setups the sfx 
+		File file = new File("src/ButttonClick.wav");
+		File file2 = new File("src/Bkg.wav");
+		try 
+		{
+			AudioStreamButton = AudioSystem.getAudioInputStream(file);
+			clipButton = AudioSystem.getClip();
+			clipButton.open(AudioStreamButton);
+			
+			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
+			clipMusic = AudioSystem.getClip();
+			clipMusic.open(AudioStreamMusic);
+		} 
+		catch (UnsupportedAudioFileException e) 
+		{
+			e.printStackTrace();
+		}
+		catch ( LineUnavailableException e)
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		LoopMusic();
+	}
 	
 	/**
 	 * Sets up the window format
@@ -567,7 +578,8 @@ public class MyFrame extends JFrame implements ActionListener
 		}
 		if(e.getSource().equals(Settings))
 		{
-			FileManager.ShowSettings();
+			//FileManager.ShowSettings();
+			Settings s = new Settings();
 		}
 		
 

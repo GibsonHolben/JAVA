@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="FilePath"/>
+		<item key="selection" value="MainDeckText"/>
 		<list key="findhistory">
+			<item value="PlayerDeckText"/>
 			<item value="s"/>
 			<item value="Red"/>
 			<item value="10"/>
@@ -22,9 +23,9 @@
 			<item value="m6"/>
 			<item value="t5"/>
 			<item value="m5"/>
-			<item value="t4"/>
 		</list>
 		<list key="replacehistory">
+			<item value="MainDeckText"/>
 			<item value="FilePath"/>
 			<item value="Yellow"/>
 			<item value="Green"/>
@@ -39,7 +40,6 @@
 			<item value="m9"/>
 			<item value="t8"/>
 			<item value="m8"/>
-			<item value="t7"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
