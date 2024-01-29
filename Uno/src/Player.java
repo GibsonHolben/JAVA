@@ -51,11 +51,11 @@ public class Player
 		{
 			
 			//Sets the main deck color if not a wild card
-			if(SpecialEffect != "W" && SpecialEffect != "W+4")
+			if(!SpecialEffect.contains("W"))
 			{
 				MainGameLoop.CurentColor = MyDeck.Cards.get(0).ColorValue;
 			}
-			
+
 			//Plays the card
 			System.out.println("Played card");
 			MyDeck.Cards.get(0).onPlay();

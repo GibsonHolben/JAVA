@@ -197,11 +197,7 @@ public class MainGameLoop
 	 */
 	public static void NextPlayer()
 	{
-		if(MainDeck.Cards.get(0).SpecialEffect.contentEquals("W") || MainDeck.Cards.get(0).SpecialEffect.contentEquals("W+4"))
-		{
-			System.out.println("Wild card played...");
-		}
-		else
+		if(!MainDeck.Cards.get(0).SpecialEffect.contains("W"))
 		{
 			CurentColor = MainDeck.Cards.get(0).ColorValue;
 		}

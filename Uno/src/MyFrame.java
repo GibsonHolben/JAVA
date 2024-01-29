@@ -542,6 +542,7 @@ public class MyFrame extends JFrame implements ActionListener
 			{
 				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[0];
 				canPlay = true;
+				System.out.println(MainGameLoop.CurentColor);
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
 			}
