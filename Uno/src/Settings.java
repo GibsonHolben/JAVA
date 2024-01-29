@@ -169,7 +169,8 @@ public class Settings extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Creates a JLabel at specified cordenates with a specified size and a specified text
+	 * Creates a JLabel at specified cordenates with a 
+	 * specified size and a specified text
 	 * @param x the x cords of the label
 	 * @param y the y cords of the label
 	 * @param w the width of the label
@@ -202,12 +203,16 @@ public class Settings extends JFrame implements ActionListener
 				if(SubmitSetting("Wild"))
 				{
 					JOptionPane.showMessageDialog(this, 
-							"Settings accepted, Please restart the game for changed to take effect");
+							"Wild card Settings accepted, "
+							+ "Please restart the game for changed to take effect");
+					WildCardDrawText.setText( MainGameLoop.Settings[1] );
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(this, 
-							"Setting were not accepted, Plase try again");
+					JOptionPane.showMessageDialog(this,
+							"Invalid number for wild card draw (1-9) "
+							+ "is accepted... Refactoring to default...");
+					WildCardDrawText.setText( MainGameLoop.Settings[1] );
 				}
 			
 			}
@@ -217,25 +222,33 @@ public class Settings extends JFrame implements ActionListener
 				if(SubmitSetting("Deck"))
 				{
 					JOptionPane.showMessageDialog(this, 
-							"Settings accepted, Please restart the game for changed to take effect");
+							"Settings accepted, Please restart the "
+							+ "game for changed to take effect");
+					DeckSizeText.setText( MainGameLoop.Settings[2] );
+					
+					
 				}
 				else
 				{
 					JOptionPane.showMessageDialog(this, 
-							"Setting were not accepted, Plase try again");
+							"Invalid number for deck size (4-99) is"
+							+ " accepted... Refactoring to default...");
+					DeckSizeText.setText( MainGameLoop.Settings[2] );
 				}
 			
 			}
 			
-			if(e.getSource().equals(SubmitColors));
+			if(e.getSource().equals(SubmitColors))
 			{
+				
 				System.out.println("Saved colors " + MainGameLoop.Settings[0]);
 				MainGameLoop.Settings[0] = Color1Combo.getSelectedItem() + "," + 
 											Color2Combo.getSelectedItem() + "," +
 											Color3Combo.getSelectedItem() + "," +
 											Color4Combo.getSelectedItem() + ",";
 				JOptionPane.showMessageDialog(this, 
-						"Settings accepted, Please restart the game for changed to take effect");
+						"Color Settings accepted, Please restart "
+						+ "the game for changed to take effect");
 			}
 			
 			
@@ -250,7 +263,7 @@ public class Settings extends JFrame implements ActionListener
 
 	
 	/**
-	 * Sets us the settings menu 
+	 * Sets us the settings menu with all the needed things
 	 */
 	public void SettupSettings()
 	{
@@ -286,15 +299,16 @@ public class Settings extends JFrame implements ActionListener
 				Integer.parseInt(WildCardDrawText.getText());
 				
 				
-				if(Integer.parseInt(WildCardDrawText.getText()) > 9 || 
+				if(Integer.parseInt(WildCardDrawText.getText()) > 9 ||
 						Integer.parseInt(WildCardDrawText.getText()) < 1)
 				{
-					JOptionPane.showMessageDialog(this,
-							"Invalid number for wild card draw (1-9) is accepted");
+					MainGameLoop.Settings[1] = "4";
+					return false;
 				}
 				else
 				{
 					MainGameLoop.Settings[1] = WildCardDrawText.getText();
+				
 					
 				}
 				return true;
@@ -313,10 +327,10 @@ public class Settings extends JFrame implements ActionListener
 				Integer.parseInt(DeckSizeText.getText());
 				
 				if(Integer.parseInt(DeckSizeText.getText()) > 99 || 
-						Integer.parseInt(DeckSizeText.getText()) < 1)
+						Integer.parseInt(DeckSizeText.getText()) < 4)
 				{
-					JOptionPane.showMessageDialog(this, 
-							"Invalid number for deck size (1-99) is accepted");
+					MainGameLoop.Settings[2] = "11";
+					return false;
 				}
 				else
 				{

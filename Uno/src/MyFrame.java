@@ -16,7 +16,8 @@ import java.io.*;
 import java.net.URL;
 
 /**
- * Used for the high level graphics such as the Buttons and holding all the button actions
+ * Used for the high level graphics such as the Buttons and holding all the 
+ * button actions
  * @author CTEHolbenG46
  * @version 13.3.7
  */
@@ -433,7 +434,8 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Sets up the player selector colors on startup based on what was saved from last use
+	 * Sets up the player selector colors on startup based on what 
+	 * was saved from last use
 	 */
 	public void setupPlayeBttonColors()
 	{

@@ -21,7 +21,8 @@ public class FileManager
 	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true";
 	
 	/**
-	 * Shows the settings file and prints the instructions on how to use said settings
+	 * Shows the settings file and prints the 
+	 * instructions on how to use said settings
 	 */
 	public static void ShowSettings()
 	{
@@ -100,6 +101,8 @@ public class FileManager
 	
 	/**
 	 * Creates all the files for the game
+	 * Including the settings file, the player 
+	 * count file, and the how to play file
 	 */
 	public static void CreateFiles()
 	{
@@ -170,35 +173,53 @@ public class FileManager
 			       myWriter2.write("How do you play the game of UNO?\r\n" + 
 			       		"\r\n" + 
 			       		"On your turn:\r\n" + 
-			       		"	You can play a card when it matches either the color"
-			       		+ " or number of the card, or if you have any wild cards.\r\n" + 
-			       		" 	If you have no playable cards, you must draw a card from the "
+			       		"	You can play a card when"
+			       		+ " it matches either the color"
+			       		+ " or number of the card, or "
+			       		+ "if you have any wild cards.\r\n" + 
+			       		" 	If you have no playable "
+			       		+ "cards, you must draw a card from the "
 			       		+ "draw pile.\r\n" + 
 			       		"\r\n" + 
 			       		"Goal:\r\n" + 
-			       		" 	The aim of UNO is to be the first player to get rid of all of"
-			       		+ " your cards so you'll want to avoid picking up cards as best you can.\r\n" + 
+			       		" 	The aim of UNO is to be the"
+			       		+ " first player"
+			       		+ " to get rid of all of"
+			       		+ " your cards so you'll want to"
+			       		+ " avoid picking"
+			       		+ " up cards as best you can.\r\n" + 
 			       		"\r\n" + 
 			       		"Cards:\r\n" + 
 			       		"	0-13 numbers\r\n" + 
 			       		"	S: Skips the next player\r\n" + 
-			       		"	+2:  Forces the next player to draw 2 cards\r\n" + 
-			       		"	W: Lets you change the color to your choice\r\n" + 
-			       		"	W+4 Lets you change the color to your choice and forces "
+			       		"	+2:  Forces the next player to"
+			       		+ " draw 2 cards\r\n" + 
+			       		"	W: Lets you change the color to"
+			       		+ " your choice\r\n" + 
+			       		"	W+4 Lets you change the color to"
+			       		+ " your choice and forces "
 			       		+ "the next player to draw 4 cards\r\n" + 
 			       		"\r\n" + 
 			       		"How to use interface: \r\n" + 
-			       		"	To start this UNO game, simple select you desired amount "
+			       		"	To start this UNO game, simple select"
+			       		+ " you desired amount "
 			       		+ "of players and press [Start].\r\n" + 
-			       		"	Next use the [Flip>] and [<Flip] buttons to look through "
+			       		"	Next use the [Flip>] and [<Flip]"
+			       		+ " buttons to look through "
 			       		+ "your hand of cards.\r\n" + 
-			       		"	After the card that is on the top of your hand is the "
+			       		"	After the card that is on the top "
+			       		+ "of your hand is the "
 			       		+ "card that you wish to play, simply\r\n" + 
-			       		"	click the card and it will be automaticly played.\r\n" + 
-			       		"	If you are unable to take your turn due to not having a "
-			       		+ "playable card thn you may press the \r\n" + 
-			       		"	[Skip] Button. This button will draw a card for you and "
-			       		+ "the game will move on to the next player\r\n" + 
+			       		"	click the card and it will be"
+			       		+ " automaticly played.\r\n" + 
+			       		"	If you are unable to take your "
+			       		+ "turn due to not having a "
+			       		+ "playable card thn you may press"
+			       		+ " the \r\n" + 
+			       		"	[Skip] Button. This button will "
+			       		+ "draw a card for you and "
+			       		+ "the game will move on to the next"
+			       		+ " player\r\n" + 
 			       		"		");
 			       myWriter2.close();
 			       System.out.println("Successfully wrote to the file.");		     

@@ -6,13 +6,14 @@ import java.util.Scanner;
 import javax.swing.*; 
 
 /**
- * Controls the whole game. including the card creation, player creation, and update loop
+ * Controls the whole game. including the card creation, 
+ * player creation, and update loop
  * @author CTEHolbenG46
  * @version 0.6.2
  */
 public class MainGameLoop
 {
-	//*********************FIX THE INSTRUCTONS
+	//*********************
 	
 	/**The current color of the main deck
 	 * Default = blank*/
@@ -191,10 +192,10 @@ public class MainGameLoop
 		}
 		
 		//Checks for wild cards on the top
-		while(MainDeck.Cards.get(0).ColorValue.equals("Black"))
+		while(!MainDeck.Cards.get(0).SpecialEffect.isEmpty())
 		{
 			//Flips the deck if they are on top
-			System.out.println("Wild card was on top... "
+			System.out.println("Special card was on top... "
 					+ "\nfliping the deck...");
 			MainDeck.Cards.add(MainDeck.Cards.get(0));
 			MainDeck.Cards.remove(0);
@@ -411,28 +412,36 @@ public class MainGameLoop
 			switch(CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 			{
 				case "Red":		Frame.resetPlayerhand(Color.red, 
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Blue":	Frame.resetPlayerhand(Color.blue, 		
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Green":	Frame.resetPlayerhand(Color.green,	 	
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Yellow":	Frame.resetPlayerhand(new Color(255, 206, 71), 
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Magenta":	Frame.resetPlayerhand(Color.magenta,
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Cyan":	Frame.resetPlayerhand(Color.cyan, 	
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Orange":	Frame.resetPlayerhand(new  Color(252, 148, 20), 
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 				case "Black":	Frame.resetPlayerhand(Color.black, 	
-						Integer.toString(CurentPlayer.MyDeck.Cards.get(0).numberValue));
+						Integer.toString(
+								CurentPlayer.MyDeck.Cards.get(0).numberValue));
 				break;
 			}
 		}
