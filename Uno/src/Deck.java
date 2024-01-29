@@ -50,11 +50,13 @@ public class Deck
 		{
 			if((Cards.get(i).SpecialEffect.equals("")))
 			{
-				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).numberValue);
+				System.out.println(Cards.get(i).ColorValue + " " + 
+									Cards.get(i).numberValue);
 			}
 			else 
 			{
-				System.out.println(Cards.get(i).ColorValue + " " + Cards.get(i).SpecialEffect);
+				System.out.println(Cards.get(i).ColorValue + " " + 
+									Cards.get(i).SpecialEffect);
 			}
 			
 		}

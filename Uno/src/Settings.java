@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,9 +31,19 @@ public class Settings extends JFrame implements ActionListener
 	JButton Sfx = new JButton("SFX/ON");
 	
 	/**
-	 * Sumbits the settings
+	 * Sumbits the settings fro the wild card settings
 	 */
-	JButton Submit = new JButton("Submit");
+	JButton SubmitWildCardSize = new JButton("Submit");
+	
+	/**
+	 * Sumbits the settings for the wild card settings
+	 */
+	JButton SubmitDeckSize = new JButton("Submit");
+	
+	/**
+	 * Sumbits the settings for the colors
+	 */
+	JButton SubmitColors = new JButton("Submit Colors");
 	
 	/**
 	 * The main panel of the game
@@ -42,8 +53,43 @@ public class Settings extends JFrame implements ActionListener
 	/**
 	 * The input field for the wild card draw
 	 */
-	JTextField text = new JTextField(16);
+	JTextField WildCardDrawText = new JTextField(16);
 	
+	/**
+	 * The input field for the amount of cards in the deck
+	 */
+	JTextField DeckSizeText = new JTextField(16);
+	
+	/**
+	 * The dropdown menu for color 1
+	 */
+	JComboBox Color1Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	
+	/**
+	 * The dropdown menu for color 2
+	 */
+	JComboBox Color2Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	
+	/**
+	 * The dropdown menu for color 3
+	 */
+	JComboBox Color3Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	
+	/**
+	 * The dropdown menu for color 4
+	 */
+	JComboBox Color4Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	
+	
+	/**
+	 * Checks if it is the first time the button is clicked
+	 * Default = false
+	 */
+	public boolean doneOnce = false;
+	
+	/**
+	 * Creates a settings form and sets up all the buttons needed for the menu
+	 */
 	Settings()
 	{
 		this.requestFocus();
@@ -51,8 +97,12 @@ public class Settings extends JFrame implements ActionListener
 		//Setups the top bar
 		SettupSettings();
 		
+		//Adds the action listeners
 		Sfx.addActionListener(this);
-		Submit.addActionListener(this);
+		SubmitWildCardSize.addActionListener(this);
+		SubmitDeckSize.addActionListener(this);
+		SubmitColors.addActionListener(this);
+		Color1Combo.addActionListener(this);
 		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
@@ -65,14 +115,54 @@ public class Settings extends JFrame implements ActionListener
 			System.out.println("Sfx are now off");
 		}
 		
-		text.setBorder(new LineBorder(Color.black, 2));
-		text.setBounds(new Rectangle(105, 40, 135, 20));
+		SetComboBoxes();
 		
+		//Sets up the details
+		WildCardDrawText.setBorder(new LineBorder(Color.black, 2));
+		WildCardDrawText.setBounds(new Rectangle(105, 40, 135, 20));
+		DeckSizeText.setBorder(new LineBorder(Color.black, 2));
+		DeckSizeText.setBounds(new Rectangle(245, 40, 135, 20));
+		
+		//The color drop down mnus
+		panel.add(CreateLabel(0, 90, 100, 20, "Color One"));
+		Color1Combo.setBounds(0, 110, 100, 20);
+		
+		
+		panel.add(CreateLabel(105, 90, 100, 20, "Color Two"));
+		Color2Combo.setBounds(105, 110, 100, 20);
+		
+		panel.add(CreateLabel(210, 90, 100, 20, "Color Three"));
+		Color3Combo.setBounds(210, 110, 100, 20);
+		
+		panel.add(CreateLabel(315, 90, 100, 20, "Color Four"));
+		Color4Combo.setBounds(315, 110, 100, 20);
+		
+		
+		
+		
+		//Sets the text in the boxes
+		WildCardDrawText.setText("Enter a number 1-9 (" 
+				+ MainGameLoop.Settings[1] + ")");
+		DeckSizeText.setText("Enter a number 1-99 (" 
+				+ MainGameLoop.Settings[2] + ")");
+		
+		//Adds the components to the panel
+		panel.add(WildCardDrawText);
+		panel.add(DeckSizeText);
 		panel.add(CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
-		text.setText("Enter a number 1-9");
-		panel.add(text);
-		SetupButton(Sfx, 0,0, Color.black);
-		SetupButton(Submit, 245, 0, Color.black);
+		panel.add(CreateLabel(245, 20, 135, 20, "Card amount"));
+		panel.add(Color1Combo);
+		panel.add(Color2Combo);
+		panel.add(Color3Combo);
+		panel.add(Color4Combo);
+		
+		//Sets up the buttons
+		SetupButton(Sfx, 0, 25, 100, 60, Color.black);
+		SetupButton(SubmitWildCardSize, 105, 65, 135, 20, Color.black);
+		SetupButton(SubmitDeckSize, 245, 65, 135, 20, Color.black);
+		SetupButton(SubmitColors, 350, 440, 150, 60, Color.black);
+		
+		//Sets the form visible
 		this.setVisible(true);
 
 	
@@ -100,40 +190,62 @@ public class Settings extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource().equals(Sfx))
+		if(doneOnce)
 		{
-			ChangeSfx();
-		}
-		
-		if(e.getSource().equals(Submit))
-		{
-			try
+			if(e.getSource().equals(Sfx))
 			{
-				Integer.parseInt(text.getText());
-				
-				if(Integer.parseInt(text.getText()) > 9 || Integer.parseInt(text.getText()) < 1)
+				ChangeSfx();
+			}
+			
+			if(e.getSource().equals(SubmitWildCardSize))
+			{
+				if(SubmitSetting("Wild"))
 				{
-					JOptionPane.showMessageDialog(this, "Invalid number (1-9)");
+					JOptionPane.showMessageDialog(this, 
+							"Settings accepted, Please restart the game for changed to take effect");
 				}
 				else
 				{
-					MainGameLoop.Settings[1] = text.getText();
-					JOptionPane.showMessageDialog(this, "Number accepted, Please restart the game for changed to take effect");
+					JOptionPane.showMessageDialog(this, 
+							"Setting were not accepted, Plase try again");
 				}
-				
+			
 			}
-			catch(Exception e1)
+			
+			if(e.getSource().equals(SubmitDeckSize))
 			{
-				JOptionPane.showMessageDialog(this, "Please enter a number (1-9)");
-				text.setText("");
+				if(SubmitSetting("Deck"))
+				{
+					JOptionPane.showMessageDialog(this, 
+							"Settings accepted, Please restart the game for changed to take effect");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(this, 
+							"Setting were not accepted, Plase try again");
+				}
+			
 			}
 			
-				
+			if(e.getSource().equals(SubmitColors));
+			{
+				System.out.println("Saved colors " + MainGameLoop.Settings[0]);
+				MainGameLoop.Settings[0] = Color1Combo.getSelectedItem() + "," + 
+											Color2Combo.getSelectedItem() + "," +
+											Color3Combo.getSelectedItem() + "," +
+											Color4Combo.getSelectedItem() + ",";
+				JOptionPane.showMessageDialog(this, 
+						"Settings accepted, Please restart the game for changed to take effect");
+			}
 			
-		
+			
+			SaveSettings();
+		}
+		else
+		{
+			doneOnce = true;
 		}
 		
-		SaveSettings();
 	}
 
 	
@@ -158,6 +270,73 @@ public class Settings extends JFrame implements ActionListener
 		this.setLocationRelativeTo(				null);
 		this.setAlwaysOnTop(					true);
 		this.setName(							"Settings");
+	}
+	
+	/**
+	 * Used to submit the settings and check if they are good
+	 * @return true if the settigns are accepted, false if not
+	 * @param Seting the setting that is to be submited
+	 */
+	public boolean SubmitSetting(String Setting)
+	{
+		if(Setting.equals("Wild"))
+		{
+			try
+			{
+				Integer.parseInt(WildCardDrawText.getText());
+				
+				
+				if(Integer.parseInt(WildCardDrawText.getText()) > 9 || 
+						Integer.parseInt(WildCardDrawText.getText()) < 1)
+				{
+					JOptionPane.showMessageDialog(this,
+							"Invalid number for wild card draw (1-9) is accepted");
+				}
+				else
+				{
+					MainGameLoop.Settings[1] = WildCardDrawText.getText();
+					
+				}
+				return true;
+			}
+			catch(Exception e1)
+			{
+				JOptionPane.showMessageDialog(this, "Please enter a number");
+				WildCardDrawText.setText( MainGameLoop.Settings[1] );
+				return false;
+			}
+		}
+		else if(Setting.equals("Deck"))
+		{
+			try
+			{
+				Integer.parseInt(DeckSizeText.getText());
+				
+				if(Integer.parseInt(DeckSizeText.getText()) > 99 || 
+						Integer.parseInt(DeckSizeText.getText()) < 1)
+				{
+					JOptionPane.showMessageDialog(this, 
+							"Invalid number for deck size (1-99) is accepted");
+				}
+				else
+				{
+					MainGameLoop.Settings[2] = DeckSizeText.getText();
+				}
+				return true;
+			}
+			catch(Exception e1)
+			{
+				JOptionPane.showMessageDialog(this, "Please enter a number");
+				DeckSizeText.setText( MainGameLoop.Settings[2] );
+				return false;
+			}
+		}
+		else
+		{
+			return(false);
+		}
+		
+		
 	}
 	
 	
@@ -240,13 +419,15 @@ public class Settings extends JFrame implements ActionListener
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
 	 */
-	public void SetupButton(JButton Button, int x, int y, Color BorderColor)
+	public void SetupButton(JButton Button, 
+							int x, int y, int w, int h, 
+							Color BorderColor)
 	{	
 		resetFonts(						Button, 15);
 		Button.setBorder(				new LineBorder(BorderColor, 2));
 		Button.setFocusPainted(			false);
 		Button.setBackground(			Color.white);
-		Button.setBounds(				x, y, 100,60);
+		Button.setBounds(				x, y, w, h);
 		Button.setVisible(				true);
 	
 		this.setLayout(					null);
@@ -254,5 +435,46 @@ public class Settings extends JFrame implements ActionListener
 		panel.setComponentZOrder(		Button, 0);
 		panel.setVisible(				true);
 		this.setVisible(true);
+	}
+	
+	
+	/**
+	 * Sets up the combo boxes with the corect text
+	 */
+	public void SetComboBoxes()
+	{
+		JComboBox[] boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
+		
+		for(int i = 0; i < boxes.length; i++)
+		{
+			if(MainGameLoop.ColorsBackup[i].equals("Red"))
+			{
+				boxes[i].setSelectedIndex(0);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Blue"))
+			{
+				boxes[i].setSelectedIndex(1);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Green"))
+			{
+				boxes[i].setSelectedIndex(2);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Yellow"))
+			{
+				boxes[i].setSelectedIndex(3);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Magenta"))
+			{
+				boxes[i].setSelectedIndex(4);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Cyan"))
+			{
+				boxes[i].setSelectedIndex(5);
+			}
+			else if(MainGameLoop.ColorsBackup[i].equals("Orange"))
+			{
+				boxes[i].setSelectedIndex(6);
+			}
+		}
 	}
 }

@@ -358,7 +358,8 @@ public class MyFrame extends JFrame implements ActionListener
 		JButton[] ColorB = {Red, Blue, Green, Yellow};
 		for(int i = 0; i < ColorB.length; i++)
 		{
-			ColorB[i].setBounds(				(i * 100) +  (i * 4), position, 100, 60);
+			ColorB[i].setBounds(				(i * 100) +  (i * 4),
+												position, 100, 60);
 			panel.add(					ColorB[i]);
 			ColorB[i].addActionListener(		this);
 			ColorB[i].setFocusPainted(		false);
@@ -453,7 +454,7 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	
-	//Actions **********************************************************************************
+	//Actions *******************************************
 	
 	/**
 	 * Called when any button is clicked

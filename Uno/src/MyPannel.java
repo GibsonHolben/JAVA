@@ -6,7 +6,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
- * Used for drawing the low level graphics and controlling the overall look of the game
+ * Used for drawing the low level graphics and
+ *  controlling the overall look of the game
  * @author CTEHolbenG46
  * @version 5.2.4
  */
@@ -123,15 +124,15 @@ public class MyPannel extends JPanel
 				}
 				else if(MainDeckText.contains("W+"))
 				{
-					g2D.drawString("+" + MainGameLoop.Settings[2], 5, 37 + 5);
+					g2D.drawString("+" + MainGameLoop.Settings[1], 5, 37 + 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+" + MainGameLoop.Settings[2], 7, 35+ 5);
+					g2D.drawString("+" + MainGameLoop.Settings[1], 7, 35+ 5);
 					
 					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
 					g2D.setPaint(Color.black);
-					g2D.drawString("+" + MainGameLoop.Settings[2], 100, 160+ 5);
+					g2D.drawString("+" + MainGameLoop.Settings[1], 100, 160+ 5);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+" + MainGameLoop.Settings[2], 98, 158+ 5);
+					g2D.drawString("+" + MainGameLoop.Settings[1], 98, 158+ 5);
 				}
 				else
 				{
@@ -173,15 +174,15 @@ public class MyPannel extends JPanel
 				{
 					g2D.setPaint(Color.black);
 					g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
-					g2D.drawString("+"+ MainGameLoop.Settings[2], 398, 342);
+					g2D.drawString("+"+ MainGameLoop.Settings[1], 398, 342);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+"+ MainGameLoop.Settings[2], 400, 340);
+					g2D.drawString("+"+ MainGameLoop.Settings[1], 400, 340);
 					
 					g2D.setPaint(Color.black);
 					g2D.setFont(new Font("URW Grotesk", Font.BOLD,-40));
-					g2D.drawString("+"+ MainGameLoop.Settings[2], 490, 460);
+					g2D.drawString("+"+ MainGameLoop.Settings[1], 490, 460);
 					g2D.setPaint(Color.white);
-					g2D.drawString("+"+ MainGameLoop.Settings[2], 488, 462);
+					g2D.drawString("+"+ MainGameLoop.Settings[1], 488, 462);
 				}
 				else
 				{
@@ -205,11 +206,15 @@ public class MyPannel extends JPanel
 				g2D.setPaint(Color.black);
 				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 2)
 				{
-					g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Card in you hand", 118.5f, 41.5f);
+					g2D.drawString("You have " + Integer.toString(
+							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
+									+ "Card in you hand", 118.5f, 41.5f);
 				}
 				else
 				{
-					g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 118.5f, 41.5f);
+					g2D.drawString("You have " + Integer.toString(
+							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
+									+ "Cards in you hand", 118.5f, 41.5f);
 				}
 			
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 118.5f, 21.5f);
@@ -217,12 +222,16 @@ public class MyPannel extends JPanel
 				g2D.setPaint(Color.white);
 				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 2)
 				{
-					g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Card in you hand", 120, 40);
+					g2D.drawString("You have " + Integer.toString(
+							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
+									+ "Card in you hand", 120, 40);
 
 				}
 				else
 				{
-					g2D.drawString("You have " + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " Cards in you hand", 120, 40);
+					g2D.drawString("You have " + Integer.toString(
+							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
+									+ "Cards in you hand", 120, 40);
 
 				}
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + "'s turn", 120, 20);
@@ -275,7 +284,9 @@ public class MyPannel extends JPanel
 			g2D.setPaint(Color.white);
 			g2D.drawString(PlayerDeckText, 417, 415);
 		}
-		else if(PlayerDeckText.equals("W")|| PlayerDeckText.contains("W+")|| PlayerDeckText.equals("S"))
+		else if(PlayerDeckText.equals("W")|| 
+				PlayerDeckText.contains("W+")|| 
+				PlayerDeckText.equals("S"))
 		{
 			
 		}
@@ -298,7 +309,9 @@ public class MyPannel extends JPanel
 			g2D.setPaint(Color.white);
 			g2D.drawString(MainDeckText, 25, 120);
 		}
-		else if(MainDeckText.equals("W")|| MainDeckText.contains("W+")|| MainDeckText.equals("S"))
+		else if(MainDeckText.equals("W")||
+				MainDeckText.contains("W+")|| 
+				MainDeckText.equals("S"))
 		{
 			
 		}
@@ -354,7 +367,10 @@ public class MyPannel extends JPanel
 	 */
 	public String toString()
 	{
-		String s = MainDeckColor.toString() + "," + MainDeckText + "," + PlayerDeckColor.toString()  + "," + PlayerDeckText;
+		String s = MainDeckColor.toString() + "," +
+				MainDeckText + "," + 
+				PlayerDeckColor.toString()  + "," + 
+				PlayerDeckText;
 				
 		return s;
 	}

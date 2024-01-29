@@ -77,8 +77,11 @@ public class Player
 				MainGameLoop.UpdateGraphicsPlayer();
 			}
 			
-			//Runs next player becuase main game loop doesnt run it if its a wild card
-			if(!SpecialEffect.equals("W+" + MainGameLoop.Settings[1]) &&!SpecialEffect.equals("W"))
+			//Runs next player becuase main game loop doesnt run
+			//it if its a wild card
+			if(!SpecialEffect.equals("W+" + 
+					MainGameLoop.Settings[1]) &&
+					!SpecialEffect.equals("W"))
 			{
 				MainGameLoop.NextPlayer();
 			}
@@ -94,8 +97,10 @@ public class Player
 	{
 		for(int i = 0; i < toDraw; i++)
 		{
-			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(MainGameLoop.MainDeck.Cards.size() - 1));
-			MainGameLoop.MainDeck.Cards.remove(MainGameLoop.MainDeck.Cards.size() - 1);
+			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
+					MainGameLoop.MainDeck.Cards.size() - 1));
+			MainGameLoop.MainDeck.Cards.remove(
+					MainGameLoop.MainDeck.Cards.size() - 1);
 		}
 	}
 	
@@ -106,7 +111,8 @@ public class Player
 	public boolean cardMatch()
 	{
 		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).numberValue == MainGameLoop.MainDeck.Cards.get(0).numberValue||
+				MyDeck.Cards.get(0).numberValue == 
+				MainGameLoop.MainDeck.Cards.get(0).numberValue||
 				MyDeck.Cards.get(0).ColorValue.equals("Black"))
 		{
 			return true;

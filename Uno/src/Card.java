@@ -56,7 +56,8 @@ public class Card
 		}
 		else
 		{
-			String s = numberValue + "," + ColorValue + "," + SpecialEffect;
+			String s = numberValue + "," + ColorValue + 
+					"," + SpecialEffect;
 			return s;
 		}
 	}
@@ -75,7 +76,8 @@ public class Card
 		{
 			MainGameLoop.Frame.canPlay = false;
 			MainGameLoop.Frame.SettupColorButtons(220);
-			MainGameLoop.Players.get(1).DrawCard(Integer.parseInt(MainGameLoop.Settings[1]));
+			MainGameLoop.Players.get(1).DrawCard(
+					Integer.parseInt(MainGameLoop.Settings[1]));
 		}
 		
 		if(SpecialEffect.equals("S"))
