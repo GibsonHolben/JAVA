@@ -13,7 +13,6 @@ import javax.swing.*;
  */
 public class MainGameLoop
 {
-	//*********************
 	
 	/**The current color of the main deck
 	 * Default = blank*/

@@ -22,6 +22,7 @@ public class Setup
 	/**
 	 * Sets up the button 
 	 * @param Button the button to setup
+	 * @param panel The JPanel that the button is being added to
 	 */
 	public static void Button(JButton Button, JPanel panel)
 	{
@@ -42,6 +43,7 @@ public class Setup
 	 * @param Button the button to setup
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
+	 * @param panel The JPanel that the button is being added to
 	 */
 	public static void Button(JButton Button, int x, int y, JPanel panel)
 	{	
@@ -174,7 +176,10 @@ public class Setup
 		} 
 		catch (FileNotFoundException e) 
 		{
-		      System.out.println("An error occurred.");
+		      System.out.println("An error occurred while reading the settings file");
+		      JOptionPane.showMessageDialog(MainGameLoop.Frame, "An error occurred while reading the settings file");
+		      JOptionPane.showMessageDialog(MainGameLoop.Frame, "Refactoring Settings");
+		      Setup.fixColors();
 		      e.printStackTrace();
 		}
 		
@@ -235,7 +240,7 @@ public class Setup
 	
 	
 	/**
-	 * Fix the Settings if they are incorect
+	 * Recreate the settings file if needed
 	 */
 	public static void fixColors()
 	{
