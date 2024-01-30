@@ -157,13 +157,13 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(					  null);
 		
 		//Setups the buttons
-		SetupButton(Settings, 	0, 480, 100, 20);
-		SetupButton(HowToPlay, 	100, 480, 100, 20);
-		SetupButton(P1, 		2,400, Color.black);
-		SetupButton(P2, 		104,400, Color.black);
-		SetupButton(Start,		206,400, Color.black);
-		SetupButton(P3, 		308,400, Color.black);
-		SetupButton(P4, 		410,400, Color.black);
+		Setup.Button(Settings, 	0, 480, 100, 20, panel);
+		Setup.Button(HowToPlay, 	100, 480, 100, 20, panel);
+		Setup.Button(P1, 		2,400, panel);
+		Setup.Button(P2, 		104,400, panel);
+		Setup.Button(Start,		206,400, panel);
+		Setup.Button(P3, 		308,400, panel);
+		Setup.Button(P4, 		410,400, panel);
 		P1.addActionListener(                 this);
 		P2.addActionListener(                 this);
 		P3.addActionListener(                 this);
@@ -234,12 +234,12 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.remove(P2);
 		panel.remove(P3);
 		panel.remove(P4);
-		SetupButton(Settings, 			0, 480, 100, 20);
-		SetupButton(HowToPlay, 			104, 480, 100, 20);
-		SetupButton(SkipTurn, 			104, 400, Color.black);
-		SetupButton(Play,				395, 300, 100, 200);
-		SetupButton(FlipCurentHand,		294,400, Color.black);
-		SetupButton(FlipCurentHandBack,	0,400, Color.black);
+		Setup.Button(Settings, 			0, 480, 100, 20, panel);
+		Setup.Button(HowToPlay, 			104, 480, 100, 20, panel);
+		Setup.Button(SkipTurn, 			104, 400, panel);
+		Setup.Button(Play,				395, 300, 100, 200, panel);
+		Setup.Button(FlipCurentHand,		294,400, panel);
+		Setup.Button(FlipCurentHandBack,	0,400, panel);
 		
 		Play.setOpaque(false);
 		Play.setContentAreaFilled(false);
@@ -276,10 +276,10 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.PlayerDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		SetupButton(Play,				395, 300, 100, 200);
-		SetupButton(FlipCurentHandBack,	0,400, Color.black);
-		SetupButton(SkipTurn, 			104, 400, Color.black);
-		SetupButton(FlipCurentHand, 	208,400, Color.black);
+		Setup.Button(Play,				395, 300, 100, 200, panel);
+		Setup.Button(FlipCurentHandBack,	0,400, panel);
+		Setup.Button(SkipTurn, 			104, 400, panel);
+		Setup.Button(FlipCurentHand, 	208,400, panel);
 
 
 		
@@ -300,6 +300,27 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	//Settups ****************************************************************
+	/**
+	 * Sets up the player selector colors on startup based on what 
+	 * was saved from last use
+	 */
+	public void setupPlayeBttonColors()
+	{
+		System.out.println(MainGameLoop.Players.size());
+		switch(MainGameLoop.Players.size())
+		{
+			case 1: ResetPlayerButtons(P1);
+			break;
+			case 2: ResetPlayerButtons(P2);
+			break;
+			case 3: ResetPlayerButtons(P3);
+			break;
+			case 4: ResetPlayerButtons(P4);
+			break;
+			default: ResetPlayerButtons(P1);
+			break;
+		}
+	}
 	
 	/**
 	 * Sets up the music
@@ -366,92 +387,7 @@ public class MyFrame extends JFrame implements ActionListener
 			ColorB[i].setFocusPainted(		false);
 			ColorB[i].setBackground(			Color.white);
 			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
-			resetFonts(ColorB[i], 15);
-		}
-	}
-	
-	
-	/**
-	 * Sets up the button 
-	 * @param Button the button to setup
-	 */
-	public void SetupButton(JButton Button)
-	{
-		resetFonts(						Button, 15);
-		Button.setBounds(				190, 400, 100, 60);
-		Button.setBorder(				new LineBorder(Color.BLACK, 2));
-		Button.setBackground(			Color.white);
-		Button.setFocusPainted(			false);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		this.setVisible(				true);
-	}
-	
-	/**
-	 * Sets up the button with x and y cordenants
-	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
-	 */
-	public void SetupButton(JButton Button, int x, int y, Color BorderColor)
-	{	
-		resetFonts(						Button, 15);
-		Button.setBorder(				new LineBorder(BorderColor, 2));
-		Button.setFocusPainted(			false);
-		Button.setBackground(			Color.white);
-		Button.setBounds(				x, y, 100,60);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		this.setVisible(				true);
-	}
-	
-	
-	/**
-	 * Sets up the button with x and y cordenants and with a size
-	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
-	 * @param sizeX the horizontal size of the button
-	 * @param sizeY the vertical size of the button
-	 */
-	public void SetupButton(JButton Button, int x, int y, int sizeX, int sizeY)
-	{	
-		resetFonts(						Button, 15);
-		Button.setBorder(				new LineBorder(Color.BLACK, 2));
-		Button.setFocusPainted(			false);
-		Button.setBackground(			Color.white);
-		Button.setBounds(				x, y, sizeX, sizeY);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		this.setVisible(				true);
-	
-	}
-	
-	/**
-	 * Sets up the player selector colors on startup based on what 
-	 * was saved from last use
-	 */
-	public void setupPlayeBttonColors()
-	{
-		System.out.println(MainGameLoop.Players.size());
-		switch(MainGameLoop.Players.size())
-		{
-			case 1: ResetPlayerButtons(P1);
-			break;
-			case 2: ResetPlayerButtons(P2);
-			break;
-			case 3: ResetPlayerButtons(P3);
-			break;
-			case 4: ResetPlayerButtons(P4);
-			break;
-			default: ResetPlayerButtons(P1);
-			break;
+			Setup.Fonts(ColorB[i], 15);
 		}
 	}
 	
@@ -525,7 +461,7 @@ public class MyFrame extends JFrame implements ActionListener
 			}
 			if(e.getSource().equals(Start))
 			{
-				MainGameLoop.initGame();
+				Setup.initGame();
 				MainGameLoop.Start();
 				Start.setVisible(true);
 				this.setVisible(true);
@@ -568,7 +504,8 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Yellow))
 			{
-				MainGameLoop.CurentColor = Card.ColorsBackup[3];
+				MainGameLoop.CurentColor = Card.
+						ColorsBackup[3];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -596,12 +533,12 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void hideButtons()
 	{
-		SetupButton(Settings, -1111, 480, 100, 20);
-		SetupButton(HowToPlay,-1111, 480, 100, 20);
-		SetupButton(SkipTurn, -1111, 0, Color.black);
-		SetupButton(Play, -1111, 400, Color.black);
-		SetupButton(FlipCurentHand,-1111,400, Color.black);
-		SetupButton(FlipCurentHandBack, -1111,400, Color.black);
+		Setup.Button(Settings, -1111, 480, 100, 20, panel);
+		Setup.Button(HowToPlay,-1111, 480, 100, 20, panel);
+		Setup.Button(SkipTurn, -1111, 0, panel);
+		Setup.Button(Play, -1111, 400, panel);
+		Setup.Button(FlipCurentHand,-1111,400, panel);
+		Setup.Button(FlipCurentHandBack, -1111,400, panel);
 	}
 	
 	/**

@@ -32,8 +32,8 @@ public class Player
 	 */
 	public void Skip()
 	{
-		MainGameLoop.UpdateGraphicsFlip();
-		MainGameLoop.UpdateGraphicsPlayer();
+		Visuals.UpdateGraphicsFlip(MainGameLoop.MainDeck, MainGameLoop.Frame);
+		Visuals.UpdateGraphicsPlayer(MainGameLoop.CurentPlayer, MainGameLoop.Frame);
 		DrawCard(1);
 		MainGameLoop.NextPlayer();
 	}
@@ -73,8 +73,8 @@ public class Player
 			else 
 			{
 				//Updates the graphics
-				MainGameLoop.UpdateGraphicsFlip();
-				MainGameLoop.UpdateGraphicsPlayer();
+				Visuals.UpdateGraphicsFlip(MainGameLoop.MainDeck, MainGameLoop.Frame);
+				Visuals.UpdateGraphicsPlayer(MainGameLoop.CurentPlayer, MainGameLoop.Frame);
 			}
 			
 			//Runs next player becuase main game loop doesnt run

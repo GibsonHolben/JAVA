@@ -124,17 +124,17 @@ public class Settings extends JFrame implements ActionListener
 		DeckSizeText.setBounds(new Rectangle(245, 40, 135, 20));
 		
 		//The color drop down mnus
-		panel.add(CreateLabel(0, 90, 100, 20, "Color One"));
+		panel.add(Setup.CreateLabel(0, 90, 100, 20, "Color One"));
 		Color1Combo.setBounds(0, 110, 100, 20);
 		
 		
-		panel.add(CreateLabel(105, 90, 100, 20, "Color Two"));
+		panel.add(Setup.CreateLabel(105, 90, 100, 20, "Color Two"));
 		Color2Combo.setBounds(105, 110, 100, 20);
 		
-		panel.add(CreateLabel(210, 90, 100, 20, "Color Three"));
+		panel.add(Setup.CreateLabel(210, 90, 100, 20, "Color Three"));
 		Color3Combo.setBounds(210, 110, 100, 20);
 		
-		panel.add(CreateLabel(315, 90, 100, 20, "Color Four"));
+		panel.add(Setup.CreateLabel(315, 90, 100, 20, "Color Four"));
 		Color4Combo.setBounds(315, 110, 100, 20);
 		
 		
@@ -149,18 +149,20 @@ public class Settings extends JFrame implements ActionListener
 		//Adds the components to the panel
 		panel.add(WildCardDrawText);
 		panel.add(DeckSizeText);
-		panel.add(CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
-		panel.add(CreateLabel(245, 20, 135, 20, "Card amount"));
+		panel.add(Setup.CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
+		panel.add(Setup.CreateLabel(245, 20, 135, 20, "Card amount"));
 		panel.add(Color1Combo);
 		panel.add(Color2Combo);
 		panel.add(Color3Combo);
 		panel.add(Color4Combo);
 		
 		//Sets up the buttons
-		SetupButton(Sfx, 0, 25, 100, 60, Color.black);
-		SetupButton(SubmitWildCardSize, 105, 65, 135, 20, Color.black);
-		SetupButton(SubmitDeckSize, 245, 65, 135, 20, Color.black);
-		SetupButton(SubmitColors, 350, 440, 150, 60, Color.black);
+		this.setLayout(null);
+		Setup.Button(Sfx, 					0, 	 25,  100, 60,  	panel);
+		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	panel);
+		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		panel);
+		Setup.Button(SubmitColors, 		350, 440, 150, 60, 		panel);
+		this.setVisible(true);
 		
 		//Sets the form visible
 		this.setVisible(true);
@@ -168,23 +170,7 @@ public class Settings extends JFrame implements ActionListener
 	
 	}
 	
-	/**
-	 * Creates a JLabel at specified cordenates with a 
-	 * specified size and a specified text
-	 * @param x the x cords of the label
-	 * @param y the y cords of the label
-	 * @param w the width of the label
-	 * @param h the height of the label
-	 * @param text the text of the label
-	 * @return a new JLabel of the label
-	 */
-	public JLabel CreateLabel(int x, int y, int w, int h, String text)
-	{
-		JLabel jb = new JLabel(text);
-		jb.setBounds(new Rectangle(x, y, w, h));
-		
-		return jb;
-	}
+	
 	/**
 	 * Runs when a buttons is clicked
 	 * @param e Gets which button was pressed
@@ -417,39 +403,7 @@ public class Settings extends JFrame implements ActionListener
 	
 	
 	
-	/**
-	 * Sets the font on a jbutton
-	 * @param Jb the button that the font is changed on
-	 * @param fontsize the new size of the font
-	 */
-	public void resetFonts(JButton Jb, int fontsize)
-	{
-		Jb.setFont(new Font("URW Grotesk", Font.BOLD, fontsize));
-	}
 	
-	/**
-	 * Sets up the button with x and y cordenants
-	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
-	 */
-	public void SetupButton(JButton Button, 
-							int x, int y, int w, int h, 
-							Color BorderColor)
-	{	
-		resetFonts(						Button, 15);
-		Button.setBorder(				new LineBorder(BorderColor, 2));
-		Button.setFocusPainted(			false);
-		Button.setBackground(			Color.white);
-		Button.setBounds(				x, y, w, h);
-		Button.setVisible(				true);
-	
-		this.setLayout(					null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		panel.setVisible(				true);
-		this.setVisible(true);
-	}
 	
 	
 	/**
