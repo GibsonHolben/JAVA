@@ -63,22 +63,22 @@ public class Settings extends JFrame implements ActionListener
 	/**
 	 * The dropdown menu for color 1
 	 */
-	JComboBox Color1Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	JComboBox Color1Combo = new JComboBox(Card.AcceptedColors);
 	
 	/**
 	 * The dropdown menu for color 2
 	 */
-	JComboBox Color2Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	JComboBox Color2Combo = new JComboBox(Card.AcceptedColors);
 	
 	/**
 	 * The dropdown menu for color 3
 	 */
-	JComboBox Color3Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	JComboBox Color3Combo = new JComboBox(Card.AcceptedColors);
 	
 	/**
 	 * The dropdown menu for color 4
 	 */
-	JComboBox Color4Combo = new JComboBox(MainGameLoop.AcceptedColors);
+	JComboBox Color4Combo = new JComboBox(Card.AcceptedColors);
 	
 	
 	/**
@@ -461,31 +461,31 @@ public class Settings extends JFrame implements ActionListener
 		
 		for(int i = 0; i < boxes.length; i++)
 		{
-			if(MainGameLoop.ColorsBackup[i].equals("Red"))
+			if(Card.ColorsBackup[i].equals("Red"))
 			{
 				boxes[i].setSelectedIndex(0);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Blue"))
+			else if(Card.ColorsBackup[i].equals("Blue"))
 			{
 				boxes[i].setSelectedIndex(1);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Green"))
+			else if(Card.ColorsBackup[i].equals("Green"))
 			{
 				boxes[i].setSelectedIndex(2);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Yellow"))
+			else if(Card.ColorsBackup[i].equals("Yellow"))
 			{
 				boxes[i].setSelectedIndex(3);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Magenta"))
+			else if(Card.ColorsBackup[i].equals("Magenta"))
 			{
 				boxes[i].setSelectedIndex(4);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Cyan"))
+			else if(Card.ColorsBackup[i].equals("Cyan"))
 			{
 				boxes[i].setSelectedIndex(5);
 			}
-			else if(MainGameLoop.ColorsBackup[i].equals("Orange"))
+			else if(Card.ColorsBackup[i].equals("Orange"))
 			{
 				boxes[i].setSelectedIndex(6);
 			}

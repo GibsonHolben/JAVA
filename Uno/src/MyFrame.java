@@ -73,22 +73,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * Changes the color of the main deck to red
 	 */
-	static JButton 			Red = new JButton(MainGameLoop.ColorsBackup[0]);
+	static JButton 			Red = new JButton(Card.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 */
-	static JButton 			Blue = new JButton(MainGameLoop.ColorsBackup[1]);
+	static JButton 			Blue = new JButton(Card.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 */
-	static JButton 			Green = new JButton(MainGameLoop.ColorsBackup[2]);
+	static JButton 			Green = new JButton(Card.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 */
-	static JButton 			Yellow = new JButton(MainGameLoop.ColorsBackup[3]);
+	static JButton 			Yellow = new JButton(Card.ColorsBackup[3]);
 	//Player select
 	
 	/**
@@ -543,7 +543,7 @@ public class MyFrame extends JFrame implements ActionListener
 			//Wild card buttons
 			if(e.getSource().equals(Red))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[0];
+				MainGameLoop.CurentColor = Card.ColorsBackup[0];
 				canPlay = true;
 				System.out.println(MainGameLoop.CurentColor);
 				MainGameLoop.NextPlayer();
@@ -552,7 +552,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Blue))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[1];
+				MainGameLoop.CurentColor = Card.ColorsBackup[1];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -560,7 +560,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Green))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[2];
+				MainGameLoop.CurentColor = Card.ColorsBackup[2];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -568,7 +568,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Yellow))
 			{
-				MainGameLoop.CurentColor = MainGameLoop.ColorsBackup[3];
+				MainGameLoop.CurentColor = Card.ColorsBackup[3];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);

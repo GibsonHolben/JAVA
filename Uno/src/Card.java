@@ -20,6 +20,18 @@ public class Card
 	 */
 	public String 	SpecialEffect = "";
 	
+	/**The colors of the cards*/
+	static String[] 				ColorsBackup;
+	
+	/**The acceptable colors for the cards*/
+	static String[] 				AcceptedColors = {"Red", 
+														"Blue", 
+														"Green", 
+														"Yellow", 
+														"Magenta", 
+														"Cyan", 
+														"Orange"};
+	
 	
 	/**
 	 * Creates a card with passed in values

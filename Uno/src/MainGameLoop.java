@@ -38,19 +38,10 @@ public class MainGameLoop
 	/**An array of players*/
 	public static ArrayList<Player> Players;
 	
-	/**The colors of the cards*/
-	static String[] 				ColorsBackup;
 	
-	/**The acceptable colors for the cards*/
-	static String[] 				AcceptedColors = {"Red", 
-														"Blue", 
-														"Green", 
-														"Yellow", 
-														"Magenta", 
-														"Cyan", 
-														"Orange"};
-	
-	/**Holds the settings Example: card colors, wild card draw */
+	/**Holds the settings Example: 4 card colors, 
+	 * wild card draw, the amount of each color in the deck 
+	 * and weather the sound effets are played*/
 	public static String[] 			Settings = new String[4];
 
 
@@ -75,32 +66,28 @@ public class MainGameLoop
 			switch(input)
 			{
 				case "ff":
-					isRunning = false;
-					
-				break;
+					isRunning = false;	
+					break;
 				case "flip":
 					Flip();
-				break;
+					break;
 				case "hand":
 					System.out.println(CurentPlayer.Name);
 					CurentPlayer.MyDeck.PrintDeck();
-				break;
+					break;
 				case "p":
 					System.out.println("Pause");
-				break;
+					break;
 				case "view":
 					MainDeck.PrintDeck();
-				case "test":
-					Frame.SettupColorButtons(300);
+					break;
 				case "cc":
 					System.out.println(CurentColor);
-				break;
-				case "toS":
-					System.out.println(Frame.toString());
+					break;
 				case "Help":
 					System.out.println("ff, hand, p, view,"
 							+ " test, cc, toS, Help, Settings");
-				break;
+					break;
 				case "Settings": 
 					PrintSettings();
 					break;
@@ -125,13 +112,13 @@ public class MainGameLoop
 	}
 	
 	
-	/**Starts the game*/
+	/**Starts the game and initilizes all the neccecary features of the game
+	 * as well as does edits on some of the settings*/
 	public static void initGame()
 	{
-		//Checks if the players are greater that 0
+		//Clears all players from the game on the second initilization
 		if(Players.size() > 0)
 		{
-			//Clears all players from the game
 			Players.clear();
 		}
 		
@@ -147,50 +134,35 @@ public class MainGameLoop
 		try 
 		{
 			 myReader = new Scanner(myObj);
-			 while (myReader.hasNextLine()) 
-		     {
-				 input = myReader.nextLine();
-		     }
-		} 
-		catch (FileNotFoundException e1) 
-		{
-			
-			e1.printStackTrace();
-		}
-	    
-			
-		
-		//Sets up the players		
-		if(!input.isEmpty())
-		{
-			//Check if the corect amount of players is entered
-			if(Integer.parseInt(input) < 5 && 
-					Integer.parseInt(input) > 0)
+			 input = myReader.nextLine();
+			 
+			//Sets up the players		
+			if(!input.isEmpty())
 			{
-				
-				try
+				//Check if the corect amount of players is entered
+				if(Integer.parseInt(input) < 5 && 
+						Integer.parseInt(input) > 0)
 				{
 					//Settup main deck
 					MainDeck = new Deck(CreateCards());
 					MainDeck.Shuffle();			
 					settupDeck(input);
-				
-					CurentPlayer = Players.get(0);
+					CurentPlayer = Players.get(0);		
 				}
-				catch(Exception e)
+				else
 				{
-					System.out.println("Error");
-					e.printStackTrace();
+					System.out.println("Please enter a valid number"
+											+ " (1-4)");
+					initGame();
 				}
-			}
-			else
-			{
-				System.out.println("Please enter a valid number"
-						+ " (1-4)");
-				initGame();
-			}
+			}	
+		} 
+		catch (FileNotFoundException e1) 
+		{
+			System.out.println("Players file could not be read");
+			e1.printStackTrace();
 		}
-		
+				
 		//Checks for wild cards on the top
 		while(!MainDeck.Cards.get(0).SpecialEffect.isEmpty())
 		{
@@ -591,13 +563,13 @@ public class MainGameLoop
 		    	 {
 		    		 for(int i = 0; i < colors.length; i++)
 		    		 {
-		    			if( colors[i].equals(AcceptedColors[0])||
-		    				colors[i].equals(AcceptedColors[1])||
-		    				colors[i].equals(AcceptedColors[2])||
-		    				colors[i].equals(AcceptedColors[3])||
-		    				colors[i].equals(AcceptedColors[4])||
-		    				colors[i].equals(AcceptedColors[5])||
-		    				colors[i].equals(AcceptedColors[6]))
+		    			if( colors[i].equals(Card.AcceptedColors[0])||
+		    				colors[i].equals(Card.AcceptedColors[1])||
+		    				colors[i].equals(Card.AcceptedColors[2])||
+		    				colors[i].equals(Card.AcceptedColors[3])||
+		    				colors[i].equals(Card.AcceptedColors[4])||
+		    				colors[i].equals(Card.AcceptedColors[5])||
+		    				colors[i].equals(Card.AcceptedColors[6]))
 		    			{
 		    				System.out.println("Corect: " + colors[i]);
 		    			}
@@ -614,7 +586,7 @@ public class MainGameLoop
 		    		
 		    		 
 		    	 }
-		    	 ColorsBackup = colors;
+		    	 Card.ColorsBackup = colors;
 		     }
 		     myReader.close();  
 		  
