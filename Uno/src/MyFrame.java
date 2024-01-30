@@ -40,9 +40,9 @@ public class MyFrame extends JFrame implements ActionListener
 	static JButton 			FlipCurentHandBack = new JButton("< Flip");
 	
 	/**
-	 * A JButton that skips the active players turn
+	 * A JButton that shows the how to play 
 	 */
-	static JButton 			SkipTurn = new JButton("Skip");
+	static JButton 			HowToPlay = new JButton("How to play");
 	
 	/**
 	 * The main panel
@@ -55,6 +55,11 @@ public class MyFrame extends JFrame implements ActionListener
 	static JButton 			Play = new JButton();
 	
 	/**
+	 * A JButton that skips the active players turn
+	 */
+	static JButton 			SkipTurn = new JButton("Skip");
+	
+	/**
 	 * A JButton that calls start
 	 */
 	static JButton 			Start = new JButton("Start");
@@ -64,10 +69,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			Settings = new JButton("Settings");
 	
-	/**
-	 * A JButton that shows the how to play 
-	 */
-	static JButton 			HowToPlay = new JButton("How to play");
+
+	
 	
 	//ColorChanges
 	/**
@@ -89,6 +92,8 @@ public class MyFrame extends JFrame implements ActionListener
 	 * Changes the color of the main deck to yellow
 	 */
 	static JButton 			Yellow = new JButton(Card.ColorsBackup[3]);
+	
+	
 	//Player select
 	
 	/**
@@ -110,10 +115,6 @@ public class MyFrame extends JFrame implements ActionListener
 	
 	
 	//SFX
-	/**
-	 * The audio clip of the button click
-	 */
-	public Clip 					clipButton;
 	
 	/**2
 	 * the audio stream of the button click
@@ -121,14 +122,21 @@ public class MyFrame extends JFrame implements ActionListener
 	public AudioInputStream 		AudioStreamButton;
 	
 	/**
+	 * the audio stream of the music
+	 */
+	public AudioInputStream 		AudioStreamMusic;	
+	
+	/**
+	 * The audio clip of the button click
+	 */
+	public Clip 					clipButton;
+	
+	/**
 	 * The audio clip of the music
 	 */
 	public Clip 					clipMusic;
 	
-	/**
-	 * the audio stream of the music
-	 */
-	public AudioInputStream 		AudioStreamMusic;	
+	
       
 	
 	/**
@@ -188,212 +196,9 @@ public class MyFrame extends JFrame implements ActionListener
 		setupPlayeBttonColors();
 	}
 	
-	//Resets ************************************************************
-	
-	/**
-	 * Resets the colors of the buttons
-	 * @param Button the button that is held down
-	 */
-	public void ResetPlayerButtons(JButton Button)
-	{
-		P1.setBackground(Color.white);
-		P2.setBackground(Color.white);
-		P3.setBackground(Color.white);
-		P4.setBackground(Color.white);
-		
-		Button.setBackground(Color.lightGray);
-	}
-	
-	/**
-	 * Sets the font on a jbutton
-	 * @param Jb the button that the font is changed on
-	 * @param fontsize the new size of the font
-	 */
-	public void resetFonts(JButton Jb, int fontsize)
-	{
-		Jb.setFont(new Font("URW Grotesk", Font.BOLD, fontsize));
-	}
-	
-	/**
-	 * Redraws the JFrame (start of the game)
-	 * @param newColor the new color of tha card
-	 * @param newText the new text on the card
-	 */
-	public void reset(Color newColor, String newText)
-	{
-		
-		
-		this.requestFocus();
-		windowSettup();
-		panel.repaint();
-		panel.MainDeckColor = newColor;
-		panel.MainDeckText = newText;
-		panel.setLayout(null);
-		panel.remove(Start);
-		panel.remove(P1);
-		panel.remove(P2);
-		panel.remove(P3);
-		panel.remove(P4);
-		Setup.Button(Settings, 			0, 480, 100, 20, panel);
-		Setup.Button(HowToPlay, 			104, 480, 100, 20, panel);
-		Setup.Button(SkipTurn, 			104, 400, panel);
-		Setup.Button(Play,				395, 300, 100, 200, panel);
-		Setup.Button(FlipCurentHand,		294,400, panel);
-		Setup.Button(FlipCurentHandBack,	0,400, panel);
-		
-		Play.setOpaque(false);
-		Play.setContentAreaFilled(false);
-		Play.setBorderPainted(false);
-		resetFonts(Play, 10);
-		this.setVisible(true);
-	}
-	
-	/**
-	 * Loops the background music
-	 */
-	public void LoopMusic()
-	{
-		
-		if(MainGameLoop.Settings[3].equals("true"))
-		{
-			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
-			clipMusic.start();
-		}
-	}
-	
-	
-	/**
-	 * Redraws the JFrame 
-	 * @param newColor the new color of tha card
-	 * @param newText the new text on the card
-	 */
-	public void resetPlayerhand(Color newColor, String newText)
-	{
-		this.requestFocus();
-		windowSettup();
-		panel.repaint();
-		panel.PlayerDeckColor = newColor;
-		panel.PlayerDeckText = newText;
-		panel.setLayout(null);
-		panel.remove(Start);
-		Setup.Button(Play,				395, 300, 100, 200, panel);
-		Setup.Button(FlipCurentHandBack,	0,400, panel);
-		Setup.Button(SkipTurn, 			104, 400, panel);
-		Setup.Button(FlipCurentHand, 	208,400, panel);
-
-
-		
-		Play.setFocusPainted(				false);
-		SkipTurn.setFocusPainted(			false);
-		FlipCurentHand.setFocusPainted(		false);
-		FlipCurentHandBack.setFocusPainted(	false);
-		Play.setBackground(					Color.white);
-		SkipTurn.setBackground(				Color.white);
-		FlipCurentHand.setBackground(		Color.white);
-		FlipCurentHandBack.setBackground(	Color.white);
-		
-		Play.setOpaque(false);
-		Play.setContentAreaFilled(false);
-		Play.setBorderPainted(false);
-		Play.setForeground(Color.white);
-		this.setVisible(true);
-	}
-	
-	//Settups ****************************************************************
-	/**
-	 * Sets up the player selector colors on startup based on what 
-	 * was saved from last use
-	 */
-	public void setupPlayeBttonColors()
-	{
-		System.out.println(MainGameLoop.Players.size());
-		switch(MainGameLoop.Players.size())
-		{
-			case 1: ResetPlayerButtons(P1);
-			break;
-			case 2: ResetPlayerButtons(P2);
-			break;
-			case 3: ResetPlayerButtons(P3);
-			break;
-			case 4: ResetPlayerButtons(P4);
-			break;
-			default: ResetPlayerButtons(P1);
-			break;
-		}
-	}
-	
-	/**
-	 * Sets up the music
-	 */
-	public void SetSfx()
-	{
-		//setups the sfx 
-		File file = new File("src/ButttonClick.wav");
-		File file2 = new File("src/Bkg.wav");
-		try 
-		{
-			AudioStreamButton = AudioSystem.getAudioInputStream(file);
-			clipButton = AudioSystem.getClip();
-			clipButton.open(AudioStreamButton);
-			
-			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
-			clipMusic = AudioSystem.getClip();
-			clipMusic.open(AudioStreamMusic);
-		} 
-		catch (UnsupportedAudioFileException e) 
-		{
-			e.printStackTrace();
-		}
-		catch ( LineUnavailableException e)
-		{
-			e.printStackTrace();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-		
-		LoopMusic();
-	}
-	
-	/**
-	 * Sets up the window format
-	 */
-	public void windowSettup()
-	{
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(panel);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setAlwaysOnTop(true);
-		this.setName("UNO");
-	}
-	
-	/**
-	 * Sets up the wild card buttons
-	 * @param position the position of the button
-	 */
-	public void SettupColorButtons(int position)
-	{
-		panel.setLayout(null);
-		
-		JButton[] ColorB = {Red, Blue, Green, Yellow};
-		for(int i = 0; i < ColorB.length; i++)
-		{
-			ColorB[i].setBounds(				(i * 100) +  (i * 4),
-												position, 100, 60);
-			panel.add(					ColorB[i]);
-			ColorB[i].addActionListener(		this);
-			ColorB[i].setFocusPainted(		false);
-			ColorB[i].setBackground(			Color.white);
-			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
-			Setup.Fonts(ColorB[i], 15);
-		}
-	}
 	
 	
 	//Actions *******************************************
-	
 	/**
 	 * Called when any button is clicked
 	 * @param e used to find the source of the call
@@ -522,11 +327,7 @@ public class MyFrame extends JFrame implements ActionListener
 			//FileManager.ShowSettings();
 			Settings s = new Settings();
 		}
-		
-
 	}
-	
-	
 	
 	/**
 	 * Hides the buttons on game end
@@ -542,6 +343,21 @@ public class MyFrame extends JFrame implements ActionListener
 	}
 	
 	/**
+	 * Loops the background music
+	 */
+	public void LoopMusic()
+	{
+		
+		if(MainGameLoop.Settings[3].equals("true"))
+		{
+			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
+			clipMusic.start();
+		}
+	}
+	
+	
+	
+	/**
 	 * Plays the button click
 	 */
 	public void PlayClick()
@@ -554,6 +370,182 @@ public class MyFrame extends JFrame implements ActionListener
 
 	}
 	
+	
+	/**
+	 * Redraws the JFrame (start of the game)
+	 * @param newColor the new color of tha card
+	 * @param newText the new text on the card
+	 */
+	public void reset(Color newColor, String newText)
+	{
+		
+		
+		this.requestFocus();
+		windowSettup();
+		panel.repaint();
+		panel.MainDeckColor = newColor;
+		panel.MainDeckText = newText;
+		panel.setLayout(null);
+		panel.remove(Start);
+		panel.remove(P1);
+		panel.remove(P2);
+		panel.remove(P3);
+		panel.remove(P4);
+		Setup.Button(Settings, 			0, 480, 100, 20, panel);
+		Setup.Button(HowToPlay, 			104, 480, 100, 20, panel);
+		Setup.Button(SkipTurn, 			104, 400, panel);
+		Setup.Button(Play,				395, 300, 100, 200, panel);
+		Setup.Button(FlipCurentHand,		294,400, panel);
+		Setup.Button(FlipCurentHandBack,	0,400, panel);
+		
+		Play.setOpaque(false);
+		Play.setContentAreaFilled(false);
+		Play.setBorderPainted(false);
+		resetFonts(Play, 10);
+		this.setVisible(true);
+	}
+	
+	
+	/**
+	 * Sets the font on a jbutton
+	 * @param Jb the button that the font is changed on
+	 * @param fontsize the new size of the font
+	 */
+	public void resetFonts(JButton Jb, int fontsize)
+	{
+		Jb.setFont(new Font("URW Grotesk", Font.BOLD, fontsize));
+	}
+	
+	
+	/**
+	 * Redraws the JFrame 
+	 * @param newColor the new color of tha card
+	 * @param newText the new text on the card
+	 */
+	public void resetPlayerhand(Color newColor, String newText)
+	{
+		this.requestFocus();
+		windowSettup();
+		panel.repaint();
+		panel.PlayerDeckColor = newColor;
+		panel.PlayerDeckText = newText;
+		panel.setLayout(null);
+		panel.remove(Start);
+		Setup.Button(Play,				395, 300, 100, 200, panel);
+		Setup.Button(FlipCurentHandBack,	0,400, panel);
+		Setup.Button(SkipTurn, 			104, 400, panel);
+		Setup.Button(FlipCurentHand, 	208,400, panel);
+
+
+		
+		Play.setFocusPainted(				false);
+		SkipTurn.setFocusPainted(			false);
+		FlipCurentHand.setFocusPainted(		false);
+		FlipCurentHandBack.setFocusPainted(	false);
+		Play.setBackground(					Color.white);
+		SkipTurn.setBackground(				Color.white);
+		FlipCurentHand.setBackground(		Color.white);
+		FlipCurentHandBack.setBackground(	Color.white);
+		
+		Play.setOpaque(false);
+		Play.setContentAreaFilled(false);
+		Play.setBorderPainted(false);
+		Play.setForeground(Color.white);
+		this.setVisible(true);
+	}
+	
+	/**
+	 * Resets the colors of the buttons
+	 * @param Button the button that is held down
+	 */
+	public void ResetPlayerButtons(JButton Button)
+	{
+		P1.setBackground(Color.white);
+		P2.setBackground(Color.white);
+		P3.setBackground(Color.white);
+		P4.setBackground(Color.white);
+		Button.setBackground(Color.lightGray);
+	}
+	
+	//Settups ****************************************************************
+	/**
+	 * Sets up the player selector colors on startup based on what 
+	 * was saved from last use
+	 */
+	public void setupPlayeBttonColors()
+	{
+		System.out.println(MainGameLoop.Players.size());
+		switch(MainGameLoop.Players.size())
+		{
+			case 1: ResetPlayerButtons(P1);
+			break;
+			case 2: ResetPlayerButtons(P2);
+			break;
+			case 3: ResetPlayerButtons(P3);
+			break;
+			case 4: ResetPlayerButtons(P4);
+			break;
+			default: ResetPlayerButtons(P1);
+			break;
+		}
+	}
+	
+	/**
+	 * Sets up the music
+	 */
+	public void SetSfx()
+	{
+		//setups the sfx 
+		File file = new File("src/ButttonClick.wav");
+		File file2 = new File("src/Bkg.wav");
+		try 
+		{
+			AudioStreamButton = AudioSystem.getAudioInputStream(file);
+			clipButton = AudioSystem.getClip();
+			clipButton.open(AudioStreamButton);
+			
+			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
+			clipMusic = AudioSystem.getClip();
+			clipMusic.open(AudioStreamMusic);
+		} 
+		catch (UnsupportedAudioFileException e) 
+		{
+			e.printStackTrace();
+		}
+		catch ( LineUnavailableException e)
+		{
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		LoopMusic();
+	}
+	
+	/**
+	 * Sets up the wild card buttons
+	 * @param position the position of the button
+	 */
+	public void SettupColorButtons(int position)
+	{
+		panel.setLayout(null);
+		
+		JButton[] ColorB = {Red, Blue, Green, Yellow};
+		for(int i = 0; i < ColorB.length; i++)
+		{
+			ColorB[i].setBounds(				(i * 100) +  (i * 4),
+												position, 100, 60);
+			panel.add(					ColorB[i]);
+			ColorB[i].addActionListener(		this);
+			ColorB[i].setFocusPainted(		false);
+			ColorB[i].setBackground(			Color.white);
+			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
+			Setup.Fonts(ColorB[i], 15);
+		}
+	}
+	
 	/**
 	 * Returns the object as a string
 	 */
@@ -563,8 +555,18 @@ public class MyFrame extends JFrame implements ActionListener
 		
 		return s;
 	}
-
 	
-	
+	/**
+	 * Sets up the window format
+	 */
+	public void windowSettup()
+	{
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.add(panel);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setName("UNO");
+	}
 	
 }

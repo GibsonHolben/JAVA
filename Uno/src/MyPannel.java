@@ -15,6 +15,14 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class MyPannel extends JPanel
 {
+	
+	
+	/**
+	 * Has the scene been drawn
+	 * Default = false
+	 */
+	public boolean  doneOnce = false;
+	
 	/**
 	 * The graphics handler
 	 */
@@ -46,11 +54,7 @@ public class MyPannel extends JPanel
 	 */
 	public String 	PlayerDeckText = "0";
 	
-	/**
-	 * Has the scene been drawn
-	 * Default = false
-	 */
-	public boolean  doneOnce = false;
+
 	
 	
 	/**
@@ -65,6 +69,48 @@ public class MyPannel extends JPanel
 		this.setPreferredSize(new Dimension(500, 500));
 	}
 	
+	
+	/**
+	 * Draws the image on the cards
+	 */
+	public void CardDecals()
+	{
+		if(!PlayerDeckText.equals("S"))
+		{
+			if(PlayerDeckText.equals("W")||
+					PlayerDeckText.contains("W+"))
+			{
+				g2D.setPaint(Color.white);
+				Image img = new ImageIcon("src/Uno3.png"
+											).getImage();
+				g2D.drawImage(img, 387, 320, null);
+				
+			}
+			else
+			{
+				g2D.setPaint(Color.white);
+				Image img = new ImageIcon("src/Uno2.png"
+												).getImage();
+				g2D.drawImage(img, 387, 320, null);
+			}
+		}
+		
+		if(!MainDeckText.equals("S"))
+		{
+			if(MainDeckText.equals("W")||MainDeckText.contains("W+"))
+			{
+				Image img = new ImageIcon("src/Uno3.png"
+											).getImage();
+				g2D.drawImage(img, -2, 20, null);
+			}
+			else
+			{
+				Image img = new ImageIcon("src/Uno2.png"
+											).getImage();
+				g2D.drawImage(img, -2, 20, null);
+			}
+		}
+	}
 	
 	
 	/**
@@ -348,48 +394,7 @@ public class MyPannel extends JPanel
 	}
 	
 	
-	/**
-	 * Draws the image on the cards
-	 */
-	public void CardDecals()
-	{
-		if(!PlayerDeckText.equals("S"))
-		{
-			if(PlayerDeckText.equals("W")||
-					PlayerDeckText.contains("W+"))
-			{
-				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno3.png"
-											).getImage();
-				g2D.drawImage(img, 387, 320, null);
-				
-			}
-			else
-			{
-				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno2.png"
-												).getImage();
-				g2D.drawImage(img, 387, 320, null);
-			}
-		}
-		
-		if(!MainDeckText.equals("S"))
-		{
-			if(MainDeckText.equals("W")||MainDeckText.contains("W+"))
-			{
-				Image img = new ImageIcon("src/Uno3.png"
-											).getImage();
-				g2D.drawImage(img, -2, 20, null);
-			}
-			else
-			{
-				Image img = new ImageIcon("src/Uno2.png"
-											).getImage();
-				g2D.drawImage(img, -2, 20, null);
-			}
-		}
-	}
-	
+
 	/**
 	 * returns the object as a string
 	 */

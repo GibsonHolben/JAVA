@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class Player
 {
+	/**The index of the card*/
+	public int 		curentCardIndex;
+	
 	/**An ArrayList of cards*/
 	public Deck 	MyDeck;
 	
@@ -15,9 +18,6 @@ public class Player
 	 * Default = blank
 	 */
 	public String 	Name = "";
-	
-	/**The index of the card*/
-	public int curentCardIndex;
 	
 	/**
 	 * Creates a player with an empty deck
@@ -28,15 +28,41 @@ public class Player
 	}
 	
 	/**
-	 * Skips the players turn and adds 1 card to their deck
+	 * Determines weather the card in the active players hand match the top card in the main deck
+	 * @return true if the cards match, false if they do not
 	 */
-	public void Skip()
+	public boolean cardMatch()
 	{
-		Visuals.UpdateGraphicsFlip(MainGameLoop.MainDeck, MainGameLoop.Frame);
-		Visuals.UpdateGraphicsPlayer(MainGameLoop.CurentPlayer, MainGameLoop.Frame);
-		DrawCard(1);
-		MainGameLoop.NextPlayer();
+		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(0).numberValue == 
+				MainGameLoop.MainDeck.Cards.get(0).numberValue||
+				MyDeck.Cards.get(0).ColorValue.equals("Black"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
+	
+	
+	/**
+	 * Caused the player to draw the amout of cards specifed
+	 * @param toDraw the amount of cards to draw
+	 */
+	public void DrawCard(int toDraw)
+	{
+		for(int i = 0; i < toDraw; i++)
+		{
+			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
+					MainGameLoop.MainDeck.Cards.size() - 1));
+			MainGameLoop.MainDeck.Cards.remove(
+					MainGameLoop.MainDeck.Cards.size() - 1);
+		}
+	}
+	
+	
 	
 	/**
 	 * Players the current active card and goes to the next player
@@ -73,8 +99,8 @@ public class Player
 			else 
 			{
 				//Updates the graphics
-				Visuals.UpdateGraphicsFlip(MainGameLoop.MainDeck, MainGameLoop.Frame);
-				Visuals.UpdateGraphicsPlayer(MainGameLoop.CurentPlayer, MainGameLoop.Frame);
+				Visuals.UpdateGraphicsFlip();
+				Visuals.UpdateGraphicsPlayer();
 			}
 			
 			//Runs next player becuase main game loop doesnt run
@@ -90,38 +116,17 @@ public class Player
 	}
 	
 	/**
-	 * Caused the player to draw the amout of cards specifed
-	 * @param toDraw the amount of cards to draw
+	 * Skips the players turn and adds 1 card to their deck
 	 */
-	public void DrawCard(int toDraw)
+	public void Skip()
 	{
-		for(int i = 0; i < toDraw; i++)
-		{
-			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
-					MainGameLoop.MainDeck.Cards.size() - 1));
-			MainGameLoop.MainDeck.Cards.remove(
-					MainGameLoop.MainDeck.Cards.size() - 1);
-		}
+		Visuals.UpdateGraphicsFlip();
+		Visuals.UpdateGraphicsPlayer();
+		DrawCard(1);
+		MainGameLoop.NextPlayer();
 	}
 	
-	/**
-	 * Determines weather the card in the active players hand match the top card in the main deck
-	 * @return true if the cards match, false if they do not
-	 */
-	public boolean cardMatch()
-	{
-		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).numberValue == 
-				MainGameLoop.MainDeck.Cards.get(0).numberValue||
-				MyDeck.Cards.get(0).ColorValue.equals("Black"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	
 	
 	
 	/**

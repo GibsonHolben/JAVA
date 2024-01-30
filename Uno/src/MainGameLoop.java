@@ -33,7 +33,7 @@ public class MainGameLoop
 	public static boolean 			isRunning = true;
 	
 	/**The main deck of the game*/
-	static Deck 					MainDeck;
+	public static Deck 					MainDeck;
 	
 	/**An array of players*/
 	public static ArrayList<Player> Players;
@@ -53,7 +53,7 @@ public class MainGameLoop
 		//Creates the players
 		Players = new ArrayList<Player>();
 		Setup.initGame();
-		Visuals.SettupGraphics(MainDeck, Frame);
+		Visuals.SettupGraphics();
 
 		//Main loop
 		while(isRunning == true)
@@ -122,7 +122,7 @@ public class MainGameLoop
 		CurentPlayer.MyDeck.Cards.add(
 				CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
-		Visuals.UpdateGraphicsPlayer(CurentPlayer, Frame);
+		Visuals.UpdateGraphicsPlayer();
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class MainGameLoop
 						CurentPlayer.MyDeck.Cards.size() - 1));
 		CurentPlayer.MyDeck.Cards.remove(
 				CurentPlayer.MyDeck.Cards.size() - 1);
-		Visuals.UpdateGraphicsPlayer(CurentPlayer, Frame);
+		Visuals.UpdateGraphicsPlayer();
 	}
 	
 
@@ -146,7 +146,7 @@ public class MainGameLoop
 	{
 		MainDeck.Cards.add(MainDeck.Cards.get(0));
 		MainDeck.Cards.remove(0);
-		Visuals.UpdateGraphicsFlip(MainDeck, Frame);
+		Visuals.UpdateGraphicsFlip();
 	}
 	
 	
@@ -163,8 +163,8 @@ public class MainGameLoop
 		Players.add(Players.get(0));
 		Players.remove(0);
 		CurentPlayer = Players.get(0);
-		Visuals.UpdateGraphicsFlip(MainDeck, Frame);
-		Visuals.UpdateGraphicsPlayer(CurentPlayer, Frame);
+		Visuals.UpdateGraphicsFlip();
+		Visuals.UpdateGraphicsPlayer();
 	}
 	
 	/**
@@ -183,48 +183,7 @@ public class MainGameLoop
 	 */
 	public static void Start()
 	{
-		Visuals.UpdateGraphicsFlip(MainDeck, Frame);
-		Visuals.UpdateGraphicsPlayer(CurentPlayer, Frame);
+		Visuals.UpdateGraphicsFlip();
+		Visuals.UpdateGraphicsPlayer();
 	}
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	/**
-	 * Fix the Settings if they are incorect
-	 */
-	public static void fixColors()
-	{
-
-		 
-		String FilePath = FileManager.Home + "/Settings.json";
-		 File myObj = new File(FilePath);
-		 myObj = new File(FilePath);
-		 
-		 System.out.println("incorect settings were inputed");
-		 System.out.println("Refactoring settings...");
-		 if (myObj.delete())
-		 { 
-		    System.out.println("Deleted the file: " + myObj.getName());
-		    FileManager.CreateFiles();
-		 } 
-		 else 
-		 {
-		     System.out.println("Failed to delete the file.");
-		 } 
-		 System.out.println("Game will not be launched...");
-		 System.out.println("Please restart the game...");
-		 System.exit(0);	
-
-	}
-
-	
-	
 }

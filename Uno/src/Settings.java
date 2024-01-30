@@ -26,6 +26,22 @@ import javax.swing.border.LineBorder;
 public class Settings extends JFrame implements ActionListener
 {
 	/**
+	 * The input field for the amount of cards in the deck
+	 */
+	JTextField DeckSizeText = new JTextField(16);
+	
+	/**
+	 * Checks if it is the first time the button is clicked
+	 * Default = false
+	 */
+	public boolean doneOnce = false;
+	
+	/**
+	 * The main panel of the game
+	 */
+	JPanel panel = new JPanel();
+	
+	/**
 	 * The button for the sfx
 	 */
 	JButton Sfx = new JButton("SFX/ON");
@@ -46,46 +62,37 @@ public class Settings extends JFrame implements ActionListener
 	JButton SubmitColors = new JButton("Submit Colors");
 	
 	/**
-	 * The main panel of the game
-	 */
-	JPanel panel = new JPanel();
-	
-	/**
 	 * The input field for the wild card draw
 	 */
 	JTextField WildCardDrawText = new JTextField(16);
 	
-	/**
-	 * The input field for the amount of cards in the deck
-	 */
-	JTextField DeckSizeText = new JTextField(16);
 	
+	
+	//Dropdown menus
 	/**
 	 * The dropdown menu for color 1
 	 */
-	JComboBox Color1Combo = new JComboBox(Card.AcceptedColors);
+	JComboBox Color1Combo = new JComboBox(Card.ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
 	 */
-	JComboBox Color2Combo = new JComboBox(Card.AcceptedColors);
+	JComboBox Color2Combo = new JComboBox(Card.ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
 	 */
-	JComboBox Color3Combo = new JComboBox(Card.AcceptedColors);
+	JComboBox Color3Combo = new JComboBox(Card.ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
 	 */
-	JComboBox Color4Combo = new JComboBox(Card.AcceptedColors);
+	JComboBox Color4Combo = new JComboBox(Card.ACCEPTEDCOLORS);
 	
 	
-	/**
-	 * Checks if it is the first time the button is clicked
-	 * Default = false
-	 */
-	public boolean doneOnce = false;
+	
+	
+	
 	
 	/**
 	 * Creates a settings form and sets up all the buttons needed for the menu
@@ -170,7 +177,6 @@ public class Settings extends JFrame implements ActionListener
 	
 	}
 	
-	
 	/**
 	 * Runs when a buttons is clicked
 	 * @param e Gets which button was pressed
@@ -247,6 +253,31 @@ public class Settings extends JFrame implements ActionListener
 		
 	}
 
+	/**
+	 * Turns off the sound effects in the game
+	 */
+	public void ChangeSfx()
+	{
+		System.out.println(MainGameLoop.Settings[3]);
+		if(MainGameLoop.Settings[3].equals("true"))
+		{
+			MainGameLoop.Settings[3] = "false";
+			Sfx.setText("SFX/OFF");
+			System.out.println("Sfx are now off");
+			MainGameLoop.Frame.clipMusic.close();
+			MainGameLoop.Frame.clipMusic.stop();
+			MainGameLoop.Frame.clipButton.close();
+			MainGameLoop.Frame.clipButton.stop();
+		}
+		else if(MainGameLoop.Settings[3].equals("false"))
+		{
+			MainGameLoop.Settings[3] = "true";
+			Sfx.setText("SFX/ON");
+			System.out.println("Sfx are now on");
+			MainGameLoop.Frame.SetSfx();
+		}
+	}
+	
 	
 	/**
 	 * Sets us the settings menu with all the needed things
@@ -340,30 +371,6 @@ public class Settings extends JFrame implements ActionListener
 	}
 	
 	
-	/**
-	 * Turns off the sound effects in the game
-	 */
-	public void ChangeSfx()
-	{
-		System.out.println(MainGameLoop.Settings[3]);
-		if(MainGameLoop.Settings[3].equals("true"))
-		{
-			MainGameLoop.Settings[3] = "false";
-			Sfx.setText("SFX/OFF");
-			System.out.println("Sfx are now off");
-			MainGameLoop.Frame.clipMusic.close();
-			MainGameLoop.Frame.clipMusic.stop();
-			MainGameLoop.Frame.clipButton.close();
-			MainGameLoop.Frame.clipButton.stop();
-		}
-		else if(MainGameLoop.Settings[3].equals("false"))
-		{
-			MainGameLoop.Settings[3] = "true";
-			Sfx.setText("SFX/ON");
-			System.out.println("Sfx are now on");
-			MainGameLoop.Frame.SetSfx();
-		}
-	}
 	
 	
 	
@@ -400,10 +407,6 @@ public class Settings extends JFrame implements ActionListener
 			e.printStackTrace();
 		}     
 	}
-	
-	
-	
-	
 	
 	
 	/**

@@ -6,31 +6,32 @@
  */
 public class Card 
 {	
-	/**The value of the card
-	 * Default = 0*/
-	public int 		numberValue = 0;
+
 	
 	/**The color of the card
 	 * Default = Red*/
 	public String 	ColorValue = "Red";
 	
+	
+	/**The value of the card
+	 * Default = 0*/
+	public int 		numberValue = 0;
 	/**
 	 * Card special effects
 	 * Default = blank
 	 */
 	public String 	SpecialEffect = "";
 	
-	/**The colors of the cards*/
-	static String[] 				ColorsBackup;
+	//Static 
+	/**
+	 * A list of all aceptable colors in the settings
+	 */
+	public static final String[] ACCEPTEDCOLORS = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
 	
-	/**The acceptable colors for the cards*/
-	static String[] 				AcceptedColors = {"Red", 
-														"Blue", 
-														"Green", 
-														"Yellow", 
-														"Magenta", 
-														"Cyan", 
-														"Orange"};
+	/**
+	 * Holds the 4 colors of the cards in the game
+	 */
+	public static String[] ColorsBackup = new String[4];
 	
 	
 	/**

@@ -17,66 +17,10 @@ public class FileManager
 	/**A path to the UNO game directory*/
 	public static String Home;
 	
+	//Static
 	/**The default settings of the game*/
 	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true";
 	
-	/**
-	 * Shows the settings file and prints the 
-	 * instructions on how to use said settings
-	 */
-	public static void ShowSettings()
-	{
-		if (Desktop.isDesktopSupported()) 
-		{
-		
-			String FilePath = FileManager.Home + "/Settings.json";
-		    try 
-		    {
-		    	System.out.println("Opening with notepad...");
-		    	System.out.println("Settings are deliminated as follows");
-		    	System.out.println("Colors/Wild Draw Amount/Amount of each "
-		    			+ "color card/Play Sound Effect");
-		    	System.out.println("Only four colors are used");
-		    	System.out.println("Supported colors are: Red, Blue, Green,"
-		    			+ " Yellow, Orange, Magenta, & Cyan");
-				Desktop.getDesktop().edit(new File(FilePath));
-			} 
-		    catch (IOException e1) 
-		    {
-				e1.printStackTrace();
-			}
-		} 
-		else 
-		{
-		   System.out.println("Error getting settings file");
-		}
-		
-	}
-	
-	/**
-	 * Shows the how to play file
-	 */
-	public static void ShowHowToPlay()
-	{
-		if (Desktop.isDesktopSupported()) 
-		{
-			
-			String FilePath  = FileManager.Home + "/HTP.json";
-		    try 
-		    {
-				Desktop.getDesktop().edit(new File(FilePath));
-			} 
-		    catch (IOException e1) 
-		    {
-				e1.printStackTrace();
-			}
-		} 
-		else 
-		{
-		   System.out.println("Error getting file");
-		}
-		
-	}
 	
 	/**
 	 * Changes the amount of players
@@ -294,5 +238,63 @@ public class FileManager
 	    {  
 	       System.out.println("File already exists/an error has occored");  
 	    }      
+	}
+	
+	/**
+	 * Shows the how to play file
+	 */
+	public static void ShowHowToPlay()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+			
+			String FilePath  = FileManager.Home + "/HTP.json";
+		    try 
+		    {
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting file");
+		}
+		
+	}
+	
+	/**
+	 * Shows the settings file and prints the 
+	 * instructions on how to use said settings
+	 */
+	public static void ShowSettings()
+	{
+		if (Desktop.isDesktopSupported()) 
+		{
+		
+			String FilePath = FileManager.Home + "/Settings.json";
+		    try 
+		    {
+		    	System.out.println("Opening with notepad...");
+		    	System.out.println("Settings are deliminated as follows");
+		    	System.out.println("Colors/Wild Draw Amount/Amount of each "
+		    			+ "color card/Play Sound Effect");
+		    	System.out.println("Only four colors are used");
+		    	System.out.println("Supported colors are: Red, Blue, Green,"
+		    			+ " Yellow, Orange, Magenta, & Cyan");
+				Desktop.getDesktop().edit(new File(FilePath));
+			} 
+		    catch (IOException e1) 
+		    {
+				e1.printStackTrace();
+			}
+		} 
+		else 
+		{
+		   System.out.println("Error getting settings file");
+		}
+		
 	}
 }

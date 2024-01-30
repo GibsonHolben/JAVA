@@ -19,8 +19,6 @@ import javax.swing.border.LineBorder;
  */
 public class Setup
 {
-	
-	
 	/**
 	 * Sets up the button 
 	 * @param Button the button to setup
@@ -145,13 +143,13 @@ public class Setup
 		    	 {
 		    		 for(int i = 0; i < colors.length; i++)
 		    		 {
-		    			if( colors[i].equals(Card.AcceptedColors[0])||
-		    				colors[i].equals(Card.AcceptedColors[1])||
-		    				colors[i].equals(Card.AcceptedColors[2])||
-		    				colors[i].equals(Card.AcceptedColors[3])||
-		    				colors[i].equals(Card.AcceptedColors[4])||
-		    				colors[i].equals(Card.AcceptedColors[5])||
-		    				colors[i].equals(Card.AcceptedColors[6]))
+		    			if( colors[i].equals(Card.ACCEPTEDCOLORS[0])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[1])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[2])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[3])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[4])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[5])||
+		    				colors[i].equals(Card.ACCEPTEDCOLORS[6]))
 		    			{
 		    				System.out.println("Corect: " + colors[i]);
 		    			}

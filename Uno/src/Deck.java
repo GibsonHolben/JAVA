@@ -22,27 +22,6 @@ public class Deck
 		Cards = newCards;
 	}
 	
-	/**Randomizes the order of the cards*/
-	public void Shuffle()
-	{
-		Collections.shuffle(Cards);
-		if(!Cards.get(0).SpecialEffect.isEmpty())
-		{
-			Cards.add(Cards.get(0));
-			Cards.remove(0);
-		}
-
-	}
-	
-	/**
-	 * Prints the variables on the object
-	 */
-	public String toString()
-	{
-		String s = Cards.toString();
-		return s;
-	}
-	
 	/**Prints the contents of the deck to the console*/
 	public void PrintDeck()
 	{
@@ -58,7 +37,29 @@ public class Deck
 				System.out.println(Cards.get(i).ColorValue + " " + 
 									Cards.get(i).SpecialEffect);
 			}
-			
 		}
+	}
+	
+	/**Randomizes the order of the cards*/
+	public void Shuffle()
+	{
+		Collections.shuffle(Cards);
+		if(!Cards.get(0).SpecialEffect.isEmpty())
+		{
+			Cards.add(Cards.get(0));
+			Cards.remove(0);
+		}
+
+	}
+	
+	
+	
+	/**
+	 * Prints the variables on the object
+	 */
+	public String toString()
+	{
+		String s = Cards.toString();
+		return s;
 	}
 }
