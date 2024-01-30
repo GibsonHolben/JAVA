@@ -72,24 +72,37 @@ public class Settings extends JFrame implements ActionListener
 	/**
 	 * The dropdown menu for color 1
 	 */
-	JComboBox Color1Combo = new JComboBox(Card.ACCEPTEDCOLORS);
+	JComboBox Color1Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
 	 */
-	JComboBox Color2Combo = new JComboBox(Card.ACCEPTEDCOLORS);
+	JComboBox Color2Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
 	 */
-	JComboBox Color3Combo = new JComboBox(Card.ACCEPTEDCOLORS);
+	JComboBox Color3Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
 	 */
-	JComboBox Color4Combo = new JComboBox(Card.ACCEPTEDCOLORS);
+	JComboBox Color4Combo = new JComboBox(ACCEPTEDCOLORS);
 	
+	/**
+	 * The dropdown menu for the background color
+	 */
+	public JComboBox ColorBackground = new JComboBox(ACCEPTEDCOLORS);
 	
+	/**
+	 * A list of all aceptable colors in the settings
+	 */
+	public static final String[] ACCEPTEDCOLORS = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
+	
+	/**
+	 * Holds the 4 colors of the cards in the game
+	 */
+	public static String[] ColorsBackup = new String[4];
 	
 	
 	
@@ -144,6 +157,8 @@ public class Settings extends JFrame implements ActionListener
 		panel.add(Setup.CreateLabel(315, 90, 100, 20, "Color Four"));
 		Color4Combo.setBounds(315, 110, 100, 20);
 		
+		panel.add(Setup.CreateLabel(0, 130, 100, 20, "Background"));
+		ColorBackground.setBounds(0, 150, 100, 20);
 		
 		
 		
@@ -162,7 +177,7 @@ public class Settings extends JFrame implements ActionListener
 		panel.add(Color2Combo);
 		panel.add(Color3Combo);
 		panel.add(Color4Combo);
-		
+		panel.add(ColorBackground);
 		//Sets up the buttons
 		this.setLayout(null);
 		Setup.Button(Sfx, 					0, 	 25,  100, 60,  	panel);
@@ -418,31 +433,31 @@ public class Settings extends JFrame implements ActionListener
 		
 		for(int i = 0; i < boxes.length; i++)
 		{
-			if(Card.ColorsBackup[i].equals("Red"))
+			if(ColorsBackup[i].equals("Red"))
 			{
 				boxes[i].setSelectedIndex(0);
 			}
-			else if(Card.ColorsBackup[i].equals("Blue"))
+			else if(ColorsBackup[i].equals("Blue"))
 			{
 				boxes[i].setSelectedIndex(1);
 			}
-			else if(Card.ColorsBackup[i].equals("Green"))
+			else if(ColorsBackup[i].equals("Green"))
 			{
 				boxes[i].setSelectedIndex(2);
 			}
-			else if(Card.ColorsBackup[i].equals("Yellow"))
+			else if(ColorsBackup[i].equals("Yellow"))
 			{
 				boxes[i].setSelectedIndex(3);
 			}
-			else if(Card.ColorsBackup[i].equals("Magenta"))
+			else if(ColorsBackup[i].equals("Magenta"))
 			{
 				boxes[i].setSelectedIndex(4);
 			}
-			else if(Card.ColorsBackup[i].equals("Cyan"))
+			else if(ColorsBackup[i].equals("Cyan"))
 			{
 				boxes[i].setSelectedIndex(5);
 			}
-			else if(Card.ColorsBackup[i].equals("Orange"))
+			else if(ColorsBackup[i].equals("Orange"))
 			{
 				boxes[i].setSelectedIndex(6);
 			}

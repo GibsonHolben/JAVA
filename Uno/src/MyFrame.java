@@ -67,7 +67,7 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that shows the settings
 	 */
-	static JButton 			Settings = new JButton("Settings");
+	static JButton 			SettingsButton = new JButton("Settings");
 	
 
 	
@@ -76,22 +76,22 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * Changes the color of the main deck to red
 	 */
-	static JButton 			Red = new JButton(Card.ColorsBackup[0]);
+	static JButton 			Red = new JButton(Settings.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 */
-	static JButton 			Blue = new JButton(Card.ColorsBackup[1]);
+	static JButton 			Blue = new JButton(Settings.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 */
-	static JButton 			Green = new JButton(Card.ColorsBackup[2]);
+	static JButton 			Green = new JButton(Settings.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 */
-	static JButton 			Yellow = new JButton(Card.ColorsBackup[3]);
+	static JButton 			Yellow = new JButton(Settings.ColorsBackup[3]);
 	
 	
 	//Player select
@@ -162,10 +162,14 @@ public class MyFrame extends JFrame implements ActionListener
 		panel = new MyPannel(newColor, newText);
 		windowSettup();
 		this.setResizable(false);
+		this.dispose();
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(true);
+		this.setVisible(true);
 		panel.setLayout(					  null);
 		
 		//Setups the buttons
-		Setup.Button(Settings, 	0, 480, 100, 20, panel);
+		Setup.Button(SettingsButton, 	0, 480, 100, 20, panel);
 		Setup.Button(HowToPlay, 	100, 480, 100, 20, panel);
 		Setup.Button(P1, 		2,400, panel);
 		Setup.Button(P2, 		104,400, panel);
@@ -178,7 +182,7 @@ public class MyFrame extends JFrame implements ActionListener
 		P4.addActionListener(                 this);
 		Play.addActionListener(			   	  this);
 		Start.addActionListener(			  this);
-		Settings.addActionListener(			  this);
+		SettingsButton.addActionListener(			  this);
 		SkipTurn.addActionListener(			  this);
 		HowToPlay.addActionListener(          this);
 		FlipCurentHand.addActionListener(	  this);
@@ -194,6 +198,7 @@ public class MyFrame extends JFrame implements ActionListener
 		P4.setVisible(true);
 		this.setVisible(true);
 		setupPlayeBttonColors();
+		
 	}
 	
 	
@@ -284,7 +289,7 @@ public class MyFrame extends JFrame implements ActionListener
 			//Wild card buttons
 			if(e.getSource().equals(Red))
 			{
-				MainGameLoop.CurentColor = Card.ColorsBackup[0];
+				MainGameLoop.CurentColor = Settings.ColorsBackup[0];
 				canPlay = true;
 				System.out.println(MainGameLoop.CurentColor);
 				MainGameLoop.NextPlayer();
@@ -293,7 +298,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Blue))
 			{
-				MainGameLoop.CurentColor = Card.ColorsBackup[1];
+				MainGameLoop.CurentColor = Settings.ColorsBackup[1];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -301,7 +306,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Green))
 			{
-				MainGameLoop.CurentColor = Card.ColorsBackup[2];
+				MainGameLoop.CurentColor = Settings.ColorsBackup[2];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
 				SettupColorButtons(-1000);
@@ -309,7 +314,7 @@ public class MyFrame extends JFrame implements ActionListener
 			
 			if(e.getSource().equals(Yellow))
 			{
-				MainGameLoop.CurentColor = Card.
+				MainGameLoop.CurentColor = Settings.
 						ColorsBackup[3];
 				canPlay = true;
 				MainGameLoop.NextPlayer();
@@ -322,7 +327,7 @@ public class MyFrame extends JFrame implements ActionListener
 		{
 			FileManager.ShowHowToPlay();
 		}
-		if(e.getSource().equals(Settings))
+		if(e.getSource().equals(SettingsButton))
 		{
 			//FileManager.ShowSettings();
 			Settings s = new Settings();
@@ -334,7 +339,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void hideButtons()
 	{
-		Setup.Button(Settings, -1111, 480, 100, 20, panel);
+		Setup.Button(SettingsButton, -1111, 480, 100, 20, panel);
 		Setup.Button(HowToPlay,-1111, 480, 100, 20, panel);
 		Setup.Button(SkipTurn, -1111, 0, panel);
 		Setup.Button(Play, -1111, 400, panel);
@@ -391,7 +396,7 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.remove(P2);
 		panel.remove(P3);
 		panel.remove(P4);
-		Setup.Button(Settings, 			0, 480, 100, 20, panel);
+		Setup.Button(SettingsButton, 			0, 480, 100, 20, panel);
 		Setup.Button(HowToPlay, 			104, 480, 100, 20, panel);
 		Setup.Button(SkipTurn, 			104, 400, panel);
 		Setup.Button(Play,				395, 300, 100, 200, panel);

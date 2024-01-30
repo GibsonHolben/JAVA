@@ -22,16 +22,7 @@ public class Card
 	 */
 	public String 	SpecialEffect = "";
 	
-	//Static 
-	/**
-	 * A list of all aceptable colors in the settings
-	 */
-	public static final String[] ACCEPTEDCOLORS = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
 	
-	/**
-	 * Holds the 4 colors of the cards in the game
-	 */
-	public static String[] ColorsBackup = new String[4];
 	
 	
 	/**

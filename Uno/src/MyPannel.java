@@ -23,6 +23,12 @@ public class MyPannel extends JPanel
 	 */
 	public boolean  doneOnce = false;
 	
+	/**The X size of the panel*/
+	public short panelXSize = 1000;
+	
+	/**The Y size of the panel*/
+	public short panelYSize = 500;
+	
 	/**
 	 * The graphics handler
 	 */
@@ -66,7 +72,8 @@ public class MyPannel extends JPanel
 	{
 		MainDeckColor = newColor;
 		MainDeckText = newText;
-		this.setPreferredSize(new Dimension(500, 500));
+		
+		this.setPreferredSize(Toolkit. getDefaultToolkit(). getScreenSize());
 	}
 	
 	
@@ -135,9 +142,7 @@ public class MyPannel extends JPanel
 						  RenderingHints.VALUE_RENDER_QUALITY );		
 				g2D.setRenderingHints( qualityHints );
 				
-				URL url = MyPannel.class.getResource("Wood.jpg");
-				Image img = new ImageIcon(url).getImage();
-				g2D.drawImage(img, 0, 0, null);
+				PaintBackground();
 				g2D.setStroke(new BasicStroke(10));
 				g2D.setPaint(Color.white);
 				g2D.drawRoundRect(395, 295, 100, 200, 20,20);
@@ -393,6 +398,10 @@ public class MyPannel extends JPanel
 		}
 	}
 	
+	void PaintBackground()
+	{
+		this.setBackground(Color.red);
+	}
 	
 
 	/**

@@ -40,7 +40,11 @@ public class MainGameLoop
 	
 	/**Holds the settings Example: 4 card colors, 
 	 * wild card draw, the amount of each color in the deck 
-	 * and weather the sound effets are played*/
+	 * and weather the sound effets are played
+	 * [0] the colors of the cards
+	 * [1] how many cards a wild+ make you draw
+	 * [2] how many cards of each color there are
+	 * [3] play the sound*/
 	public static String[] 			Settings = new String[4];
 
 

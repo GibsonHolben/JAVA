@@ -90,21 +90,21 @@ public class Setup
 		//Reads the users settings and sets the color array 
 		//to the proper colors
 		String[] colors = new String[4];
-		String data;
-		String FilePath = FileManager.Home; 
-		FilePath = FilePath + "/Settings.json";
+		String SettingsData;
+		String SettingsFilePath = FileManager.Home; 
+		SettingsFilePath = SettingsFilePath + "/Settings.json";
 
 		try 
 		{
 			//Reads the file
-			 File myObj = new File(FilePath);
-		     Scanner myReader = new Scanner(myObj);
-		     while (myReader.hasNextLine()) 
+			 File SettingsObj = new File(SettingsFilePath);
+		     Scanner SetingsReader = new Scanner(SettingsObj);
+		     while (SetingsReader.hasNextLine()) 
 		     {
 		    	 //Splits the colors
-		    	 data = myReader.nextLine();
-		    	 MainGameLoop.Settings = data.split("/");
-		    	 System.out.println(data);
+		    	 SettingsData = SetingsReader.nextLine();
+		    	 MainGameLoop.Settings = SettingsData.split("/");
+		    	 System.out.println(SettingsData);
 		    	 
 		    	 colors =  MainGameLoop.Settings[0].split(",");
 		    	 System.out.println( MainGameLoop.Settings[1]);
@@ -112,7 +112,7 @@ public class Setup
 		    	 if(Integer.parseInt( MainGameLoop.Settings[1]) > 9 || 
 		    			 Integer.parseInt( MainGameLoop.Settings[1]) < 1)
 		    	 {
-		    		 myReader.close();   
+		    		 SetingsReader.close();   
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Wild card value must"
 		    				 + " be less than 10... Refactoring...");
@@ -122,7 +122,7 @@ public class Setup
 		    	 if(Integer.parseInt( MainGameLoop.Settings[2]) > 99 || 
 		    			 Integer.parseInt( MainGameLoop.Settings[2]) < 1)
 		    	 {
-		    		 myReader.close();   
+		    		 SetingsReader.close();   
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Card count must be "
 		    				 + "between 1 and 100... Refactoring...");
@@ -134,7 +134,7 @@ public class Setup
 		    	 if(colors.length > 4)
 		    	 {
 		    		
-		    		myReader.close();   
+		    		SetingsReader.close();   
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Only four colors are"
 		    				 + "supported Refactoring...");
@@ -145,19 +145,19 @@ public class Setup
 		    	 {
 		    		 for(int i = 0; i < colors.length; i++)
 		    		 {
-		    			if( colors[i].equals(Card.ACCEPTEDCOLORS[0])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[1])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[2])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[3])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[4])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[5])||
-		    				colors[i].equals(Card.ACCEPTEDCOLORS[6]))
+		    			if( colors[i].equals(Settings.ACCEPTEDCOLORS[0])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[1])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[2])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[3])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[4])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[5])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[6]))
 		    			{
 		    				System.out.println("Corect: " + colors[i]);
 		    			}
 		    			else
 		    			{
-		    				myReader.close();   
+		    				SetingsReader.close();   
 		    				JOptionPane.showMessageDialog( MainGameLoop.Frame,
 		    						"Invalid Settings... Supported colors are: "
 		    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
@@ -168,9 +168,9 @@ public class Setup
 		    		
 		    		 
 		    	 }
-		    	 Card.ColorsBackup = colors;
+		    	 Settings.ColorsBackup = colors;
 		     }
-		     myReader.close();  
+		     SetingsReader.close();  
 		  
 		   
 		} 
@@ -283,7 +283,8 @@ public class Setup
 	
 	
 	/**Starts the game and initilizes all the neccecary features of the game
-	 * as well as does edits on some of the settings*/
+	 * as well as does edits on some of the settings
+	 * Gets called from main as well as MyFrame*/
 	public static void initGame()
 	{
 		//Clears all players from the game on the second initilization
@@ -293,30 +294,30 @@ public class Setup
 		}
 		
 		//Creates the files
-		String input = "1";
+		String PlayerInput;
 		FileManager.CreateFiles();
 		
 		//Reads the file
-		String FilePath = FileManager.Home;
-		FilePath = FilePath + "/Players.json";
-		File myObj = new File(FilePath);
-	    Scanner myReader;
+		String PlayerFilePath = FileManager.Home;
+		PlayerFilePath = PlayerFilePath + "/Players.json";
+		File PlayerObj = new File(PlayerFilePath);
+	    Scanner PlayerReader;
 		try 
 		{
-			 myReader = new Scanner(myObj);
-			 input = myReader.nextLine();
+			 PlayerReader = new Scanner(PlayerObj);
+			 PlayerInput = PlayerReader.nextLine();
 			 
 			//Sets up the players		
-			if(!input.isEmpty())
+			if(!PlayerInput.isEmpty())
 			{
 				//Check if the corect amount of players is entered
-				if(Integer.parseInt(input) < 5 && 
-						Integer.parseInt(input) > 0)
+				if(Integer.parseInt(PlayerInput) < 5 && 
+						Integer.parseInt(PlayerInput) > 0)
 				{
 					//Settup main deck
 					MainGameLoop.MainDeck = new Deck(CreateCards());
 					MainGameLoop.MainDeck.Shuffle();			
-					Setup.settupDeck(input);
+					Setup.settupDeck(PlayerInput);
 					MainGameLoop.CurentPlayer = MainGameLoop.Players.get(0);		
 				}
 				else
