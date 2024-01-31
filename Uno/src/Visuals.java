@@ -59,7 +59,7 @@ public class Visuals
 					MainGameLoop.Frame.reset(Color.red, 			
 							Integer.toString(MainGameLoop.MainDeck.Cards.get(0).numberValue));
 				break;
-				case "Blue":
+				case "Blue":	
 					MainGameLoop.Frame.reset(Color.blue, 		
 							Integer.toString(MainGameLoop.MainDeck.Cards.get(0).numberValue));
 				break;

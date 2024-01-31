@@ -10,8 +10,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.*;
 import java.net.URL;
 
@@ -169,13 +167,13 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.setLayout(					  null);
 		
 		//Setups the buttons
-		Setup.Button(SettingsButton, 	0, 480, 100, 20, panel);
-		Setup.Button(HowToPlay, 	100, 480, 100, 20, panel);
-		Setup.Button(P1, 		2,400, panel);
-		Setup.Button(P2, 		104,400, panel);
-		Setup.Button(Start,		206,400, panel);
-		Setup.Button(P3, 		308,400, panel);
-		Setup.Button(P4, 		410,400, panel);
+		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
+		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
+		Setup.Button(P1, 				490,900, 200, 120, panel);
+		Setup.Button(P2, 				695,900, 200, 120, panel);
+		Setup.Button(Start,				900,900, 200, 120, panel);
+		Setup.Button(P3, 				1105,900, 200, 120, panel);
+		Setup.Button(P4, 				1310,900, 200, 120, panel);
 		P1.addActionListener(                 this);
 		P2.addActionListener(                 this);
 		P3.addActionListener(                 this);
@@ -396,10 +394,10 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.remove(P2);
 		panel.remove(P3);
 		panel.remove(P4);
-		Setup.Button(SettingsButton, 			0, 480, 100, 20, panel);
-		Setup.Button(HowToPlay, 			104, 480, 100, 20, panel);
-		Setup.Button(SkipTurn, 			104, 400, panel);
-		Setup.Button(Play,				395, 300, 100, 200, panel);
+		Setup.Button(SettingsButton, 		10, 980, 200, 40, panel);
+		Setup.Button(HowToPlay, 			1710, 980, 200, 40, panel);
+		Setup.Button(SkipTurn, 				104, 400, panel);
+		Setup.Button(Play,					600+900, 610, 200, 400, panel);
 		Setup.Button(FlipCurentHand,		294,400, panel);
 		Setup.Button(FlipCurentHandBack,	0,400, panel);
 		
@@ -436,10 +434,10 @@ public class MyFrame extends JFrame implements ActionListener
 		panel.PlayerDeckText = newText;
 		panel.setLayout(null);
 		panel.remove(Start);
-		Setup.Button(Play,				395, 300, 100, 200, panel);
-		Setup.Button(FlipCurentHandBack,	0,400, panel);
-		Setup.Button(SkipTurn, 			104, 400, panel);
-		Setup.Button(FlipCurentHand, 	208,400, panel);
+		Setup.Button(Play,					600+900, 610, 200, 400, panel);
+		Setup.Button(FlipCurentHandBack,	620,900, 200, 120, panel);
+		Setup.Button(SkipTurn, 				830, 900,200, 120, panel);
+		Setup.Button(FlipCurentHand, 		1040,900, 200, 120,panel);
 
 
 		

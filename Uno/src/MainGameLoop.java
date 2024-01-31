@@ -32,7 +32,7 @@ public class MainGameLoop
 	public static boolean 			isRunning = true;
 	
 	/**The main deck of the game*/
-	public static Deck 					MainDeck;
+	public static Deck 				MainDeck;
 	
 	/**An array of players*/
 	public static ArrayList<Player> Players;
@@ -59,7 +59,7 @@ public class MainGameLoop
 		Visuals.SettupGraphics();
 
 		//Main loop
-		while(isRunning == true)
+		while(isRunning)
 		{
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
