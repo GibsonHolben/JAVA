@@ -184,14 +184,17 @@ public class MyFrame extends JFrame implements ActionListener
 		Setup.Button(Start,				900,900, 200, 120, panel);
 		Setup.Button(P3, 				1105,900, 200, 120, panel);
 		Setup.Button(P4, 				1310,900, 200, 120, panel);
-		for(int i = 0; i < Buttons.length; i++)
-		{
-			if(Buttons[i].getActionListeners().length == 0)
-			{
-				Buttons[i].addActionListener(this);
-			}
-			
-		}
+		P1.addActionListener(                 this);
+		P2.addActionListener(                 this);
+		P3.addActionListener(                 this);
+		P4.addActionListener(                 this);
+		Play.addActionListener(			   	  this);
+		Start.addActionListener(			  this);
+		SettingsButton.addActionListener(	  this);
+		SkipTurn.addActionListener(			  this);
+		HowToPlay.addActionListener(          this);
+		FlipCurentHand.addActionListener(	  this);
+		FlipCurentHandBack.addActionListener( this);
 		P1.repaint();
 		P2.repaint();
 		P3.repaint();

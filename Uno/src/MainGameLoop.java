@@ -58,6 +58,7 @@ public class MainGameLoop
 	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
+		//ADD X BUTTON
 		game();
 	}
 	
