@@ -79,7 +79,7 @@ public class Card
 		if(SpecialEffect.equals("W+" + MainGameLoop.Settings[1]))
 		{
 			MainGameLoop.Frame.canPlay = false;
-			MainGameLoop.Frame.SettupColorButtons(220);
+			MainGameLoop.Frame.SettupColorButtons(700);
 			MainGameLoop.Players.get(1).DrawCard(
 					Integer.parseInt(MainGameLoop.Settings[1]));
 		}
@@ -92,7 +92,7 @@ public class Card
 		if(SpecialEffect.equals("W"))
 		{
 			MainGameLoop.Frame.canPlay = false;
-			MainGameLoop.Frame.SettupColorButtons(220);
+			MainGameLoop.Frame.SettupColorButtons(700);
 		}
 	}
 }

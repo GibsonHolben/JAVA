@@ -31,11 +31,11 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 */
-	static JButton 			FlipCurentHand = new JButton("Flip >");
+	public static JButton 			FlipCurentHand = new JButton("Flip >");
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
 	 */
-	static JButton 			FlipCurentHandBack = new JButton("< Flip");
+	public static JButton 			FlipCurentHandBack = new JButton("< Flip");
 	
 	/**
 	 * A JButton that shows the how to play 
@@ -50,26 +50,33 @@ public class MyFrame extends JFrame implements ActionListener
 	/**
 	 * A JButton that calls play on the curent player
 	 */
-	static JButton 			Play = new JButton();
+	public static JButton 			Play = new JButton();
 	
 	/**
 	 * A JButton that skips the active players turn
 	 */
-	static JButton 			SkipTurn = new JButton("Skip");
+	public static JButton 			SkipTurn = new JButton("Skip");
 	
 	/**
 	 * A JButton that calls start
 	 */
 	static JButton 			Start = new JButton("Start");
-	
+
 	/**
 	 * A JButton that shows the settings
 	 */
 	static JButton 			SettingsButton = new JButton("Settings");
-	
 
-	
-	
+	/**
+	 * A JButton that resets the game
+	 */
+	static JButton 			Reset = new JButton("Play Again?");
+
+	/**
+	 * A JButton that closes the game
+	 */
+	static JButton 			Close = new JButton("X");
+
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
@@ -180,7 +187,7 @@ public class MyFrame extends JFrame implements ActionListener
 		P4.addActionListener(                 this);
 		Play.addActionListener(			   	  this);
 		Start.addActionListener(			  this);
-		SettingsButton.addActionListener(			  this);
+		SettingsButton.addActionListener(	  this);
 		SkipTurn.addActionListener(			  this);
 		HowToPlay.addActionListener(          this);
 		FlipCurentHand.addActionListener(	  this);
@@ -197,6 +204,8 @@ public class MyFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 		setupPlayeBttonColors();
 		
+
+		
 	}
 	
 	
@@ -208,11 +217,45 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
+
+
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
 			PlayClick();
+
 		}
-		
+		if(e.getSource().equals(Reset))
+		{
+			Play.removeActionListener(this);
+			P1.removeActionListener(               	 this);
+			P2.removeActionListener(               	 this);
+			P3.removeActionListener(                 this);
+			P4.removeActionListener(                 this);
+			Play.removeActionListener(			   	 this);
+			Start.removeActionListener(			 	 this);
+			Reset.removeActionListener(				 this);
+			SettingsButton.removeActionListener(	 this);
+			SkipTurn.removeActionListener(			 this);
+			HowToPlay.removeActionListener(          this);
+			FlipCurentHand.removeActionListener(	 this);
+			FlipCurentHandBack.removeActionListener( this);
+			Red.removeActionListener(this);
+			Blue.removeActionListener(this);
+			Green.removeActionListener(this);
+			Yellow.removeActionListener(this);
+			MainGameLoop.Frame.dispose();
+			MainGameLoop.game();
+			MainGameLoop.isRunning = true;
+			panel.doneOnce = false;
+        }
+
+		if(e.getSource().equals(Close))
+		{
+			//Exit the game
+			System.exit(0);
+			System.out.println("End");
+		}
+
 		//Player select buttons
 		if(e.getSource().equals(P1))
 		{
@@ -276,6 +319,7 @@ public class MyFrame extends JFrame implements ActionListener
 			}
 			if(e.getSource().equals(Play))
 			{
+				MainGameLoop.gamestarted = true;
 				MainGameLoop.CurentPlayer.play();
 				this.setVisible(true);
 				Play.setVisible(true);
@@ -382,30 +426,33 @@ public class MyFrame extends JFrame implements ActionListener
 	public void reset(Color newColor, String newText)
 	{
 		
-		
-		this.requestFocus();
-		windowSettup();
-		panel.repaint();
-		panel.MainDeckColor = newColor;
-		panel.MainDeckText = newText;
-		panel.setLayout(null);
-		panel.remove(Start);
-		panel.remove(P1);
-		panel.remove(P2);
-		panel.remove(P3);
-		panel.remove(P4);
-		Setup.Button(SettingsButton, 		10, 980, 200, 40, panel);
-		Setup.Button(HowToPlay, 			1710, 980, 200, 40, panel);
-		Setup.Button(SkipTurn, 				104, 400, panel);
-		Setup.Button(Play,					600+900, 610, 200, 400, panel);
-		Setup.Button(FlipCurentHand,		294,400, panel);
-		Setup.Button(FlipCurentHandBack,	0,400, panel);
-		
-		Play.setOpaque(false);
-		Play.setContentAreaFilled(false);
-		Play.setBorderPainted(false);
-		resetFonts(Play, 10);
-		this.setVisible(true);
+		if(MainGameLoop.isRunning)
+		{
+			this.requestFocus();
+			windowSettup();
+			panel.repaint();
+			panel.MainDeckColor = newColor;
+			panel.MainDeckText = newText;
+			panel.setLayout(null);
+			panel.remove(Start);
+			panel.remove(P1);
+			panel.remove(P2);
+			panel.remove(P3);
+			panel.remove(P4);
+			Setup.Button(SettingsButton, 		10, 980, 200, 40, panel);
+			Setup.Button(HowToPlay, 			1710, 980, 200, 40, panel);
+			Setup.Button(SkipTurn, 				104, 400, panel);
+			Setup.Button(Play,					600+900, 610, 200, 400, panel);
+			Setup.Button(FlipCurentHand,		294,400, panel);
+			Setup.Button(FlipCurentHandBack,	0,400, panel);
+
+			Play.setOpaque(false);
+			Play.setContentAreaFilled(false);
+			Play.setBorderPainted(false);
+			resetFonts(Play, 10);
+			this.setVisible(true);
+		}
+
 	}
 	
 	
@@ -427,34 +474,58 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
 	{
-		this.requestFocus();
-		windowSettup();
-		panel.repaint();
-		panel.PlayerDeckColor = newColor;
-		panel.PlayerDeckText = newText;
-		panel.setLayout(null);
-		panel.remove(Start);
-		Setup.Button(Play,					600+900, 610, 200, 400, panel);
-		Setup.Button(FlipCurentHandBack,	620,900, 200, 120, panel);
-		Setup.Button(SkipTurn, 				830, 900,200, 120, panel);
-		Setup.Button(FlipCurentHand, 		1040,900, 200, 120,panel);
+		if(MainGameLoop.gamestarted)
+		{
+			for(int i = 0; i < MainGameLoop.Players.size(); i++)
+			{
+				if(MainGameLoop.Players.get(i).MyDeck.Cards.size() < 1)
+				{
+					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
+					System.out.println("Game over");
+					System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
+					MainGameLoop.isRunning = false;
+					panel.repaint();
+					this.hideButtons();
+					Setup.Button(Reset,850,900, 200, 120, panel);
+					Reset.addActionListener(this);
+					Reset.setVisible(true);
+					break;
+
+				}
+			}
+		}
+
+		if(MainGameLoop.isRunning)
+		{
+			this.requestFocus();
+			windowSettup();
+			panel.repaint();
+			panel.PlayerDeckColor = newColor;
+			panel.PlayerDeckText = newText;
+			panel.setLayout(null);
+			panel.remove(Start);
+			Setup.Button(Play, 600 + 900, 610, 200, 400, panel);
+			Setup.Button(FlipCurentHandBack, 620, 900, 200, 120, panel);
+			Setup.Button(SkipTurn, 830, 900, 200, 120, panel);
+			Setup.Button(FlipCurentHand, 1040, 900, 200, 120, panel);
 
 
-		
-		Play.setFocusPainted(				false);
-		SkipTurn.setFocusPainted(			false);
-		FlipCurentHand.setFocusPainted(		false);
-		FlipCurentHandBack.setFocusPainted(	false);
-		Play.setBackground(					Color.white);
-		SkipTurn.setBackground(				Color.white);
-		FlipCurentHand.setBackground(		Color.white);
-		FlipCurentHandBack.setBackground(	Color.white);
-		
-		Play.setOpaque(false);
-		Play.setContentAreaFilled(false);
-		Play.setBorderPainted(false);
-		Play.setForeground(Color.white);
-		this.setVisible(true);
+			Play.setFocusPainted(false);
+			SkipTurn.setFocusPainted(false);
+			FlipCurentHand.setFocusPainted(false);
+			FlipCurentHandBack.setFocusPainted(false);
+			Play.setBackground(Color.white);
+			SkipTurn.setBackground(Color.white);
+			FlipCurentHand.setBackground(Color.white);
+			FlipCurentHandBack.setBackground(Color.white);
+
+			Play.setOpaque(false);
+			Play.setContentAreaFilled(false);
+			Play.setBorderPainted(false);
+			Play.setForeground(Color.white);
+			this.setVisible(true);
+		}
+
 	}
 	
 	/**
@@ -538,14 +609,17 @@ public class MyFrame extends JFrame implements ActionListener
 		JButton[] ColorB = {Red, Blue, Green, Yellow};
 		for(int i = 0; i < ColorB.length; i++)
 		{
-			ColorB[i].setBounds(				(i * 100) +  (i * 4),
-												position, 100, 60);
-			panel.add(					ColorB[i]);
+
+			ColorB[i].setBounds(400 + (i * 200) +  10 + (i * 10),position, 200, 120);
+
+
+
+			panel.add(							ColorB[i]);
 			ColorB[i].addActionListener(		this);
-			ColorB[i].setFocusPainted(		false);
+			ColorB[i].setFocusPainted(			false);
 			ColorB[i].setBackground(			Color.white);
 			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
-			Setup.Fonts(ColorB[i], 15);
+			Setup.Fonts(ColorB[i], 				15);
 		}
 	}
 	
@@ -564,7 +638,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void windowSettup()
 	{
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(panel);
 		this.pack();
 		this.setLocationRelativeTo(null);

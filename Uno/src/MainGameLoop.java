@@ -1,9 +1,6 @@
 
-import java.awt.*;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.*; 
 
 /**
  * Controls the whole game. including the card creation, 
@@ -36,6 +33,12 @@ public class MainGameLoop
 	
 	/**An array of players*/
 	public static ArrayList<Player> Players;
+
+	/**
+	 * isthe game started
+	 * default = false
+	 */
+	public static boolean gamestarted = false;
 	
 	
 	/**Holds the settings Example: 4 card colors, 
@@ -53,6 +56,24 @@ public class MainGameLoop
 	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
+		game();
+	}
+	
+	public static void game()
+	{
+		try
+		{
+			Frame.dispose();
+			Players = new ArrayList<Player>();
+			System.out.println("Disposed of old stuff");
+		}
+		catch (Exception ignored)
+		{
+			System.out.println("Not delete");
+		}
+
+
+		System.out.println("Initilization");
 		//Creates the players
 		Players = new ArrayList<Player>();
 		Setup.initGame();
@@ -61,15 +82,16 @@ public class MainGameLoop
 		//Main loop
 		while(isRunning)
 		{
+			Frame.setVisible(true);
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
 			String input = sc.nextLine();
-			
+
 			//Commands
 			switch(input)
 			{
 				case "ff":
-					isRunning = false;	
+					isRunning = false;
 					break;
 				case "flip":
 					Flip();
@@ -91,30 +113,21 @@ public class MainGameLoop
 					System.out.println("ff, hand, p, view,"
 							+ " test, cc, toS, Help, Settings");
 					break;
-				case "Settings": 
+				case "Settings":
 					PrintSettings();
 					break;
 				default: System.out.println("Invalid input:"
 						+ " Help for commands");
 			}
-			
+			sc.close();
+
 		}
-		
-		//Shows who wins
-		while(isRunning == false)
-		{
-			
-			Frame.hideButtons();
-			Frame.repaint();
-		
-		}
-		
-		//Exit the game
-		System.exit(0);
-		System.out.println("End");
+		System.out.println("ResetGame");
+
+
+
+
 	}
-	
-	
 	//*****************************************************
 	
 	/**
@@ -133,7 +146,7 @@ public class MainGameLoop
 	 */
 	public static void FlipCurentHandBack()
 	{
-		CurentPlayer.MyDeck.Cards.add(0, 
+		CurentPlayer.MyDeck.Cards.add(0,
 				CurentPlayer.MyDeck.Cards.get(
 						CurentPlayer.MyDeck.Cards.size() - 1));
 		CurentPlayer.MyDeck.Cards.remove(
@@ -169,7 +182,7 @@ public class MainGameLoop
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
 	}
-	
+
 	/**
 	 * Prints the settings of the game
 	 */
