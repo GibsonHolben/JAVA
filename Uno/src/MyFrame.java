@@ -118,6 +118,9 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	static JButton 			P4 = new JButton("4 Players");
 	
+	static JButton[] Buttons = {P1, P2, P3, P4, Play, Start, Reset, SettingsButton, SkipTurn, HowToPlay, FlipCurentHand,
+			FlipCurentHandBack, Red, Blue, Green, Yellow};
+	
 	
 	//SFX
 	
@@ -181,17 +184,14 @@ public class MyFrame extends JFrame implements ActionListener
 		Setup.Button(Start,				900,900, 200, 120, panel);
 		Setup.Button(P3, 				1105,900, 200, 120, panel);
 		Setup.Button(P4, 				1310,900, 200, 120, panel);
-		P1.addActionListener(                 this);
-		P2.addActionListener(                 this);
-		P3.addActionListener(                 this);
-		P4.addActionListener(                 this);
-		Play.addActionListener(			   	  this);
-		Start.addActionListener(			  this);
-		SettingsButton.addActionListener(	  this);
-		SkipTurn.addActionListener(			  this);
-		HowToPlay.addActionListener(          this);
-		FlipCurentHand.addActionListener(	  this);
-		FlipCurentHandBack.addActionListener( this);
+		for(int i = 0; i < Buttons.length; i++)
+		{
+			if(Buttons[i].getActionListeners().length == 0)
+			{
+				Buttons[i].addActionListener(this);
+			}
+			
+		}
 		P1.repaint();
 		P2.repaint();
 		P3.repaint();
@@ -226,23 +226,12 @@ public class MyFrame extends JFrame implements ActionListener
 		}
 		if(e.getSource().equals(Reset))
 		{
-			Play.removeActionListener(this);
-			P1.removeActionListener(               	 this);
-			P2.removeActionListener(               	 this);
-			P3.removeActionListener(                 this);
-			P4.removeActionListener(                 this);
-			Play.removeActionListener(			   	 this);
-			Start.removeActionListener(			 	 this);
-			Reset.removeActionListener(				 this);
-			SettingsButton.removeActionListener(	 this);
-			SkipTurn.removeActionListener(			 this);
-			HowToPlay.removeActionListener(          this);
-			FlipCurentHand.removeActionListener(	 this);
-			FlipCurentHandBack.removeActionListener( this);
-			Red.removeActionListener(this);
-			Blue.removeActionListener(this);
-			Green.removeActionListener(this);
-			Yellow.removeActionListener(this);
+			
+			
+			for(int i = 0; i < Buttons.length; i++)
+			{
+				Buttons[i].removeActionListener(this);
+			}
 			MainGameLoop.Frame.dispose();
 			MainGameLoop.game();
 			MainGameLoop.isRunning = true;

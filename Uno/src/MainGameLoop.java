@@ -25,6 +25,12 @@ public class MainGameLoop
 	/**the main frame*/
 	public static MyFrame 			Frame;
 	
+	/**
+	 * isthe game started
+	 * default = false
+	 */
+	public static boolean 			gamestarted = false;
+	
 	/**Is the game running?*/
 	public static boolean 			isRunning = true;
 	
@@ -34,11 +40,7 @@ public class MainGameLoop
 	/**An array of players*/
 	public static ArrayList<Player> Players;
 
-	/**
-	 * isthe game started
-	 * default = false
-	 */
-	public static boolean gamestarted = false;
+
 	
 	
 	/**Holds the settings Example: 4 card colors, 
@@ -136,7 +138,7 @@ public class MainGameLoop
 	public static void FlipCurentHand()
 	{
 		CurentPlayer.MyDeck.Cards.add(
-				CurentPlayer.MyDeck.Cards.get(0));
+							CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
 		Visuals.UpdateGraphicsPlayer();
 	}
@@ -150,7 +152,7 @@ public class MainGameLoop
 				CurentPlayer.MyDeck.Cards.get(
 						CurentPlayer.MyDeck.Cards.size() - 1));
 		CurentPlayer.MyDeck.Cards.remove(
-				CurentPlayer.MyDeck.Cards.size() - 1);
+						CurentPlayer.MyDeck.Cards.size() - 1);
 		Visuals.UpdateGraphicsPlayer();
 	}
 	
