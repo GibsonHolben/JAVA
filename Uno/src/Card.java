@@ -1,6 +1,7 @@
 
 /**
- * A standard UNO card, used when determining what to do when the card is played
+ * A standard UNO card, used when determining
+ *  what to do when the card is played
  * @author CTEHolbenG46
  * @version 0.1.4
  */
@@ -38,7 +39,8 @@ public class Card
 	
 	
 	/**
-	 * creates a card with the passe in values and speial effects
+	 * creates a card with the passe in values 
+	 * and speial effects
 	 * @param NewColor the color of the card
 	 * @param Special the cards special effect
 	 */
@@ -73,15 +75,31 @@ public class Card
 	{
 		if(SpecialEffect.equals("+2"))
 		{
-			MainGameLoop.Players.get(1).DrawCard(2);
+			try
+			{
+				MainGameLoop.Players.get(1).DrawCard(2);
+			}	
+			catch(Exception e)
+			{
+				System.out.println("Could not draw cards");
+			}
 		}
 		
 		if(SpecialEffect.equals("W+" + MainGameLoop.Settings[1]))
 		{
 			MainGameLoop.Frame.canPlay = false;
 			MainGameLoop.Frame.SettupColorButtons(700);
-			MainGameLoop.Players.get(1).DrawCard(
-					Integer.parseInt(MainGameLoop.Settings[1]));
+			
+			try
+			{
+				MainGameLoop.Players.get(1).DrawCard(
+						Integer.parseInt(MainGameLoop.Settings[1]));
+			}
+			catch(Exception e)
+			{
+				System.out.println("Could not draw cards");
+			}
+		
 		}
 		
 		if(SpecialEffect.equals("S"))

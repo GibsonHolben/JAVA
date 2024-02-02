@@ -2,6 +2,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  * Controls the whole game. including the card creation, 
  * player creation, and update loop
@@ -49,8 +52,10 @@ public class MainGameLoop
 	 * [0] the colors of the cards
 	 * [1] how many cards a wild+ make you draw
 	 * [2] how many cards of each color there are
-	 * [3] play the sound*/
-	public static String[] 			Settings = new String[4];
+	 * [3] play the sound
+	 * [4]The background of the game*/
+
+	public static String[] 			Settings = new String[5];
 
 
 	/**Controls the game
@@ -122,7 +127,7 @@ public class MainGameLoop
 				default: System.out.println("Invalid input:"
 						+ " Help for commands");
 			}
-			sc.close();
+			//sc.close();
 
 		}
 		System.out.println("ResetGame");

@@ -6,6 +6,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,7 @@ import java.net.URL;
  * @version 13.3.7
  */
 @SuppressWarnings("serial")
-public class MyFrame extends JFrame implements ActionListener
+public class MyFrame extends JFrame
 {
 	/**
 	 * Can the user play
@@ -144,6 +145,10 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public Clip 					clipMusic;
 	
+	/**
+	 * Handels the events
+	 */
+	public EventHandler 			Handler = new EventHandler();
 	
       
 	
@@ -179,22 +184,22 @@ public class MyFrame extends JFrame implements ActionListener
 		//Setups the buttons
 		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
 		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
-		Setup.Button(P1, 				490,900, 200, 120, panel);
-		Setup.Button(P2, 				695,900, 200, 120, panel);
-		Setup.Button(Start,				900,900, 200, 120, panel);
-		Setup.Button(P3, 				1105,900, 200, 120, panel);
-		Setup.Button(P4, 				1310,900, 200, 120, panel);
-		P1.addActionListener(                 this);
-		P2.addActionListener(                 this);
-		P3.addActionListener(                 this);
-		P4.addActionListener(                 this);
-		Play.addActionListener(			   	  this);
-		Start.addActionListener(			  this);
-		SettingsButton.addActionListener(	  this);
-		SkipTurn.addActionListener(			  this);
-		HowToPlay.addActionListener(          this);
-		FlipCurentHand.addActionListener(	  this);
-		FlipCurentHandBack.addActionListener( this);
+		Setup.Button(P2, 				595,900, 200, 120, panel);
+		Setup.Button(Start,				800,900, 200, 120, panel);
+		Setup.Button(P3, 				1005,900, 200, 120, panel);
+		Setup.Button(P4, 				1210,900, 200, 120, panel);
+		Setup.Button(Close,   			1870, 0, 50, 50, panel);
+		P2.addActionListener(                 Handler);
+		P3.addActionListener(                 Handler);
+		P4.addActionListener(                 Handler);
+		Play.addActionListener(			   	  Handler);
+		Start.addActionListener(			 Handler);
+		SettingsButton.addActionListener(	  Handler);
+		SkipTurn.addActionListener(			  Handler);
+		HowToPlay.addActionListener(          Handler);
+		FlipCurentHand.addActionListener(	  Handler);
+		FlipCurentHandBack.addActionListener( Handler);
+		Close.addActionListener(				Handler);
 		P1.repaint();
 		P2.repaint();
 		P3.repaint();
@@ -211,162 +216,7 @@ public class MyFrame extends JFrame implements ActionListener
 		
 	}
 	
-	
-	
-	//Actions *******************************************
-	/**
-	 * Called when any button is clicked
-	 * @param e used to find the source of the call
-	 */
-	public void actionPerformed(ActionEvent e)
-	{
 
-
-		if(MainGameLoop.Settings[3].equals("true"))
-		{
-			PlayClick();
-
-		}
-		if(e.getSource().equals(Reset))
-		{
-			
-			
-			for(int i = 0; i < Buttons.length; i++)
-			{
-				Buttons[i].removeActionListener(this);
-			}
-			MainGameLoop.Frame.dispose();
-			MainGameLoop.game();
-			MainGameLoop.isRunning = true;
-			panel.doneOnce = false;
-        }
-
-		if(e.getSource().equals(Close))
-		{
-			//Exit the game
-			System.exit(0);
-			System.out.println("End");
-		}
-
-		//Player select buttons
-		if(e.getSource().equals(P1))
-		{
-			FileManager.ChangePlayers("1");
-			P1.setVisible(true);
-			this.setVisible(true);
-			ResetPlayerButtons(P1);
-		}
-		if(e.getSource().equals(P2))
-		{
-			FileManager.ChangePlayers("2");
-			P2.setVisible(true);
-			this.setVisible(true);
-			ResetPlayerButtons(P2);
-		}
-		if(e.getSource().equals(P3))
-		{
-			FileManager.ChangePlayers("3");
-			P3.setVisible(true);
-			this.setVisible(true);
-			ResetPlayerButtons(P3);
-		}
-		if(e.getSource().equals(P4))
-		{
-			FileManager.ChangePlayers("4");
-			P4.setVisible(true);
-			this.setVisible(true);
-			ResetPlayerButtons(P4);
-		}
-				
-				
-		//Flip through hand buttons
-		if(e.getSource().equals(FlipCurentHand))
-		{
-			MainGameLoop.FlipCurentHand();
-			this.setVisible(true);
-		}
-		if(e.getSource().equals(FlipCurentHandBack))
-		{
-			MainGameLoop.FlipCurentHandBack();
-			this.setVisible(true);
-		}
-		
-		
-		if(canPlay == true)
-		{
-			//Action buttons
-			if(e.getSource().equals(SkipTurn))
-			{
-				MainGameLoop.CurentPlayer.Skip();
-				SkipTurn.setVisible(true);
-				this.setVisible(true);
-				
-			}
-			if(e.getSource().equals(Start))
-			{
-				Setup.initGame();
-				MainGameLoop.Start();
-				Start.setVisible(true);
-				this.setVisible(true);
-			}
-			if(e.getSource().equals(Play))
-			{
-				MainGameLoop.gamestarted = true;
-				MainGameLoop.CurentPlayer.play();
-				this.setVisible(true);
-				Play.setVisible(true);
-			}
-			
-		}
-		else
-		{
-			//Wild card buttons
-			if(e.getSource().equals(Red))
-			{
-				MainGameLoop.CurentColor = Settings.ColorsBackup[0];
-				canPlay = true;
-				System.out.println(MainGameLoop.CurentColor);
-				MainGameLoop.NextPlayer();
-				SettupColorButtons(-1000);
-			}
-			
-			if(e.getSource().equals(Blue))
-			{
-				MainGameLoop.CurentColor = Settings.ColorsBackup[1];
-				canPlay = true;
-				MainGameLoop.NextPlayer();
-				SettupColorButtons(-1000);
-			}
-			
-			if(e.getSource().equals(Green))
-			{
-				MainGameLoop.CurentColor = Settings.ColorsBackup[2];
-				canPlay = true;
-				MainGameLoop.NextPlayer();
-				SettupColorButtons(-1000);
-			}
-			
-			if(e.getSource().equals(Yellow))
-			{
-				MainGameLoop.CurentColor = Settings.
-						ColorsBackup[3];
-				canPlay = true;
-				MainGameLoop.NextPlayer();
-				SettupColorButtons(-1000);
-			}	
-		}
-		
-		//Help buttons
-		if(e.getSource().equals(HowToPlay))
-		{
-			FileManager.ShowHowToPlay();
-		}
-		if(e.getSource().equals(SettingsButton))
-		{
-			//FileManager.ShowSettings();
-			Settings s = new Settings();
-		}
-	}
 	
 	/**
 	 * Hides the buttons on game end
@@ -437,6 +287,7 @@ public class MyFrame extends JFrame implements ActionListener
 			Setup.Button(Play,					600+900, 610, 200, 400, panel);
 			Setup.Button(FlipCurentHand,		294,400, panel);
 			Setup.Button(FlipCurentHandBack,	0,400, panel);
+			Setup.Button(Close,   				1870, 0, 50, 50, panel);
 
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
@@ -479,8 +330,8 @@ public class MyFrame extends JFrame implements ActionListener
 					panel.repaint();
 					this.hideButtons();
 					Setup.Button(Reset,850,900, 200, 120, panel);
-					Reset.addActionListener(this);
-					Reset.setVisible(true);
+					Reset.addActionListener(Handler);
+					Reset.setVisible(		true);
 					break;
 
 				}
@@ -533,13 +384,15 @@ public class MyFrame extends JFrame implements ActionListener
 		Button.setBackground(Color.lightGray);
 	}
 	
-	//Settups ****************************************************************
+	//Settups *******************************
 	/**
 	 * Sets up the player selector colors on startup based on what 
 	 * was saved from last use
 	 */
 	public void setupPlayeBttonColors()
 	{
+		
+		
 		System.out.println(MainGameLoop.Players.size());
 		switch(MainGameLoop.Players.size())
 		{
@@ -596,18 +449,14 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void SettupColorButtons(int position)
 	{
-		panel.setLayout(null);
-		
+		panel.repaint();
 		JButton[] ColorB = {Red, Blue, Green, Yellow};
 		for(int i = 0; i < ColorB.length; i++)
 		{
 
 			ColorB[i].setBounds(400 + (i * 200) +  10 + (i * 10),position, 200, 120);
-
-
-
 			panel.add(							ColorB[i]);
-			ColorB[i].addActionListener(		this);
+			ColorB[i].addActionListener(		Handler);
 			ColorB[i].setFocusPainted(			false);
 			ColorB[i].setBackground(			Color.white);
 			ColorB[i].setBorder(				new LineBorder(Color.black, 2));
@@ -630,7 +479,7 @@ public class MyFrame extends JFrame implements ActionListener
 	 */
 	public void windowSettup()
 	{
-		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(panel);
 		this.pack();
 		this.setLocationRelativeTo(null);

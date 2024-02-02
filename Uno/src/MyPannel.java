@@ -73,9 +73,36 @@ public class MyPannel extends JPanel
 		MainDeckColor = newColor;
 		MainDeckText = newText;
 		
-		this.setPreferredSize(Toolkit. getDefaultToolkit(). getScreenSize());
+		this.setPreferredSize(
+				Toolkit.getDefaultToolkit().getScreenSize());
 	}
 	
+	/**
+	 * Gets the background color setting
+	 * @return the color of the background from setting
+	 */
+	public static Color BackgroundColor()
+	{
+		switch(MainGameLoop.Settings[4])
+		{
+			case "Red": 
+				return Color.red;
+			case "Blue": 
+				return Color.blue;
+			case "Green":
+				return Color.green;
+			case "Yellow": 
+				return Color.yellow;
+			case "Magenta": 
+				return Color.magenta;
+			case "Cyan": 
+				return Color.cyan;
+			case "Orange": 
+				return Color.orange;
+			default: 
+				return Color.red;
+		}
+	}
 	
 	/**
 	 * Draws the image on the cards
@@ -189,6 +216,7 @@ public class MyPannel extends JPanel
 	 */
 	public void PaintCard(String Type, int x, int y, int w, int h, Color Color)
 	{
+		this.setBackground(BackgroundColor());
 		g2D.setPaint(Color.white);
 		g2D.setStroke(new BasicStroke(10));
 		g2D.drawRoundRect(x, y, w, h, 20, 20);

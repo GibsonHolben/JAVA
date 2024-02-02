@@ -28,7 +28,8 @@ public class Player
 	}
 	
 	/**
-	 * Determines weather the card in the active players hand match the top card in the main deck
+	 * Determines weather the card in the active players 
+	 * hand match the top card in the main deck
 	 * @return true if the cards match, false if they do not
 	 */
 	public boolean cardMatch()

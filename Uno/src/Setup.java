@@ -92,7 +92,7 @@ public class Setup
 		String[] colors = new String[4];
 		String SettingsData;
 		String SettingsFilePath = FileManager.Home; 
-		SettingsFilePath = SettingsFilePath + "/Settings.json";
+		SettingsFilePath = SettingsFilePath + "/Settings"+ FileManager.FILEEXTENTION;
 
 		try 
 		{
@@ -105,6 +105,8 @@ public class Setup
 		    	 SettingsData = SetingsReader.nextLine();
 		    	 MainGameLoop.Settings = SettingsData.split("/");
 		    	 System.out.println(SettingsData);
+		    	 
+		    	
 		    	 
 		    	 colors =  MainGameLoop.Settings[0].split(",");
 		    	 System.out.println( MainGameLoop.Settings[1]);
@@ -165,7 +167,26 @@ public class Setup
 		    				 Setup.fixColors();
 		    			}
 		    		 }
-		    		
+		    		 if( 
+		    				MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[0])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[1])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[2])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[3])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[4])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[5])||
+			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[6]))
+		    		{
+		    			System.out.println("Corect: " + MainGameLoop.Settings[4]);
+		    		}
+		    		else
+		    		{
+		    			SetingsReader.close();   
+		    			JOptionPane.showMessageDialog( MainGameLoop.Frame,
+		    					"Invalid Settings... Supported colors are: "
+		    					+ "Red, Blue, Green, Yellow, Orange, Magenta, "
+		    					+ "& Cyan.. Refactoring...");
+		    			 Setup.fixColors();
+		    		}		
 		    		 
 		    	 }
 		    	 Settings.ColorsBackup = colors;
@@ -176,9 +197,12 @@ public class Setup
 		} 
 		catch (FileNotFoundException e) 
 		{
-		      System.out.println("An error occurred while reading the settings file");
-		      JOptionPane.showMessageDialog(MainGameLoop.Frame, "An error occurred while reading the settings file");
-		      JOptionPane.showMessageDialog(MainGameLoop.Frame, "Refactoring Settings");
+		      System.out.println("An error occurred while reading"
+		      						+ " the settings file");
+		      JOptionPane.showMessageDialog(MainGameLoop.Frame, 
+		    		  "An error occurred while reading the settings file");
+		      JOptionPane.showMessageDialog(MainGameLoop.Frame,
+		    		  "Refactoring Settings");
 		      Setup.fixColors();
 		      e.printStackTrace();
 		}
@@ -244,9 +268,8 @@ public class Setup
 	 */
 	public static void fixColors()
 	{
-
-		 
-		 String FilePath = FileManager.Home + "/Settings.json";
+		 String FilePath = FileManager.Home +
+				 "/Settings" + FileManager.FILEEXTENTION;
 		 File myObj = new File(FilePath);
 		 myObj = new File(FilePath);
 		 
@@ -299,7 +322,7 @@ public class Setup
 		
 		//Reads the file
 		String PlayerFilePath = FileManager.Home;
-		PlayerFilePath = PlayerFilePath + "/Players.json";
+		PlayerFilePath = PlayerFilePath + "/Players" + FileManager.FILEEXTENTION;
 		File PlayerObj = new File(PlayerFilePath);
 	    Scanner PlayerReader;
 		try 

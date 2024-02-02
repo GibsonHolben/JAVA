@@ -23,7 +23,7 @@ import javax.swing.border.LineBorder;
  */
 
 @SuppressWarnings("serial")
-public class Settings extends JFrame implements ActionListener
+public class Settings extends JFrame
 {
 	/**
 	 * The input field for the amount of cards in the deck
@@ -34,7 +34,7 @@ public class Settings extends JFrame implements ActionListener
 	 * Checks if it is the first time the button is clicked
 	 * Default = false
 	 */
-	public boolean doneOnce = false;
+	public static boolean doneOnce = false;
 	
 	/**
 	 * The main panel of the game
@@ -97,7 +97,13 @@ public class Settings extends JFrame implements ActionListener
 	/**
 	 * A list of all aceptable colors in the settings
 	 */
-	public static final String[] ACCEPTEDCOLORS = {"Red", "Blue", "Green", "Yellow", "Magenta", "Cyan", "Orange"};
+	public static final String[] ACCEPTEDCOLORS = {"Red",
+													"Blue", 
+													"Green", 
+													"Yellow", 
+													"Magenta", 
+													"Cyan", 
+													"Orange"};
 	
 	/**
 	 * Holds the 4 colors of the cards in the game
@@ -118,11 +124,11 @@ public class Settings extends JFrame implements ActionListener
 		SettupSettings();
 		
 		//Adds the action listeners
-		Sfx.addActionListener(this);
-		SubmitWildCardSize.addActionListener(this);
-		SubmitDeckSize.addActionListener(this);
-		SubmitColors.addActionListener(this);
-		Color1Combo.addActionListener(this);
+		Sfx.addActionListener(				 MainGameLoop.Frame.Handler);
+		SubmitWildCardSize.addActionListener(MainGameLoop.Frame.Handler);
+		SubmitDeckSize.addActionListener(	 MainGameLoop.Frame.Handler);
+		SubmitColors.addActionListener(		 MainGameLoop.Frame.Handler);
+		Color1Combo.addActionListener(		 MainGameLoop.Frame.Handler);
 		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
@@ -184,88 +190,14 @@ public class Settings extends JFrame implements ActionListener
 		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	panel);
 		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		panel);
 		Setup.Button(SubmitColors, 		350, 440, 150, 60, 		panel);
-		this.setVisible(true);
+				
+		//Sets teh background color
+		panel.setBackground(MyPannel.BackgroundColor());
 		
 		//Sets the form visible
 		this.setVisible(true);
 
 	
-	}
-	
-	/**
-	 * Runs when a buttons is clicked
-	 * @param e Gets which button was pressed
-	 */
-	public void actionPerformed(ActionEvent e) 
-	{
-		if(doneOnce)
-		{
-			if(e.getSource().equals(Sfx))
-			{
-				ChangeSfx();
-			}
-			
-			if(e.getSource().equals(SubmitWildCardSize))
-			{
-				if(SubmitSetting("Wild"))
-				{
-					JOptionPane.showMessageDialog(this, 
-							"Wild card Settings accepted, "
-							+ "Please restart the game for changed to take effect");
-					WildCardDrawText.setText( MainGameLoop.Settings[1] );
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(this,
-							"Invalid number for wild card draw (1-9) "
-							+ "is accepted... Refactoring to default...");
-					WildCardDrawText.setText( MainGameLoop.Settings[1] );
-				}
-			
-			}
-			
-			if(e.getSource().equals(SubmitDeckSize))
-			{
-				if(SubmitSetting("Deck"))
-				{
-					JOptionPane.showMessageDialog(this, 
-							"Settings accepted, Please restart the "
-							+ "game for changed to take effect");
-					DeckSizeText.setText( MainGameLoop.Settings[2] );
-					
-					
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(this, 
-							"Invalid number for deck size (4-99) is"
-							+ " accepted... Refactoring to default...");
-					DeckSizeText.setText( MainGameLoop.Settings[2] );
-				}
-			
-			}
-			
-			if(e.getSource().equals(SubmitColors))
-			{
-				
-				System.out.println("Saved colors " + MainGameLoop.Settings[0]);
-				MainGameLoop.Settings[0] = Color1Combo.getSelectedItem() + "," + 
-											Color2Combo.getSelectedItem() + "," +
-											Color3Combo.getSelectedItem() + "," +
-											Color4Combo.getSelectedItem() + ",";
-				JOptionPane.showMessageDialog(this, 
-						"Color Settings accepted, Please restart "
-						+ "the game for changed to take effect");
-			}
-			
-			
-			SaveSettings();
-		}
-		else
-		{
-			doneOnce = true;
-		}
-		
 	}
 
 	/**
@@ -395,7 +327,9 @@ public class Settings extends JFrame implements ActionListener
 	 */
 	public void SaveSettings()
 	{
-		String FilePath = FileManager.Home + "/Settings.json";
+		String FilePath = FileManager.Home + 
+									"/Settings" + 
+									FileManager.FILEEXTENTION;
 		
 		String Settings = "";
 		
@@ -461,6 +395,31 @@ public class Settings extends JFrame implements ActionListener
 			{
 				boxes[i].setSelectedIndex(6);
 			}
+		}
+		
+		if(MainGameLoop.Settings[4].equals("Red"))
+		{
+			ColorBackground.setSelectedIndex(0);
+		}
+		else if(MainGameLoop.Settings[4].equals("Blue"))
+		{
+			ColorBackground.setSelectedIndex(1);
+		}
+		else if(MainGameLoop.Settings[4].equals("Green"))
+		{
+			ColorBackground.setSelectedIndex(2);
+		}
+		else if(MainGameLoop.Settings[4].equals("Yellow"))
+		{
+			ColorBackground.setSelectedIndex(3);
+		}
+		else if(MainGameLoop.Settings[4].equals("Magenta"))
+		{
+			ColorBackground.setSelectedIndex(4);
+		}
+		else if(MainGameLoop.Settings[4].equals("Orange"))
+		{
+			ColorBackground.setSelectedIndex(5);
 		}
 	}
 }

@@ -19,7 +19,11 @@ public class FileManager
 	
 	//Static
 	/**The default settings of the game*/
-	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true";
+	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true/Red";
+	
+	//Final
+	/**The File extention of the settings files*/
+	public final static String FILEEXTENTION = ".ini";
 	
 	
 	/**
@@ -30,7 +34,7 @@ public class FileManager
 	{
 		try 
 		{
-			String FilePath3  = FileManager.Home + "/Players.json";
+			String FilePath3  = FileManager.Home + "/Players" + FILEEXTENTION;
 			FileWriter myWriter3 = new FileWriter(FilePath3);
 		    myWriter3.write(input);
 		    myWriter3.close();
@@ -65,7 +69,7 @@ public class FileManager
 			System.out.println("Directory exists: " + Uno.toString());
 		}
 		
-		String FilePath = Home + "/Settings.json";
+		String FilePath = Home + "/Settings" + FileManager.FILEEXTENTION;
 		try 
 		{
 			File myObj = new File(FilePath);
@@ -101,7 +105,7 @@ public class FileManager
 		
 		
 		
-		String FilePath2 = Home + "/HTP.json";
+		String FilePath2 = Home + "/HTP.txt";
 
 		try 
 		{
@@ -188,7 +192,7 @@ public class FileManager
 		}
 		
 	
-		String FilePath3  = Home + "/Players.json";
+		String FilePath3  = Home + "/Players" + FILEEXTENTION;
 		try 
 		{
 			File myObj3 = new File(FilePath3);
@@ -248,7 +252,7 @@ public class FileManager
 		if (Desktop.isDesktopSupported()) 
 		{
 			
-			String FilePath  = FileManager.Home + "/HTP.json";
+			String FilePath  = FileManager.Home + "/HTP.txt";
 		    try 
 		    {
 				Desktop.getDesktop().edit(new File(FilePath));
@@ -274,7 +278,7 @@ public class FileManager
 		if (Desktop.isDesktopSupported()) 
 		{
 		
-			String FilePath = FileManager.Home + "/Settings.json";
+			String FilePath = FileManager.Home + "/Settings" + FILEEXTENTION;
 		    try 
 		    {
 		    	System.out.println("Opening with notepad...");
