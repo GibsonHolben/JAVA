@@ -499,5 +499,5 @@ public class MyPannel extends JPanel
 				PlayerDeckColor.toString()  + "," + 
 				PlayerDeckText;
 		return s;
-	}
+	}	
 }
