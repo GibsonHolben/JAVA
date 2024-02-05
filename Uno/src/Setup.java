@@ -19,35 +19,17 @@ import javax.swing.border.LineBorder;
  */
 public class Setup
 {
-	/**
-	 * Sets up the button 
-	 * @param Button the button to setup
-	 * @param panel The JPanel that the button is being added to
-	 */
-	public static void Button(JButton Button, JPanel panel)
-	{
-		Fonts(						Button, 15);
-		Button.setBounds(				190, 400, 100, 60);
-		Button.setBorder(				new LineBorder(Color.BLACK, 2));
-		Button.setBackground(			Color.white);
-		Button.setFocusPainted(			false);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		
-	}
 	
 	/**
-	 * Sets up the button with x and y cordenants
+	 * Sets up the button with x and y 	
 	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
+	 * @param x the x cordenants of the button
+	 * @param y the y cordenants of the button
 	 * @param panel The JPanel that the button is being added to
 	 */
 	public static void Button(JButton Button, int x, int y, JPanel panel)
 	{	
-		Fonts(						Button, 15);
+		Fonts(							Button, 15);
 		Button.setBorder(				new LineBorder(Color.black, 2));
 		Button.setFocusPainted(			false);
 		Button.setBackground(			Color.white);
@@ -61,9 +43,11 @@ public class Setup
 	/**
 	 * Sets up the button with x and y cordenants
 	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
+	 * @param x the x cordenants of the button
+	 * @param y the y cordenants of the button
 	 * @param panel The JPanel that the button is being added to
+	 * @param w The width of the JButton
+	 * @param h The Height Of the JButton
 	 */
 	public static void Button(JButton Button, 
 								int x, int y, int w, int h, 
@@ -75,8 +59,6 @@ public class Setup
 		Button.setBackground(			Color.white);
 		Button.setBounds(				x, y, w, h);
 		Button.setVisible(				true);
-	
-		
 		panel.add(						Button);
 		panel.setComponentZOrder(		Button, 0);
 		panel.setVisible(				true);
