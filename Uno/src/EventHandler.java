@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * Used to handel the action events (buttons)
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.1.7
  */
 public class EventHandler implements ActionListener
 {

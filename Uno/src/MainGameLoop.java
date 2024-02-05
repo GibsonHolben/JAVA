@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * Controls the whole game. including the card creation, 
  * player creation, and update loop
  * @author CTEHolbenG46
- * @version 0.6.2
+ * @version 10.4.2
  */
 public class MainGameLoop
 {

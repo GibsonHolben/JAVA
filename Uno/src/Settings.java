@@ -19,7 +19,7 @@ import javax.swing.border.LineBorder;
 
 /**
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.4.2
  */
 
 @SuppressWarnings("serial")

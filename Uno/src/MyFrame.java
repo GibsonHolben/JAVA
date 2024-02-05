@@ -19,7 +19,7 @@ import java.net.URL;
  * Used for the high level graphics such as the Buttons and holding all the 
  * button actions
  * @author CTEHolbenG46
- * @version 13.3.7
+ * @version 13.3.6
  */
 @SuppressWarnings("serial")
 public class MyFrame extends JFrame

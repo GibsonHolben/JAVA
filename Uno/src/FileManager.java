@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * Used to create the Settings, Players, and instructions
  * @author CTEHolbenG46
- * @version 0.0.6
+ * @version 2.4.2
  *
  */
 public class FileManager 

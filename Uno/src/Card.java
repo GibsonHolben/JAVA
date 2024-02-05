@@ -3,7 +3,7 @@
  * A standard UNO card, used when determining
  *  what to do when the card is played
  * @author CTEHolbenG46
- * @version 0.1.4
+ * @version 0.1.5
  */
 public class Card 
 {	

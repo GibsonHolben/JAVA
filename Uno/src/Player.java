@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * A player in the game, contains the basic functions for playing the game
  * @author CTEHolbenG46
- * @version 1.4.2
+ * @version 1.4.8
  */
 public class Player
 {

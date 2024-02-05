@@ -6,16 +6,21 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 /**
+ * Used to change the color of the buttons on hover
  * @author CTEHolbenG46
- * @version 0.0.1
+ * @version 0.0.3
  */
 public class Hover extends MouseAdapter
 {
 	/**
-	 * The buttons needed
+	 * The buttons that the listener is using 
 	 */
 	JButton[] Buttons;
 	
+	/**
+	 * Creates a hover with an array of buttons
+	 * @param Buttons the buttons that the listener covers
+	 */
 	Hover(JButton[] Buttons)
 	{
 		this.Buttons = Buttons;
