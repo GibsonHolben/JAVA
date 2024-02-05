@@ -23,14 +23,8 @@ public class MyPannel extends JPanel
 	 */
 	public boolean  doneOnce = false;
 	
-	/**The X size of the panel*/
-	public short panelXSize = 1000;
-	
-	/**The Y size of the panel*/
-	public short panelYSize = 500;
-	
 	/**
-	 * The graphics handler
+	 * The graphics handler, Used to paint everything on the panel
 	 */
 	Graphics2D 		g2D;
 	
@@ -49,7 +43,7 @@ public class MyPannel extends JPanel
 	
 	//Player Deck
 	/**
-	 * The color of the main deck
+	 * The color of the active players deck
 	 * Default = red
 	 */ 
 	public Color 	PlayerDeckColor = Color.red;
@@ -64,7 +58,7 @@ public class MyPannel extends JPanel
 	
 	
 	/**
-	 * Creates a Panel
+	 * Creates a Panel with color and text settings
 	 * @param newColor	the color of the main deck
 	 * @param newText	the number of the main deck
 	 */
@@ -74,7 +68,7 @@ public class MyPannel extends JPanel
 		MainDeckText = newText;
 		
 		this.setPreferredSize(
-				Toolkit.getDefaultToolkit().getScreenSize());
+					Toolkit.getDefaultToolkit().getScreenSize());
 	}
 	
 	/**
@@ -86,26 +80,26 @@ public class MyPannel extends JPanel
 		switch(MainGameLoop.Settings[4])
 		{
 			case "Red": 
-				return Color.red;
+				return Visuals.RED;
 			case "Blue": 
-				return Color.blue;
+				return Visuals.BLUE;
 			case "Green":
-				return Color.green;
+				return Visuals.GREEN;
 			case "Yellow": 
-				return Color.yellow;
+				return Visuals.YELLOW;
 			case "Magenta": 
-				return Color.magenta;
+				return Visuals.MAGENTA;
 			case "Cyan": 
-				return Color.cyan;
+				return Visuals.CYAN;
 			case "Orange": 
-				return Color.orange;
+				return Visuals.ORANGE;
 			default: 
-				return Color.red;
+				return Visuals.RED;
 		}
 	}
 	
 	/**
-	 * Draws the image on the cards
+	 * Draws the image on the cards based on what the card is
 	 */
 	public void CardDecals()
 	{
@@ -157,8 +151,9 @@ public class MyPannel extends JPanel
 			}
 		}
 	}
+
 	/**
-	 * Draws the middle number of the UNO card
+	 * Draws the middle number of the UNO card (main deck and player)
 	 */
 	public void DrawMiddleNumber()
 	{
@@ -168,7 +163,7 @@ public class MyPannel extends JPanel
 		{
 			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 					100));
-			g2D.drawString(PlayerDeckText, 1538, 857);
+			g2D.drawString(PlayerDeckText, 1537, 857);
 			g2D.setPaint(Color.white);
 			g2D.drawString(PlayerDeckText, 1540, 855);
 		}
@@ -178,8 +173,8 @@ public class MyPannel extends JPanel
 				!PlayerDeckText.equals("S"))
 		{
 			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-					150));
-			g2D.drawString(PlayerDeckText, 1558, 872);
+									150));
+			g2D.drawString(PlayerDeckText, 1557, 872);
 			g2D.setPaint(Color.white);
 			g2D.drawString(PlayerDeckText, 1560, 870);
 		}
@@ -192,7 +187,7 @@ public class MyPannel extends JPanel
 		{
 			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 					100));
-			g2D.drawString(MainDeckText, 43+ 100, 232);
+			g2D.drawString(MainDeckText, 42+ 100, 232);
 			g2D.setPaint(Color.white);
 			g2D.drawString(MainDeckText, 45+ 100, 230);
 		}
@@ -206,7 +201,7 @@ public class MyPannel extends JPanel
 		{
 			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 					150));
-			g2D.drawString(MainDeckText, 58+ 100, 252);
+			g2D.drawString(MainDeckText, 57+ 100, 252);
 			g2D.setPaint(Color.white);
 			g2D.drawString(MainDeckText, 60+ 100, 250);
 		}
@@ -229,7 +224,7 @@ public class MyPannel extends JPanel
 		{
 			if(MainDeckText.equals("W"))
 			{
-
+				//System.out.println("Wild card, middle draw not needed");
 			}
 			else if(MainDeckText.equals("S"))
 			{
@@ -305,11 +300,10 @@ public class MyPannel extends JPanel
 			}
 			else if(PlayerDeckText.equals("W"))
 			{
-
+				//System.out.println("Wild card, middle draw not needed");
 			}
 			else
 			{
-
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						90));
@@ -328,60 +322,46 @@ public class MyPannel extends JPanel
 	}
 	
 	/**
-	 * Paints the games graphics on the screen
-	 * @param g the graphics component
+	 * Paints all the games graphics on the screen
+	 * @param g the graphics component used to  draw everything
 	 */
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		g2D = (Graphics2D) g;
-		RenderingHints qualityHints = new RenderingHints(
+		RenderingHints AntiAliasing = new RenderingHints(
 				RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON );
-		qualityHints.put(
+		AntiAliasing.put(
 				RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY );
-		g2D.setRenderingHints( qualityHints );
-		
+		g2D.setRenderingHints(AntiAliasing);
+
+		//If the game is running
 		if(MainGameLoop.isRunning)
 		{
+			//If this is not the first paint call
 			if(doneOnce)
 			{
-				//Enables anti aliasing on the graphics component
-
-				
-				PaintBackground();
+				//Enables Anti-aliasing on the graphics component
 				g2D.setStroke(new BasicStroke(10));
 				g2D.setPaint(Color.white);
 				PaintCard("Player", 600+ 900, 295 + 320, 200, 400, PlayerDeckColor);
 				PaintCard("Main",100, 5, 200, 400, MainDeckColor);
 
-				
-				
 				//Main deck draw
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
-				
-				
-				
-
-			
-				
 				g2D.setFont(new Font(null, Font.BOLD,40));
 				g2D.setPaint(PlayerDeckColor);
-				//g2D.fillRoundRect(600+ 900, 295 + 320, 200, 400, 20,20);
-				
+
+				//Call the card details function
 				CardDecals();
 
 				//Player card draw
-				
-
-
-				
-				
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,20));
-				
 				g2D.setPaint(Color.black);
+				
 				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 2)
 				{	
 					g2D.drawString("You have " + Integer.toString(
@@ -404,25 +384,21 @@ public class MyPannel extends JPanel
 					g2D.drawString("You have " + Integer.toString(
 							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
 									+ "Card in you hand", 320, 40);
-
 				}
 				else
 				{
 					g2D.drawString("You have " + Integer.toString(
 							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
 									+ "Cards in you hand", 320, 40);
-
 				}
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + 
-						"'s turn", 320, 20);
-				
+														"'s turn", 320, 20);
 				DrawMiddleNumber();
 			}
 			
 			//If it is the first call of paint then show the main menu
 			if(!doneOnce)
 			{
-
 				g2D.setPaint(Color.black);
 				g2D.fillRect(0, 0, 2000, 1200);
 				g2D.setPaint(Color.white);
@@ -442,22 +418,14 @@ public class MyPannel extends JPanel
 			g2D.drawString(MainGameLoop.CurentWinPlayer.Name +
 								" Wins!", 600, 400);
 
-
 		}
 
 	}
 
-	/**
-	 * Paints the background of the panel
-	 */
-	void PaintBackground()
-	{
-		this.setBackground(Color.red);
-	}
-	
 
 	/**
 	 * returns the object as a string
+	 * Deliminator = ,
 	 */
 	public String toString()
 	{

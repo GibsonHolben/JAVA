@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * Controls the whole game. including the card creation, 
@@ -34,7 +35,8 @@ public class MainGameLoop
 	 */
 	public static boolean 			gamestarted = false;
 	
-	/**Is the game running?*/
+	/**Is the game running?
+	 * Default = true*/
 	public static boolean 			isRunning = true;
 	
 	/**The main deck of the game*/
@@ -43,9 +45,6 @@ public class MainGameLoop
 	/**An array of players*/
 	public static ArrayList<Player> Players;
 
-
-	
-	
 	/**Holds the settings Example: 4 card colors, 
 	 * wild card draw, the amount of each color in the deck 
 	 * and weather the sound effets are played
@@ -63,10 +62,12 @@ public class MainGameLoop
 	@SuppressWarnings("resource")
 	public static void main(String[] args) 
 	{
-		//ADD X BUTTON
 		game();
 	}
 	
+	/**
+	 * Contolles the game. Startup, While loop are controlled from here
+	 */
 	public static void game()
 	{
 		try
@@ -77,20 +78,26 @@ public class MainGameLoop
 		}
 		catch (Exception ignored)
 		{
-			System.out.println("Not delete");
+			System.out.println("First time played");
 		}
-
-
-		System.out.println("Initilization");
+		
 		//Creates the players
 		Players = new ArrayList<Player>();
+		
+		//Calls the game initilization
 		Setup.initGame();
+		
+		//Sets up the graphics
 		Visuals.SettupGraphics();
+		Frame.setLocationRelativeTo(null);
 
-		//Main loop
+		//Main game loop
 		while(isRunning)
 		{
+			//Sets the frame visible 
 			Frame.setVisible(true);
+			
+			//Creates the debug scanner
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
 			String input = sc.nextLine();
@@ -117,6 +124,9 @@ public class MainGameLoop
 				case "cc":
 					System.out.println(CurentColor);
 					break;
+				case "cn":
+					System.out.println(MainDeck.Cards.get(0).numberValue);
+					break;
 				case "Help":
 					System.out.println("ff, hand, p, view,"
 							+ " test, cc, toS, Help, Settings");
@@ -127,16 +137,8 @@ public class MainGameLoop
 				default: System.out.println("Invalid input:"
 						+ " Help for commands");
 			}
-			//sc.close();
-
 		}
-		System.out.println("ResetGame");
-
-
-
-
 	}
-	//*****************************************************
 	
 	/**
 	 * Flips the curent players hand
@@ -144,7 +146,7 @@ public class MainGameLoop
 	public static void FlipCurentHand()
 	{
 		CurentPlayer.MyDeck.Cards.add(
-							CurentPlayer.MyDeck.Cards.get(0));
+						CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
 		Visuals.UpdateGraphicsPlayer();
 	}

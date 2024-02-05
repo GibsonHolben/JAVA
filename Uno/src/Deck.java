@@ -56,6 +56,7 @@ public class Deck
 	
 	/**
 	 * Prints the variables on the object
+	 * Deliminator = ,
 	 */
 	public String toString()
 	{

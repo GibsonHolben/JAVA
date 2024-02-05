@@ -9,31 +9,26 @@ import java.awt.event.ActionListener;
  */
 public class EventHandler implements ActionListener
 {
+	/**
+	 * A referance to the settings 
+	 */
 	public Settings Settings;
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		try
 		{
-			//Frame
-			if(e.getSource().equals(MainGameLoop.Frame.P1))
-			{
-				FileManager.ChangePlayers("1");
-				MainGameLoop.Frame.P1.setVisible(true);
-				MainGameLoop.Frame.setVisible(true);
-				MainGameLoop.Frame.ResetPlayerButtons(MainGameLoop.Frame.P1);
-			}
-	
+			//Plays the clik sfx if settings allow
 			if(MainGameLoop.Settings[3].equals("true"))
 			{
 				MainGameLoop.Frame.PlayClick();
-	
 			}
+			
+			//Resets the game and plays again
 			if(e.getSource().equals(MainGameLoop.Frame.Reset))
 			{
-	
-	
 				for(int i = 0; i < MainGameLoop.Frame.Buttons.length; i++)
 				{
 					MainGameLoop.Frame.Buttons[i].removeActionListener(this);
@@ -44,6 +39,7 @@ public class EventHandler implements ActionListener
 				MainGameLoop.Frame.panel.doneOnce = false;
 			}
 	
+			//Closes the game
 			if(e.getSource().equals(MainGameLoop.Frame.Close))
 			{
 				//Exit the game
@@ -52,13 +48,6 @@ public class EventHandler implements ActionListener
 			}
 	
 			//Player select buttons
-			if(e.getSource().equals(MainGameLoop.Frame.P1))
-			{
-				FileManager.ChangePlayers("1");
-				MainGameLoop.Frame.P1.setVisible(true);
-				MainGameLoop.Frame.setVisible(true);
-				MainGameLoop.Frame.ResetPlayerButtons(MainGameLoop.Frame.P1);
-			}
 			if(e.getSource().equals(MainGameLoop.Frame.P2))
 			{
 				FileManager.ChangePlayers("2");
@@ -94,10 +83,11 @@ public class EventHandler implements ActionListener
 				MainGameLoop.Frame.setVisible(true);
 			}
 	
-	
-			if(MainGameLoop.Frame.canPlay == true)
+			
+			//Checks if you can use the these button
+			if(MainGameLoop.Frame.canPlay)
 			{
-				//Action buttons
+				//Skip turn
 				if(e.getSource().equals(MainGameLoop.Frame.SkipTurn))
 				{
 					MainGameLoop.CurentPlayer.Skip();
@@ -105,6 +95,8 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.setVisible(true);
 	
 				}
+				
+				//Start the game
 				if(e.getSource().equals(MainGameLoop.Frame.Start))
 				{
 					Setup.initGame();
@@ -112,6 +104,8 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.Start.setVisible(true);
 					MainGameLoop.Frame.setVisible(true);
 				}
+				
+				//Plays the active card in the active players hand
 				if(e.getSource().equals(MainGameLoop.Frame.Play))
 				{
 					MainGameLoop.gamestarted = true;
@@ -132,7 +126,6 @@ public class EventHandler implements ActionListener
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
 				}
-	
 				if(e.getSource().equals(MainGameLoop.Frame.Blue))
 				{
 					MainGameLoop.CurentColor = Settings.ColorsBackup[1];
@@ -140,7 +133,6 @@ public class EventHandler implements ActionListener
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
 				}
-	
 				if(e.getSource().equals(MainGameLoop.Frame.Green))
 				{
 					MainGameLoop.CurentColor = Settings.ColorsBackup[2];
@@ -148,7 +140,6 @@ public class EventHandler implements ActionListener
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
 				}
-	
 				if(e.getSource().equals(MainGameLoop.Frame.Yellow))
 				{
 					MainGameLoop.CurentColor = Settings.
@@ -159,11 +150,13 @@ public class EventHandler implements ActionListener
 				}
 			}
 	
-			//Help buttons
+			//How to play button
 			if(e.getSource().equals(MainGameLoop.Frame.HowToPlay))
 			{
 				FileManager.ShowHowToPlay();
 			}
+			
+			//Shows the settings menu
 			if(e.getSource().equals(MainGameLoop.Frame.SettingsButton))
 			{
 				//FileManager.ShowSettings();
@@ -172,7 +165,7 @@ public class EventHandler implements ActionListener
 		}
 		catch(Exception e3)
 		{
-			System.out.println("MainGame BUttin");
+			System.out.println("MyFrame Button");
 		}
 
 
@@ -182,11 +175,22 @@ public class EventHandler implements ActionListener
 		{
 			if(Settings.doneOnce)
 			{
+				//Resets the settings
+				if(e.getSource().equals(Settings.Reset))
+				{
+					JOptionPane.showMessageDialog(Settings,"Settings will be overwriten, please restart the game");
+					Setup.fixColors();
+					
+				}
+				
+				//SFX settings toggle
 				if(e.getSource().equals(Settings.Sfx))
 				{
 					Settings.ChangeSfx();
+					Settings.SaveSettings();
 				}
-
+				
+				//Submits the wild card draw size settings
 				if(e.getSource().equals(Settings.SubmitWildCardSize))
 				{
 					if(Settings.SubmitSetting("Wild"))
@@ -197,6 +201,7 @@ public class EventHandler implements ActionListener
 								+ "changed to take effect");
 						Settings.WildCardDrawText.setText(
 								MainGameLoop.Settings[1] );
+						Settings.SaveSettings();
 					}
 					else
 					{
@@ -206,10 +211,12 @@ public class EventHandler implements ActionListener
 										+ "Refactoring to default...");
 						Settings.WildCardDrawText.setText( 
 								MainGameLoop.Settings[1] );
+						Settings.SaveSettings();
 					}
 
 				}
-
+				
+				//Submits the deck size setting 
 				if(e.getSource().equals(Settings.SubmitDeckSize))
 				{
 					if(Settings.SubmitSetting("Deck"))
@@ -218,7 +225,7 @@ public class EventHandler implements ActionListener
 								"Settings accepted, Please restart the "
 										+ "game for changed to take effect");
 						Settings.DeckSizeText.setText( MainGameLoop.Settings[2] );
-
+						Settings.SaveSettings();
 
 					}
 					else
@@ -227,10 +234,12 @@ public class EventHandler implements ActionListener
 								"Invalid number for deck size (4-99) is"
 										+ " accepted... Refactoring to default...");
 						Settings.DeckSizeText.setText( MainGameLoop.Settings[2] );
+						Settings.SaveSettings();
 					}
 
 				}
 
+				//Submits the color settings 
 				if(e.getSource().equals(Settings.SubmitColors))
 				{
 					System.out.println("Saved colors " + MainGameLoop.Settings[0]);
@@ -245,10 +254,11 @@ public class EventHandler implements ActionListener
 					JOptionPane.showMessageDialog(Settings,
 							"Color Settings accepted, Please restart "
 									+ "the game for changed to take effect");
+					Settings.SaveSettings();
 				}
 
 
-				Settings.SaveSettings();
+				
 			}
 			else
 			{
@@ -257,7 +267,6 @@ public class EventHandler implements ActionListener
 		}
 		catch(Exception e2)
 		{
-			
 		}
 		
 	}

@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,15 +32,18 @@ public class MyFrame extends JFrame
 	
 	/**
 	 * A JButton that calls flipTheCurentDeck
+	 * Text = Flip >
 	 */
 	public static JButton 			FlipCurentHand = new JButton("Flip >");
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
+	 * Text = < Flip
 	 */
 	public static JButton 			FlipCurentHandBack = new JButton("< Flip");
 	
 	/**
 	 * A JButton that shows the how to play 
+	 * Text = How To Play
 	 */
 	static JButton 			HowToPlay = new JButton("How to play");
 	
@@ -55,47 +59,56 @@ public class MyFrame extends JFrame
 	
 	/**
 	 * A JButton that skips the active players turn
+	 * Text = Skip
 	 */
 	public static JButton 			SkipTurn = new JButton("Skip");
 	
 	/**
 	 * A JButton that calls start
+	 * Text = Start
 	 */
 	static JButton 			Start = new JButton("Start");
 
 	/**
 	 * A JButton that shows the settings
+	 * Text = Settings
 	 */
 	static JButton 			SettingsButton = new JButton("Settings");
 
 	/**
 	 * A JButton that resets the game
+	 * Text = Play Again?
 	 */
 	static JButton 			Reset = new JButton("Play Again?");
 
 	/**
 	 * A JButton that closes the game
+	 * Text = X
 	 */
 	static JButton 			Close = new JButton("X");
 
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
+	 * Text = Settings.ColorsBackup[0])
 	 */
 	static JButton 			Red = new JButton(Settings.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
+	 * Text = Settings.ColorsBackup[1])
 	 */
 	static JButton 			Blue = new JButton(Settings.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
+	 * Text = Settings.ColorsBackup[2])
 	 */
 	static JButton 			Green = new JButton(Settings.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
+	 * Text = Settings.ColorsBackup[3])
 	 */
 	static JButton 			Yellow = new JButton(Settings.ColorsBackup[3]);
 	
@@ -103,23 +116,24 @@ public class MyFrame extends JFrame
 	//Player select
 	
 	/**
-	 * Sets the amount of players to 1
-	 */
-	static JButton 			P1 = new JButton("1 Player");
-	/**
 	 * Sets the amount of players to 2
+	 * Text = 2 Player
 	 */
 	static JButton 			P2 = new JButton("2 Players");
+	
 	/**
 	 * Sets the amount of players to 3
+	 * Text = 3 Player
 	 */
 	static JButton 			P3 = new JButton("3 Players");
+	
 	/**
 	 * Sets the amount of players to 4
+	 * Text = 4 Player
 	 */
 	static JButton 			P4 = new JButton("4 Players");
 	
-	static JButton[] Buttons = {P1, P2, P3, P4, Play, Start, Reset, SettingsButton, SkipTurn, HowToPlay, FlipCurentHand,
+	static JButton[] Buttons = {P2, P3, P4, Play, Start, Reset, SettingsButton, SkipTurn, HowToPlay, FlipCurentHand,
 			FlipCurentHandBack, Red, Blue, Green, Yellow};
 	
 	
@@ -150,6 +164,11 @@ public class MyFrame extends JFrame
 	 */
 	public EventHandler 			Handler = new EventHandler();
 	
+	/**
+	 * Mouse over
+	 */
+	Hover Hover = new Hover(Buttons);
+	
       
 	
 	/**
@@ -177,38 +196,32 @@ public class MyFrame extends JFrame
 		this.setResizable(false);
 		this.dispose();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		this.setUndecorated(true);
-		this.setVisible(true);
+		this.setUndecorated(				  true);
+		this.setVisible(					  true);
 		panel.setLayout(					  null);
 		
 		//Setups the buttons
 		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
 		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
+		
 		Setup.Button(P2, 				595,900, 200, 120, panel);
 		Setup.Button(Start,				800,900, 200, 120, panel);
 		Setup.Button(P3, 				1005,900, 200, 120, panel);
 		Setup.Button(P4, 				1210,900, 200, 120, panel);
 		Setup.Button(Close,   			1870, 0, 50, 50, panel);
-		P2.addActionListener(                 Handler);
-		P3.addActionListener(                 Handler);
-		P4.addActionListener(                 Handler);
-		Play.addActionListener(			   	  Handler);
-		Start.addActionListener(			 Handler);
-		SettingsButton.addActionListener(	  Handler);
-		SkipTurn.addActionListener(			  Handler);
-		HowToPlay.addActionListener(          Handler);
-		FlipCurentHand.addActionListener(	  Handler);
-		FlipCurentHandBack.addActionListener( Handler);
-		Close.addActionListener(				Handler);
-		P1.repaint();
+		for(int i = 0; i < Buttons.length - 4; i++) 
+		{
+			Buttons[i].addActionListener(Handler);
+			Buttons[i].addMouseListener(Hover);
+		}
+		Close.addActionListener(Handler);
 		P2.repaint();
 		P3.repaint();
 		P4.repaint();
 		Start.repaint();
-		P1.setVisible(true);
-		P2.setVisible(true);
-		P3.setVisible(true);
-		P4.setVisible(true);
+		P2.setVisible(	true);
+		P3.setVisible(	true);
+		P4.setVisible(	true);
 		this.setVisible(true);
 		setupPlayeBttonColors();
 		
@@ -216,7 +229,6 @@ public class MyFrame extends JFrame
 		
 	}
 	
-
 	
 	/**
 	 * Hides the buttons on game end
@@ -277,7 +289,6 @@ public class MyFrame extends JFrame
 			panel.MainDeckText = newText;
 			panel.setLayout(null);
 			panel.remove(Start);
-			panel.remove(P1);
 			panel.remove(P2);
 			panel.remove(P3);
 			panel.remove(P4);
@@ -377,7 +388,6 @@ public class MyFrame extends JFrame
 	 */
 	public void ResetPlayerButtons(JButton Button)
 	{
-		P1.setBackground(Color.white);
 		P2.setBackground(Color.white);
 		P3.setBackground(Color.white);
 		P4.setBackground(Color.white);
@@ -391,20 +401,15 @@ public class MyFrame extends JFrame
 	 */
 	public void setupPlayeBttonColors()
 	{
-		
-		
-		System.out.println(MainGameLoop.Players.size());
 		switch(MainGameLoop.Players.size())
 		{
-			case 1: ResetPlayerButtons(P1);
-			break;
 			case 2: ResetPlayerButtons(P2);
 			break;
 			case 3: ResetPlayerButtons(P3);
 			break;
 			case 4: ResetPlayerButtons(P4);
 			break;
-			default: ResetPlayerButtons(P1);
+			default: ResetPlayerButtons(P2);
 			break;
 		}
 	}
@@ -465,26 +470,16 @@ public class MyFrame extends JFrame
 	}
 	
 	/**
-	 * Returns the object as a string
-	 */
-	public String toString()
-	{
-		String s = canPlay + "," + panel;
-		
-		return s;
-	}
-	
-	/**
-	 * Sets up the window format
+	 * Sets up the window and general frame settings
 	 */
 	public void windowSettup()
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(panel);
+		this.add(					  panel);
+		this.setLocationRelativeTo(	  null);
+		this.setAlwaysOnTop(		  true);
+		this.setName(				  "UNO");
 		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setAlwaysOnTop(true);
-		this.setName("UNO");
 	}
 	
 }

@@ -34,17 +34,34 @@ public class Player
 	 */
 	public boolean cardMatch()
 	{
-		if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).numberValue == 
-				MainGameLoop.MainDeck.Cards.get(0).numberValue||
-				MyDeck.Cards.get(0).ColorValue.equals("Black"))
+		if(MyDeck.Cards.get(0).SpecialEffect.contains("W"))
 		{
 			return true;
+		}
+		else if(MainGameLoop.MainDeck.Cards.get(0).numberValue != 0)
+		{
+			if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
+					MyDeck.Cards.get(0).numberValue == 
+					MainGameLoop.MainDeck.Cards.get(0).numberValue||
+					MyDeck.Cards.get(0).ColorValue.equals("Black"))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(0).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect))
+		{	
+			return true;	
 		}
 		else
 		{
 			return false;
 		}
+		
 	}
 	
 	
@@ -54,7 +71,6 @@ public class Player
 	 */
 	public void DrawCard(int toDraw)
 	{
-
 		for(int i = 0; i < toDraw; i++)
 		{
 			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
@@ -71,6 +87,7 @@ public class Player
 	 */
 	public void play()
 	{
+		//If the game is running
 		if(MainGameLoop.isRunning)
 		{
 			//Gets the special effect of the card
@@ -99,8 +116,6 @@ public class Player
 					System.out.println("Game over");
 					System.out.println(Name + " Wins");
 					MainGameLoop.isRunning = false;
-
-
 				}
 				else
 				{
@@ -133,16 +148,15 @@ public class Player
 		DrawCard(1);
 		MainGameLoop.NextPlayer();
 	}
-	
-	
-	
-	
+
 	/**
 	 * Returns the object as a string
+	 * Deliminator = ,
+	 * @return Name,curentCardIndex,MyDeck
 	 */
 	public String toString()
 	{
-		String s = Name + "," + MyDeck.toString();
+		String s = Name + "," + curentCardIndex + "," + MyDeck.toString();
 		return s;
  	}
 

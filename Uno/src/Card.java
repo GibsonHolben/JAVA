@@ -52,6 +52,7 @@ public class Card
 	
 	/**
 	 * Prints the variables on the object
+	 * Deliminator = ,
 	 */
 	public String toString()
 	{

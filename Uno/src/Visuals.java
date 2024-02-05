@@ -10,42 +10,89 @@ import javax.swing.JFrame;
 public class Visuals
 {
 	/**
+	 * The color of the red card
+	 * Default = 197, 34, 55
+	 */
+	public final static Color RED 		= new Color(197, 34, 55);
+	
+	/**
+	 * The color of the blue card
+	 * Default = 1, 84, 164
+	 */
+	public final static Color BLUE 	= new Color(1, 84, 164);
+	
+	/**
+	 * The color of the green card
+	 * Default = 98, 156, 59
+	 */
+	public final static Color GREEN 	= new Color(98, 156, 59);
+	
+	/**
+	 * The color of the yellow card
+	 * Default = 237, 208, 44
+	 */
+	public final static Color YELLOW 	= new Color(237, 208, 44);
+	
+	/**
+	 * The color of the magenta card
+	 * Default = Color.magenta
+	 */
+	public final static Color MAGENTA 	= Color.magenta;
+	
+	/**
+	 * The color of the cyan card
+	 * Default = color.cyan
+	 */
+	public final static Color CYAN 	= Color.cyan;
+	
+	/**
+	 * The color of the orange card
+	 * Default = 255, 127, 39
+	 */
+	public final static Color ORANGE 	= new Color(255, 127, 39);
+	
+	/**
+	 * The color of the black card
+	 * Default = 0, 0, 0
+	 */
+	public final static Color BLACK 	= new Color(0, 0, 0);
+	
+	/**
 	 * Sets up the graphics and creates a frame
 	 */
 	public static void SettupGraphics()
 	{
 		switch(MainGameLoop.MainDeck.Cards.get(0).ColorValue)
 		{
-			case "Red":		MainGameLoop.Frame = new MyFrame(Color.red, 		
+			case "Red":		MainGameLoop.Frame = new MyFrame(RED, 		
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;			
-			case "Blue":	MainGameLoop.Frame = new MyFrame(Color.blue, 	
+			case "Blue":	MainGameLoop.Frame = new MyFrame(BLUE, 	
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Green":	MainGameLoop.Frame = new MyFrame(Color.green, 	
+			case "Green":	MainGameLoop.Frame = new MyFrame(GREEN, 	
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			
-			case "Yellow":	MainGameLoop.Frame = new MyFrame(new Color(255, 206, 71), 
+			case "Yellow":	MainGameLoop.Frame = new MyFrame(YELLOW, 
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Magenta":	MainGameLoop.Frame = new MyFrame(Color.magenta, 	
+			case "Magenta":	MainGameLoop.Frame = new MyFrame(MAGENTA, 	
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Cyan":	MainGameLoop.Frame = new MyFrame(Color.cyan, 	
+			case "Cyan":	MainGameLoop.Frame = new MyFrame(CYAN, 	
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Orange":	MainGameLoop.Frame = new MyFrame(new  Color(252, 148, 20), 
+			case "Orange":	MainGameLoop.Frame = new MyFrame(ORANGE, 
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
-			case "Black":	MainGameLoop.Frame = new MyFrame(Color.black, 	
+			case "Black":	MainGameLoop.Frame = new MyFrame(BLACK, 	
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
@@ -66,43 +113,43 @@ public class Visuals
 				switch(MainGameLoop.MainDeck.Cards.get(0).ColorValue)
 				{
 					case "Red":
-						MainGameLoop.Frame.reset(Color.red, 			
-								Integer.toString(
+						MainGameLoop.Frame.reset(RED, 			
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Blue":	
-						MainGameLoop.Frame.reset(Color.blue, 		
-								Integer.toString(
+						MainGameLoop.Frame.reset(BLUE, 		
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Green":
-						MainGameLoop.Frame.reset(Color.green, 			
-								Integer.toString(
+						MainGameLoop.Frame.reset(GREEN, 			
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Yellow":
-						MainGameLoop.Frame.reset(new Color(255, 206, 71),
-								Integer.toString(
+						MainGameLoop.Frame.reset(YELLOW,
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Magenta":
-						MainGameLoop.Frame.reset(Color.magenta,	 		
-								Integer.toString(
+						MainGameLoop.Frame.reset(MAGENTA,	 		
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Cyan":
-						MainGameLoop.Frame.reset(Color.cyan,	 			
-								Integer.toString(
+						MainGameLoop.Frame.reset(CYAN,	 			
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Orange":
-						MainGameLoop.Frame.reset(new  Color(252, 148, 20),	
-								Integer.toString(
+						MainGameLoop.Frame.reset(ORANGE,	
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 					case "Black":
-						MainGameLoop.Frame.reset(Color.black,	 			
-								Integer.toString(
+						MainGameLoop.Frame.reset(BLACK,	 			
+										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
 						
@@ -113,35 +160,35 @@ public class Visuals
 				switch(MainGameLoop.MainDeck.Cards.get(0).ColorValue)
 				{
 					case "Red":
-						MainGameLoop.Frame.reset(Color.red, 				
+						MainGameLoop.Frame.reset(RED, 				
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Blue":
-						MainGameLoop.Frame.reset(Color.blue, 			
+						MainGameLoop.Frame.reset(BLUE, 			
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Green":
-						MainGameLoop.Frame.reset(Color.green, 			
+						MainGameLoop.Frame.reset(GREEN, 			
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Yellow":
-						MainGameLoop.Frame.reset(new Color(255, 206, 71),
+						MainGameLoop.Frame.reset(YELLOW,
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Magenta":
-						MainGameLoop.Frame.reset(Color.magenta,			
+						MainGameLoop.Frame.reset(MAGENTA,			
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Cyan":
-						MainGameLoop.Frame.reset(Color.cyan,				
+						MainGameLoop.Frame.reset(CYAN,				
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Orange":
-						MainGameLoop.Frame.reset(new  Color(252, 148, 20),	
+						MainGameLoop.Frame.reset(ORANGE,	
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Black":
-						MainGameLoop.Frame.reset(Color.black,			
+						MainGameLoop.Frame.reset(BLACK,			
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;		
 					
@@ -152,7 +199,7 @@ public class Visuals
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println("Could not update deck graphics");
 		}
 
 	}
@@ -169,43 +216,43 @@ public class Visuals
 			{
 				switch(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 				{
-					case "Red":		MainGameLoop.Frame.resetPlayerhand(Color.red, 
-							Integer.toString(
+					case "Red":		MainGameLoop.Frame.resetPlayerhand(RED, 
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Blue":	MainGameLoop.Frame.resetPlayerhand(Color.blue, 		
-							Integer.toString(
+					case "Blue":	MainGameLoop.Frame.resetPlayerhand(BLUE, 		
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Green":	MainGameLoop.Frame.resetPlayerhand(Color.green,	 	
-							Integer.toString(
+					case "Green":	MainGameLoop.Frame.resetPlayerhand(GREEN,	 	
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Yellow":	MainGameLoop.Frame.resetPlayerhand(new Color(255, 206, 71), 
-							Integer.toString(
+					case "Yellow":	MainGameLoop.Frame.resetPlayerhand(YELLOW, 
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Magenta":	MainGameLoop.Frame.resetPlayerhand(Color.magenta,
-							Integer.toString(
+					case "Magenta":	MainGameLoop.Frame.resetPlayerhand(MAGENTA,
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Cyan":	MainGameLoop.Frame.resetPlayerhand(Color.cyan, 	
-							Integer.toString(
+					case "Cyan":	MainGameLoop.Frame.resetPlayerhand(CYAN, 	
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Orange":	MainGameLoop.Frame.resetPlayerhand(new  Color(252, 148, 20), 
-							Integer.toString(
+					case "Orange":	MainGameLoop.Frame.resetPlayerhand(ORANGE, 
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
-					case "Black":	MainGameLoop.Frame.resetPlayerhand(Color.black, 	
-							Integer.toString(
+					case "Black":	MainGameLoop.Frame.resetPlayerhand(BLACK, 	
+									Integer.toString(
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
@@ -216,35 +263,35 @@ public class Visuals
 				
 				switch(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue)
 				{
-					case "Red":	MainGameLoop.Frame.resetPlayerhand(Color.red, 	
+					case "Red":	MainGameLoop.Frame.resetPlayerhand(RED, 	
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
-					case "Blue":MainGameLoop.Frame.resetPlayerhand(Color.blue, 	
+					case "Blue":MainGameLoop.Frame.resetPlayerhand(BLUE, 	
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
-					case "Green":MainGameLoop.Frame.resetPlayerhand(Color.green, 		
+					case "Green":MainGameLoop.Frame.resetPlayerhand(GREEN, 		
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
-					case "Yellow":MainGameLoop.Frame.resetPlayerhand(new Color(255, 206, 71), 
+					case "Yellow":MainGameLoop.Frame.resetPlayerhand(YELLOW, 
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
-					case "Magenta":MainGameLoop.Frame.resetPlayerhand(Color.magenta, 	
+					case "Magenta":MainGameLoop.Frame.resetPlayerhand(MAGENTA, 	
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
-					case "Cyan":MainGameLoop.Frame.resetPlayerhand(Color.cyan, 			
+					case "Cyan":MainGameLoop.Frame.resetPlayerhand(CYAN, 			
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;	
-					case "Orange":MainGameLoop.Frame.resetPlayerhand(new  Color(252, 148, 20), 
+					case "Orange":MainGameLoop.Frame.resetPlayerhand(ORANGE, 
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;	
-					case "Black":MainGameLoop.Frame.resetPlayerhand(Color.black, 		
+					case "Black":MainGameLoop.Frame.resetPlayerhand(BLACK, 		
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;
@@ -253,7 +300,7 @@ public class Visuals
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println("Could not update player graphics");
 		}
 		
 	

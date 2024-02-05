@@ -27,6 +27,7 @@ public class Settings extends JFrame
 {
 	/**
 	 * The input field for the amount of cards in the deck
+	 * Default = a new JText
 	 */
 	JTextField DeckSizeText = new JTextField(16);
 	
@@ -39,30 +40,41 @@ public class Settings extends JFrame
 	/**
 	 * The main panel of the game
 	 */
-	JPanel panel = new JPanel();
+	JPanel Panel = new JPanel();
+	
+	/**
+	 * Resets the settings of the game
+	 * Text = Reset Settings
+	 */
+	JButton Reset = new JButton("Reset Settings");
 	
 	/**
 	 * The button for the sfx
+	 * Text = SFX/ON
 	 */
 	JButton Sfx = new JButton("SFX/ON");
 	
 	/**
 	 * Sumbits the settings fro the wild card settings
+	 * Text = Submit
 	 */
 	JButton SubmitWildCardSize = new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the wild card settings
+	 * Text = Submit
 	 */
 	JButton SubmitDeckSize = new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the colors
+	 * Text = Submit Colors
 	 */
 	JButton SubmitColors = new JButton("Submit Colors");
 	
 	/**
 	 * The input field for the wild card draw
+	 * Default = a new JText
 	 */
 	JTextField WildCardDrawText = new JTextField(16);
 	
@@ -71,29 +83,50 @@ public class Settings extends JFrame
 	//Dropdown menus
 	/**
 	 * The dropdown menu for color 1
+	 * Array = ACCEPTEDCOLORS
 	 */
 	JComboBox Color1Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
+	 * Array = ACCEPTEDCOLORS
 	 */
 	JComboBox Color2Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
+	 * Array = ACCEPTEDCOLORS
 	 */
 	JComboBox Color3Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
+	 * Array = ACCEPTEDCOLORS
 	 */
 	JComboBox Color4Combo = new JComboBox(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for the background color
+	 * Array = ACCEPTEDCOLORS
 	 */
 	public JComboBox ColorBackground = new JComboBox(ACCEPTEDCOLORS);
 	
+	public JButton[] Buttons = {Sfx, 
+							  Reset,
+							  SubmitWildCardSize,
+							  SubmitDeckSize,
+							  SubmitColors};
+	
+	/**
+	 * Mouse over
+	 */
+	Hover Hover = new Hover(Buttons);
+	
+								
+	
+
+	
+	//FINALS
 	/**
 	 * A list of all aceptable colors in the settings
 	 */
@@ -124,11 +157,11 @@ public class Settings extends JFrame
 		SettupSettings();
 		
 		//Adds the action listeners
-		Sfx.addActionListener(				 MainGameLoop.Frame.Handler);
-		SubmitWildCardSize.addActionListener(MainGameLoop.Frame.Handler);
-		SubmitDeckSize.addActionListener(	 MainGameLoop.Frame.Handler);
-		SubmitColors.addActionListener(		 MainGameLoop.Frame.Handler);
-		Color1Combo.addActionListener(		 MainGameLoop.Frame.Handler);
+		for(int i = 0; i < Buttons.length; i++) 
+		{
+			Buttons[i].addActionListener(MainGameLoop.Frame.Handler);
+			Buttons[i].addMouseListener(Hover);
+		}
 		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
@@ -149,24 +182,13 @@ public class Settings extends JFrame
 		DeckSizeText.setBorder(new LineBorder(Color.black, 2));
 		DeckSizeText.setBounds(new Rectangle(245, 40, 135, 20));
 		
-		//The color drop down mnus
-		panel.add(Setup.CreateLabel(0, 90, 100, 20, "Color One"));
-		Color1Combo.setBounds(0, 110, 100, 20);
-		
-		
-		panel.add(Setup.CreateLabel(105, 90, 100, 20, "Color Two"));
-		Color2Combo.setBounds(105, 110, 100, 20);
-		
-		panel.add(Setup.CreateLabel(210, 90, 100, 20, "Color Three"));
-		Color3Combo.setBounds(210, 110, 100, 20);
-		
-		panel.add(Setup.CreateLabel(315, 90, 100, 20, "Color Four"));
-		Color4Combo.setBounds(315, 110, 100, 20);
-		
-		panel.add(Setup.CreateLabel(0, 130, 100, 20, "Background"));
-		ColorBackground.setBounds(0, 150, 100, 20);
-		
-		
+		//The color drop down menus
+		JComboBox[] Boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
+		for(int i = 0; i < Boxes.length; i++)
+		{
+			Panel.add(Setup.CreateLabel(i * 105, 90, 100, 20, "Color One"));
+			Boxes[i].setBounds(i * 105, 110, 100, 20);
+		}
 		
 		//Sets the text in the boxes
 		WildCardDrawText.setText("Enter a number 1-9 (" 
@@ -175,24 +197,25 @@ public class Settings extends JFrame
 				+ MainGameLoop.Settings[2] + ")");
 		
 		//Adds the components to the panel
-		panel.add(WildCardDrawText);
-		panel.add(DeckSizeText);
-		panel.add(Setup.CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
-		panel.add(Setup.CreateLabel(245, 20, 135, 20, "Card amount"));
-		panel.add(Color1Combo);
-		panel.add(Color2Combo);
-		panel.add(Color3Combo);
-		panel.add(Color4Combo);
-		panel.add(ColorBackground);
+		Panel.add(WildCardDrawText);
+		Panel.add(DeckSizeText);
+		Panel.add(Setup.CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
+		Panel.add(Setup.CreateLabel(245, 20, 135, 20, "Card amount"));
+		Panel.add(Color1Combo);
+		Panel.add(Color2Combo);
+		Panel.add(Color3Combo);
+		Panel.add(Color4Combo);
+		Panel.add(ColorBackground);
 		//Sets up the buttons
 		this.setLayout(null);
-		Setup.Button(Sfx, 					0, 	 25,  100, 60,  	panel);
-		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	panel);
-		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		panel);
-		Setup.Button(SubmitColors, 		350, 440, 150, 60, 		panel);
+		Setup.Button(Sfx, 					0, 	 25,  100, 60,  	Panel);
+		Setup.Button(Reset, 				0, 	 440, 150, 60, 		Panel);
+		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	Panel);
+		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		Panel);
+		Setup.Button(SubmitColors, 			350, 440, 150, 60, 		Panel);
 				
 		//Sets teh background color
-		panel.setBackground(MyPannel.BackgroundColor());
+		Panel.setBackground(MyPannel.BackgroundColor());
 		
 		//Sets the form visible
 		this.setVisible(true);
@@ -238,10 +261,10 @@ public class Settings extends JFrame
 		this.setDefaultCloseOperation(			JFrame.DISPOSE_ON_CLOSE);
 		
 		
-		panel.setPreferredSize(					new Dimension(500, 500));
-		panel.setLayout(					  	null);
-		this.add(								panel);
-		panel.setVisible(						true);
+		Panel.setPreferredSize(					new Dimension(500, 500));
+		Panel.setLayout(					  	null);
+		this.add(								Panel);
+		Panel.setVisible(						true);
 		
 		this.pack();
 		this.setLocationRelativeTo(				null);
