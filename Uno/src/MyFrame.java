@@ -114,7 +114,6 @@ public class MyFrame extends JFrame
 	
 	
 	//Player select
-	
 	/**
 	 * Sets the amount of players to 2
 	 * Text = 2 Player
@@ -133,12 +132,23 @@ public class MyFrame extends JFrame
 	 */
 	static JButton 			P4 = new JButton("4 Players");
 	
-	static JButton[] Buttons = {P2, P3, P4, Play, Start, Reset, SettingsButton, SkipTurn, HowToPlay, FlipCurentHand,
-			FlipCurentHandBack, Red, Blue, Green, Yellow};
-	
-	
+	//The array of buttons
+	static JButton[] Buttons = {P2, 
+								P3, 
+								P4, 
+								Play,
+								Start, 
+								Reset, 
+								SettingsButton, 
+								SkipTurn, 
+								HowToPlay, 
+								FlipCurentHand,
+								FlipCurentHandBack,
+								Red, 
+								Blue, 
+								Green, 
+								Yellow};
 	//SFX
-	
 	/**2
 	 * the audio stream of the button click
 	 */
@@ -159,17 +169,16 @@ public class MyFrame extends JFrame
 	 */
 	public Clip 					clipMusic;
 	
+	//Events
 	/**
-	 * Handels the events
+	 * Handels the button click events
 	 */
 	public EventHandler 			Handler = new EventHandler();
 	
 	/**
 	 * Mouse over
 	 */
-	Hover Hover = new Hover(Buttons);
-	
-      
+	Hover 							Hover = new Hover(Buttons);
 	
 	/**
 	 * Creates the frame and gets the buttons setup
@@ -192,18 +201,12 @@ public class MyFrame extends JFrame
 		
 		//Sets up the panel
 		panel = new MyPannel(newColor, newText);
-		windowSettup();
-		this.setResizable(false);
 		this.dispose();
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		this.setUndecorated(				  true);
-		this.setVisible(					  true);
-		panel.setLayout(					  null);
+		windowSettup();
 		
 		//Setups the buttons
 		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
 		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
-		
 		Setup.Button(P2, 				595,900, 200, 120, panel);
 		Setup.Button(Start,				800,900, 200, 120, panel);
 		Setup.Button(P3, 				1005,900, 200, 120, panel);
@@ -479,6 +482,11 @@ public class MyFrame extends JFrame
 		this.setLocationRelativeTo(	  null);
 		this.setAlwaysOnTop(		  true);
 		this.setName(				  "UNO");
+		this.setResizable(false);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(				  true);
+		this.setVisible(					  true);
+		panel.setLayout(					  null);
 		this.pack();
 	}
 	
