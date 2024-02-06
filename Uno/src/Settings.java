@@ -186,7 +186,7 @@ public class Settings extends JFrame
 		JComboBox[] Boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
 		for(int i = 0; i < Boxes.length; i++)
 		{
-			Panel.add(Setup.CreateLabel(i * 105, 90, 100, 20, "Color One"));
+			Panel.add(Setup.CreateLabel(i * 105, 90, 100, 20, "Colors"));
 			Boxes[i].setBounds(i * 105, 110, 100, 20);
 		}
 		
@@ -205,6 +205,9 @@ public class Settings extends JFrame
 		Panel.add(Color2Combo);
 		Panel.add(Color3Combo);
 		Panel.add(Color4Combo);
+		
+		Panel.add(Setup.CreateLabel(0, 130, 100, 20, "Background color"));
+		ColorBackground.setBounds(0, 150, 100, 20);
 		Panel.add(ColorBackground);
 		//Sets up the buttons
 		this.setLayout(null);

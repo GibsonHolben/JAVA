@@ -148,7 +148,16 @@ public class MainGameLoop
 		CurentPlayer.MyDeck.Cards.add(
 						CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
+		if(CurentPlayer.curentCardIndex < CurentPlayer.MyDeck.Cards.size() -1)
+		{
+			CurentPlayer.curentCardIndex += 1;
+		}
+		else
+		{
+			CurentPlayer.curentCardIndex = 0;
+		}
 		Visuals.UpdateGraphicsPlayer();
+		
 	}
 	
 	/**
@@ -161,7 +170,18 @@ public class MainGameLoop
 						CurentPlayer.MyDeck.Cards.size() - 1));
 		CurentPlayer.MyDeck.Cards.remove(
 						CurentPlayer.MyDeck.Cards.size() - 1);
+		if(CurentPlayer.curentCardIndex > 0 )
+		{
+			CurentPlayer.curentCardIndex -= 1;
+		}
+		else
+		{
+			CurentPlayer.curentCardIndex = CurentPlayer.MyDeck.Cards.size() - 1;
+		}
 		Visuals.UpdateGraphicsPlayer();
+		
+		
+		
 	}
 	
 
@@ -173,6 +193,8 @@ public class MainGameLoop
 		MainDeck.Cards.add(MainDeck.Cards.get(0));
 		MainDeck.Cards.remove(0);
 		Visuals.UpdateGraphicsFlip();
+		
+		
 	}
 	
 	

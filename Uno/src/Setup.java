@@ -210,13 +210,19 @@ public class Setup
 		ArrayList<Card> Cards = new ArrayList<Card>();
 	
 		//Creates the basic cards
-		for(int i = 0; i < colors.length; i++)
+		for(int k = 0; k < 2; k++)
 		{
-			for(int j = 0; j < Integer.parseInt( MainGameLoop.Settings[2]); j++)
+			for(int i = 0; i < colors.length; i++)
 			{
-				Cards.add(new Card(j, colors[i]));
+				for(int j = 0; j < Integer.parseInt( MainGameLoop.Settings[2]); j++)
+				{
+					Cards.add(new Card(j, colors[i]));
+				}
 			}
 		}
+		
+		
+		
 				
 		
 		//Creates the special cards

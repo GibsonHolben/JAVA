@@ -190,6 +190,7 @@ public class MyFrame extends JFrame
 		//Key listener
 		this.requestFocus();
 		
+		//Setup the sfx
 		System.out.println(MainGameLoop.Settings[3]);
 		SetSfx();
 		
@@ -198,7 +199,7 @@ public class MyFrame extends JFrame
 		ImageIcon img = new ImageIcon(url);
 		this.setIconImage(img.getImage());
 		this.setTitle("UNO");
-		
+
 		//Sets up the panel
 		panel = new MyPannel(newColor, newText);
 		this.dispose();
@@ -207,19 +208,23 @@ public class MyFrame extends JFrame
 		windowSettup();
 		
 		//Setups the buttons
-		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
-		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
-		Setup.Button(P2, 				595,900, 200, 120, panel);
-		Setup.Button(Start,				800,900, 200, 120, panel);
-		Setup.Button(P3, 				1005,900, 200, 120, panel);
-		Setup.Button(P4, 				1210,900, 200, 120, panel);
-		Setup.Button(Close,   			1870, 0, 50, 50, panel);
+		Setup.Button(SettingsButton, 	10,   980, 200,  40, panel);
+		Setup.Button(HowToPlay, 		1710, 980, 200,  40, panel);
+		Setup.Button(P2, 				595,  900, 200, 120, panel);
+		Setup.Button(Start,				800,  900, 200, 120, panel);
+		Setup.Button(P3, 				1005, 900, 200, 120, panel);
+		Setup.Button(P4, 				1210 ,900, 200, 120, panel);
+		Setup.Button(Close,   			1870,   0,  50,  50, panel);
+		
+		//Add the needed listeners
 		for(int i = 0; i < Buttons.length - 4; i++) 
 		{
 			Buttons[i].addActionListener(Handler);
 			Buttons[i].addMouseListener(Hover);
 		}
 		Close.addActionListener(Handler);
+		
+		//Repaints the player select buttons
 		P2.repaint();
 		P3.repaint();
 		P4.repaint();
@@ -227,11 +232,10 @@ public class MyFrame extends JFrame
 		P2.setVisible(	true);
 		P3.setVisible(	true);
 		P4.setVisible(	true);
-		this.setVisible(true);
 		setupPlayeBttonColors();
 		
-
-		
+		//Sets the frame visible
+		this.setVisible(true);
 	}
 	
 	
@@ -240,16 +244,14 @@ public class MyFrame extends JFrame
 	 */
 	public void hideButtons()
 	{
-		Setup.Button(SettingsButton, -1111, 480, 100, 20, panel);
-		Setup.Button(HowToPlay,-1111, 480, 100, 20, panel);
-		Setup.Button(SkipTurn, -1111, 0, panel);
-		Setup.Button(Play, -1111, 400, panel);
-		Setup.Button(FlipCurentHand,-1111,400, panel);
-		Setup.Button(FlipCurentHandBack, -1111,400, panel);
+		for(int i = 0; i < Buttons.length; i++)
+		{
+			Setup.Button(Buttons[i], -1000, -1000, 0, 0, panel);
+		}
 	}
 	
 	/**
-	 * Loops the background music
+	 * Makes the background music loop
 	 */
 	public void LoopMusic()
 	{
@@ -262,9 +264,8 @@ public class MyFrame extends JFrame
 	}
 	
 	
-	
 	/**
-	 * Plays the button click
+	 * Plays a button click Sound effect
 	 */
 	public void PlayClick()
 	{

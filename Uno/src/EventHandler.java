@@ -125,6 +125,7 @@ public class EventHandler implements ActionListener
 					System.out.println(MainGameLoop.CurentColor);
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
+					MainGameLoop.Frame.Red.removeActionListener(this);
 				}
 				if(e.getSource().equals(MainGameLoop.Frame.Blue))
 				{
@@ -132,6 +133,7 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.canPlay = true;
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
+					MainGameLoop.Frame.Blue.removeActionListener(this);
 				}
 				if(e.getSource().equals(MainGameLoop.Frame.Green))
 				{
@@ -139,6 +141,7 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.canPlay = true;
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
+					MainGameLoop.Frame.Green.removeActionListener(this);
 				}
 				if(e.getSource().equals(MainGameLoop.Frame.Yellow))
 				{
@@ -147,6 +150,7 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.canPlay = true;
 					MainGameLoop.NextPlayer();
 					MainGameLoop.Frame.SettupColorButtons(-1000);
+					MainGameLoop.Frame.Yellow.removeActionListener(this);
 				}
 			}
 	
@@ -255,6 +259,9 @@ public class EventHandler implements ActionListener
 							"Color Settings accepted, Please restart "
 									+ "the game for changed to take effect");
 					Settings.SaveSettings();
+					Visuals.UpdateGraphicsFlip();
+					Visuals.UpdateGraphicsPlayer();
+					Settings.dispose();
 				}
 
 
