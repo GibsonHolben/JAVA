@@ -88,7 +88,7 @@ public class FileManager
 		       catch (IOException e)
 		       {
 		    	   System.out.println("An error occurred while saving the file");
-				      e.printStackTrace();
+				   e.printStackTrace();
 		       }
 		       catch (Exception e) 
 			   {

@@ -338,36 +338,11 @@ public class MyPannel extends JPanel
 				//Player card draw
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,20));
 				g2D.setPaint(Color.black);
-				
-				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 2)
-				{	
-					g2D.drawString("You have " + Integer.toString(
-							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
-									+ "Card in you hand", 318.5f, 41.5f);
-				}
-				else
-				{
-					g2D.drawString("You have " + Integer.toString(
-							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
-									+ "Cards in you hand", 318.5f, 41.5f);
-				}
 			
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + 
 						"'s turn", 318.5f, 21.5f);
 				
 				g2D.setPaint(Color.white);
-				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 2)
-				{
-					g2D.drawString("You have " + Integer.toString(
-							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
-									+ "Card in you hand", 320, 40);
-				}
-				else
-				{
-					g2D.drawString("You have " + Integer.toString(
-							MainGameLoop.CurentPlayer.MyDeck.Cards.size()) + " "
-									+ "Cards in you hand", 320, 40);
-				}
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + 
 														"'s turn", 320, 20);
 				DrawMiddleNumber();

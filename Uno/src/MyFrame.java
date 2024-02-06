@@ -3,17 +3,14 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
+import java.util.Scanner;
 
 /**
  * Used for the high level graphics such as the Buttons and holding all the 
@@ -133,21 +130,8 @@ public class MyFrame extends JFrame
 	static JButton 			P4 = new JButton("4 Players");
 	
 	//The array of buttons
-	static JButton[] Buttons = {P2, 
-								P3, 
-								P4, 
-								Play,
-								Start, 
-								Reset, 
-								SettingsButton, 
-								SkipTurn, 
-								HowToPlay, 
-								FlipCurentHand,
-								FlipCurentHandBack,
-								Red, 
-								Blue, 
-								Green, 
-								Yellow};
+	static JButton[] Buttons = {P2, P3, P4, Play,Start, Reset, SettingsButton, SkipTurn, HowToPlay, FlipCurentHand,FlipCurentHandBack,	Red, Blue, Green, Yellow};
+								
 	//SFX
 	/**2
 	 * the audio stream of the button click
@@ -188,7 +172,7 @@ public class MyFrame extends JFrame
 	MyFrame(Color newColor, String newText)
 	{ 
 		//Key listener
-		this.requestFocus();
+		//this.requestFocus();
 		
 		//Setup the sfx
 		System.out.println(MainGameLoop.Settings[3]);
@@ -215,6 +199,19 @@ public class MyFrame extends JFrame
 		Setup.Button(P3, 				1005, 900, 200, 120, panel);
 		Setup.Button(P4, 				1210 ,900, 200, 120, panel);
 		Setup.Button(Close,   			1870,   0,  50,  50, panel);
+		
+		try
+		{
+			for(int i = 0; i < Buttons.length - 4; i++) 
+			{
+				Buttons[i].removeActionListener(Handler);
+				Buttons[i].removeMouseListener(Hover);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		//Add the needed listeners
 		for(int i = 0; i < Buttons.length - 4; i++) 
@@ -407,16 +404,31 @@ public class MyFrame extends JFrame
 	 */
 	public void setupPlayeBttonColors()
 	{
-		switch(MainGameLoop.Players.size())
+		try
 		{
-			case 2: ResetPlayerButtons(P2);
-			break;
-			case 3: ResetPlayerButtons(P3);
-			break;
-			case 4: ResetPlayerButtons(P4);
-			break;
-			default: ResetPlayerButtons(P2);
-			break;
+			File PlayerObj = new File( FileManager.Home+ "/Players" + FileManager.FILEEXTENTION);
+			Scanner PlayerReader;
+			PlayerReader = new Scanner(PlayerObj);
+			String PlayerInput = PlayerReader.nextLine();
+
+			switch((Integer.parseInt(PlayerInput)))
+			{
+				case 2: ResetPlayerButtons(P2);
+					break;
+				case 3: ResetPlayerButtons(P3);
+					break;
+				case 4: ResetPlayerButtons(P4);
+					break;
+				default: ResetPlayerButtons(P2);
+					break;
+			}
+
+		}
+		catch(FileNotFoundException e)
+		{
+			JOptionPane.showMessageDialog(this,
+							"Could not get settings file... Refactoring...");
+			Setup.fixColors();
 		}
 	}
 	

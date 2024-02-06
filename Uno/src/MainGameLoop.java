@@ -7,8 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- * Controls the whole game. including the card creation, 
- * player creation, and update loop
+ * Controls the whole game.
  * @author CTEHolbenG46
  * @version 10.4.2
  */
@@ -203,6 +202,7 @@ public class MainGameLoop
 	 */
 	public static void NextPlayer()
 	{
+
 		if(!MainDeck.Cards.get(0).SpecialEffect.contains("W"))
 		{
 			CurentColor = MainDeck.Cards.get(0).ColorValue;
@@ -213,6 +213,9 @@ public class MainGameLoop
 		CurentPlayer = Players.get(0);
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
+		NextPlayerFrame Npf = new NextPlayerFrame();
+		Frame.setAlwaysOnTop(false);
+		Frame.setVisible(false);
 	}
 
 	/**

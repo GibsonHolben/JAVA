@@ -66,18 +66,26 @@ public class Player
 	
 	
 	/**
-	 * Caused the player to draw the amout of cards specifed
+	 * Caused the player to draw the amount of cards specified
 	 * @param toDraw the amount of cards to draw
 	 */
 	public void DrawCard(int toDraw)
 	{
-		for(int i = 0; i < toDraw; i++)
+		if(MainGameLoop.MainDeck.Cards.size() > 1)
 		{
-			MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
-					MainGameLoop.MainDeck.Cards.size() - 1));
-			MainGameLoop.MainDeck.Cards.remove(
-					MainGameLoop.MainDeck.Cards.size() - 1);
+			for(int i = 0; i < toDraw; i++)
+			{
+				MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
+						MainGameLoop.MainDeck.Cards.size() - 1));
+				MainGameLoop.MainDeck.Cards.remove(
+						MainGameLoop.MainDeck.Cards.size() - 1);
+			}
 		}
+		else
+		{
+			System.out.println("MainDeck is at 1, cannot pull more cards");
+		}
+		
 	}
 	
 	
