@@ -6,8 +6,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.URL;
 
@@ -24,18 +28,18 @@ public class MyFrame extends JFrame
 	 * Can the user play
 	 * default = true
 	 */
-	boolean 				canPlay = true;
+	boolean canPlay = true;
 	
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 * Text = Flip >
 	 */
-	public static JButton 	FlipCurentHand = new JButton("Flip >");
+	public static JButton 			FlipCurentHand = new JButton("Flip >");
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
 	 * Text = < Flip
 	 */
-	public static JButton 	FlipCurentHandBack = new JButton("< Flip");
+	public static JButton 			FlipCurentHandBack = new JButton("< Flip");
 	
 	/**
 	 * A JButton that shows the how to play 
@@ -49,15 +53,15 @@ public class MyFrame extends JFrame
 	MyPannel 				panel;
 	
 	/**
-	 * A JButton that calls play on the current player
+	 * A JButton that calls play on the curent player
 	 */
-	public static JButton 	Play = new JButton();
+	public static JButton 			Play = new JButton();
 	
 	/**
 	 * A JButton that skips the active players turn
 	 * Text = Skip
 	 */
-	public static JButton 	SkipTurn = new JButton("Skip");
+	public static JButton 			SkipTurn = new JButton("Skip");
 	
 	/**
 	 * A JButton that calls start
@@ -148,45 +152,33 @@ public class MyFrame extends JFrame
 	/**2
 	 * the audio stream of the button click
 	 */
-	public AudioInputStream AudioStreamButton;
+	public AudioInputStream 		AudioStreamButton;
 	
 	/**
 	 * the audio stream of the music
 	 */
-	public AudioInputStream AudioStreamMusic;	
+	public AudioInputStream 		AudioStreamMusic;	
 	
 	/**
 	 * The audio clip of the button click
 	 */
-	public Clip 			clipButton;
+	public Clip 					clipButton;
 	
 	/**
 	 * The audio clip of the music
 	 */
-	public Clip 			clipMusic;
-	
-	/**
-	 * An array of all the clips in the game
-	 */
-	Clip[] 			Clips = {clipButton, clipMusic};
-	
-	/**
-	 * And array of the AudioStreams in the game
-	 */
-	AudioInputStream[] 		Audios = {AudioStreamMusic, AudioStreamButton};
+	public Clip 					clipMusic;
 	
 	//Events
 	/**
-	 * Handers the button click events
+	 * Handels the button click events
 	 */
-	public EventHandler 	Handler = new EventHandler();
+	public EventHandler 			Handler = new EventHandler();
 	
 	/**
-	 * Used to control the mouse over events
+	 * Mouse over
 	 */
-	Hover 					Hover = new Hover(Buttons);
-	
-	
+	Hover 							Hover = new Hover(Buttons);
 	
 	/**
 	 * Creates the frame and gets the buttons setup
@@ -195,15 +187,13 @@ public class MyFrame extends JFrame
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 
-		
 		//Key listener
 		this.requestFocus();
 		
-		//Settings SFX
 		System.out.println(MainGameLoop.Settings[3]);
 		SetSfx();
 		
-		//Setups the Famicon
+		//Setups the top bar
 		URL url = MyPannel.class.getResource("Uno.png");
 		ImageIcon img = new ImageIcon(url);
 		this.setIconImage(img.getImage());
@@ -214,28 +204,27 @@ public class MyFrame extends JFrame
 		this.dispose();
 		windowSettup();
 		
-		int width = this.getSize().width;
-		int height = this.getSize().height;
-		System.out.println(width + "," + height);
-		
 		//Setups the buttons
-		Setup.Button(SettingsButton, 	10,   980, 200,  40, panel);
-		Setup.Button(HowToPlay, 		1710, 980, 200,  40, panel);
-		Setup.Button(P2, 				595,  900, 200, 120, panel);
-		Setup.Button(Start,				800,  900, 200, 120, panel);
-		Setup.Button(P3, 				1005, 900, 200, 120, panel);
-		Setup.Button(P4, 				1210, 900, 200, 120, panel);
-		Setup.Button(Close,   			width - 1870,   0,  50,  50, panel); //1870
-		Close.repaint();
-		
+		Setup.Button(SettingsButton, 	10, 980, 200, 40, panel);
+		Setup.Button(HowToPlay, 		1710, 980, 200, 40, panel);
+		Setup.Button(P2, 				595,900, 200, 120, panel);
+		Setup.Button(Start,				800,900, 200, 120, panel);
+		Setup.Button(P3, 				1005,900, 200, 120, panel);
+		Setup.Button(P4, 				1210,900, 200, 120, panel);
+		Setup.Button(Close,   			1870, 0, 50, 50, panel);
 		for(int i = 0; i < Buttons.length - 4; i++) 
 		{
 			Buttons[i].addActionListener(Handler);
 			Buttons[i].addMouseListener(Hover);
-			Buttons[i].repaint();
-			Buttons[i].setVisible(true);
 		}
 		Close.addActionListener(Handler);
+		P2.repaint();
+		P3.repaint();
+		P4.repaint();
+		Start.repaint();
+		P2.setVisible(	true);
+		P3.setVisible(	true);
+		P4.setVisible(	true);
 		this.setVisible(true);
 		setupPlayeBttonColors();
 		
@@ -249,12 +238,12 @@ public class MyFrame extends JFrame
 	 */
 	public void hideButtons()
 	{
-		Setup.Button(SettingsButton, 	 -1111, 480, 100, 20, panel);
-		Setup.Button(HowToPlay,		 	 -1111, 480, 100, 20, panel);
-		Setup.Button(SkipTurn, 		 	 -1111,   0, panel);
-		Setup.Button(Play, 			 	 -1111, 400, panel);
-		Setup.Button(FlipCurentHand, 	 -1111, 400, panel);
-		Setup.Button(FlipCurentHandBack, -1111, 400, panel);
+		Setup.Button(SettingsButton, -1111, 480, 100, 20, panel);
+		Setup.Button(HowToPlay,-1111, 480, 100, 20, panel);
+		Setup.Button(SkipTurn, -1111, 0, panel);
+		Setup.Button(Play, -1111, 400, panel);
+		Setup.Button(FlipCurentHand,-1111,400, panel);
+		Setup.Button(FlipCurentHandBack, -1111,400, panel);
 	}
 	
 	/**
@@ -270,8 +259,10 @@ public class MyFrame extends JFrame
 		}
 	}
 	
+	
+	
 	/**
-	 * Plays the button click sound effect
+	 * Plays the button click
 	 */
 	public void PlayClick()
 	{
@@ -280,11 +271,13 @@ public class MyFrame extends JFrame
 			clipButton.start();
 			clipButton.setMicrosecondPosition(0);
 		}
+
 	}
+	
 	
 	/**
 	 * Redraws the JFrame (start of the game)
-	 * @param newColor the new color of the card
+	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */
 	public void reset(Color newColor, String newText)
@@ -292,31 +285,24 @@ public class MyFrame extends JFrame
 		
 		if(MainGameLoop.isRunning)
 		{
-			
+			this.requestFocus();
 			windowSettup();
-			
-			//Sets up the game visuals
 			panel.repaint();
 			panel.MainDeckColor = newColor;
 			panel.MainDeckText = newText;
 			panel.setLayout(null);
-			
-			//Removes the main menu buttons
 			panel.remove(Start);
 			panel.remove(P2);
 			panel.remove(P3);
 			panel.remove(P4);
-			
-			//Setup the buttons
-			Setup.Button(HowToPlay, 			1710, 980, 200,  40, panel);
-			Setup.Button(Play,					1500, 610, 200, 400, panel);
-			Setup.Button(SettingsButton, 		10,   980, 200,  40, panel);
-			Setup.Button(Close,   				0,    	0,  50,  50, panel);
-			Setup.Button(FlipCurentHand,		294,  400, panel);
-			Setup.Button(FlipCurentHandBack,	0, 	  400, panel);
-			Setup.Button(SkipTurn, 				104,  400, panel);
-			
-			//Setup player buttons
+			Setup.Button(SettingsButton, 		10, 980, 200, 40, panel);
+			Setup.Button(HowToPlay, 			1710, 980, 200, 40, panel);
+			Setup.Button(SkipTurn, 				104, 400, panel);
+			Setup.Button(Play,					600+900, 610, 200, 400, panel);
+			Setup.Button(FlipCurentHand,		294,400, panel);
+			Setup.Button(FlipCurentHandBack,	0,400, panel);
+			Setup.Button(Close,   				1870, 0, 50, 50, panel);
+
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
 			Play.setBorderPainted(false);
@@ -328,7 +314,7 @@ public class MyFrame extends JFrame
 	
 	
 	/**
-	 * Sets the font on a JButton
+	 * Sets the font on a jbutton
 	 * @param Jb the button that the font is changed on
 	 * @param fontsize the new size of the font
 	 */
@@ -339,8 +325,8 @@ public class MyFrame extends JFrame
 	
 	
 	/**
-	 * Redraws the JFrame for the players hand
-	 * @param newColor the new color of the card
+	 * Redraws the JFrame 
+	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
@@ -352,15 +338,16 @@ public class MyFrame extends JFrame
 				if(MainGameLoop.Players.get(i).MyDeck.Cards.size() < 1)
 				{
 					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
-					System.out.println(		 "Game over");
-					System.out.println( 	 MainGameLoop.Players.get(i).Name + " Wins");
+					System.out.println("Game over");
+					System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
 					MainGameLoop.isRunning = false;
 					panel.repaint();
 					this.hideButtons();
-					Setup.Button(			Reset,850,900, 200, 120, panel);
+					Setup.Button(Reset,850,900, 200, 120, panel);
 					Reset.addActionListener(Handler);
 					Reset.setVisible(		true);
 					break;
+
 				}
 			}
 		}
@@ -374,26 +361,25 @@ public class MyFrame extends JFrame
 			panel.PlayerDeckText = newText;
 			panel.setLayout(null);
 			panel.remove(Start);
-			Setup.Button(Play, 				 1500, 610, 200, 400, panel);
-			Setup.Button(FlipCurentHandBack, 620,  900, 200, 120, panel);
-			Setup.Button(SkipTurn, 			 830,  900, 200, 120, panel);
-			Setup.Button(FlipCurentHand, 	 1040, 900, 200, 120, panel);
+			Setup.Button(Play, 600 + 900, 610, 200, 400, panel);
+			Setup.Button(FlipCurentHandBack, 620, 900, 200, 120, panel);
+			Setup.Button(SkipTurn, 830, 900, 200, 120, panel);
+			Setup.Button(FlipCurentHand, 1040, 900, 200, 120, panel);
 
-			JButton[] ButtonsToChange = {Play, 
-										 SkipTurn, 
-										 FlipCurentHand, 
-										 FlipCurentHandBack};
-			for(int i = 0; i < ButtonsToChange.length; i++)
-			{
-				ButtonsToChange[i].setFocusPainted(false);
-				ButtonsToChange[i].setBackground(Color.white);
-			}
 
-			Play.setOpaque(			  false);
-			Play.setBorderPainted(	  false);
+			Play.setFocusPainted(false);
+			SkipTurn.setFocusPainted(false);
+			FlipCurentHand.setFocusPainted(false);
+			FlipCurentHandBack.setFocusPainted(false);
+			Play.setBackground(Color.white);
+			SkipTurn.setBackground(Color.white);
+			FlipCurentHand.setBackground(Color.white);
+			FlipCurentHandBack.setBackground(Color.white);
+
+			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
-			
-			
+			Play.setBorderPainted(false);
+			Play.setForeground(Color.white);
 			this.setVisible(true);
 		}
 
@@ -405,9 +391,9 @@ public class MyFrame extends JFrame
 	 */
 	public void ResetPlayerButtons(JButton Button)
 	{
-		P2.setBackground(	 Color.white);
-		P3.setBackground(	 Color.white);
-		P4.setBackground(	 Color.white);
+		P2.setBackground(Color.white);
+		P3.setBackground(Color.white);
+		P4.setBackground(Color.white);
 		Button.setBackground(Color.lightGray);
 	}
 	
@@ -421,13 +407,13 @@ public class MyFrame extends JFrame
 		switch(MainGameLoop.Players.size())
 		{
 			case 2: ResetPlayerButtons(P2);
-				break;
+			break;
 			case 3: ResetPlayerButtons(P3);
-				break;
+			break;
 			case 4: ResetPlayerButtons(P4);
-				break;
+			break;
 			default: ResetPlayerButtons(P2);
-				break;
+			break;
 		}
 	}
 	
@@ -441,12 +427,13 @@ public class MyFrame extends JFrame
 		File file2 = new File("src/Bkg.wav");
 		try 
 		{
-			for(int i = 0; i < Clips.length; i++)
-			{
-				Audios[i] = AudioSystem.getAudioInputStream(file);
-				Clips[i] = AudioSystem.getClip();
-				Clips[i].open(Audios[i]);
-			}
+			AudioStreamButton = AudioSystem.getAudioInputStream(file);
+			clipButton = AudioSystem.getClip();
+			clipButton.open(AudioStreamButton);
+			
+			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
+			clipMusic = AudioSystem.getClip();
+			clipMusic.open(AudioStreamMusic);
 		} 
 		catch (UnsupportedAudioFileException e) 
 		{
@@ -460,6 +447,7 @@ public class MyFrame extends JFrame
 		{
 			e.printStackTrace();
 		}
+		
 		LoopMusic();
 	}
 	
@@ -489,17 +477,16 @@ public class MyFrame extends JFrame
 	 */
 	public void windowSettup()
 	{
-		this.requestFocus();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		this.setName(				  "UNO");
 		this.add(					  panel);
 		this.setLocationRelativeTo(	  null);
 		this.setAlwaysOnTop(		  true);
-		this.setResizable(			  false);
-		this.setUndecorated(		  true);
-		this.setVisible(			  true);
-		panel.setLayout(			  null);
+		this.setName(				  "UNO");
+		this.setResizable(false);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(				  true);
+		this.setVisible(					  true);
+		panel.setLayout(					  null);
 		this.pack();
 	}
 	
