@@ -202,6 +202,8 @@ public class MyFrame extends JFrame
 		//Sets up the panel
 		panel = new MyPannel(newColor, newText);
 		this.dispose();
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(				  true);
 		windowSettup();
 		
 		//Setups the buttons
@@ -483,8 +485,6 @@ public class MyFrame extends JFrame
 		this.setAlwaysOnTop(		  true);
 		this.setName(				  "UNO");
 		this.setResizable(false);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		this.setUndecorated(				  true);
 		this.setVisible(					  true);
 		panel.setLayout(					  null);
 		this.pack();
