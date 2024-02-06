@@ -22,6 +22,8 @@ public class MainGameLoop
 	/**The player that is playing*/
 	public static Player 			CurentPlayer;
 	
+	
+	
 	/**The player that has won
 	 * Default = blank player*/
 	public static Player 			CurentWinPlayer = new Player();
@@ -148,6 +150,17 @@ public class MainGameLoop
 		CurentPlayer.MyDeck.Cards.add(
 						CurentPlayer.MyDeck.Cards.get(0));
 		CurentPlayer.MyDeck.Cards.remove(0);
+		
+		if(CurentPlayer.curentCardIndex <= CurentPlayer.MyDeck.Cards.size())
+		{
+			CurentPlayer.curentCardIndex += 1;
+		}
+		else
+		{
+			CurentPlayer.curentCardIndex = 0;
+		}
+		
+		
 		Visuals.UpdateGraphicsPlayer();
 	}
 	
@@ -181,6 +194,7 @@ public class MainGameLoop
 	 */
 	public static void NextPlayer()
 	{
+		//curentCardIndex = 0;
 		if(!MainDeck.Cards.get(0).SpecialEffect.contains("W"))
 		{
 			CurentColor = MainDeck.Cards.get(0).ColorValue;

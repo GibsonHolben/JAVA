@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Player
 {
-	/**The index of the card*/
-	public int 		curentCardIndex;
+	/**The index of the card */
+	public static int 		curentCardIndex;
 	
 	/**An ArrayList of cards*/
 	public Deck 	MyDeck;

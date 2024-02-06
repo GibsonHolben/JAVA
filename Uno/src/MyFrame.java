@@ -173,7 +173,7 @@ public class MyFrame extends JFrame
 	/**
 	 * And array of the AudioStreams in the game
 	 */
-	AudioInputStream[] 		Audios = {AudioStreamMusic, AudioStreamButton};
+	AudioInputStream[] 		Audios = { AudioStreamButton, AudioStreamMusic};
 	
 	//Events
 	/**
@@ -265,8 +265,16 @@ public class MyFrame extends JFrame
 		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
-			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
-			clipMusic.start();
+			try
+			{
+				clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
+				clipMusic.start();
+			}
+			catch(Exception e)
+			{
+				System.out.println("Could not loop music");
+			}
+			
 		}
 	}
 	
@@ -437,16 +445,18 @@ public class MyFrame extends JFrame
 	public void SetSfx()
 	{
 		//setups the sfx 
-		File file = new File("src/ButttonClick.wav");
-		File file2 = new File("src/Bkg.wav");
+		File files[] = {new File("src/ButttonClick.wav"),
+						new File("src/Bkg.wav")};
 		try 
 		{
-			for(int i = 0; i < Clips.length; i++)
-			{
-				Audios[i] = AudioSystem.getAudioInputStream(file);
-				Clips[i] = AudioSystem.getClip();
-				Clips[i].open(Audios[i]);
-			}
+
+			AudioStreamButton = AudioSystem.getAudioInputStream(files[0]);
+			AudioStreamMusic = AudioSystem.getAudioInputStream(files[1]);
+			Clips[0] = AudioSystem.getClip();
+			Clips[0].open(AudioStreamButton);
+			
+			Clips[1] = AudioSystem.getClip();
+			Clips[1].open(AudioStreamMusic);
 		} 
 		catch (UnsupportedAudioFileException e) 
 		{
