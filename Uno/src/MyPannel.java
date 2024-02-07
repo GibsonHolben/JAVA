@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -15,8 +13,6 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class MyPannel extends JPanel
 {
-	
-	
 	/**
 	 * Has the scene been drawn
 	 * Default = false
@@ -152,8 +148,15 @@ public class MyPannel extends JPanel
 			g2D.drawString(MainDeckText, 60+ 100, 250);
 		}
 	}
+	
 	/**
-	 * Paints the card
+	 * Paints a card
+	 * @param Type the type of card being painted (Player or main)
+	 * @param x the x position
+	 * @param y the y position
+	 * @param w the width
+	 * @param h the height
+	 * @param Color the color of the card
 	 */
 	public void PaintCard(String Type, int x, int y, int w, int h, Color Color)
 	{

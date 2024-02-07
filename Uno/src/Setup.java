@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -63,6 +62,8 @@ public class Setup
 	 * @param Button the button to setup
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
+	 * @param w the width of the button
+	 * @param h the height of the button
 	 * @param panel The JPanel that the button is being added to
 	 */
 	public static void Button(JButton Button, 

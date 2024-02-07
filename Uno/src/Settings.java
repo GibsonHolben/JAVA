@@ -1,9 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -11,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -278,7 +274,7 @@ public class Settings extends JFrame
 	/**
 	 * Used to submit the settings and check if they are good
 	 * @return true if the settigns are accepted, false if not
-	 * @param Seting the setting that is to be submited
+	 * @param Setting the setting that is to be submited
 	 */
 	public boolean SubmitSetting(String Setting)
 	{

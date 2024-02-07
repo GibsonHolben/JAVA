@@ -1,7 +1,5 @@
 import java.awt.Color;
 
-import javax.swing.JFrame;
-
 /**
  * Handels the graphical updates of the game
  * @author CTEHolbenG46
