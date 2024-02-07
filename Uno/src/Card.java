@@ -88,19 +88,21 @@ public class Card
 		
 		if(SpecialEffect.equals("W+" + MainGameLoop.Settings[1]))
 		{
-			MainGameLoop.Frame.canPlay = false;
-			MainGameLoop.Frame.SettupColorButtons(700);
-			
-			try
+			if(MainGameLoop.isRunning)
 			{
-				MainGameLoop.Players.get(1).DrawCard(
-						Integer.parseInt(MainGameLoop.Settings[1]));
+				MainGameLoop.Frame.canPlay = false;
+				MainGameLoop.Frame.SettupColorButtons(700);
+				
+				try
+				{
+					MainGameLoop.Players.get(1).DrawCard(
+							Integer.parseInt(MainGameLoop.Settings[1]));
+				}
+				catch(Exception e)
+				{
+					System.out.println("Could not draw cards");
+				}
 			}
-			catch(Exception e)
-			{
-				System.out.println("Could not draw cards");
-			}
-		
 		}
 		
 		if(SpecialEffect.equals("S"))
@@ -110,8 +112,11 @@ public class Card
 		
 		if(SpecialEffect.equals("W"))
 		{
-			MainGameLoop.Frame.canPlay = false;
-			MainGameLoop.Frame.SettupColorButtons(700);
+			if(MainGameLoop.isRunning)
+			{
+				MainGameLoop.Frame.canPlay = false;
+				MainGameLoop.Frame.SettupColorButtons(700);
+			}
 		}
 	}
 }
