@@ -1,10 +1,5 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  * Controls the whole game.
@@ -181,9 +176,6 @@ public class MainGameLoop
 			CurentPlayer.curentCardIndex = CurentPlayer.MyDeck.Cards.size() - 1;
 		}
 		Visuals.UpdateGraphicsPlayer();
-		
-		
-		
 	}
 	
 

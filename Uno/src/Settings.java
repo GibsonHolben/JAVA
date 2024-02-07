@@ -187,10 +187,9 @@ public class Settings extends JFrame
 		}
 		
 		//Sets the text in the boxes
-		WildCardDrawText.setText("Enter a number 1-9 (" 
-				+ MainGameLoop.Settings[1] + ")");
-		DeckSizeText.setText("Enter a number 1-99 (" 
-				+ MainGameLoop.Settings[2] + ")");
+		WildCardDrawText.setText("Enter a number 1-9 (" + MainGameLoop.Settings[1] + ")");
+		DeckSizeText.setText("Enter a number 1-99 (" + MainGameLoop.Settings[2] + ")");
+				
 		
 		//Adds the components to the panel
 		Panel.add(WildCardDrawText);
