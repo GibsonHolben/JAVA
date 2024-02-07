@@ -126,6 +126,9 @@ public class MainGameLoop
 				case "cn":
 					System.out.println(MainDeck.Cards.get(0).numberValue);
 					break;
+				case "name":
+					System.out.println(CurentPlayer.Name);
+					break;
 				case "Help":
 					System.out.println("ff, hand, p, view,"
 							+ " test, cc, toS, Help, Settings");
