@@ -1,5 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * Controls the whole game.
@@ -176,6 +181,9 @@ public class MainGameLoop
 			CurentPlayer.curentCardIndex = CurentPlayer.MyDeck.Cards.size() - 1;
 		}
 		Visuals.UpdateGraphicsPlayer();
+		
+		
+		
 	}
 	
 
@@ -202,23 +210,15 @@ public class MainGameLoop
 		{
 			CurentColor = MainDeck.Cards.get(0).ColorValue;
 		}
-		
-		
+
 		Players.add(Players.get(0));
 		Players.remove(0);
 		CurentPlayer = Players.get(0);
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
-		if(isRunning)
-		{
-			NextPlayerFrame Npf = new NextPlayerFrame();
-			Frame.setAlwaysOnTop(false);
-			Frame.setVisible(false);
-		}
-		else
-		{
-			
-		}
+		NextPlayerFrame Npf = new NextPlayerFrame();
+		Frame.setAlwaysOnTop(false);
+		//Frame.setVisible(false);
 	}
 
 	/**
