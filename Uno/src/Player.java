@@ -75,10 +75,18 @@ public class Player
 		{
 			for(int i = 0; i < toDraw; i++)
 			{
-				MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
-						MainGameLoop.MainDeck.Cards.size() - 1));
-				MainGameLoop.MainDeck.Cards.remove(
-						MainGameLoop.MainDeck.Cards.size() - 1);
+				if(MainGameLoop.MainDeck.Cards.size() > 1)
+				{
+					MyDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(
+							MainGameLoop.MainDeck.Cards.size() - 1));
+					MainGameLoop.MainDeck.Cards.remove(
+							MainGameLoop.MainDeck.Cards.size() - 1);
+				}
+				else
+				{
+					System.out.println("MainDeck is at 1, cannot pull more cards");
+				}
+				
 			}
 		}
 		else

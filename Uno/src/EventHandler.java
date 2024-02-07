@@ -29,14 +29,23 @@ public class EventHandler implements ActionListener
 			//Resets the game and plays again
 			if(e.getSource().equals(MainGameLoop.Frame.Reset))
 			{
-				for(int i = 0; i < MainGameLoop.Frame.Buttons.length; i++)
+				try
 				{
-					MainGameLoop.Frame.Buttons[i].removeActionListener(this);
+					for(int i = 0; i < MainGameLoop.Frame.Buttons.length; i++)
+					{
+						MainGameLoop.Frame.Buttons[i].removeActionListener(this);
+					}
+					MainGameLoop.Frame.dispose();
+					MainGameLoop.Frame.Reset.removeActionListener(this);	
+					MainGameLoop.game();
+					MainGameLoop.isRunning = true;
+					MainGameLoop.Frame.panel.doneOnce = false;
 				}
-				MainGameLoop.Frame.dispose();
-				MainGameLoop.game();
-				MainGameLoop.isRunning = true;
-				MainGameLoop.Frame.panel.doneOnce = false;
+				catch(Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			
 			}
 	
 			//Closes the game

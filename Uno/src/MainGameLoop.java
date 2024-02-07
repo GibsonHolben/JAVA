@@ -202,15 +202,23 @@ public class MainGameLoop
 		{
 			CurentColor = MainDeck.Cards.get(0).ColorValue;
 		}
-
+		
+		
 		Players.add(Players.get(0));
 		Players.remove(0);
 		CurentPlayer = Players.get(0);
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
-		NextPlayerFrame Npf = new NextPlayerFrame();
-		Frame.setAlwaysOnTop(false);
-		Frame.setVisible(false);
+		if(isRunning)
+		{
+			NextPlayerFrame Npf = new NextPlayerFrame();
+			Frame.setAlwaysOnTop(false);
+			Frame.setVisible(false);
+		}
+		else
+		{
+			
+		}
 	}
 
 	/**

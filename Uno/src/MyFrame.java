@@ -130,7 +130,7 @@ public class MyFrame extends JFrame
 	static JButton 			P4 = new JButton("4 Players");
 	
 	//The array of buttons
-	static JButton[] Buttons = {P2, P3, P4, Play,Start, Reset, SettingsButton, SkipTurn, HowToPlay, 
+	static JButton[] Buttons = {P2, P3, P4, Play,Start, SettingsButton, SkipTurn, HowToPlay, 
 									  FlipCurentHand, FlipCurentHandBack, Red, Blue, Green, Yellow};
 								
 	//SFX
