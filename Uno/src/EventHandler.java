@@ -39,7 +39,7 @@ public class EventHandler implements ActionListener
 					MainGameLoop.Frame.Reset.removeActionListener(this);	
 					MainGameLoop.game();
 					MainGameLoop.isRunning = true;
-					MainGameLoop.Frame.panel.doneOnce = false;
+					MainGameLoop.Frame.Panel.doneOnce = false;
 				}
 				catch(Exception e2)
 				{
@@ -117,7 +117,7 @@ public class EventHandler implements ActionListener
 				//Plays the active card in the active players hand
 				if(e.getSource().equals(MainGameLoop.Frame.Play))
 				{
-					MainGameLoop.gamestarted = true;
+					MainGameLoop.isGameStarted = true;
 					MainGameLoop.CurentPlayer.play();
 					MainGameLoop.Frame.setVisible(true);
 					MainGameLoop.Frame.Play.setVisible(true);
@@ -179,6 +179,7 @@ public class EventHandler implements ActionListener
 		catch(Exception e3)
 		{
 			System.out.println("MyFrame Button");
+			e3.printStackTrace();
 		}
 
 
@@ -212,8 +213,7 @@ public class EventHandler implements ActionListener
 								"Wild card Settings accepted, "
 								+ "Please restart the game for "
 								+ "changed to take effect");
-						Settings.WildCardDrawText.setText(
-								MainGameLoop.Settings[1] );
+						Settings.WildCardDrawCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[1]) - 1);
 						Settings.SaveSettings();
 					}
 					else
@@ -222,8 +222,7 @@ public class EventHandler implements ActionListener
 								"Invalid number for wild card draw (1-9) "
 										+ "is accepted... "
 										+ "Refactoring to default...");
-						Settings.WildCardDrawText.setText( 
-								MainGameLoop.Settings[1] );
+						Settings.WildCardDrawCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[1]) - 1);
 						Settings.SaveSettings();
 					}
 
@@ -237,7 +236,7 @@ public class EventHandler implements ActionListener
 						JOptionPane.showMessageDialog(Settings,
 								"Settings accepted, Please restart the "
 										+ "game for changed to take effect");
-						Settings.DeckSizeText.setText( MainGameLoop.Settings[2] );
+						Settings.DeckSizeCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[2]) - 1);
 						Settings.SaveSettings();
 
 					}
@@ -246,7 +245,7 @@ public class EventHandler implements ActionListener
 						JOptionPane.showMessageDialog(Settings,
 								"Invalid number for deck size (4-99) is"
 										+ " accepted... Refactoring to default...");
-						Settings.DeckSizeText.setText( MainGameLoop.Settings[2] );
+						Settings.DeckSizeCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[2]) - 1);
 						Settings.SaveSettings();
 					}
 

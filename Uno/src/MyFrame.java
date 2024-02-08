@@ -42,12 +42,12 @@ public class MyFrame extends JFrame
 	 * A JButton that shows the how to play 
 	 * Text = How To Play
 	 */
-	static JButton 			HowToPlay = new JButton("How to play");
+	static JButton 					HowToPlay = new JButton("How to play");
 	
 	/**
 	 * The main panel
 	 */
-	MyPannel 				panel;
+	MyPannel 						Panel;
 	
 	/**
 	 * A JButton that calls play on the curent player
@@ -64,50 +64,50 @@ public class MyFrame extends JFrame
 	 * A JButton that calls start
 	 * Text = Start
 	 */
-	static JButton 			Start = new JButton("Start");
+	static JButton 					Start = new JButton("Start");
 
 	/**
 	 * A JButton that shows the settings
 	 * Text = Settings
 	 */
-	static JButton 			SettingsButton = new JButton("Settings");
+	static JButton 					SettingsButton = new JButton("Settings");
 
 	/**
 	 * A JButton that resets the game
 	 * Text = Play Again?
 	 */
-	static JButton 			Reset = new JButton("Play Again?");
+	static JButton 					Reset = new JButton("Play Again?");
 
 	/**
 	 * A JButton that closes the game
 	 * Text = X
 	 */
-	static JButton 			Close = new JButton("X");
+	static JButton 					Close = new JButton("X");
 
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
 	 * Text = Settings.ColorsBackup[0])
 	 */
-	static JButton 			Red = new JButton(Settings.ColorsBackup[0]);
+	static JButton 					Red = new JButton(Settings.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 * Text = Settings.ColorsBackup[1])
 	 */
-	static JButton 			Blue = new JButton(Settings.ColorsBackup[1]);
+	static JButton 					Blue = new JButton(Settings.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 * Text = Settings.ColorsBackup[2])
 	 */
-	static JButton 			Green = new JButton(Settings.ColorsBackup[2]);
+	static JButton 					Green = new JButton(Settings.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 * Text = Settings.ColorsBackup[3])
 	 */
-	static JButton 			Yellow = new JButton(Settings.ColorsBackup[3]);
+	static JButton 					Yellow = new JButton(Settings.ColorsBackup[3]);
 	
 	
 	//Player select
@@ -115,23 +115,32 @@ public class MyFrame extends JFrame
 	 * Sets the amount of players to 2
 	 * Text = 2 Player
 	 */
-	static JButton 			P2 = new JButton("2 Players");
+	static JButton 					P2 = new JButton("2 Players");
 	
 	/**
 	 * Sets the amount of players to 3
 	 * Text = 3 Player
 	 */
-	static JButton 			P3 = new JButton("3 Players");
+	static JButton 					P3 = new JButton("3 Players");
 	
 	/**
 	 * Sets the amount of players to 4
 	 * Text = 4 Player
 	 */
-	static JButton 			P4 = new JButton("4 Players");
+	static JButton 					P4 = new JButton("4 Players");
 	
 	//The array of buttons
-	static JButton[] Buttons = {P2, P3, P4, Play,Start, SettingsButton, SkipTurn, HowToPlay, 
-									  FlipCurentHand, FlipCurentHandBack, Red, Blue, Green, Yellow};
+	static JButton[] 				Buttons = {P2, 
+											   P3, 
+											   P4, 
+											   Play,
+											   Start, 
+											   SettingsButton, 
+											   SkipTurn, 
+											   HowToPlay, 	
+											   FlipCurentHand, 
+											   FlipCurentHandBack, 
+											   Red, Blue, Green, Yellow};
 								
 	//SFX
 	/**2
@@ -147,12 +156,12 @@ public class MyFrame extends JFrame
 	/**
 	 * The audio clip of the button click
 	 */
-	public Clip 					clipButton;
+	public Clip 					ClipButton;
 	
 	/**
 	 * The audio clip of the music
 	 */
-	public Clip 					clipMusic;
+	public Clip 					ClipMusic;
 	
 	//Events
 	/**
@@ -161,7 +170,7 @@ public class MyFrame extends JFrame
 	public EventHandler 			Handler = new EventHandler();
 	
 	/**
-	 * Mouse over
+	 * Used to get mouse over funtions
 	 */
 	Hover 							Hover = new Hover(Buttons);
 	
@@ -171,10 +180,7 @@ public class MyFrame extends JFrame
 	 * @param newText	the number of the main deck
 	 */
 	MyFrame(Color newColor, String newText)
-	{ 
-		//Key listener
-		//this.requestFocus();
-		
+	{ 		
 		//Setup the sfx
 		System.out.println(MainGameLoop.Settings[3]);
 		SetSfx();
@@ -186,20 +192,20 @@ public class MyFrame extends JFrame
 		this.setTitle("UNO");
 
 		//Sets up the panel
-		panel = new MyPannel(newColor, newText);
+		Panel = new MyPannel(newColor, newText);
 		this.dispose();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		this.setUndecorated(				  true);
 		windowSettup();
 		
 		//Setups the buttons
-		Setup.Button(SettingsButton, 	10,   980, 200,  40, panel);
-		Setup.Button(HowToPlay, 		1710, 980, 200,  40, panel);
-		Setup.Button(P2, 				595,  900, 200, 120, panel);
-		Setup.Button(Start,				800,  900, 200, 120, panel);
-		Setup.Button(P3, 				1005, 900, 200, 120, panel);
-		Setup.Button(P4, 				1210 ,900, 200, 120, panel);
-		Setup.Button(Close,   			1870,   0,  50,  50, panel);
+		Setup.Button(SettingsButton, 	10,   980, 200,  40, Panel);
+		Setup.Button(HowToPlay, 		1710, 980, 200,  40, Panel);
+		Setup.Button(P2, 				595,  900, 200, 120, Panel);
+		Setup.Button(Start,				800,  900, 200, 120, Panel);
+		Setup.Button(P3, 				1005, 900, 200, 120, Panel);
+		Setup.Button(P4, 				1210 ,900, 200, 120, Panel);
+		Setup.Button(Close,   			1870,   0,  50,  50, Panel);
 		
 		try
 		{
@@ -244,7 +250,7 @@ public class MyFrame extends JFrame
 	{
 		for(int i = 0; i < Buttons.length; i++)
 		{
-			Setup.Button(Buttons[i], -1000, -1000, 0, 0, panel);
+			Setup.Button(Buttons[i], -1000, -1000, 0, 0, Panel);
 		}
 	}
 	
@@ -256,8 +262,8 @@ public class MyFrame extends JFrame
 		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
-			clipMusic.loop(Clip.LOOP_CONTINUOUSLY);
-			clipMusic.start();
+			ClipMusic.loop(Clip.LOOP_CONTINUOUSLY);
+			ClipMusic.start();
 		}
 	}
 	
@@ -267,10 +273,10 @@ public class MyFrame extends JFrame
 	 */
 	public void PlayClick()
 	{
-		if(clipButton != null)
+		if(ClipButton != null)
 		{
-			clipButton.start();
-			clipButton.setMicrosecondPosition(0);
+			ClipButton.start();
+			ClipButton.setMicrosecondPosition(0);
 		}
 
 	}
@@ -288,21 +294,21 @@ public class MyFrame extends JFrame
 		{
 			this.requestFocus();
 			windowSettup();
-			panel.repaint();
-			panel.MainDeckColor = newColor;
-			panel.MainDeckText = newText;
-			panel.setLayout(null);
-			panel.remove(Start);
-			panel.remove(P2);
-			panel.remove(P3);
-			panel.remove(P4);
-			Setup.Button(SettingsButton, 		10, 980, 200, 40, panel);
-			Setup.Button(HowToPlay, 			1710, 980, 200, 40, panel);
-			Setup.Button(SkipTurn, 				104, 400, panel);
-			Setup.Button(Play,					600+900, 610, 200, 400, panel);
-			Setup.Button(FlipCurentHand,		294,400, panel);
-			Setup.Button(FlipCurentHandBack,	0,400, panel);
-			Setup.Button(Close,   				1870, 0, 50, 50, panel);
+			Panel.repaint();
+			Panel.MainDeckColor = newColor;
+			Panel.MainDeckText = newText;
+			Panel.setLayout(null);
+			Panel.remove(Start);
+			Panel.remove(P2);
+			Panel.remove(P3);
+			Panel.remove(P4);
+			Setup.Button(SettingsButton, 		10, 980, 200, 40, Panel);
+			Setup.Button(HowToPlay, 			1710, 980, 200, 40, Panel);
+			Setup.Button(SkipTurn, 				104, 400, Panel);
+			Setup.Button(Play,					600+900, 610, 200, 400, Panel);
+			Setup.Button(FlipCurentHand,		294,400, Panel);
+			Setup.Button(FlipCurentHandBack,	0,400, Panel);
+			Setup.Button(Close,   				1870, 0, 50, 50, Panel);
 
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
@@ -332,7 +338,7 @@ public class MyFrame extends JFrame
 	 */
 	public void resetPlayerhand(Color newColor, String newText)
 	{
-		if(MainGameLoop.gamestarted)
+		if(MainGameLoop.isGameStarted)
 		{
 			for(int i = 0; i < MainGameLoop.Players.size(); i++)
 			{
@@ -342,9 +348,9 @@ public class MyFrame extends JFrame
 					System.out.println("Game over");
 					System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
 					MainGameLoop.isRunning = false;
-					panel.repaint();
+					Panel.repaint();
 					this.hideButtons();
-					Setup.Button(Reset,850,900, 200, 120, panel);
+					Setup.Button(Reset,850,900, 200, 120, Panel);
 					Reset.addActionListener(Handler);
 					Reset.setVisible(		true);
 					break;
@@ -357,25 +363,22 @@ public class MyFrame extends JFrame
 		{
 			this.requestFocus();
 			windowSettup();
-			panel.repaint();
-			panel.PlayerDeckColor = newColor;
-			panel.PlayerDeckText = newText;
-			panel.setLayout(null);
-			panel.remove(Start);
-			Setup.Button(Play, 600 + 900, 610, 200, 400, panel);
-			Setup.Button(FlipCurentHandBack, 620, 900, 200, 120, panel);
-			Setup.Button(SkipTurn, 830, 900, 200, 120, panel);
-			Setup.Button(FlipCurentHand, 1040, 900, 200, 120, panel);
+			Panel.repaint();
+			Panel.PlayerDeckColor = newColor;
+			Panel.PlayerDeckText = newText;
+			Panel.setLayout(null);
+			Panel.remove(Start);
+			Setup.Button(Play, 600 + 900, 610, 200, 400, Panel);
+			Setup.Button(FlipCurentHandBack, 620, 900, 200, 120, Panel);
+			Setup.Button(SkipTurn, 830, 900, 200, 120, Panel);
+			Setup.Button(FlipCurentHand, 1040, 900, 200, 120, Panel);
 
 
-			Play.setFocusPainted(false);
-			SkipTurn.setFocusPainted(false);
-			FlipCurentHand.setFocusPainted(false);
-			FlipCurentHandBack.setFocusPainted(false);
-			Play.setBackground(Color.white);
-			SkipTurn.setBackground(Color.white);
-			FlipCurentHand.setBackground(Color.white);
-			FlipCurentHandBack.setBackground(Color.white);
+			for(int i = 0; i < Buttons.length; i++)
+			{
+				Buttons[i].setFocusPainted(false);
+				Buttons[i].setBackground(Color.white);
+			}
 
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
@@ -444,12 +447,12 @@ public class MyFrame extends JFrame
 		try 
 		{
 			AudioStreamButton = AudioSystem.getAudioInputStream(file);
-			clipButton = AudioSystem.getClip();
-			clipButton.open(AudioStreamButton);
+			ClipButton = AudioSystem.getClip();
+			ClipButton.open(AudioStreamButton);
 			
 			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
-			clipMusic = AudioSystem.getClip();
-			clipMusic.open(AudioStreamMusic);
+			ClipMusic = AudioSystem.getClip();
+			ClipMusic.open(AudioStreamMusic);
 		} 
 		catch (UnsupportedAudioFileException e) 
 		{
@@ -473,13 +476,13 @@ public class MyFrame extends JFrame
 	 */
 	public void SettupColorButtons(int position)
 	{
-		panel.repaint();
+		Panel.repaint();
 		JButton[] ColorB = {Red, Blue, Green, Yellow};
 		for(int i = 0; i < ColorB.length; i++)
 		{
 
 			ColorB[i].setBounds(400 + (i * 200) +  10 + (i * 10),position, 200, 120);
-			panel.add(							ColorB[i]);
+			Panel.add(							ColorB[i]);
 			ColorB[i].addActionListener(		Handler);
 			ColorB[i].setFocusPainted(			false);
 			ColorB[i].setBackground(			Color.white);
@@ -494,13 +497,13 @@ public class MyFrame extends JFrame
 	public void windowSettup()
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.add(					  panel);
+		this.add(					  Panel);
 		this.setLocationRelativeTo(	  null);
 		this.setAlwaysOnTop(		  true);
 		this.setName(				  "UNO");
 		this.setResizable(false);
 		this.setVisible(					  true);
-		panel.setLayout(					  null);
+		Panel.setLayout(					  null);
 		this.pack();
 	}
 	

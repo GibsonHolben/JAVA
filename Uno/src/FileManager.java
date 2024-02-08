@@ -17,14 +17,12 @@ public class FileManager
 	/**A path to the UNO game directory*/
 	public static String Home;
 	
-	//Static
-	/**The default settings of the game*/
-	static String DefaultSettings = "Red,Blue,Green,Yellow/4/11/true/Red";
-	
 	//Final
+	/**The default settings of the game*/
+	static final String DEFAULTSETTINGS = "Red,Blue,Green,Yellow/4/11/true/Red";
+
 	/**The File extention of the settings files*/
 	public final static String FILEEXTENTION = ".ini";
-	
 	
 	/**
 	 * Changes the amount of players
@@ -81,7 +79,7 @@ public class FileManager
 		       try
 		       {
 		    	   FileWriter myWriter = new FileWriter(FilePath);
-			       myWriter.write(DefaultSettings);
+			       myWriter.write(DEFAULTSETTINGS);
 			       myWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }

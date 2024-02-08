@@ -32,7 +32,7 @@ public class MainGameLoop
 	 * isthe game started
 	 * default = false
 	 */
-	public static boolean 			gamestarted = false;
+	public static boolean 			isGameStarted = false;
 	
 	/**Is the game running?
 	 * Default = true*/

@@ -22,10 +22,15 @@ import javax.swing.border.LineBorder;
 public class Settings extends JFrame
 {
 	/**
+	 * The array that hold the indexes of the combo box
+	 */
+	String[] DeckSizeArray = new String[98];
+	
+	/**
 	 * The input field for the amount of cards in the deck
 	 * Default = a new JText
 	 */
-	JTextField DeckSizeText = new JTextField(16);
+	JComboBox DeckSizeCombo = new JComboBox();
 	
 	/**
 	 * Checks if it is the first time the button is clicked
@@ -72,7 +77,7 @@ public class Settings extends JFrame
 	 * The input field for the wild card draw
 	 * Default = a new JText
 	 */
-	JTextField WildCardDrawText = new JTextField(16);
+	JComboBox WildCardDrawCombo = new JComboBox();
 	
 	
 	
@@ -108,19 +113,16 @@ public class Settings extends JFrame
 	public JComboBox ColorBackground = new JComboBox(ACCEPTEDCOLORS);
 	
 	public JButton[] Buttons = {Sfx, 
-							  Reset,
-							  SubmitWildCardSize,
-							  SubmitDeckSize,
-							  SubmitColors};
+							    Reset,
+							    SubmitWildCardSize,
+							    SubmitDeckSize,
+							    SubmitColors};
 	
 	/**
 	 * Mouse over
 	 */
 	Hover Hover = new Hover(Buttons);
 	
-								
-	
-
 	
 	//FINALS
 	/**
@@ -132,16 +134,15 @@ public class Settings extends JFrame
 													"Yellow", 
 													"Magenta", 
 													"Cyan", 
-													"Orange"};
+													"Orange",
+													"Grey"};
 	
 	/**
 	 * Holds the 4 colors of the cards in the game
 	 */
 	public static String[] ColorsBackup = new String[4];
 	
-	
-	
-	
+
 	/**
 	 * Creates a settings form and sets up all the buttons needed for the menu
 	 */
@@ -151,32 +152,12 @@ public class Settings extends JFrame
 		
 		//Setups the top bar
 		SettupSettings();
-		
-		//Adds the action listeners
-		for(int i = 0; i < Buttons.length; i++) 
-		{
-			Buttons[i].addActionListener(MainGameLoop.Frame.Handler);
-			Buttons[i].addMouseListener(Hover);
-		}
-		
-		if(MainGameLoop.Settings[3].equals("true"))
-		{
-			Sfx.setText("SFX/ON");
-			System.out.println("Sfx are now on");
-		}
-		else
-		{
-			Sfx.setText("SFX/OFF");
-			System.out.println("Sfx are now off");
-		}
-		
+		SettupLoops();
 		SetComboBoxes();
 		
 		//Sets up the details
-		WildCardDrawText.setBorder(new LineBorder(Color.black, 2));
-		WildCardDrawText.setBounds(new Rectangle(105, 40, 135, 20));
-		DeckSizeText.setBorder(new LineBorder(Color.black, 2));
-		DeckSizeText.setBounds(new Rectangle(245, 40, 135, 20));
+		WildCardDrawCombo.setBounds(new Rectangle(105, 40, 135, 20));
+		DeckSizeCombo.setBounds(new Rectangle(245, 40, 135, 20));
 		
 		//The color drop down menus
 		JComboBox[] Boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
@@ -186,14 +167,13 @@ public class Settings extends JFrame
 			Boxes[i].setBounds(i * 105, 110, 100, 20);
 		}
 		
-		//Sets the text in the boxes
-		WildCardDrawText.setText("Enter a number 1-9 (" + MainGameLoop.Settings[1] + ")");
-		DeckSizeText.setText("Enter a number 1-99 (" + MainGameLoop.Settings[2] + ")");
-				
+		//Sets the item in the boxes
+		WildCardDrawCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[1]) - 1);
+		DeckSizeCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[2]) - 1);
 		
 		//Adds the components to the panel
-		Panel.add(WildCardDrawText);
-		Panel.add(DeckSizeText);
+		Panel.add(WildCardDrawCombo);
+		Panel.add(DeckSizeCombo);
 		Panel.add(Setup.CreateLabel(105, 20, 135, 20, "Wild card draw amount"));
 		Panel.add(Setup.CreateLabel(245, 20, 135, 20, "Card amount"));
 		Panel.add(Color1Combo);
@@ -232,10 +212,10 @@ public class Settings extends JFrame
 			MainGameLoop.Settings[3] = "false";
 			Sfx.setText("SFX/OFF");
 			System.out.println("Sfx are now off");
-			MainGameLoop.Frame.clipMusic.close();
-			MainGameLoop.Frame.clipMusic.stop();
-			MainGameLoop.Frame.clipButton.close();
-			MainGameLoop.Frame.clipButton.stop();
+			MainGameLoop.Frame.ClipMusic.close();
+			MainGameLoop.Frame.ClipMusic.stop();
+			MainGameLoop.Frame.ClipButton.close();
+			MainGameLoop.Frame.ClipButton.stop();
 		}
 		else if(MainGameLoop.Settings[3].equals("false"))
 		{
@@ -243,6 +223,40 @@ public class Settings extends JFrame
 			Sfx.setText("SFX/ON");
 			System.out.println("Sfx are now on");
 			MainGameLoop.Frame.SetSfx();
+		}
+	}
+	
+	/**
+	 * Sets up all the things that need loops
+	 */
+	public void SettupLoops()
+	{
+		//Adds the action listeners
+		for(int i = 0; i < Buttons.length; i++) 
+		{
+			Buttons[i].addActionListener(MainGameLoop.Frame.Handler);
+			Buttons[i].addMouseListener(Hover);
+		}
+				
+		//Sets up the dropdown menu
+		for(int i = 0; i < DeckSizeArray.length; i++)
+		{
+			DeckSizeArray[i] = Integer.toString(i);
+		}
+		DeckSizeCombo = new JComboBox(DeckSizeArray);
+		String[] temp = {"1","2","3","4","5","6","7","8","9"};
+		WildCardDrawCombo = new JComboBox(temp);
+				
+		//Sets up the sfx 
+		if(MainGameLoop.Settings[3].equals("true"))
+		{
+			Sfx.setText("SFX/ON");
+			System.out.println("Sfx are now on");
+		}
+		else
+		{
+			Sfx.setText("SFX/OFF");
+			System.out.println("Sfx are now off");
 		}
 	}
 	
@@ -281,18 +295,18 @@ public class Settings extends JFrame
 		{
 			try
 			{
-				Integer.parseInt(WildCardDrawText.getText());
+				Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString());
 				
 				
-				if(Integer.parseInt(WildCardDrawText.getText()) > 9 ||
-						Integer.parseInt(WildCardDrawText.getText()) < 1)
+				if(Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString()) > 9 ||
+						Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString()) < 1)
 				{
 					MainGameLoop.Settings[1] = "4";
 					return false;
 				}
 				else
 				{
-					MainGameLoop.Settings[1] = WildCardDrawText.getText();
+					MainGameLoop.Settings[1] = WildCardDrawCombo.getSelectedItem().toString();
 				
 					
 				}
@@ -301,7 +315,7 @@ public class Settings extends JFrame
 			catch(Exception e1)
 			{
 				JOptionPane.showMessageDialog(this, "Please enter a number");
-				WildCardDrawText.setText( MainGameLoop.Settings[1] );
+				WildCardDrawCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[1]) - 1);
 				return false;
 			}
 		}
@@ -309,24 +323,24 @@ public class Settings extends JFrame
 		{
 			try
 			{
-				Integer.parseInt(DeckSizeText.getText());
+				Integer.parseInt(DeckSizeCombo.getSelectedItem().toString());
 				
-				if(Integer.parseInt(DeckSizeText.getText()) > 99 || 
-						Integer.parseInt(DeckSizeText.getText()) < 4)
+				if(Integer.parseInt(DeckSizeCombo.getSelectedItem().toString()) > 99 || 
+						Integer.parseInt(DeckSizeCombo.getSelectedItem().toString()) < 4)
 				{
 					MainGameLoop.Settings[2] = "11";
 					return false;
 				}
 				else
 				{
-					MainGameLoop.Settings[2] = DeckSizeText.getText();
+					MainGameLoop.Settings[2] = DeckSizeCombo.getSelectedItem().toString();
 				}
 				return true;
 			}
 			catch(Exception e1)
 			{
 				JOptionPane.showMessageDialog(this, "Please enter a number");
-				DeckSizeText.setText( MainGameLoop.Settings[2] );
+				DeckSizeCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[2]) - 1);
 				return false;
 			}
 		}
