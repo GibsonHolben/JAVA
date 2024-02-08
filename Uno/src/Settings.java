@@ -351,11 +351,6 @@ public class Settings extends JFrame
 		
 	}
 	
-	
-	
-	
-	
-	
 	/**
 	 * Saves the settings to a file
 	 */
@@ -393,7 +388,7 @@ public class Settings extends JFrame
 	
 	
 	/**
-	 * Sets up the combo boxes with the corect text
+	 * Sets up the combo boxes with the correct text
 	 */
 	public void SetComboBoxes()
 	{
@@ -402,33 +397,12 @@ public class Settings extends JFrame
 		
 		for(int i = 0; i < boxes.length; i++)
 		{
-			if(ColorsBackup[i].equals("Red"))
+			for(int j = 0; j < ACCEPTEDCOLORS.length; j++)
 			{
-				boxes[i].setSelectedIndex(0);
-			}
-			else if(ColorsBackup[i].equals("Blue"))
-			{
-				boxes[i].setSelectedIndex(1);
-			}
-			else if(ColorsBackup[i].equals("Green"))
-			{
-				boxes[i].setSelectedIndex(2);
-			}
-			else if(ColorsBackup[i].equals("Yellow"))
-			{
-				boxes[i].setSelectedIndex(3);
-			}
-			else if(ColorsBackup[i].equals("Magenta"))
-			{
-				boxes[i].setSelectedIndex(4);
-			}
-			else if(ColorsBackup[i].equals("Cyan"))
-			{
-				boxes[i].setSelectedIndex(5);
-			}
-			else if(ColorsBackup[i].equals("Orange"))
-			{
-				boxes[i].setSelectedIndex(6);
+				if(ColorsBackup[i].equals(ACCEPTEDCOLORS[j]))
+				{
+					boxes[i].setSelectedIndex(j);
+				}
 			}
 		}
 		
@@ -439,37 +413,5 @@ public class Settings extends JFrame
 				ColorBackground.setSelectedIndex(i);
 			}
 		}
-//		if(MainGameLoop.Settings[4].equals("Red"))
-//		{
-//			ColorBackground.setSelectedIndex(0);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Blue"))
-//		{
-//			ColorBackground.setSelectedIndex(1);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Green"))
-//		{
-//			ColorBackground.setSelectedIndex(2);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Yellow"))
-//		{
-//			ColorBackground.setSelectedIndex(3);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Magenta"))
-//		{
-//			ColorBackground.setSelectedIndex(4);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Cyan"))
-//		{
-//			ColorBackground.setSelectedIndex(5);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Orange"))
-//		{
-//			ColorBackground.setSelectedIndex(6);
-//		}
-//		else if(MainGameLoop.Settings[4].equals("Grey"))
-//		{
-//			ColorBackground.setSelectedIndex(7);
-//		}
 	}
 }
