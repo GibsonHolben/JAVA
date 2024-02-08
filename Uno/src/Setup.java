@@ -84,6 +84,32 @@ public class Setup
 		
 	}
 	
+	public static Color GetColor(String color)
+	{
+		switch(color)
+		{
+			case "Red":		return Visuals.RED;
+						
+			case "Blue":	return Visuals.BLUE;
+			
+			case "Green":	return Visuals.GREEN;
+			
+			case "Yellow":	return Visuals.YELLOW;
+			
+			case "Magenta":	return Visuals.MAGENTA;
+			
+			case "Cyan":	return Visuals.CYAN;
+			
+			case "Orange":	return Visuals.ORANGE;
+			
+			case "Grey":	return Visuals.GREY;
+			
+			case "Black":	return Visuals.BLACK;
+			default: return Visuals.RED;
+				
+		}
+	}
+	
 	/**Creates a ArrayList of cards and returns them
 	 * @return An ArrayList of cards */
 	public static ArrayList<Card> CreateCards()

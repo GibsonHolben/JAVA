@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -99,56 +100,65 @@ public class MyPannel extends JPanel
 	/**
 	 * Draws the middle number of the UNO card (main deck and player)
 	 */
-	public void DrawMiddleNumber()
+	public void DrawMiddleNumber(String type, int x, int y, Card Card)
 	{
 		g2D.setPaint(Color.black);
 		//Draws the middle number on the player deck
-		if(PlayerDeckText.length() == 2)
+		if(type.equals("Player"))
 		{
-			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-					100));
-			g2D.drawString(PlayerDeckText, 1537, 857);
-			g2D.setPaint(Color.white);
-			g2D.drawString(PlayerDeckText, 1540, 855);
-		}
+			if(Integer.toString(Card.numberValue).length() == 2)
+			{
+				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
+						100));
+				g2D.drawString(Integer.toString(Card.numberValue), x + 50 - 2, y + 230 + 2);
+				g2D.setPaint(Color.white);
+				g2D.drawString(Integer.toString(Card.numberValue), x + 50 , y + 230);
+			}
 
-		else if (!PlayerDeckText.equals("W")&&
-				!PlayerDeckText.contains("W+")&&
-				!PlayerDeckText.equals("S"))
-		{
-			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-									150));
-			g2D.drawString(PlayerDeckText, 1557, 872);
-			g2D.setPaint(Color.white);
-			g2D.drawString(PlayerDeckText, 1560, 870);
-		}
-
-		g2D.setPaint(Color.black);
-
-
-		//Draws the middle number on the main deck
-		if(MainDeckText.length() == 2)
-		{
-			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-					100));
-			g2D.drawString(MainDeckText, 42+ 100, 232);
-			g2D.setPaint(Color.white);
-			g2D.drawString(MainDeckText, 45+ 100, 230);
-		}
-		else if(MainDeckText.equals("W")||
-				MainDeckText.contains("W+")||
-				MainDeckText.equals("S"))
-		{
+			else if (!Card.SpecialEffect.equals("W")&&
+					!Card.SpecialEffect.contains("W+")&&
+					!Card.SpecialEffect.equals("S"))
+			{
+				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
+										150));
+				g2D.drawString(Integer.toString(Card.numberValue), x + 60 - 2, y + 250 - 2);
+				g2D.setPaint(Color.white);
+				g2D.drawString(Integer.toString(Card.numberValue), x + 60, y + 250);
+			}
 
 		}
 		else
 		{
-			g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-					150));
-			g2D.drawString(MainDeckText, 57+ 100, 252);
-			g2D.setPaint(Color.white);
-			g2D.drawString(MainDeckText, 60+ 100, 250);
+			g2D.setPaint(Color.black);
+			//Draws the middle number on the main deck
+			if(MainDeckText.length() == 2)
+			{
+				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
+						100));
+				g2D.drawString(MainDeckText, x + 50 - 2, y + 230 + 2);
+				g2D.setPaint(Color.white);
+				g2D.drawString(MainDeckText, x + 50 , y + 230);
+			}
+			else if(MainDeckText.equals("W")||
+					MainDeckText.contains("W+")||
+					MainDeckText.equals("S"))
+			{
+
+			}
+			else
+			{
+				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
+						150));
+				g2D.drawString(MainDeckText, x + 60 - 2, y + 250 - 2);
+				g2D.setPaint(Color.white);
+				g2D.drawString(MainDeckText, x + 60, y + 250);
+			}
 		}
+		
+		
+
+
+		
 	}
 	
 	/**
@@ -161,7 +171,7 @@ public class MyPannel extends JPanel
 	 * @param Color the color of the card
 	 */
 	@SuppressWarnings("static-access")
-	public void PaintCard(String Type, int x, int y, int w, int h, Color Color)
+	public void PaintCard(String Type, int x, int y, int w, int h, Color Color, Card Card)
 	{
 		this.setBackground(BackgroundColor());
 		g2D.setStroke(new BasicStroke(10));
@@ -176,42 +186,43 @@ public class MyPannel extends JPanel
 
 		if(Type.equals("Main"))
 		{
-			if(MainDeckText.equals("W"))
+			DrawMiddleNumber("Main", x, y, Card);
+			if(Card.SpecialEffect.equals("W"))
 			{
 				Image img = new ImageIcon("src/Uno3.png"
 						).getImage();
-				g2D.drawImage(img, -2 + 100, 20, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
 			}
-			else if(MainDeckText.equals("S"))
+			else if(Card.SpecialEffect.equals("S"))
 			{
 				URL url2 = MyPannel.class.getResource("Uno5.png");
 				Image img2 = new ImageIcon(url2).getImage();
-				g2D.drawImage(img2, -2 + 100, -7	, null);
+				g2D.drawImage(img2, x + -2, y  + -7	, null);
 				g2D.setPaint(Color.white);
 			}
-			else if(MainDeckText.contains("W+"))
+			else if(Card.SpecialEffect.contains("W+"))
 			{
 				Image img = new ImageIcon
 						(
 							"src/Uno4.png"
 						).getImage();
-				g2D.drawImage(img, -2 + 100, 20, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						100));
 				g2D.drawString("+" + MainGameLoop.Settings[1],
-						5 + 100, 37 + 50);
+						x + 5, y + 37 + 50);
 				g2D.setPaint(Color.white);
 				g2D.drawString("+" + MainGameLoop.Settings[1],
-						7+ 100, 35+ 50);
+						x + 7, y + 35+ 50);
 
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						-100));
 				g2D.setPaint(Color.black);
 				g2D.drawString("+" + MainGameLoop.Settings[1],
-						200+ 100, 160+ 170);
+						x + 200, y + 160+ 170);
 				g2D.setPaint(Color.white);
 				g2D.drawString("+" + MainGameLoop.Settings[1],
-						198+ 100, 158+ 170);
+						x + 198, y + 158+ 170);
 			}
 			else
 			{
@@ -219,82 +230,83 @@ public class MyPannel extends JPanel
 						(
 							"src/Uno2.png"
 						).getImage();
-				g2D.drawImage(img, -2 + 100, 20, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
 				
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font(null, Font.BOLD,100));
-				g2D.drawString(MainDeckText, 5+ 100, 37+ 50);
+				g2D.drawString(MainDeckText, x + 5, y + 37+ 50);
 				g2D.setPaint(Color.white);
-				g2D.drawString(MainDeckText, 7+ 100, 35+ 50);
+				g2D.drawString(MainDeckText, x + 7, y + 35+ 50);
 
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						-100));
 				g2D.setPaint(Color.black);
-				g2D.drawString(MainDeckText, 200+ 100, 160+ 155);
+				g2D.drawString(MainDeckText, x + 200, y + 160+ 155);
 				g2D.setPaint(Color.white);
-				g2D.drawString(MainDeckText, 198+ 100, 158+ 155);
+				g2D.drawString(MainDeckText, x + 198, y + 158+ 155);
 			}
 		}
 		else if(Type.equals("Player"))
 		{
-			if(PlayerDeckText.equals("S"))
+			DrawMiddleNumber("Player", x, y, Card);
+			if(Card.SpecialEffect.equals("S"))
 			{
 				URL url2 = MyPannel.class.getResource(
 						"Uno5.png");
 				Image img2 = new ImageIcon(url2).getImage();
-				g2D.drawImage(img2, 600+ 900, 295 + 320, null);
+				g2D.drawImage(img2, x + -2, y + 20, null);
 				g2D.setPaint(Color.white);
 			}
-			else if(PlayerDeckText.contains("W+"))
+			else if(Card.SpecialEffect.contains("W+"))
 			{
 				g2D.setPaint(Color.white);
 				Image img = new ImageIcon("src/Uno4.png"
 											).getImage();
-				g2D.drawImage(img, 600+ 900, 295 + 330, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
 				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						100));
-				g2D.drawString("+"+ MainGameLoop.Settings[1],
-						1497, 705);
+				g2D.drawString("+" + MainGameLoop.Settings[1],
+						x + 5, y + 37 + 50);
 				g2D.setPaint(Color.white);
-				g2D.drawString("+"+ MainGameLoop.Settings[1],
-						1499, 700);
+				g2D.drawString("+" + MainGameLoop.Settings[1],
+						x + 7, y + 35+ 50);
 
-				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						-100));
-				g2D.drawString("+"+ MainGameLoop.Settings[1],
-						1697, 930);
+				g2D.setPaint(Color.black);
+				g2D.drawString("+" + MainGameLoop.Settings[1],
+						x + 200, y + 160+ 170);
 				g2D.setPaint(Color.white);
-				g2D.drawString("+"+ MainGameLoop.Settings[1],
-						1699, 932);
+				g2D.drawString("+" + MainGameLoop.Settings[1],
+						x + 198, y + 158+ 170);
 			}
-			else if(PlayerDeckText.equals("W"))
+			else if(Card.SpecialEffect.equals("W"))
 			{
 				g2D.setPaint(Color.white);
 				Image img = new ImageIcon("src/Uno3.png"
 											).getImage();
-				g2D.drawImage(img, 600+ 900, 295 + 320, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
 			}
 			else
 			{
 				g2D.setPaint(Color.white);
 				Image img = new ImageIcon("src/Uno2.png"
 												).getImage();
-				g2D.drawImage(img, 595+ 900, 295 + 348, null);
+				g2D.drawImage(img, x + -2, y + 20, null);
+				
 				g2D.setPaint(Color.black);
-				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
-						90));
-				g2D.drawString(PlayerDeckText, 1507, 702);
+				g2D.setFont(new Font(null, Font.BOLD,100));
+				g2D.drawString(Integer.toString(Card.numberValue), x + 5, y + 37+ 50);
 				g2D.setPaint(Color.white);
-				g2D.drawString(PlayerDeckText, 1509, 700);
+				g2D.drawString(Integer.toString(Card.numberValue), x + 7, y + 35+ 50);
 
-				g2D.setPaint(Color.black);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
 						-100));
-				g2D.drawString(PlayerDeckText, 1697, 930);
+				g2D.setPaint(Color.black);
+				g2D.drawString(Integer.toString(Card.numberValue), x + 200, y + 160+ 155);
 				g2D.setPaint(Color.white);
-				g2D.drawString(PlayerDeckText, 1699, 932);
+				g2D.drawString(Integer.toString(Card.numberValue), x + 198, y + 158+ 155);
 			}
 		}
 	}
@@ -323,16 +335,22 @@ public class MyPannel extends JPanel
 			{
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD, 20));
 				g2D.drawString(Integer.toString(MainGameLoop.CurentPlayer.curentCardIndex + 1) + 
-						"/" + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()), 1449, 1001);
+						"/" + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()), 1439, 1001);
 				g2D.setPaint(Color.white);
 				g2D.drawString(Integer.toString(MainGameLoop.CurentPlayer.curentCardIndex + 1) + 
-						"/" + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()), 1450, 1000);
+						"/" + Integer.toString(MainGameLoop.CurentPlayer.MyDeck.Cards.size()), 1440, 1000);
 				
 				//Enables Anti-aliasing on the graphics component
 				g2D.setStroke(new BasicStroke(10));
 				g2D.setPaint(Color.white);
-				PaintCard("Player", 600+ 900, 295 + 320, 200, 400, PlayerDeckColor);
-				PaintCard("Main",100, 5, 200, 400, MainDeckColor);
+				PaintCard("Player", 600+ 900, 295 + 320, 200, 400, PlayerDeckColor, MainGameLoop.CurentPlayer.MyDeck.Cards.get(0));
+				PaintCard("Main",100, 5, 200, 400, MainDeckColor, MainGameLoop.MainDeck.Cards.get(0));
+				
+				for(int i = 1; i < MainGameLoop.CurentPlayer.MyDeck.Cards.size(); i ++)
+				{
+					PaintCard("Player", i * 100, 295 + 320, 200, 400, Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(i).ColorValue), MainGameLoop.CurentPlayer.MyDeck.Cards.get(i));
+				}
+				
 
 				//Main deck draw
 				g2D.setPaint(Color.black);
@@ -351,7 +369,7 @@ public class MyPannel extends JPanel
 				g2D.setPaint(Color.white);
 				g2D.drawString("It is " + MainGameLoop.CurentPlayer.Name + 
 														"'s turn", 320, 20);
-				DrawMiddleNumber();
+				
 			}
 			
 			//If it is the first call of paint then show the main menu

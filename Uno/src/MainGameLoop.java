@@ -143,25 +143,6 @@ public class MainGameLoop
 	 */
 	public static void FlipCurentHand()
 	{
-		CurentPlayer.MyDeck.Cards.add(
-						CurentPlayer.MyDeck.Cards.get(0));
-		CurentPlayer.MyDeck.Cards.remove(0);
-		if(CurentPlayer.curentCardIndex < CurentPlayer.MyDeck.Cards.size() -1)
-		{
-			CurentPlayer.curentCardIndex += 1;
-		}
-		else
-		{
-			CurentPlayer.curentCardIndex = 0;
-		}
-		Visuals.UpdateGraphicsPlayer();	
-	}
-	
-	/**
-	 * Flips the curent players hand backwards
-	 */
-	public static void FlipCurentHandBack()
-	{
 		CurentPlayer.MyDeck.Cards.add(0,
 				CurentPlayer.MyDeck.Cards.get(
 						CurentPlayer.MyDeck.Cards.size() - 1));
@@ -176,6 +157,26 @@ public class MainGameLoop
 			CurentPlayer.curentCardIndex = CurentPlayer.MyDeck.Cards.size() - 1;
 		}
 		Visuals.UpdateGraphicsPlayer();
+		
+	}
+	
+	/**
+	 * Flips the curent players hand backwards
+	 */
+	public static void FlipCurentHandBack()
+	{
+		CurentPlayer.MyDeck.Cards.add(
+				CurentPlayer.MyDeck.Cards.get(0));
+		CurentPlayer.MyDeck.Cards.remove(0);
+		if(CurentPlayer.curentCardIndex < CurentPlayer.MyDeck.Cards.size() -1)
+		{
+			CurentPlayer.curentCardIndex += 1;
+		}
+		else
+		{
+			CurentPlayer.curentCardIndex = 0;
+		}
+		Visuals.UpdateGraphicsPlayer();	
 	}
 	
 
