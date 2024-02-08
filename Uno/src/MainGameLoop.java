@@ -1,10 +1,5 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  * Controls the whole game.
@@ -100,6 +95,7 @@ public class MainGameLoop
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
 			String input = sc.nextLine();
+			sc.close();
 
 			//Commands
 			switch(input)
@@ -137,7 +133,7 @@ public class MainGameLoop
 					PrintSettings();
 					break;
 				default: System.out.println("Invalid input:"
-						+ " Help for commands");
+								+ " Help for commands");
 			}
 		}
 	}
@@ -158,8 +154,7 @@ public class MainGameLoop
 		{
 			CurentPlayer.curentCardIndex = 0;
 		}
-		Visuals.UpdateGraphicsPlayer();
-		
+		Visuals.UpdateGraphicsPlayer();	
 	}
 	
 	/**
@@ -181,9 +176,6 @@ public class MainGameLoop
 			CurentPlayer.curentCardIndex = CurentPlayer.MyDeck.Cards.size() - 1;
 		}
 		Visuals.UpdateGraphicsPlayer();
-		
-		
-		
 	}
 	
 
@@ -217,8 +209,8 @@ public class MainGameLoop
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
 		NextPlayerFrame Npf = new NextPlayerFrame();
+		Npf.setVisible(true);
 		Frame.setAlwaysOnTop(false);
-		//Frame.setVisible(false);
 	}
 
 	/**

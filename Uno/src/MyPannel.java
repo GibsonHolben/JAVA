@@ -89,6 +89,8 @@ public class MyPannel extends JPanel
 				return Visuals.CYAN;
 			case "Orange": 
 				return Visuals.ORANGE;
+			case "Grey": 
+				return Visuals.GREY;
 			default: 
 				return Visuals.RED;
 		}
@@ -158,6 +160,7 @@ public class MyPannel extends JPanel
 	 * @param h the height
 	 * @param Color the color of the card
 	 */
+	@SuppressWarnings("static-access")
 	public void PaintCard(String Type, int x, int y, int w, int h, Color Color)
 	{
 		this.setBackground(BackgroundColor());

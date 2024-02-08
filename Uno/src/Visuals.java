@@ -50,6 +50,12 @@ public class Visuals
 	public final static Color ORANGE 	= new Color(255, 127, 39);
 	
 	/**
+	 * The color of the grey card
+	 * Default = 77, 77, 77
+	 */
+	public final static Color GREY 	= new Color(77, 77, 77);
+	
+	/**
 	 * The color of the black card
 	 * Default = 0, 0, 0
 	 */
@@ -87,6 +93,10 @@ public class Visuals
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
 			case "Orange":	MainGameLoop.Frame = new MyFrame(ORANGE, 
+					Integer.toString(
+							MainGameLoop.MainDeck.Cards.get(0).numberValue));
+			break;
+			case "Grey":	MainGameLoop.Frame = new MyFrame(GREY, 
 					Integer.toString(
 							MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			break;
@@ -145,6 +155,11 @@ public class Visuals
 										Integer.toString(
 										MainGameLoop.MainDeck.Cards.get(0).numberValue));
 					break;
+					case "Grey":
+						MainGameLoop.Frame.reset(GREY,	
+										Integer.toString(
+										MainGameLoop.MainDeck.Cards.get(0).numberValue));
+					break;
 					case "Black":
 						MainGameLoop.Frame.reset(BLACK,	 			
 										Integer.toString(
@@ -183,6 +198,10 @@ public class Visuals
 					break;
 					case "Orange":
 						MainGameLoop.Frame.reset(ORANGE,	
+								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
+					break;
+					case "Grey":
+						MainGameLoop.Frame.reset(GREY,	
 								MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 					break;
 					case "Black":
@@ -249,6 +268,11 @@ public class Visuals
 									MainGameLoop.CurentPlayer.
 									MyDeck.Cards.get(0).numberValue));
 					break;
+					case "Grey":	MainGameLoop.Frame.resetPlayerhand(GREY, 
+							Integer.toString(
+							MainGameLoop.CurentPlayer.
+							MyDeck.Cards.get(0).numberValue));
+					break;
 					case "Black":	MainGameLoop.Frame.resetPlayerhand(BLACK, 	
 									Integer.toString(
 									MainGameLoop.CurentPlayer.
@@ -286,6 +310,10 @@ public class Visuals
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;	
 					case "Orange":MainGameLoop.Frame.resetPlayerhand(ORANGE, 
+							MainGameLoop.CurentPlayer.
+							MyDeck.Cards.get(0).SpecialEffect);
+					break;	
+					case "Grey": MainGameLoop.Frame.resetPlayerhand(GREY, 
 							MainGameLoop.CurentPlayer.
 							MyDeck.Cards.get(0).SpecialEffect);
 					break;	

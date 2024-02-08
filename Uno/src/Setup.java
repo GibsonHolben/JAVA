@@ -154,7 +154,8 @@ public class Setup
 		    				colors[i].equals(Settings.ACCEPTEDCOLORS[3])||
 		    				colors[i].equals(Settings.ACCEPTEDCOLORS[4])||
 		    				colors[i].equals(Settings.ACCEPTEDCOLORS[5])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[6]))
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[6])||
+		    				colors[i].equals(Settings.ACCEPTEDCOLORS[7]))
 		    			{
 		    				System.out.println("Corect: " + colors[i]);
 		    			}
@@ -164,18 +165,19 @@ public class Setup
 		    				JOptionPane.showMessageDialog( MainGameLoop.Frame,
 		    						"Invalid Settings... Supported colors are: "
 		    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
-		    						+ "& Cyan.. Refactoring...");
+		    						+ ", Cyan, and Grey .. Refactoring...");
 		    				 Setup.fixColors();
 		    			}
 		    		 }
-		    		 if( 
-		    				MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[0])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[1])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[2])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[3])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[4])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[5])||
-			    			MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[6]))
+		    		 
+		    		 if(MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[0])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[1])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[2])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[3])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[4])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[5])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[6])||
+			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[7]))
 		    		{
 		    			System.out.println("Corect: " + MainGameLoop.Settings[4]);
 		    		}
@@ -183,9 +185,9 @@ public class Setup
 		    		{
 		    			SetingsReader.close();   
 		    			JOptionPane.showMessageDialog( MainGameLoop.Frame,
-		    					"Invalid Settings... Supported colors are: "
-		    					+ "Red, Blue, Green, Yellow, Orange, Magenta, "
-		    					+ "& Cyan.. Refactoring...");
+	    						"Invalid Settings... Supported colors are: "
+	    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
+	    						+ " Cyan, and Grey .. Refactoring...");
 		    			 Setup.fixColors();
 		    		}		
 		    		 
@@ -199,7 +201,7 @@ public class Setup
 		catch (FileNotFoundException e) 
 		{
 		      System.out.println("An error occurred while reading"
-		      						+ " the settings file");
+		      					 + " the settings file");
 		      JOptionPane.showMessageDialog(MainGameLoop.Frame, 
 		    		  "An error occurred while reading the settings file");
 		      JOptionPane.showMessageDialog(MainGameLoop.Frame,
@@ -221,10 +223,6 @@ public class Setup
 				}
 			}
 		}
-		
-		
-		
-				
 		
 		//Creates the special cards
 		String[] specials = { "+2", "S"};

@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.FileWriter;
@@ -10,8 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
+
 
 /**
  * @author CTEHolbenG46
@@ -30,7 +28,7 @@ public class Settings extends JFrame
 	 * The input field for the amount of cards in the deck
 	 * Default = a new JText
 	 */
-	JComboBox DeckSizeCombo = new JComboBox();
+	JComboBox<String> DeckSizeCombo = new JComboBox<String>();
 	
 	/**
 	 * Checks if it is the first time the button is clicked
@@ -77,7 +75,7 @@ public class Settings extends JFrame
 	 * The input field for the wild card draw
 	 * Default = a new JText
 	 */
-	JComboBox WildCardDrawCombo = new JComboBox();
+	JComboBox<String> WildCardDrawCombo = new JComboBox<String>();
 	
 	
 	
@@ -86,31 +84,31 @@ public class Settings extends JFrame
 	 * The dropdown menu for color 1
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox Color1Combo = new JComboBox(ACCEPTEDCOLORS);
+	JComboBox<String> Color1Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox Color2Combo = new JComboBox(ACCEPTEDCOLORS);
+	JComboBox<String> Color2Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox Color3Combo = new JComboBox(ACCEPTEDCOLORS);
+	JComboBox<String> Color3Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox Color4Combo = new JComboBox(ACCEPTEDCOLORS);
+	JComboBox<String> Color4Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for the background color
 	 * Array = ACCEPTEDCOLORS
 	 */
-	public JComboBox ColorBackground = new JComboBox(ACCEPTEDCOLORS);
+	public JComboBox<String> ColorBackground = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	public JButton[] Buttons = {Sfx, 
 							    Reset,
@@ -160,6 +158,7 @@ public class Settings extends JFrame
 		DeckSizeCombo.setBounds(new Rectangle(245, 40, 135, 20));
 		
 		//The color drop down menus
+		@SuppressWarnings("rawtypes")
 		JComboBox[] Boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
 		for(int i = 0; i < Boxes.length; i++)
 		{
@@ -243,9 +242,9 @@ public class Settings extends JFrame
 		{
 			DeckSizeArray[i] = Integer.toString(i);
 		}
-		DeckSizeCombo = new JComboBox(DeckSizeArray);
+		DeckSizeCombo = new JComboBox<String>(DeckSizeArray);
 		String[] temp = {"1","2","3","4","5","6","7","8","9"};
-		WildCardDrawCombo = new JComboBox(temp);
+		WildCardDrawCombo = new JComboBox<String>(temp);
 				
 		//Sets up the sfx 
 		if(MainGameLoop.Settings[3].equals("true"))
@@ -398,6 +397,7 @@ public class Settings extends JFrame
 	 */
 	public void SetComboBoxes()
 	{
+		@SuppressWarnings("rawtypes")
 		JComboBox[] boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
 		
 		for(int i = 0; i < boxes.length; i++)
@@ -432,29 +432,44 @@ public class Settings extends JFrame
 			}
 		}
 		
-		if(MainGameLoop.Settings[4].equals("Red"))
+		for(int i = 0; i < ACCEPTEDCOLORS.length; i++)
 		{
-			ColorBackground.setSelectedIndex(0);
+			if(MainGameLoop.Settings[4].equals(ACCEPTEDCOLORS[i]))
+			{
+				ColorBackground.setSelectedIndex(i);
+			}
 		}
-		else if(MainGameLoop.Settings[4].equals("Blue"))
-		{
-			ColorBackground.setSelectedIndex(1);
-		}
-		else if(MainGameLoop.Settings[4].equals("Green"))
-		{
-			ColorBackground.setSelectedIndex(2);
-		}
-		else if(MainGameLoop.Settings[4].equals("Yellow"))
-		{
-			ColorBackground.setSelectedIndex(3);
-		}
-		else if(MainGameLoop.Settings[4].equals("Magenta"))
-		{
-			ColorBackground.setSelectedIndex(4);
-		}
-		else if(MainGameLoop.Settings[4].equals("Orange"))
-		{
-			ColorBackground.setSelectedIndex(5);
-		}
+//		if(MainGameLoop.Settings[4].equals("Red"))
+//		{
+//			ColorBackground.setSelectedIndex(0);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Blue"))
+//		{
+//			ColorBackground.setSelectedIndex(1);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Green"))
+//		{
+//			ColorBackground.setSelectedIndex(2);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Yellow"))
+//		{
+//			ColorBackground.setSelectedIndex(3);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Magenta"))
+//		{
+//			ColorBackground.setSelectedIndex(4);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Cyan"))
+//		{
+//			ColorBackground.setSelectedIndex(5);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Orange"))
+//		{
+//			ColorBackground.setSelectedIndex(6);
+//		}
+//		else if(MainGameLoop.Settings[4].equals("Grey"))
+//		{
+//			ColorBackground.setSelectedIndex(7);
+//		}
 	}
 }
