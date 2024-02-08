@@ -237,14 +237,14 @@ public class Settings extends JFrame
 			Buttons[i].addMouseListener(Hover);
 		}
 				
-		//Sets up the dropdown menu
+		//Sets up the drop-down menu
 		for(int i = 0; i < DeckSizeArray.length; i++)
 		{
 			DeckSizeArray[i] = Integer.toString(i);
 		}
 		DeckSizeCombo = new JComboBox<String>(DeckSizeArray);
-		String[] temp = {"1","2","3","4","5","6","7","8","9"};
-		WildCardDrawCombo = new JComboBox<String>(temp);
+		String[] AllowedWildCardDraw = {"1","2","3","4","5","6","7","8","9"};
+		WildCardDrawCombo = new JComboBox<String>(AllowedWildCardDraw);
 				
 		//Sets up the sfx 
 		if(MainGameLoop.Settings[3].equals("true"))
