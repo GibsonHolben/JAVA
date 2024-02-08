@@ -84,29 +84,25 @@ public class Setup
 		
 	}
 	
+	/**
+	 * Gets a awt.Color from a String color
+	 * @param color
+	 * @return the awt.Color version from a String
+	 */
 	public static Color GetColor(String color)
 	{
 		switch(color)
 		{
-			case "Red":		return Visuals.RED;
-						
-			case "Blue":	return Visuals.BLUE;
-			
-			case "Green":	return Visuals.GREEN;
-			
-			case "Yellow":	return Visuals.YELLOW;
-			
-			case "Magenta":	return Visuals.MAGENTA;
-			
-			case "Cyan":	return Visuals.CYAN;
-			
-			case "Orange":	return Visuals.ORANGE;
-			
-			case "Grey":	return Visuals.GREY;
-			
+			case "Red":		return Visuals.RED;	
+			case "Blue":	return Visuals.BLUE;			
+			case "Green":	return Visuals.GREEN;			
+			case "Yellow":	return Visuals.YELLOW;			
+			case "Magenta":	return Visuals.MAGENTA;			
+			case "Cyan":	return Visuals.CYAN;			
+			case "Orange":	return Visuals.ORANGE;			
+			case "Grey":	return Visuals.GREY;			
 			case "Black":	return Visuals.BLACK;
-			default: return Visuals.RED;
-				
+			default: return Visuals.RED;		
 		}
 	}
 	

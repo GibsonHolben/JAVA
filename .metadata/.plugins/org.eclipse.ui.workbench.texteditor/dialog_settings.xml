@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Frame"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="break"/>
 			<item value="this"/>
 			<item value="PlayerDeckText"/>
 			<item value="s"/>
@@ -22,16 +23,15 @@
 			<item value="m7"/>
 			<item value="t6"/>
 			<item value="m6"/>
-			<item value="t5"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 			<item value="Frame"/>
 			<item value="MainDeckText"/>
 			<item value="FilePath"/>
 			<item value="Yellow"/>
 			<item value="Green"/>
 			<item value="Blue"/>
-			<item value=""/>
 			<item value="answer2"/>
 			<item value="ic1"/>
 			<item value="ic3"/>

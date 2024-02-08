@@ -94,7 +94,9 @@ public class MainGameLoop
 			//Creates the debug scanner
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
-			String input = sc.nextLine();
+			String input = "";
+			input = sc.nextLine();
+		
 			sc.close();
 
 			//Commands
