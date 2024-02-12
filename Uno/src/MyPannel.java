@@ -200,13 +200,13 @@ public class MyPannel extends JPanel
 			DrawMiddleNumber("Main", x, y, Card);
 			if(Card.SpecialEffect.equals("W"))
 			{
-				Image img = new ImageIcon("src/Uno3.png").getImage();
+				Image img = new ImageIcon("img/Uno3.png").getImage();
 					
 				g2D.drawImage(img, x + -2, y + 10, null);
 			}
 			else if(Card.SpecialEffect.equals("S"))
 			{
-				URL url2 = MyPannel.class.getResource("Uno5.png");
+				URL url2 = MyPannel.class.getResource("src/img/Uno5.png");
 				Image img2 = new ImageIcon(url2).getImage();
 				g2D.drawImage(img2, x + -2, y  + -7	, null);
 				g2D.setPaint(Color.white);
@@ -216,7 +216,7 @@ public class MyPannel extends JPanel
 				
 				Image img = new ImageIcon
 						(
-							"src/Uno2.png"
+							"src/img/Uno2.png"
 						).getImage();
 				g2D.drawImage(img, x + -2, y + 20, null);
 				
@@ -237,7 +237,7 @@ public class MyPannel extends JPanel
 			{
 				Image img = new ImageIcon
 						(
-							"src/Uno4.png"
+							"src/img/Uno4.png"
 						).getImage();
 				g2D.drawImage(img, x + -2, y + 20, null);
 				g2D.setFont(new Font("URW Grotesk", Font.BOLD,
@@ -261,7 +261,7 @@ public class MyPannel extends JPanel
 			{
 				Image img = new ImageIcon
 						(
-							"src/Uno2.png"
+							"src/img/Uno2.png"
 						).getImage();
 				g2D.drawImage(img, x + -2, y + 20, null);
 				
@@ -284,7 +284,7 @@ public class MyPannel extends JPanel
 			DrawMiddleNumber("Player", x, y, Card);
 			if(Card.SpecialEffect.equals("S"))
 			{
-				URL url2 = MyPannel.class.getResource("Uno5.png");
+				URL url2 = MyPannel.class.getResource("img/Uno5.png");
 				Image img2 = new ImageIcon(url2).getImage();
 				g2D.drawImage(img2, x + -2, y + 20, null);
 				g2D.setPaint(Color.white);
@@ -292,7 +292,7 @@ public class MyPannel extends JPanel
 			else if(Card.SpecialEffect.equals("+2"))
 			{
 				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno2.png"
+				Image img = new ImageIcon("src/img/Uno2.png"
 												).getImage();
 				g2D.drawImage(img, x + -2, y + 20, null);
 				
@@ -315,7 +315,7 @@ public class MyPannel extends JPanel
 			else if(Card.SpecialEffect.contains("W+"))
 			{
 				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno4.png").getImage();
+				Image img = new ImageIcon("src/img/Uno4.png").getImage();
 											
 				g2D.drawImage(img, x + -2, y + 20, null);
 				g2D.setPaint(Color.black);
@@ -339,14 +339,14 @@ public class MyPannel extends JPanel
 			else if(Card.SpecialEffect.equals("W"))
 			{
 				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno3.png"
+				Image img = new ImageIcon("src/img/Uno3.png"
 											).getImage();
 				g2D.drawImage(img, x + -2, y + 10, null);
 			}
 			else
 			{
 				g2D.setPaint(Color.white);
-				Image img = new ImageIcon("src/Uno2.png"
+				Image img = new ImageIcon("src/img/Uno2.png"
 												).getImage();
 				g2D.drawImage(img, x + -2, y + 20, null);
 				

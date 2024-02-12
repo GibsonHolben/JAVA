@@ -265,7 +265,7 @@ public class Settings extends JFrame
 	 */
 	public void SettupSettings()
 	{
-		URL url = MyPannel.class.getResource(	"Uno.png");
+		URL url = MyPannel.class.getResource(	"img/Uno.png");
 		ImageIcon img = new ImageIcon(			url);
 		this.setIconImage(						img.getImage());
 		this.setTitle(							"Settings");

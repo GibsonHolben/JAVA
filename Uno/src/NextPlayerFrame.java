@@ -25,7 +25,7 @@ public class NextPlayerFrame extends JFrame implements ActionListener
         panel.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         	
         //Setup the image icon
-        URL url = MyPannel.class.getResource("Uno.png");
+        URL url = MyPannel.class.getResource("img/Uno.png");
         ImageIcon img = new ImageIcon(url);
         this.setIconImage(img.getImage());
         

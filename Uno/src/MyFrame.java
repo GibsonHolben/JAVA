@@ -184,7 +184,7 @@ public class MyFrame extends JFrame
 		SetSfx();
 		
 		//Setups the top bar
-		URL url = MyPannel.class.getResource("Uno.png");
+		URL url = MyPannel.class.getResource("img/Uno.png");
 		ImageIcon img = new ImageIcon(url);
 		this.setIconImage(img.getImage());
 		this.setTitle("UNO");

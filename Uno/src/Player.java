@@ -13,10 +13,9 @@ public class Player
 	/**An ArrayList of cards*/
 	public Deck 	MyDeck;
 	
-	/**
-	 * The name of the player
-	 * Default = blank
-	 */
+
+	 /**The name of the player
+	 * Default = blank	 */
 	public String 	Name = "";
 	
 	/**
@@ -99,7 +98,7 @@ public class Player
 	
 	
 	/**
-	 * Players the current active card and goes to the next player
+	 * Checks if the the current active card is good and goes to the next player
 	 */
 	public void play()
 	{
@@ -120,7 +119,6 @@ public class Player
 				}
 
 				//Plays the card
-				System.out.println("Played card");
 				MyDeck.Cards.get(0).onPlay();
 				MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(0));
 				MyDeck.Cards.remove(0);
