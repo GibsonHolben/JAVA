@@ -51,6 +51,11 @@ public class MyPannel extends JPanel
 	 */
 	public String 	PlayerDeckText = "0";
 	
+	/**
+	 * How much the cards differ
+	 */
+	public int change = 0;
+	
 
 	
 	
@@ -61,6 +66,7 @@ public class MyPannel extends JPanel
 	 */
 	MyPannel(Color newColor, String newText)
 	{
+		
 		MainDeckColor = newColor;
 		MainDeckText = newText;
 		
@@ -197,12 +203,16 @@ public class MyPannel extends JPanel
 
 		if(Type.equals("Main"))
 		{
+			
 			DrawMiddleNumber("Main", x, y, Card);
 			if(Card.SpecialEffect.equals("W"))
 			{
-				Image img = new ImageIcon("img/Uno3.png").getImage();
+				g2D.setPaint(Setup.GetColor(MainGameLoop.CurentColor));
+				g2D.fillRoundRect(x, y, w, h, 20,20);
+				Image img = new ImageIcon("src/img/Uno3.png").getImage();
 					
 				g2D.drawImage(img, x + -2, y + 10, null);
+				g2D.setPaint(Color.black);
 			}
 			else if(Card.SpecialEffect.equals("S"))
 			{
@@ -235,6 +245,8 @@ public class MyPannel extends JPanel
 			}
 			else if(Card.SpecialEffect.contains("W+"))
 			{
+				g2D.setPaint(Setup.GetColor(MainGameLoop.CurentColor));
+				g2D.fillRoundRect(x, y, w, h, 20,20);
 				Image img = new ImageIcon
 						(
 							"src/img/Uno4.png"
@@ -281,6 +293,7 @@ public class MyPannel extends JPanel
 		}
 		else if(Type.equals("Player"))
 		{
+			y = y + change;
 			DrawMiddleNumber("Player", x, y, Card);
 			if(Card.SpecialEffect.equals("S"))
 			{
@@ -403,8 +416,10 @@ public class MyPannel extends JPanel
 				
 				if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() <= 9)
 				{
+					
 					for(int i = 1; i < MainGameLoop.CurentPlayer.MyDeck.Cards.size(); i ++)
 					{	
+						
 						PaintCard("Player", i * 100, 295 + 320, 200, 400, Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(i).ColorValue), MainGameLoop.CurentPlayer.MyDeck.Cards.get(i));
 					}
 				}
@@ -429,8 +444,7 @@ public class MyPannel extends JPanel
 						PaintCard("Player", ((i + 1) - startIndex) * 100, 295 + 320, 200, 400, 
 								Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(i).ColorValue), MainGameLoop.CurentPlayer.MyDeck.Cards.get(i));
 					}
-				}
-
+				}				
 				
 				
 				//Main deck draw

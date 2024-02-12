@@ -31,18 +31,18 @@ public class Player
 	 * hand match the top card in the main deck
 	 * @return true if the cards match, false if they do not
 	 */
-	public boolean cardMatch()
+	public boolean cardMatch(int i)
 	{
-		if(MyDeck.Cards.get(0).SpecialEffect.contains("W"))
+		if(MyDeck.Cards.get(i).SpecialEffect.contains("W"))
 		{
 			return true;
 		}
-		else if(MainGameLoop.MainDeck.Cards.get(0).numberValue != 0)
+		else if(MainGameLoop.MainDeck.Cards.get(i).numberValue != i)
 		{
-			if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-					MyDeck.Cards.get(0).numberValue == 
-					MainGameLoop.MainDeck.Cards.get(0).numberValue||
-					MyDeck.Cards.get(0).ColorValue.equals("Black"))
+			if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
+					MyDeck.Cards.get(i).numberValue == 
+					MainGameLoop.MainDeck.Cards.get(i).numberValue||
+					MyDeck.Cards.get(i).ColorValue.equals("Black"))
 			{
 				return true;
 			}
@@ -51,8 +51,8 @@ public class Player
 				return false;
 			}
 		}
-		else if(MyDeck.Cards.get(0).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(0).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect))
+		else if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(i).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(i).SpecialEffect))
 		{	
 			return true;	
 		}
@@ -100,28 +100,28 @@ public class Player
 	/**
 	 * Checks if the the current active card is good and goes to the next player
 	 */
-	public void play()
+	public void play(int index)
 	{
 		//If the game is running
 		if(MainGameLoop.isRunning)
 		{
 			//Gets the special effect of the card
-			String SpecialEffect = MyDeck.Cards.get(0).SpecialEffect;
+			String SpecialEffect = MyDeck.Cards.get(index).SpecialEffect;
 
 			//Checks if the card is playable
-			if(cardMatch())
+			if(cardMatch(index))
 			{
 
 				//Sets the main deck color if not a wild card
 				if(!SpecialEffect.contains("W"))
 				{
-					MainGameLoop.CurentColor = MyDeck.Cards.get(0).ColorValue;
+					MainGameLoop.CurentColor = MyDeck.Cards.get(index).ColorValue;
 				}
 
 				//Plays the card
-				MyDeck.Cards.get(0).onPlay();
-				MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(0));
-				MyDeck.Cards.remove(0);
+				MyDeck.Cards.get(index).onPlay();
+				MainGameLoop.MainDeck.Cards.add(0, MyDeck.Cards.get(index));
+				MyDeck.Cards.remove(index);
 
 				//Checks the win condition
 				if(MyDeck.Cards.size() < 1)

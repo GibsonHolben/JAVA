@@ -88,10 +88,11 @@ public class Card
 		
 		if(SpecialEffect.equals("W+" + MainGameLoop.Settings[1]))
 		{
+			MainGameLoop.CurentColor = "Black";
 			if(MainGameLoop.isRunning)
 			{
 				MainGameLoop.Frame.canPlay = false;
-				MainGameLoop.Frame.SettupColorButtons(700);
+				MainGameLoop.Frame.SettupColorButtons(300);
 				
 				try
 				{
@@ -112,10 +113,11 @@ public class Card
 		
 		if(SpecialEffect.equals("W"))
 		{
+			MainGameLoop.CurentColor = "Black";
 			if(MainGameLoop.isRunning)
 			{
 				MainGameLoop.Frame.canPlay = false;
-				MainGameLoop.Frame.SettupColorButtons(700);
+				MainGameLoop.Frame.SettupColorButtons(300);
 			}
 		}
 	}

@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -168,9 +169,17 @@ public class MyFrame extends JFrame
 	public EventHandler 			Handler = new EventHandler();
 	
 	/**
+	 * Holds the JButtons that are used to select the cards
+	 */
+	public JButton[] CardButtons = new JButton[10];
+	
+	/**
 	 * Used to get mouse over funtions
 	 */
 	Hover 							Hover = new Hover(Buttons);
+	
+	
+	
 	
 	/**
 	 * Creates the frame and gets the buttons setup
@@ -240,6 +249,35 @@ public class MyFrame extends JFrame
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Creates the buttons in the players hand
+	 */
+	public void CreateCardButtons()
+	{
+		
+			System.out.println("Test");
+			for(int i = 1; i < 10; i++)
+			{
+				if(i > 5)
+				{
+					CardButtons[i] = new JButton();
+					Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 280, Panel);	
+					
+				}
+				else
+				{
+					CardButtons[i] = new JButton();
+					CardButtons[i].setOpaque(false);
+					Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 400, Panel);
+					
+				}
+				
+				CardButtons[i].setOpaque(false);
+				CardButtons[i].setContentAreaFilled(false);
+				CardButtons[i].setBorderPainted(false);
+				CardButtons[i].addActionListener(Handler);	
+			}
+	}
 	
 	/**
 	 * Hides the buttons on game end
@@ -287,7 +325,7 @@ public class MyFrame extends JFrame
 	 */
 	public void reset(Color newColor, String newText)
 	{
-		
+		CreateCardButtons();
 		if(MainGameLoop.isRunning)
 		{
 			this.requestFocus();
@@ -300,8 +338,8 @@ public class MyFrame extends JFrame
 			Panel.remove(P2);
 			Panel.remove(P3);
 			Panel.remove(P4);
-			Setup.Button(SettingsButton, 		10, 980, 200, 40, Panel);
-			Setup.Button(HowToPlay, 			1710, 980, 200, 40, Panel);
+			Setup.Button(SettingsButton, 		10, 1020, 200, 40, Panel);
+			Setup.Button(HowToPlay, 			1710, 1020, 200, 40, Panel);
 			Setup.Button(SkipTurn, 				104, 400, Panel);
 			Setup.Button(Play,					600+900, 610, 200, 400, Panel);
 			Setup.Button(FlipCurentHand,		294,400, Panel);
@@ -311,6 +349,8 @@ public class MyFrame extends JFrame
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
 			Play.setBorderPainted(false);
+			
+			
 			resetFonts(Play, 10);
 			this.setVisible(true);
 		}

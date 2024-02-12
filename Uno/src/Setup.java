@@ -80,8 +80,7 @@ public class Setup
 		
 		panel.add(						Button);
 		panel.setComponentZOrder(		Button, 0);
-		panel.setVisible(				true);
-		
+		panel.setVisible(				true);	
 	}
 	
 	/**

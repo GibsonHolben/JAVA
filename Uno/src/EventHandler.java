@@ -47,6 +47,39 @@ public class EventHandler implements ActionListener
 				}
 			
 			}
+			
+			for(int i = 0; i < MainGameLoop.Frame.CardButtons.length; i++)
+			{
+				if(e.getSource().equals(MainGameLoop.Frame.CardButtons[i]))
+				{
+					if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 9)
+					{
+						try
+						{
+							System.out.println("Card is: " + MainGameLoop.CurentPlayer.MyDeck.Cards.get(i));
+							MainGameLoop.CurentPlayer.play(i);
+							
+						}
+						catch(Exception e2)
+						{
+						}
+					}
+					else
+					{
+						try
+						{
+							System.out.println("Card is: " + MainGameLoop.CurentPlayer.MyDeck.Cards.get(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1));
+							MainGameLoop.CurentPlayer.play(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1);
+							
+						}
+						catch(Exception e2)
+						{
+						}
+					}
+					
+				
+				}
+			}
 	
 			//Closes the game
 			if(e.getSource().equals(MainGameLoop.Frame.Close))
@@ -118,7 +151,7 @@ public class EventHandler implements ActionListener
 				if(e.getSource().equals(MainGameLoop.Frame.Play))
 				{
 					MainGameLoop.isGameStarted = true;
-					MainGameLoop.CurentPlayer.play();
+					MainGameLoop.CurentPlayer.play(0);
 					MainGameLoop.Frame.setVisible(true);
 					MainGameLoop.Frame.Play.setVisible(true);
 				}
