@@ -425,7 +425,6 @@ public class MyPannel extends JPanel
 				}
 				else
 				{
-					System.out.println(MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9);
 					int startIndex = MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9;
 					
 					if((startIndex - 1 != 0))

@@ -254,29 +254,27 @@ public class MyFrame extends JFrame
 	 */
 	public void CreateCardButtons()
 	{
-		
-			System.out.println("Test");
-			for(int i = 1; i < 10; i++)
+		for(int i = 1; i < 10; i++)
+		{
+			if(i > 5)
 			{
-				if(i > 5)
-				{
-					CardButtons[i] = new JButton();
-					Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 280, Panel);	
-					
-				}
-				else
-				{
-					CardButtons[i] = new JButton();
-					CardButtons[i].setOpaque(false);
-					Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 400, Panel);
-					
-				}
+				CardButtons[i] = new JButton();
+				Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 280, Panel);	
 				
-				CardButtons[i].setOpaque(false);
-				CardButtons[i].setContentAreaFilled(false);
-				CardButtons[i].setBorderPainted(false);
-				CardButtons[i].addActionListener(Handler);	
 			}
+			else
+			{
+				CardButtons[i] = new JButton();
+				CardButtons[i].setOpaque(false);
+				Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 400, Panel);
+				
+			}
+			
+			CardButtons[i].setOpaque(false);
+			CardButtons[i].setContentAreaFilled(false);
+			CardButtons[i].setBorderPainted(false);
+			CardButtons[i].addActionListener(Handler);	
+		}	
 	}
 	
 	/**
