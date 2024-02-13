@@ -89,22 +89,31 @@ public class MainGameLoop
 		//Main game loop
 		while(isRunning)
 		{
-			//Sets the frame visible 
-			Frame.setVisible(true);
-			
-			System.out.println("Please enter a command");
-			String Command = DebugScanner.next();
-			
-			switch(Command)
+			if(Frame.Panel.doneOnce)
 			{
-				case "Log":
-					System.out.println("Generating log...");
-					FileManager.GenerateLogs();
+				//Sets the frame visible 
+				Frame.setVisible(true);
+				
+				System.out.println("Please enter a command");
+				String Command = DebugScanner.next();
+				
+				switch(Command)
+				{
+					case "Log":
+						FileManager.GenerateLogs();
 					break;
-				default: 
-					System.out.println("Please enter a command");
+					case "cc":
+						System.out.println(MainDeck.Cards.get(0).toString());
 					break;
+					case "break":
+						System.exit(0);
+					break;
+					default: 
+						System.out.println("Please enter a command");
+					break;
+				}
 			}
+			
 		}
 		
 		DebugScanner.close();
@@ -170,20 +179,43 @@ public class MainGameLoop
 	 */
 	public static void NextPlayer()
 	{
-
-		if(!MainDeck.Cards.get(0).SpecialEffect.contains("W"))
+		boolean doRun = true;
+		for(int i = 0; i < Players.size(); i++)
 		{
-			CurentColor = MainDeck.Cards.get(0).ColorValue;
+			if(Players.get(i).MyDeck.Cards.size() < 1)
+			{
+				doRun = false;
+				MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
+				System.out.println("Game over");
+				System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
+				MainGameLoop.isRunning = false;
+				Frame.Panel.repaint();
+				Frame.hideButtons();
+				Setup.Button(Frame.Reset,850,900, 200, 120, Frame.Panel);
+				Frame.Reset.addActionListener(Frame.Handler);
+				Frame.Reset.setVisible(		true);
+				break;
+			}
 		}
+		
+		if(doRun)
+		{
+			if(!MainDeck.Cards.get(0).SpecialEffect.contains("W"))
+			{
+				CurentColor = MainDeck.Cards.get(0).ColorValue;
+			}
 
-		Players.add(Players.get(0));
-		Players.remove(0);
-		CurentPlayer = Players.get(0);
-		Visuals.UpdateGraphicsFlip();
-		Visuals.UpdateGraphicsPlayer();
-		NextPlayerFrame Npf = new NextPlayerFrame();
-		Npf.setVisible(true);
-		Frame.setAlwaysOnTop(false);
+			Players.add(Players.get(0));
+			Players.remove(0);
+			CurentPlayer = Players.get(0);
+			Visuals.UpdateGraphicsFlip();
+			Visuals.UpdateGraphicsPlayer();
+			NextPlayerFrame Npf = new NextPlayerFrame();
+			Npf.setVisible(true);
+			Frame.setAlwaysOnTop(false);
+		}
+	
+		
 	}
 	/**
 	 * Returns the players decks

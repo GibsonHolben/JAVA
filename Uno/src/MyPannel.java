@@ -216,7 +216,7 @@ public class MyPannel extends JPanel
 			}
 			else if(Card.SpecialEffect.equals("S"))
 			{
-				URL url2 = MyPannel.class.getResource("src/img/Uno5.png");
+				URL url2 = MyPannel.class.getResource("img/Uno5.png");
 				Image img2 = new ImageIcon(url2).getImage();
 				g2D.drawImage(img2, x + -2, y  + -7	, null);
 				g2D.setPaint(Color.white);

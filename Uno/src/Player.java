@@ -37,11 +37,11 @@ public class Player
 		{
 			return true;
 		}
-		else if(MainGameLoop.MainDeck.Cards.get(i).numberValue != i)
+		else if(MainGameLoop.MainDeck.Cards.get(i).numberValue != 0)
 		{
 			if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
 					MyDeck.Cards.get(i).numberValue == 
-					MainGameLoop.MainDeck.Cards.get(i).numberValue||
+					MainGameLoop.MainDeck.Cards.get(0).numberValue||
 					MyDeck.Cards.get(i).ColorValue.equals("Black"))
 			{
 				return true;
@@ -52,7 +52,7 @@ public class Player
 			}
 		}
 		else if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(i).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(i).SpecialEffect))
+				MyDeck.Cards.get(i).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect))
 		{	
 			return true;	
 		}

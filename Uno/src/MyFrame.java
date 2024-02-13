@@ -250,7 +250,7 @@ public class MyFrame extends JFrame
 	}
 	
 	/**
-	 * Creates the buttons in the players hand
+	 * Creates the buttons in the players hand and sets them invisable
 	 */
 	public void CreateCardButtons()
 	{
@@ -268,7 +268,6 @@ public class MyFrame extends JFrame
 				Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 400, Panel);
 				
 			}
-			
 			CardButtons[i].setOpaque(false);
 			CardButtons[i].setContentAreaFilled(false);
 			CardButtons[i].setBorderPainted(false);
@@ -292,7 +291,6 @@ public class MyFrame extends JFrame
 	 */
 	public void LoopMusic()
 	{
-		
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
 			ClipMusic.loop(Clip.LOOP_CONTINUOUSLY);
@@ -367,7 +365,7 @@ public class MyFrame extends JFrame
 	
 	
 	/**
-	 * Redraws the JFrame 
+	 * Redraws the JFrame for the players hand and runs a check to see if the game should end
 	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */

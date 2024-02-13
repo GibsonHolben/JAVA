@@ -35,6 +35,18 @@ public class EventHandler implements ActionListener
 					{
 						MainGameLoop.Frame.Buttons[i].removeActionListener(this);
 					}
+					for(int i = 1; i < MainGameLoop.Frame.CardButtons.length; i++)
+					{
+						try
+						{
+							MainGameLoop.Frame.CardButtons[i].removeActionListener(this);
+						}
+						catch(Exception e2)
+						{
+							//System.out.println("Could not remove listener on " + MainGameLoop.Frame.CardButtons[i].toString());
+						}
+						
+					}
 					MainGameLoop.Frame.dispose();
 					MainGameLoop.Frame.Reset.removeActionListener(this);	
 					MainGameLoop.game();
@@ -150,6 +162,7 @@ public class EventHandler implements ActionListener
 				//Plays the active card in the active players hand
 				if(e.getSource().equals(MainGameLoop.Frame.Play))
 				{
+					
 					MainGameLoop.isGameStarted = true;
 					MainGameLoop.CurentPlayer.play(0);
 					MainGameLoop.Frame.setVisible(true);

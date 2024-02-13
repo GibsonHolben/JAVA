@@ -246,7 +246,7 @@ public class FileManager
 	}
 
 	/**
-	 * Generates a log of anything important in the game (Decks, Settings etc...
+	 * Generates a log of anything important in the game (Decks, Settings etc...)
 	 */
 	public static void GenerateLogs()
 	{
@@ -258,15 +258,13 @@ public class FileManager
 			date = date.replace(":","");
 			date = date.replace(".","");
 		
-			String FilePath = Home + "/Logs/" + date + ".txt";
+			String FilePath = Home + "/Logs/log" + date + ".txt";
 			File Log = new File(FilePath);
 			if(!Log.exists())
 			{
 				Log.createNewFile();
 			}
-			
 			FileWriter myWriter;
-			
 			myWriter = new FileWriter(FilePath);
 			myWriter.write( "[MAINDECK]**************************************\n" + MainGameLoop.MainDeck.PrintDeck(true) + 
 							MainGameLoop.PrintPlayerDecks() + "[SETTINGS]**************************************\n" + MainGameLoop.PrintSettings());
