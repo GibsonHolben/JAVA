@@ -177,6 +177,7 @@ public class MainGameLoop
 	/**
 	 * Moves the game on to the next player 
 	 */
+	@SuppressWarnings("static-access")
 	public static void NextPlayer()
 	{
 		boolean doRun = true;
