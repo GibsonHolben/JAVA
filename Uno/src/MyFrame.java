@@ -25,6 +25,13 @@ public class MyFrame extends JFrame
 	 */
 	boolean canPlay = true;
 	
+	//JComponents*************************************
+	/**
+	 * A JButton that closes the game
+	 * Text = X
+	 */
+	static JButton 					Close = new JButton("X");
+	
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 * Text = Flip >
@@ -53,6 +60,12 @@ public class MyFrame extends JFrame
 	public static JButton 			Play = new JButton();
 	
 	/**
+	 * A JButton that resets the game
+	 * Text = Play Again?
+	 */
+	static JButton 					Reset = new JButton("Play Again?");
+	
+	/**
 	 * A JButton that skips the active players turn
 	 * Text = Skip
 	 */
@@ -70,17 +83,8 @@ public class MyFrame extends JFrame
 	 */
 	static JButton 					SettingsButton = new JButton("Settings");
 
-	/**
-	 * A JButton that resets the game
-	 * Text = Play Again?
-	 */
-	static JButton 					Reset = new JButton("Play Again?");
 
-	/**
-	 * A JButton that closes the game
-	 * Text = X
-	 */
-	static JButton 					Close = new JButton("X");
+
 
 	//ColorChanges
 	/**
@@ -140,7 +144,7 @@ public class MyFrame extends JFrame
 											   FlipCurentHandBack, 
 											   Red, Blue, Green, Yellow};
 								
-	//SFX
+	//SFX*************************************
 	/**2
 	 * the audio stream of the button click
 	 */
@@ -161,7 +165,7 @@ public class MyFrame extends JFrame
 	 */
 	public Clip 					ClipMusic;
 	
-	//Events
+	//Events*************************************
 	/**
 	 * Handels the button click events
 	 */

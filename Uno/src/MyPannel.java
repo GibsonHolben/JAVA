@@ -50,13 +50,6 @@ public class MyPannel extends JPanel
 	 */
 	public String 	PlayerDeckText = "0";
 	
-	/**
-	 * How much the cards differ
-	 */
-	public int change = 0;
-	
-
-	
 	
 	/**
 	 * Creates a Panel with color and text settings
@@ -292,7 +285,6 @@ public class MyPannel extends JPanel
 		}
 		else if(Type.equals("Player"))
 		{
-			y = y + change;
 			DrawMiddleNumber("Player", x, y, Card);
 			if(Card.SpecialEffect.equals("S"))
 			{
