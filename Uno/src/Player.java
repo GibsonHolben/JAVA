@@ -31,7 +31,7 @@ public class Player
 	 * hand match the top card in the main deck
 	 * @return true if the cards match, false if they do not
 	 */
-	public boolean cardMatch(int i)
+	public boolean CardMatch(int i)
 	{
 		if(MyDeck.Cards.get(i).SpecialEffect.contains("W"))
 		{
@@ -100,7 +100,7 @@ public class Player
 	/**
 	 * Checks if the the current active card is good and goes to the next player
 	 */
-	public void play(int index)
+	public void Play(int index)
 	{
 		//If the game is running
 		if(MainGameLoop.isRunning)
@@ -109,9 +109,8 @@ public class Player
 			String SpecialEffect = MyDeck.Cards.get(index).SpecialEffect;
 
 			//Checks if the card is playable
-			if(cardMatch(index))
+			if(CardMatch(index))
 			{
-
 				//Sets the main deck color if not a wild card
 				if(!SpecialEffect.contains("W"))
 				{

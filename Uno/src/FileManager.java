@@ -353,4 +353,14 @@ public class FileManager
 		}
 		
 	}
+	
+	/**
+	 * Returns the object as a string 
+	 * @return Home + "," + FILEEXTENTION + "," + DEFAULTSETTINGS;
+	 */
+	public String toString()
+	{
+		String s = Home + "," + FILEEXTENTION + "," + DEFAULTSETTINGS;
+		return s;
+	}
 }

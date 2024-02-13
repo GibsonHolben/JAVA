@@ -20,7 +20,7 @@ public class EventHandler implements ActionListener
 	{
 		try
 		{
-			//Plays the clik sfx if settings allow
+			//Plays the click sfx if settings allow
 			if(MainGameLoop.Settings[3].equals("true"))
 			{
 				MainGameLoop.Frame.PlayClick();
@@ -43,7 +43,6 @@ public class EventHandler implements ActionListener
 						}
 						catch(Exception e2)
 						{
-							//System.out.println("Could not remove listener on " + MainGameLoop.Frame.CardButtons[i].toString());
 						}
 						
 					}
@@ -60,6 +59,7 @@ public class EventHandler implements ActionListener
 			
 			}
 			
+			//Card click buttons
 			for(int i = 0; i < MainGameLoop.Frame.CardButtons.length; i++)
 			{
 				if(e.getSource().equals(MainGameLoop.Frame.CardButtons[i]))
@@ -69,7 +69,7 @@ public class EventHandler implements ActionListener
 						try
 						{
 							System.out.println("Card is: " + MainGameLoop.CurentPlayer.MyDeck.Cards.get(i));
-							MainGameLoop.CurentPlayer.play(i);
+							MainGameLoop.CurentPlayer.Play(i);
 							
 						}
 						catch(Exception e2)
@@ -81,7 +81,7 @@ public class EventHandler implements ActionListener
 						try
 						{
 							System.out.println("Card is: " + MainGameLoop.CurentPlayer.MyDeck.Cards.get(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1));
-							MainGameLoop.CurentPlayer.play(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1);
+							MainGameLoop.CurentPlayer.Play(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1);
 							
 						}
 						catch(Exception e2)
@@ -164,7 +164,7 @@ public class EventHandler implements ActionListener
 				{
 					
 					MainGameLoop.isGameStarted = true;
-					MainGameLoop.CurentPlayer.play(0);
+					MainGameLoop.CurentPlayer.Play(0);
 					MainGameLoop.Frame.setVisible(true);
 					MainGameLoop.Frame.Play.setVisible(true);
 				}

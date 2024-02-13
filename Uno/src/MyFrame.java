@@ -273,6 +273,9 @@ public class MyFrame extends JFrame
 			CardButtons[i].setBorderPainted(false);
 			CardButtons[i].addActionListener(Handler);	
 		}	
+		
+		CardButtons[MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 1].setBounds(
+				CardButtons[MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 1].getX(), 295 + 320, 200, 400);
 	}
 	
 	/**
