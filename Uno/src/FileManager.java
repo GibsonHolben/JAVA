@@ -16,14 +16,14 @@ import java.time.LocalDateTime;
 public class FileManager 
 {
 	/**A path to the UNO game directory*/
-	public static String Home;
+	public static String 		Home;
 	
 	//Final
 	/**The default settings of the game*/
-	static final String DEFAULTSETTINGS = "Red,Blue,Green,Yellow/4/11/true/Red";
+	static final String 		DEFAULTSETTINGS = "Red,Blue,Green,Yellow/4/11/true/Red";
 
 	/**The File extention of the settings files*/
-	public final static String FILEEXTENTION = ".ini";
+	public final static String  FILEEXTENTION = ".ini";
 	
 	/**
 	 * Changes the amount of players

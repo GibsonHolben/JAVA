@@ -10,12 +10,12 @@ public class NextPlayerFrame extends JFrame implements ActionListener
     /**
      * JButton that is used to start a players turn
      */
-    JButton Start = new JButton(MainGameLoop.CurentPlayer.Name + "'s Turn");
+    JButton 	   Start = new JButton(MainGameLoop.CurentPlayer.Name + "'s Turn");
 
     /**
      * The JPanel used to hold the buttons
      */
-    public JPanel panel = new JPanel();
+    JPanel panel = new JPanel();
 
     /**
      * Sets up the frame

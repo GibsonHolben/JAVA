@@ -22,66 +22,66 @@ public class Settings extends JFrame
 	/**
 	 * The array that hold the indexes of the combo box
 	 */
-	String[] DeckSizeArray = new String[98];
+	String[] 				DeckSizeArray = new String[98];
 	
 	/**
 	 * The input field for the amount of cards in the deck
 	 * Default = a new JText
 	 */
-	JComboBox<String> DeckSizeCombo = new JComboBox<String>();
+	JComboBox<String> 		DeckSizeCombo = new JComboBox<String>();
 	
 	/**
 	 * Checks if it is the first time the button is clicked
 	 * Default = false
 	 */
-	public static boolean doneOnce = false;
+	public static boolean 	doneOnce = false;
 	
 	/**
 	 * The main panel of the game
 	 */
-	JPanel Panel = new JPanel();
+	JPanel 					Panel = new JPanel();
 	
 	/**
 	 * Resets the settings of the game
 	 * Text = Reset Settings
 	 */
-	JButton Reset = new JButton("Reset Settings");
+	JButton 				Reset = new JButton("Reset Settings");
 	
 	/**
 	 * Generates a log of the game
 	 * Text = Print Log
 	 */
-	JButton GenerateLog = new JButton("Print Log");
+	JButton 				GenerateLog = new JButton("Print Log");
 	
 	/**
 	 * The button for the sfx
 	 * Text = SFX/ON
 	 */
-	JButton Sfx = new JButton("SFX/ON");
+	JButton 				Sfx = new JButton("SFX/ON");
 	
 	/**
 	 * Sumbits the settings fro the wild card settings
 	 * Text = Submit
 	 */
-	JButton SubmitWildCardSize = new JButton("Submit");
+	JButton 				SubmitWildCardSize = new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the wild card settings
 	 * Text = Submit
 	 */
-	JButton SubmitDeckSize = new JButton("Submit");
+	JButton 				SubmitDeckSize = new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the colors
 	 * Text = Submit Colors
 	 */
-	JButton SubmitColors = new JButton("Submit Colors");
+	JButton 				SubmitColors = new JButton("Submit Colors");
 	
 	/**
 	 * The input field for the wild card draw
 	 * Default = a new JText
 	 */
-	JComboBox<String> WildCardDrawCombo = new JComboBox<String>();
+	JComboBox<String> 		WildCardDrawCombo = new JComboBox<String>();
 	
 	
 	
@@ -90,57 +90,57 @@ public class Settings extends JFrame
 	 * The dropdown menu for color 1
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> Color1Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color1Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> Color2Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color2Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> Color3Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color3Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> Color4Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color4Combo = new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for the background color
 	 * Array = ACCEPTEDCOLORS
 	 */
-	public JComboBox<String> ColorBackground = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		ColorBackground = new JComboBox<String>(ACCEPTEDCOLORS);
 	
-	public JButton[] Buttons = {Sfx, 
-							    Reset,
-							    SubmitWildCardSize,
-							    SubmitDeckSize,
-							    SubmitColors,
-							    GenerateLog};
+	public JButton[] 		Buttons = {Sfx, 
+									   Reset,
+									   SubmitWildCardSize,
+									   SubmitDeckSize,
+									   SubmitColors,
+									   GenerateLog};
 	
 	/**
 	 * Mouse over
 	 */
-	Hover Hover = new Hover(Buttons);
+	Hover 					Hover = new Hover(Buttons);
 	
 	
 	//FINALS
 	/**
 	 * A list of all aceptable colors in the settings
 	 */
-	public static final String[] ACCEPTEDCOLORS = {"Red",
-													"Blue", 
-													"Green", 
-													"Yellow", 
-													"Magenta", 
-													"Cyan", 
-													"Orange",
-													"Grey"};
+	static final String[] 	ACCEPTEDCOLORS = {"Red",
+											  "Blue", 
+											  "Green", 
+											  "Yellow", 
+											  "Magenta", 
+											  "Cyan", 
+											  "Orange",
+											  "Grey"};		
 	
 	/**
 	 * Holds the 4 colors of the cards in the game
