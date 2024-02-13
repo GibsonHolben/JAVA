@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Used to create the Settings, Players, and instructions
@@ -58,9 +60,10 @@ public class FileManager
 		Path path = Paths.get(Home);
 		
 		//Create the files if needed
-		if(Files.notExists(path))
+		if(Files.notExists(path) || Files.notExists(Paths.get(Home + "/Logs")))
 		{
 			CreateDir(Uno);
+			CreateDir(new File(Home + "/Logs"));
 		}
 		else
 		{
@@ -241,7 +244,60 @@ public class FileManager
 	       System.out.println("File already exists/an error has occored");  
 	    }      
 	}
-	
+
+	/**
+	 * Generates a log of anything important in the game (Decks, Settings etc...
+	 */
+	public static void GenerateLogs()
+	{
+		try 
+		{
+			LocalDateTime now = LocalDateTime.now(); 
+			String date = now.toString();
+			date = date.replace("-","");
+			date = date.replace(":","");
+			date = date.replace(".","");
+		
+			String FilePath = Home + "/Logs/" + date + ".txt";
+			File Log = new File(FilePath);
+			if(!Log.exists())
+			{
+				Log.createNewFile();
+			}
+			
+			FileWriter myWriter;
+			
+			myWriter = new FileWriter(FilePath);
+			myWriter.write( "[MAINDECK]**************************************\n" + MainGameLoop.MainDeck.PrintDeck(true) + 
+							MainGameLoop.PrintPlayerDecks() + "[SETTINGS]**************************************\n" + MainGameLoop.PrintSettings());
+			myWriter.close();
+			System.out.println("Successfully wrote to the file");	
+			System.out.println(FilePath);
+			if (Desktop.isDesktopSupported()) 
+			{
+				 try 
+				 {
+					 Desktop.getDesktop().edit(Log);
+				 } 
+				 catch (IOException e1) 
+				 {
+					e1.printStackTrace();
+				 }
+			}
+			else
+			{
+				System.out.println("System does not support notepad");
+			}	
+		} 
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+	      
+	      
+	}
 	/**
 	 * Shows the how to play file
 	 */

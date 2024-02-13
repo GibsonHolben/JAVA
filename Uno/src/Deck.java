@@ -40,6 +40,30 @@ public class Deck
 		}
 	}
 	
+	/**Returns the deck as a string
+	 * @param special does the function print the special cards*/
+	public String PrintDeck(boolean special)
+	{
+		String ret = "";
+		for(int i = 0; i < Cards.size(); i++)
+		{
+			if((Cards.get(i).SpecialEffect.equals("")))
+			{
+				ret = ret + Cards.get(i).ColorValue + " " + 
+									Cards.get(i).numberValue + "\n";
+			}
+			else 
+			{
+				if(special)
+				{
+					ret = ret + Cards.get(i).ColorValue + " " + 
+							Cards.get(i).SpecialEffect + "\n";
+				}
+			}
+		}
+		return ret;
+	}
+	
 	/**Randomizes the order of the cards*/
 	public void Shuffle()
 	{

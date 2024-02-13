@@ -48,6 +48,12 @@ public class Settings extends JFrame
 	JButton Reset = new JButton("Reset Settings");
 	
 	/**
+	 * Generates a log of the game
+	 * Text = Print Log
+	 */
+	JButton GenerateLog = new JButton("Print Log");
+	
+	/**
 	 * The button for the sfx
 	 * Text = SFX/ON
 	 */
@@ -114,7 +120,8 @@ public class Settings extends JFrame
 							    Reset,
 							    SubmitWildCardSize,
 							    SubmitDeckSize,
-							    SubmitColors};
+							    SubmitColors,
+							    GenerateLog};
 	
 	/**
 	 * Mouse over
@@ -190,6 +197,7 @@ public class Settings extends JFrame
 		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	Panel);
 		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		Panel);
 		Setup.Button(SubmitColors, 			350, 440, 150, 60, 		Panel);
+		Setup.Button(GenerateLog, 			175, 440, 150, 60, 		Panel);
 				
 		//Sets teh background color
 		Panel.setBackground(MyPannel.BackgroundColor());

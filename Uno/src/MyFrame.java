@@ -260,7 +260,6 @@ public class MyFrame extends JFrame
 			{
 				CardButtons[i] = new JButton();
 				Setup.Button(CardButtons[i], i * 100, 295 + 320, 90, 280, Panel);	
-				
 			}
 			else
 			{

@@ -85,59 +85,29 @@ public class MainGameLoop
 		Visuals.SettupGraphics();
 		Frame.setLocationRelativeTo(null);
 
+		Scanner DebugScanner = new Scanner(System.in);
 		//Main game loop
 		while(isRunning)
 		{
 			//Sets the frame visible 
 			Frame.setVisible(true);
 			
-			//Creates the debug scanner
-			Scanner sc = new Scanner(System.in);
 			System.out.println("Please enter a command");
-			String input = "";
-			input = sc.nextLine();
-		
-			sc.close();
-
-			//Commands
-			switch(input)
+			String Command = DebugScanner.next();
+			
+			switch(Command)
 			{
-				case "ff":
-					isRunning = false;
+				case "Log":
+					System.out.println("Generating log...");
+					FileManager.GenerateLogs();
 					break;
-				case "flip":
-					Flip();
+				default: 
+					System.out.println("Please enter a command");
 					break;
-				case "hand":
-					System.out.println(CurentPlayer.Name);
-					CurentPlayer.MyDeck.PrintDeck();
-					break;
-				case "p":
-					System.out.println("Pause");
-					break;
-				case "view":
-					MainDeck.PrintDeck();
-					break;
-				case "cc":
-					System.out.println(CurentColor);
-					break;
-				case "cn":
-					System.out.println(MainDeck.Cards.get(0).numberValue);
-					break;
-				case "name":
-					System.out.println(CurentPlayer.Name);
-					break;
-				case "Help":
-					System.out.println("ff, hand, p, view,"
-							+ " test, cc, toS, Help, Settings");
-					break;
-				case "Settings":
-					PrintSettings();
-					break;
-				default: System.out.println("Invalid input:"
-								+ " Help for commands");
 			}
 		}
+		
+		DebugScanner.close();
 	}
 	
 	/**
@@ -215,16 +185,34 @@ public class MainGameLoop
 		Npf.setVisible(true);
 		Frame.setAlwaysOnTop(false);
 	}
+	/**
+	 * Returns the players decks
+	 * @return the players decks
+	 */
+	public static String PrintPlayerDecks()
+	{
+		String ret = "";
+		
+		for(int i = 0; i < Players.size(); i++)
+		{
+			ret = ret + "[" + Players.get(i).Name + "]**************************************\n";
+			ret = ret + Players.get(i).MyDeck.PrintDeck(true);
+		}
+		return ret;
+	}
 
 	/**
 	 * Prints the settings of the game
+	 * @return the settings as a string
 	 */
-	public static void PrintSettings()
+	public static String PrintSettings()
 	{
+		String ret = "";
 		for(int i = 0; i < Settings.length; i++)
 		{
-			System.out.println(Settings[i]);
+			ret = ret + Settings[i] + "\n";
 		}
+		return ret;
 	}
 	
 	/**

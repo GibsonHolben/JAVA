@@ -236,6 +236,11 @@ public class EventHandler implements ActionListener
 					Settings.ChangeSfx();
 					Settings.SaveSettings();
 				}
+				if(e.getSource().equals(Settings.GenerateLog))
+				{
+					FileManager.GenerateLogs();
+					JOptionPane.showMessageDialog(Settings, "Log has been generated");
+				}
 				
 				//Submits the wild card draw size settings
 				if(e.getSource().equals(Settings.SubmitWildCardSize))
