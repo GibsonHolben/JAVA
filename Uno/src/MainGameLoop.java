@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class MainGameLoop
 {
-	//MAKE WILD CARD IMAGE DRAW WITH ACTIVE COLORS*********************************************************************
+	//****************MAKE WILD CARD IMAGE DRAW WITH ACTIVE COLORS*********************************************************************
 	
 	/**The current color of the main deck
 	 * Default = blank*/

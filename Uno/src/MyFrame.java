@@ -136,7 +136,9 @@ public class MyFrame extends JFrame
 	 */
 	static JButton 			P4 					= new JButton("4 Players");
 	
-	//The array of buttons
+	/***
+	 * The array of buttons
+	 */
 	static JButton[] 		Buttons 			= {P2, 
 												   P3, 
 												   P4, 
@@ -382,7 +384,7 @@ public class MyFrame extends JFrame
 				{
 					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
 					System.out.println("Game over");
-					System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
+					System.out.println(MainGameLoop.Players.get(i).Name + " Wins");
 					MainGameLoop.isRunning = false;
 					Panel.repaint();
 					this.hideButtons();
@@ -390,7 +392,6 @@ public class MyFrame extends JFrame
 					Reset.addActionListener(Handler);
 					Reset.setVisible(		true);
 					break;
-
 				}
 			}
 		}

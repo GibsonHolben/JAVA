@@ -6,25 +6,31 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="index"/>
+		<item key="selection" value="FixColors"/>
 		<list key="findhistory">
+			<item value="fixColors"/>
+			<item value="y"/>
+			<item value="x"/>
+			<item value="e3"/>
+			<item value="e2"/>
+			<item value="s"/>
 			<item value="0"/>
 			<item value="break"/>
 			<item value="this"/>
 			<item value="PlayerDeckText"/>
-			<item value="s"/>
 			<item value="Red"/>
 			<item value="10"/>
 			<item value="answer"/>
 			<item value="ic"/>
 			<item value="ic2"/>
-			<item value="t8"/>
-			<item value="m8"/>
-			<item value="t7"/>
-			<item value="m7"/>
-			<item value="t6"/>
 		</list>
 		<list key="replacehistory">
+			<item value="FixColors"/>
+			<item value="y2"/>
+			<item value="x2"/>
+			<item value="error"/>
+			<item value="exception"/>
+			<item value="ToString"/>
 			<item value="index"/>
 			<item value="i"/>
 			<item value=""/>
@@ -34,12 +40,6 @@
 			<item value="Yellow"/>
 			<item value="Green"/>
 			<item value="Blue"/>
-			<item value="answer2"/>
-			<item value="ic1"/>
-			<item value="ic3"/>
-			<item value="t10"/>
-			<item value="m10"/>
-			<item value="t9"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
