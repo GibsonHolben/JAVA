@@ -30,58 +30,63 @@ public class MyFrame extends JFrame
 	 * A JButton that closes the game
 	 * Text = X
 	 */
-	static JButton 					Close = new JButton("X");
+	static JButton 			Close 				= new JButton("X");
+	
+	/**
+	 * Holds the JButtons that are used to select the cards
+	 */
+	public JButton[] 		CardButtons 		= new JButton[10];
 	
 	/**
 	 * A JButton that calls flipTheCurentDeck
 	 * Text = Flip >
 	 */
-	public static JButton 			FlipCurentHand = new JButton("Flip >");
+	public static JButton 	FlipCurentHand 		= new JButton("Flip >");
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
 	 * Text = < Flip
 	 */
-	public static JButton 			FlipCurentHandBack = new JButton("< Flip");
+	public static JButton 	FlipCurentHandBack 	= new JButton("< Flip");
 	
 	/**
 	 * A JButton that shows the how to play 
 	 * Text = How To Play
 	 */
-	static JButton 					HowToPlay = new JButton("How to play");
+	static JButton 			HowToPlay 			= new JButton("How to play");
 	
 	/**
 	 * The main panel
 	 */
-	MyPannel 						Panel;
+	MyPannel 				Panel;
 	
 	/**
 	 * A JButton that calls play on the curent player
 	 */
-	public static JButton 			Play = new JButton();
+	public static JButton 	Play 				= new JButton();
 	
 	/**
 	 * A JButton that resets the game
 	 * Text = Play Again?
 	 */
-	static JButton 					Reset = new JButton("Play Again?");
+	static JButton 			Reset 				= new JButton("Play Again?");
 	
 	/**
 	 * A JButton that skips the active players turn
 	 * Text = Skip
 	 */
-	public static JButton 			SkipTurn = new JButton("Skip");
+	public static JButton 	SkipTurn 			= new JButton("Skip");
 	
 	/**
 	 * A JButton that calls start
 	 * Text = Start
 	 */
-	static JButton 					Start = new JButton("Start");
+	static JButton 			Start 				= new JButton("Start");
 
 	/**
 	 * A JButton that shows the settings
 	 * Text = Settings
 	 */
-	static JButton 					SettingsButton = new JButton("Settings");
+	static JButton 			SettingsButton 		= new JButton("Settings");
 
 
 
@@ -91,25 +96,25 @@ public class MyFrame extends JFrame
 	 * Changes the color of the main deck to red
 	 * Text = Settings.ColorsBackup[0])
 	 */
-	static JButton 					Red = new JButton(Settings.ColorsBackup[0]);
+	static JButton 			Red 				= new JButton(Settings.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
 	 * Text = Settings.ColorsBackup[1])
 	 */
-	static JButton 					Blue = new JButton(Settings.ColorsBackup[1]);
+	static JButton 			Blue 				= new JButton(Settings.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
 	 * Text = Settings.ColorsBackup[2])
 	 */
-	static JButton 					Green = new JButton(Settings.ColorsBackup[2]);
+	static JButton 			Green 				= new JButton(Settings.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
 	 * Text = Settings.ColorsBackup[3])
 	 */
-	static JButton 					Yellow = new JButton(Settings.ColorsBackup[3]);
+	static JButton 			Yellow 				= new JButton(Settings.ColorsBackup[3]);
 	
 	
 	//Player select
@@ -117,69 +122,64 @@ public class MyFrame extends JFrame
 	 * Sets the amount of players to 2
 	 * Text = 2 Player
 	 */
-	static JButton 					P2 = new JButton("2 Players");
+	static JButton 			P2 					= new JButton("2 Players");
 	
 	/**
 	 * Sets the amount of players to 3
 	 * Text = 3 Player
 	 */
-	static JButton 					P3 = new JButton("3 Players");
+	static JButton 			P3 					= new JButton("3 Players");
 	
 	/**
 	 * Sets the amount of players to 4
 	 * Text = 4 Player
 	 */
-	static JButton 					P4 = new JButton("4 Players");
+	static JButton 			P4 					= new JButton("4 Players");
 	
 	//The array of buttons
-	static JButton[] 				Buttons = {P2, 
-											   P3, 
-											   P4, 
-											   Play,
-											   Start, 
-											   SettingsButton, 
-											   SkipTurn, 
-											   HowToPlay, 	
-											   FlipCurentHand, 
-											   FlipCurentHandBack, 
-											   Red, Blue, Green, Yellow};
+	static JButton[] 		Buttons 			= {P2, 
+												   P3, 
+												   P4, 
+												   Play,
+												   Start, 
+												   SettingsButton, 
+												   SkipTurn, 
+												   HowToPlay, 	
+												   FlipCurentHand, 
+												   FlipCurentHandBack, 
+												   Red, Blue, Green, Yellow};
 								
 	//SFX*************************************
 	/**2
 	 * the audio stream of the button click
 	 */
-	public AudioInputStream 		AudioStreamButton;
+	public AudioInputStream ButtonStream;
 	
 	/**
 	 * the audio stream of the music
 	 */
-	public AudioInputStream 		AudioStreamMusic;	
+	public AudioInputStream MusicStream;	
 	
 	/**
 	 * The audio clip of the button click
 	 */
-	public Clip 					ClipButton;
+	public Clip 			ButtonClip;
 	
 	/**
 	 * The audio clip of the music
 	 */
-	public Clip 					ClipMusic;
+	public Clip 			MusicClip;
 	
 	//Events*************************************
 	/**
 	 * Handels the button click events
 	 */
-	public EventHandler 			Handler = new EventHandler();
-	
-	/**
-	 * Holds the JButtons that are used to select the cards
-	 */
-	public JButton[] CardButtons = new JButton[10];
+	public EventHandler 	Handler 			= new EventHandler();
 	
 	/**
 	 * Used to get mouse over funtions
 	 */
-	Hover 							Hover = new Hover(Buttons);
+	Hover 					Hover 				= new Hover(Buttons);
 	
 	
 	
@@ -243,9 +243,9 @@ public class MyFrame extends JFrame
 		P3.repaint();
 		P4.repaint();
 		Start.repaint();
-		P2.setVisible(	true);
-		P3.setVisible(	true);
-		P4.setVisible(	true);
+		P2.setVisible(true);
+		P3.setVisible(true);
+		P4.setVisible(true);
 		setupPlayeBttonColors();
 		
 		//Sets the frame visible
@@ -276,9 +276,6 @@ public class MyFrame extends JFrame
 			CardButtons[i].setBorderPainted(false);
 			CardButtons[i].addActionListener(Handler);	
 		}	
-		
-		CardButtons[MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 1].setBounds(
-				CardButtons[MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 1].getX(), 295 + 320, 200, 400);
 	}
 	
 	/**
@@ -299,8 +296,8 @@ public class MyFrame extends JFrame
 	{
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
-			ClipMusic.loop(Clip.LOOP_CONTINUOUSLY);
-			ClipMusic.start();
+			MusicClip.loop(Clip.LOOP_CONTINUOUSLY);
+			MusicClip.start();
 		}
 	}
 	
@@ -310,10 +307,10 @@ public class MyFrame extends JFrame
 	 */
 	public void PlayClick()
 	{
-		if(ClipButton != null)
+		if(ButtonClip != null)
 		{
-			ClipButton.start();
-			ClipButton.setMicrosecondPosition(0);
+			ButtonClip.start();
+			ButtonClip.setMicrosecondPosition(0);
 		}
 
 	}
@@ -341,10 +338,10 @@ public class MyFrame extends JFrame
 			Panel.remove(P4);
 			Setup.Button(SettingsButton, 		10, 1020, 200, 40, Panel);
 			Setup.Button(HowToPlay, 			1710, 1020, 200, 40, Panel);
-			Setup.Button(SkipTurn, 				104, 400, Panel);
-			Setup.Button(Play,					600+900, 610, 200, 400, Panel);
-			Setup.Button(FlipCurentHand,		294,400, Panel);
-			Setup.Button(FlipCurentHandBack,	0,400, Panel);
+			Setup.Button(SkipTurn, 				104, 400, 200, 40, Panel);
+			Setup.Button(Play,					1500, 610, 200, 400, Panel);
+			Setup.Button(FlipCurentHand,		294,400, 200, 40, Panel);
+			Setup.Button(FlipCurentHandBack,	0,400, 200, 40, Panel);
 			Setup.Button(Close,   				1870, 0, 50, 50, Panel);
 
 			Play.setOpaque(false);
@@ -466,13 +463,12 @@ public class MyFrame extends JFrame
 				default: ResetPlayerButtons(P2);
 					break;
 			}
-
 		}
 		catch(FileNotFoundException e)
 		{
 			JOptionPane.showMessageDialog(this,
 							"Could not get settings file... Refactoring...");
-			Setup.fixColors();
+			Setup.FixColors();
 		}
 	}
 	
@@ -482,17 +478,17 @@ public class MyFrame extends JFrame
 	public void SetSfx()
 	{
 		//setups the sfx 
-		File file = new File("src/ButttonClick.wav");
-		File file2 = new File("src/Bkg.wav");
+		File ButtonClickFile = new File("src/ButttonClick.wav");
+		File BKGMusicFile = new File("src/Bkg.wav");
 		try 
 		{
-			AudioStreamButton = AudioSystem.getAudioInputStream(file);
-			ClipButton = AudioSystem.getClip();
-			ClipButton.open(AudioStreamButton);
+			ButtonStream = AudioSystem.getAudioInputStream(ButtonClickFile);
+			ButtonClip = AudioSystem.getClip();
+			ButtonClip.open(ButtonStream);
 			
-			AudioStreamMusic = AudioSystem.getAudioInputStream(file2);
-			ClipMusic = AudioSystem.getClip();
-			ClipMusic.open(AudioStreamMusic);
+			MusicStream = AudioSystem.getAudioInputStream(BKGMusicFile);
+			MusicClip = AudioSystem.getClip();
+			MusicClip.open(MusicStream);
 		} 
 		catch (UnsupportedAudioFileException e) 
 		{
@@ -506,7 +502,6 @@ public class MyFrame extends JFrame
 		{
 			e.printStackTrace();
 		}
-		
 		LoopMusic();
 	}
 	
@@ -541,9 +536,9 @@ public class MyFrame extends JFrame
 		this.setLocationRelativeTo(	  null);
 		this.setAlwaysOnTop(		  true);
 		this.setName(				  "UNO");
-		this.setResizable(false);
-		this.setVisible(					  true);
-		Panel.setLayout(					  null);
+		this.setResizable(			  false);
+		this.setVisible(			  true);
+		Panel.setLayout(			  null);
 		this.pack();
 	}
 	

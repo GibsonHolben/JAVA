@@ -84,7 +84,7 @@ public class Deck
 	 */
 	public String toString()
 	{
-		String s = Cards.toString();
-		return s;
+		String toreturn = Cards.toString();
+		return toreturn;
 	}
 }

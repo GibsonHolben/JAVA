@@ -11,17 +11,17 @@ public class Card
 	
 	/**The color of the card
 	 * Default = Red*/
-	public String 	ColorValue = "Red";
+	public String 	ColorValue 		= "Red";
 	
 	
 	/**The value of the card
 	 * Default = 0*/
-	public int 		numberValue = 0;
+	public int 		numberValue 	= 0;
 	/**
 	 * Card special effects
 	 * Default = blank
 	 */
-	public String 	SpecialEffect = "";
+	public String 	SpecialEffect 	= "";
 	
 	
 	
@@ -58,14 +58,14 @@ public class Card
 	{
 		if(SpecialEffect.isEmpty())
 		{
-			String s = numberValue + "," + ColorValue;
-			return s;
+			String ToString = numberValue + "," + ColorValue;
+			return ToString;
 		}
 		else
 		{
-			String s = numberValue + "," + ColorValue + 
+			String ToString = numberValue + "," + ColorValue + 
 					"," + SpecialEffect;
-			return s;
+			return ToString;
 		}
 	}
 	
@@ -78,7 +78,7 @@ public class Card
 		{
 			try
 			{
-				MainGameLoop.Players.get(1).DrawCard(2);
+				MainGameLoop.Players.get(1).PullCard(2);
 			}	
 			catch(Exception e)
 			{
@@ -96,7 +96,7 @@ public class Card
 				
 				try
 				{
-					MainGameLoop.Players.get(1).DrawCard(
+					MainGameLoop.Players.get(1).PullCard(
 							Integer.parseInt(MainGameLoop.Settings[1]));
 				}
 				catch(Exception e)

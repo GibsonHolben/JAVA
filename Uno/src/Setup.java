@@ -18,44 +18,6 @@ import javax.swing.border.LineBorder;
  */
 public class Setup
 {
-	/**
-	 * Sets up the button 
-	 * @param Button the button to setup
-	 * @param panel The JPanel that the button is being added to
-	 */
-	public static void Button(JButton Button, JPanel panel)
-	{
-		Fonts(						Button, 15);
-		Button.setBounds(				190, 400, 100, 60);
-		Button.setBorder(				new LineBorder(Color.BLACK, 2));
-		Button.setBackground(			Color.white);
-		Button.setFocusPainted(			false);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-		
-	}
-	
-	/**
-	 * Sets up the button with x and y cordenants
-	 * @param Button the button to setup
-	 * @param x the x cor of the button
-	 * @param y the y cor of the button
-	 * @param panel The JPanel that the button is being added to
-	 */
-	public static void Button(JButton Button, int x, int y, JPanel panel)
-	{	
-		Fonts(						Button, 15);
-		Button.setBorder(				new LineBorder(Color.black, 2));
-		Button.setFocusPainted(			false);
-		Button.setBackground(			Color.white);
-		Button.setBounds(				x, y, 100,60);
-		Button.setVisible(				true);
-		panel.setLayout(				null);
-		panel.add(						Button);
-		panel.setComponentZOrder(		Button, 0);
-	}
 	
 	/**
 	 * Sets up the button with x and y cordenants
@@ -76,8 +38,6 @@ public class Setup
 		Button.setBackground(			Color.white);
 		Button.setBounds(				x, y, w, h);
 		Button.setVisible(				true);
-	
-		
 		panel.add(						Button);
 		panel.setComponentZOrder(		Button, 0);
 		panel.setVisible(				true);	
@@ -140,7 +100,7 @@ public class Setup
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Wild card value must"
 		    				 + " be less than 10... Refactoring...");
-		    		 Setup.fixColors();
+		    		 Setup.FixColors();
 		    	 }
 		    	 
 		    	 if(Integer.parseInt( MainGameLoop.Settings[2]) > 99 || 
@@ -150,7 +110,7 @@ public class Setup
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Card count must be "
 		    				 + "between 1 and 100... Refactoring...");
-		    		 Setup.fixColors();
+		    		 Setup.FixColors();
 		    	 }
 		    	 
 		    	 
@@ -162,7 +122,7 @@ public class Setup
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Only four colors are"
 		    				 + "supported Refactoring...");
-		    		 Setup.fixColors();
+		    		 Setup.FixColors();
 		    			
 		    	 }
 		    	 else
@@ -187,7 +147,7 @@ public class Setup
 		    						"Invalid Settings... Supported colors are: "
 		    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
 		    						+ ", Cyan, and Grey .. Refactoring...");
-		    				 Setup.fixColors();
+		    				 Setup.FixColors();
 		    			}
 		    		 }
 		    		 
@@ -209,7 +169,7 @@ public class Setup
 	    						"Invalid Settings... Supported colors are: "
 	    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
 	    						+ " Cyan, and Grey .. Refactoring...");
-		    			 Setup.fixColors();
+		    			 Setup.FixColors();
 		    		}		
 		    		 
 		    	 }
@@ -227,7 +187,7 @@ public class Setup
 		    		  "An error occurred while reading the settings file");
 		      JOptionPane.showMessageDialog(MainGameLoop.Frame,
 		    		  "Refactoring Settings");
-		      Setup.fixColors();
+		      Setup.FixColors();
 		      e.printStackTrace();
 		}
 		
@@ -292,18 +252,18 @@ public class Setup
 	/**
 	 * Recreate the settings file if needed
 	 */
-	public static void fixColors()
+	public static void FixColors()
 	{
-		 String FilePath = FileManager.Home +
+		 String SettingsFilePath = FileManager.Home +
 				 "/Settings" + FileManager.FILEEXTENTION;
-		 File myObj = new File(FilePath);
-		 myObj = new File(FilePath);
+		 File Settings = new File(SettingsFilePath);
+		 Settings = new File(SettingsFilePath);
 		 
 		 System.out.println("incorect settings were inputed");
 		 System.out.println("Refactoring settings...");
-		 if (myObj.delete())
+		 if (Settings.delete())
 		 { 
-		    System.out.println("Deleted the file: " + myObj.getName());
+		    System.out.println("Deleted the file: " + Settings.getName());
 		    FileManager.CreateFiles();
 		 } 
 		 else 

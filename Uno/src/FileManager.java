@@ -23,7 +23,7 @@ public class FileManager
 	static final String 		DEFAULTSETTINGS = "Red,Blue,Green,Yellow/4/11/true/Red";
 
 	/**The File extention of the settings files*/
-	public final static String  FILEEXTENTION = ".ini";
+	public final static String  FILEEXTENTION 	= ".ini";
 	
 	/**
 	 * Changes the amount of players
@@ -33,15 +33,16 @@ public class FileManager
 	{
 		try 
 		{
-			String FilePath3  = FileManager.Home + "/Players" + FILEEXTENTION;
-			FileWriter myWriter3 = new FileWriter(FilePath3);
-		    myWriter3.write(input);
-		    myWriter3.close();
+			String PlayerPath  = FileManager.Home + "/Players" + FILEEXTENTION;
+			FileWriter PlayerWriter = new FileWriter(PlayerPath);
+		    PlayerWriter.write(input);
+		    PlayerWriter.close();
 		}       
-		catch (IOException e2) 
+		catch (IOException e) 
 		{
-		      System.out.println("An error occurred.");
-		      e2.printStackTrace();
+		      System.out.println("An error occurred while getting player settings");
+		      Setup.FixColors();
+		      e.printStackTrace();
 		}
 	}
 	
@@ -69,56 +70,56 @@ public class FileManager
 			System.out.println("Directory exists: " + Uno.toString());
 		}
 		
-		String FilePath = Home + "/Settings" + FileManager.FILEEXTENTION;
+		String SettingsPath = Home + "/Settings" + FileManager.FILEEXTENTION;
 		try 
 		{
-			File myObj = new File(FilePath);
+			File Settings = new File(SettingsPath);
 
-		    if (myObj.createNewFile()) 
+		    if (Settings.createNewFile()) 
 		    {
-		       System.out.println("File created: " + myObj.getName());
+		       System.out.println("File created: " + Settings.getName());
 
 		       try
 		       {
-		    	   FileWriter myWriter = new FileWriter(FilePath);
-			       myWriter.write(DEFAULTSETTINGS);
-			       myWriter.close();
+		    	   FileWriter SettingsWriter = new FileWriter(SettingsPath);
+			       SettingsWriter.write(DEFAULTSETTINGS);
+			       SettingsWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }
 		       catch (IOException e)
 		       {
-		    	   System.out.println("An error occurred while saving the file");
+		    	   System.out.println("An error occurred while writing to the file");
 				   e.printStackTrace();
 		       }
 		       catch (Exception e) 
 			   {
-				      System.out.println("An error occurred.");
+				      System.out.println("An error occurred");
 				      e.printStackTrace();
 			   }   
 		    } 
 		}       
 		catch (IOException e) 
 		{
-		      System.out.println("An error occurred.");
+		      System.out.println("An error occurred while saving the file: " + SettingsPath);
 		      e.printStackTrace();
 		}
 		
 		
 		
-		String FilePath2 = Home + "/HTP.txt";
+		String HTPath = Home + "/HTP.txt";
 
 		try 
 		{
-			File myObj2 = new File(FilePath2);
+			File HowToPlay = new File(HTPath);
 
-		    if (myObj2.createNewFile()) 
+		    if (HowToPlay.createNewFile()) 
 		    {
-		       System.out.println("File created: " + myObj2.getName());
+		       System.out.println("File created: " + HowToPlay.getName());
 
 		       try
 		       {
-		    	   FileWriter myWriter2 = new FileWriter(FilePath2);
-			       myWriter2.write("How do you play the game of UNO?\r\n" + 
+		    	   FileWriter HTPWriter = new FileWriter(HTPath);
+			       HTPWriter.write("How do you play the game of UNO?\r\n" + 
 			       		"\r\n" + 
 			       		"On your turn:\r\n" + 
 			       		"	You can play a card when"
@@ -169,66 +170,66 @@ public class FileManager
 			       		+ "the game will move on to the next"
 			       		+ " player\r\n" + 
 			       		"		");
-			       myWriter2.close();
+			       HTPWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }
 		       catch (IOException e)
 		       {
-		    	   System.out.println("An error occurred while saving the file");
-				      e.printStackTrace();
+		    	   System.out.println("An error occurred while writing to the file");
+				   e.printStackTrace();
 		       }
 		       catch (Exception e) 
 			   {
-				      System.out.println("An error occurred.");
-				      e.printStackTrace();
+				    System.out.println("An error occurred.");
+				    e.printStackTrace();
 			   }   
 		    } 
 
 		}       
 		catch (IOException e) 
 		{
-		      System.out.println("An error occurred.");
+		      System.out.println("An error occurred while saving the file: " + HTPath);
 		      e.printStackTrace();
 		}
 		
 	
-		String FilePath3  = Home + "/Players" + FILEEXTENTION;
+		String PlayersPath  = Home + "/Players" + FILEEXTENTION;
 		try 
 		{
-			File myObj3 = new File(FilePath3);
+			File Players = new File(PlayersPath);
 
-		    if (myObj3.createNewFile()) 
+		    if (Players.createNewFile()) 
 		    {
-		       System.out.println("File created: " + myObj3.getName());
+		       System.out.println("File created: " + Players.getName());
 
 		       try
 		       {
-		    	   FileWriter myWriter3 = new FileWriter(FilePath3);
-			       myWriter3.write("2");
-			       myWriter3.close();
+		    	   FileWriter PlayerWriter = new FileWriter(PlayersPath);
+		    	   PlayerWriter.write("2");
+		    	   PlayerWriter.close();
 			       System.out.println("Successfully wrote to the file.");		     
 		       }
 		       catch (IOException e)
 		       {
-		    	   System.out.println("An error occurred while saving the file");
+		    	   System.out.println("An error occurred while writing to the file");
 				      e.printStackTrace();
 		       }
 		       catch (Exception e) 
 			   {
-				      System.out.println("An error occurred.");
+				      System.out.println("An error occurred");
 				      e.printStackTrace();
 			   }   
 		    } 
 		}       
 		catch (IOException e) 
 		{
-		      System.out.println("An error occurred.");
+		      System.out.println("An error occurred while saving the file: " + PlayersPath);
 		      e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Creates the directory
+	 * Creates a directory
 	 * @param File the file that is created
 	 */
 	static void CreateDir(File File)
@@ -257,28 +258,28 @@ public class FileManager
 			date = date.replace(":","");
 			date = date.replace(".","");
 		
-			String FilePath = Home + "/Logs/log" + date + ".txt";
-			File Log = new File(FilePath);
+			String LogPath = Home + "/Logs/log" + date + ".txt";
+			File Log = new File(LogPath);
 			if(!Log.exists())
 			{
 				Log.createNewFile();
 			}
-			FileWriter myWriter;
-			myWriter = new FileWriter(FilePath);
-			myWriter.write( "[MAINDECK]**************************************\n" + MainGameLoop.MainDeck.PrintDeck(true) + 
+			FileWriter LogWriter;
+			LogWriter = new FileWriter(LogPath);
+			LogWriter.write( "[MAINDECK]**************************************\n" + MainGameLoop.MainDeck.PrintDeck(true) + 
 							MainGameLoop.PrintPlayerDecks() + "[SETTINGS]**************************************\n" + MainGameLoop.PrintSettings());
-			myWriter.close();
+			LogWriter.close();
 			System.out.println("Successfully wrote to the file");	
-			System.out.println(FilePath);
+			System.out.println(LogPath);
 			if (Desktop.isDesktopSupported()) 
 			{
 				 try 
 				 {
 					 Desktop.getDesktop().edit(Log);
 				 } 
-				 catch (IOException e1) 
+				 catch (IOException e) 
 				 {
-					e1.printStackTrace();
+					e.printStackTrace();
 				 }
 			}
 			else
@@ -303,19 +304,19 @@ public class FileManager
 		if (Desktop.isDesktopSupported()) 
 		{
 			
-			String FilePath  = FileManager.Home + "/HTP.txt";
+			String HTPath  = FileManager.Home + "/HTP.txt";
 		    try 
 		    {
-				Desktop.getDesktop().edit(new File(FilePath));
+				Desktop.getDesktop().edit(new File(HTPath));
 			} 
-		    catch (IOException e1) 
+		    catch (IOException e) 
 		    {
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
 		} 
 		else 
 		{
-		   System.out.println("Error getting file");
+		   System.out.println("Error getting how to play file");
 		}
 		
 	}
@@ -329,7 +330,7 @@ public class FileManager
 		if (Desktop.isDesktopSupported()) 
 		{
 		
-			String FilePath = FileManager.Home + "/Settings" + FILEEXTENTION;
+			String SettingsPath = FileManager.Home + "/Settings" + FILEEXTENTION;
 		    try 
 		    {
 		    	System.out.println("Opening with notepad...");
@@ -339,11 +340,11 @@ public class FileManager
 		    	System.out.println("Only four colors are used");
 		    	System.out.println("Supported colors are: Red, Blue, Green,"
 		    			+ " Yellow, Orange, Magenta, & Cyan");
-				Desktop.getDesktop().edit(new File(FilePath));
+				Desktop.getDesktop().edit(new File(SettingsPath));
 			} 
-		    catch (IOException e1) 
+		    catch (IOException e) 
 		    {
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
 		} 
 		else 

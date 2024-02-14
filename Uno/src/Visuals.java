@@ -17,7 +17,7 @@ public class Visuals
 	 * The color of the blue card
 	 * Default = 1, 84, 164
 	 */
-	public final static Color BLUE 	= new Color(1, 84, 164);
+	public final static Color BLUE 		= new Color(1, 84, 164);
 	
 	/**
 	 * The color of the green card
@@ -41,7 +41,7 @@ public class Visuals
 	 * The color of the cyan card
 	 * Default = color.cyan
 	 */
-	public final static Color CYAN 	= Color.cyan;
+	public final static Color CYAN 		= Color.cyan;
 	
 	/**
 	 * The color of the orange card
@@ -53,7 +53,7 @@ public class Visuals
 	 * The color of the grey card
 	 * Default = 77, 77, 77
 	 */
-	public final static Color GREY 	= new Color(77, 77, 77);
+	public final static Color GREY 		= new Color(77, 77, 77);
 	
 	/**
 	 * The color of the black card
@@ -92,6 +92,7 @@ public class Visuals
 		catch(Exception e)
 		{
 			System.out.println("Could not update deck graphics");
+			e.printStackTrace();
 		}
 
 	}
@@ -121,6 +122,7 @@ public class Visuals
 		catch(Exception e)
 		{
 			System.out.println("Could not update player graphics");
+			e.printStackTrace();
 		}
 	}
 }

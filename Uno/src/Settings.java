@@ -22,66 +22,66 @@ public class Settings extends JFrame
 	/**
 	 * The array that hold the indexes of the combo box
 	 */
-	String[] 				DeckSizeArray = new String[98];
+	String[] 				DeckSizeArray 		= new String[98];
 	
 	/**
 	 * The input field for the amount of cards in the deck
 	 * Default = a new JText
 	 */
-	JComboBox<String> 		DeckSizeCombo = new JComboBox<String>();
+	JComboBox<String> 		DeckSizeCombo 		= new JComboBox<String>();
 	
 	/**
 	 * Checks if it is the first time the button is clicked
 	 * Default = false
 	 */
-	public static boolean 	doneOnce = false;
+	public static boolean 	doneOnce 			= false;
 	
 	/**
 	 * The main panel of the game
 	 */
-	JPanel 					Panel = new JPanel();
+	JPanel 					Panel 				= new JPanel();
 	
 	/**
 	 * Resets the settings of the game
 	 * Text = Reset Settings
 	 */
-	JButton 				Reset = new JButton("Reset Settings");
+	JButton 				Reset 				= new JButton("Reset Settings");
 	
 	/**
 	 * Generates a log of the game
 	 * Text = Print Log
 	 */
-	JButton 				GenerateLog = new JButton("Print Log");
+	JButton 				GenerateLog 		= new JButton("Print Log");
 	
 	/**
 	 * The button for the sfx
 	 * Text = SFX/ON
 	 */
-	JButton 				Sfx = new JButton("SFX/ON");
+	JButton 				SfxToggle 			= new JButton("SFX/ON");
 	
 	/**
 	 * Sumbits the settings fro the wild card settings
 	 * Text = Submit
 	 */
-	JButton 				SubmitWildCardSize = new JButton("Submit");
+	JButton 				SubmitWildCardSize 	= new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the wild card settings
 	 * Text = Submit
 	 */
-	JButton 				SubmitDeckSize = new JButton("Submit");
+	JButton 				SubmitDeckSize 		= new JButton("Submit");
 	
 	/**
 	 * Sumbits the settings for the colors
 	 * Text = Submit Colors
 	 */
-	JButton 				SubmitColors = new JButton("Submit Colors");
+	JButton 				SubmitColors 		= new JButton("Submit Colors");
 	
 	/**
 	 * The input field for the wild card draw
 	 * Default = a new JText
 	 */
-	JComboBox<String> 		WildCardDrawCombo = new JComboBox<String>();
+	JComboBox<String> 		WildCardDrawCombo 	= new JComboBox<String>();
 	
 	
 	
@@ -90,62 +90,65 @@ public class Settings extends JFrame
 	 * The dropdown menu for color 1
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> 		Color1Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color1Combo 		= new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 2
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> 		Color2Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color2Combo 		= new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 3
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> 		Color3Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color3Combo 		= new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for color 4
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> 		Color4Combo = new JComboBox<String>(ACCEPTEDCOLORS);
+	JComboBox<String> 		Color4Combo 		= new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
 	 * The dropdown menu for the background color
 	 * Array = ACCEPTEDCOLORS
 	 */
-	JComboBox<String> 		ColorBackground = new JComboBox<String>(ACCEPTEDCOLORS);
-	
-	public JButton[] 		Buttons = {Sfx, 
-									   Reset,
-									   SubmitWildCardSize,
-									   SubmitDeckSize,
-									   SubmitColors,
-									   GenerateLog};
+	JComboBox<String> 		ColorBackground 	= new JComboBox<String>(ACCEPTEDCOLORS);
 	
 	/**
-	 * Mouse over
+	 * The buttons that are used in the settings
 	 */
-	Hover 					Hover = new Hover(Buttons);
+	public JButton[] 		Buttons 			= {SfxToggle, 
+												   Reset,
+												   SubmitWildCardSize,
+												   SubmitDeckSize,
+												   SubmitColors,
+												   GenerateLog};
+	
+	/**
+	 * Mouse over events
+	 */
+	Hover 					Hover 				= new Hover(Buttons);
 	
 	
 	//FINALS
 	/**
 	 * A list of all aceptable colors in the settings
 	 */
-	static final String[] 	ACCEPTEDCOLORS = {"Red",
-											  "Blue", 
-											  "Green", 
-											  "Yellow", 
-											  "Magenta", 
-											  "Cyan", 
-											  "Orange",
-											  "Grey"};		
+	static final String[] 	ACCEPTEDCOLORS 		= {"Red",
+												   "Blue", 
+												   "Green", 
+												   "Yellow", 
+												   "Magenta", 
+												   "Cyan", 
+												   "Orange",
+												   "Grey"};		
 	
 	/**
 	 * Holds the 4 colors of the cards in the game
 	 */
-	public static String[] ColorsBackup = new String[4];
+	public static String[]  ColorsBackup 		= new String[4];
 	
 
 	/**
@@ -192,7 +195,7 @@ public class Settings extends JFrame
 		Panel.add(ColorBackground);
 		//Sets up the buttons
 		this.setLayout(null);
-		Setup.Button(Sfx, 					0, 	 25,  100, 60,  	Panel);
+		Setup.Button(SfxToggle, 					0, 	 25,  100, 60,  	Panel);
 		Setup.Button(Reset, 				0, 	 440, 150, 60, 		Panel);
 		Setup.Button(SubmitWildCardSize, 	105, 65,  135, 20,  	Panel);
 		Setup.Button(SubmitDeckSize, 		245, 65,  135, 20, 		Panel);
@@ -217,18 +220,18 @@ public class Settings extends JFrame
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
 			MainGameLoop.Settings[3] = "false";
-			Sfx.setText("SFX/OFF");
+			SfxToggle.setText("SFX/OFF");
 			System.out.println("Sfx are now off");
-			MainGameLoop.Frame.ClipMusic.close();
-			MainGameLoop.Frame.ClipMusic.stop();
-			MainGameLoop.Frame.ClipButton.close();
-			MainGameLoop.Frame.ClipButton.stop();
+			MainGameLoop.Frame.MusicClip.close();
+			MainGameLoop.Frame.MusicClip.stop();
+			MainGameLoop.Frame.ButtonClip.close();
+			MainGameLoop.Frame.ButtonClip.stop();
 		}
 		else if(MainGameLoop.Settings[3].equals("false"))
 		{
-			MainGameLoop.Settings[3] = "true";
-			Sfx.setText("SFX/ON");
-			System.out.println("Sfx are now on");
+			MainGameLoop.Settings[3] =  "true";
+			SfxToggle.setText(			"SFX/ON");
+			System.out.println(			"Sfx are now on");
 			MainGameLoop.Frame.SetSfx();
 		}
 	}
@@ -250,6 +253,8 @@ public class Settings extends JFrame
 		{
 			DeckSizeArray[i] = Integer.toString(i);
 		}
+		
+		//Dropdowns
 		DeckSizeCombo = new JComboBox<String>(DeckSizeArray);
 		String[] AllowedWildCardDraw = {"1","2","3","4","5","6","7","8","9"};
 		WildCardDrawCombo = new JComboBox<String>(AllowedWildCardDraw);
@@ -257,12 +262,12 @@ public class Settings extends JFrame
 		//Sets up the sfx 
 		if(MainGameLoop.Settings[3].equals("true"))
 		{
-			Sfx.setText("SFX/ON");
+			SfxToggle.setText("SFX/ON");
 			System.out.println("Sfx are now on");
 		}
 		else
 		{
-			Sfx.setText("SFX/OFF");
+			SfxToggle.setText("SFX/OFF");
 			System.out.println("Sfx are now off");
 		}
 	}
@@ -278,17 +283,14 @@ public class Settings extends JFrame
 		this.setIconImage(						img.getImage());
 		this.setTitle(							"Settings");
 		this.setDefaultCloseOperation(			JFrame.DISPOSE_ON_CLOSE);
-		
-		
 		Panel.setPreferredSize(					new Dimension(500, 500));
 		Panel.setLayout(					  	null);
 		this.add(								Panel);
 		Panel.setVisible(						true);
-		
-		this.pack();
 		this.setLocationRelativeTo(				null);
 		this.setAlwaysOnTop(					true);
 		this.setName(							"Settings");
+		this.pack();
 	}
 	
 	/**
@@ -303,8 +305,6 @@ public class Settings extends JFrame
 			try
 			{
 				Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString());
-				
-				
 				if(Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString()) > 9 ||
 						Integer.parseInt(WildCardDrawCombo.getSelectedItem().toString()) < 1)
 				{
@@ -314,12 +314,10 @@ public class Settings extends JFrame
 				else
 				{
 					MainGameLoop.Settings[1] = WildCardDrawCombo.getSelectedItem().toString();
-				
-					
 				}
 				return true;
 			}
-			catch(Exception e1)
+			catch(Exception e)
 			{
 				JOptionPane.showMessageDialog(this, "Please enter a number");
 				WildCardDrawCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[1]) - 1);
@@ -344,7 +342,7 @@ public class Settings extends JFrame
 				}
 				return true;
 			}
-			catch(Exception e1)
+			catch(Exception e)
 			{
 				JOptionPane.showMessageDialog(this, "Please enter a number");
 				DeckSizeCombo.setSelectedIndex(Integer.parseInt(MainGameLoop.Settings[2]) - 1);
@@ -364,7 +362,7 @@ public class Settings extends JFrame
 	 */
 	public void SaveSettings()
 	{
-		String FilePath = FileManager.Home + 
+		String SettingsPath = FileManager.Home + 
 									"/Settings" + 
 									FileManager.FILEEXTENTION;
 		
@@ -377,9 +375,9 @@ public class Settings extends JFrame
 		
 		try
 	    {
-	    	FileWriter myWriter = new FileWriter(FilePath);
-		    myWriter.write(Settings);
-		    myWriter.close();
+	    	FileWriter SettingsWriter = new FileWriter(SettingsPath);
+		    SettingsWriter.write(Settings);
+		    SettingsWriter.close();
 		    System.out.println("Successfully wrote to the file.");		     
 	    }
 	    catch (IOException e)
@@ -401,15 +399,15 @@ public class Settings extends JFrame
 	public void SetComboBoxes()
 	{
 		@SuppressWarnings("rawtypes")
-		JComboBox[] boxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
+		JComboBox[] ComboBoxes = {Color1Combo, Color2Combo, Color3Combo, Color4Combo};
 		
-		for(int i = 0; i < boxes.length; i++)
+		for(int i = 0; i < ComboBoxes.length; i++)
 		{
 			for(int j = 0; j < ACCEPTEDCOLORS.length; j++)
 			{
 				if(ColorsBackup[i].equals(ACCEPTEDCOLORS[j]))
 				{
-					boxes[i].setSelectedIndex(j);
+					ComboBoxes[i].setSelectedIndex(j);
 				}
 			}
 		}

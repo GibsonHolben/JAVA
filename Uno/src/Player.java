@@ -31,18 +31,18 @@ public class Player
 	 * hand match the top card in the main deck
 	 * @return true if the cards match, false if they do not
 	 */
-	public boolean CardMatch(int i)
+	public boolean CardMatch(int index)
 	{
-		if(MyDeck.Cards.get(i).SpecialEffect.contains("W"))
+		if(MyDeck.Cards.get(index).SpecialEffect.contains("W"))
 		{
 			return true;
 		}
-		else if(MainGameLoop.MainDeck.Cards.get(i).numberValue != 0)
+		else if(MainGameLoop.MainDeck.Cards.get(index).numberValue != 0)
 		{
-			if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
-					MyDeck.Cards.get(i).numberValue == 
+			if(MyDeck.Cards.get(index).ColorValue.equals(MainGameLoop.CurentColor) || 
+					MyDeck.Cards.get(index).numberValue == 
 					MainGameLoop.MainDeck.Cards.get(0).numberValue||
-					MyDeck.Cards.get(i).ColorValue.equals("Black"))
+					MyDeck.Cards.get(index).ColorValue.equals("Black"))
 			{
 				return true;
 			}
@@ -51,8 +51,8 @@ public class Player
 				return false;
 			}
 		}
-		else if(MyDeck.Cards.get(i).ColorValue.equals(MainGameLoop.CurentColor) || 
-				MyDeck.Cards.get(i).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect))
+		else if(MyDeck.Cards.get(index).ColorValue.equals(MainGameLoop.CurentColor) || 
+				MyDeck.Cards.get(index).SpecialEffect.equals(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect))
 		{	
 			return true;	
 		}
@@ -68,7 +68,7 @@ public class Player
 	 * Caused the player to draw the amount of cards specified
 	 * @param toDraw the amount of cards to draw
 	 */
-	public void DrawCard(int toDraw)
+	public void PullCard(int toDraw)
 	{
 		if(MainGameLoop.MainDeck.Cards.size() > 1)
 		{
@@ -85,7 +85,6 @@ public class Player
 				{
 					System.out.println("MainDeck is at 1, cannot pull more cards");
 				}
-				
 			}
 		}
 		else
@@ -125,6 +124,7 @@ public class Player
 				//Checks the win condition
 				if(MyDeck.Cards.size() < 1)
 				{
+					//Ends the game if condtion is met
 					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
 					System.out.println("Game over");
 					System.out.println(Name + " Wins");
@@ -158,7 +158,7 @@ public class Player
 	{
 		Visuals.UpdateGraphicsFlip();
 		Visuals.UpdateGraphicsPlayer();
-		DrawCard(1);
+		PullCard(1);
 		MainGameLoop.NextPlayer();
 	}
 

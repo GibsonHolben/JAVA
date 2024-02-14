@@ -8,10 +8,11 @@ import java.util.Scanner;
  */
 public class MainGameLoop
 {
+	//MAKE WILD CARD IMAGE DRAW WITH ACTIVE COLORS*********************************************************************
 	
 	/**The current color of the main deck
 	 * Default = blank*/
-	public static String 			CurentColor = "";
+	public static String 			CurentColor 	= "";
 	
 	/**The player that is playing*/
 	public static Player 			CurentPlayer;
@@ -27,11 +28,11 @@ public class MainGameLoop
 	 * isthe game started
 	 * default = false
 	 */
-	public static boolean 			isGameStarted = false;
+	public static boolean 			isGameStarted 	= false;
 	
 	/**Is the game running?
 	 * Default = true*/
-	public static boolean 			isRunning = true;
+	public static boolean 			isRunning 		= true;
 	
 	/**The main deck of the game*/
 	public static Deck 				MainDeck;
@@ -89,30 +90,28 @@ public class MainGameLoop
 		//Main game loop
 		while(isRunning)
 		{
-			if(Frame.Panel.doneOnce)
+			//Sets the frame visible 
+			Frame.setVisible(true);
+			
+			System.out.println("Please enter a command");
+			String Command = DebugScanner.next();
+			
+			switch(Command)
 			{
-				//Sets the frame visible 
-				Frame.setVisible(true);
-				
-				System.out.println("Please enter a command");
-				String Command = DebugScanner.next();
-				
-				switch(Command)
-				{
-					case "Log":
-						FileManager.GenerateLogs();
+				case "Log":
+					FileManager.GenerateLogs();
 					break;
-					case "cc":
-						System.out.println(MainDeck.Cards.get(0).toString());
+				case "cc":
+					System.out.println(MainDeck.Cards.get(0).toString());
 					break;
-					case "break":
-						System.exit(0);
+				case "break":
+					System.exit(0);
 					break;
-					default: 
-						System.out.println("Please enter a command");
+				default: 
+					System.out.println("Please enter a command");
 					break;
-				}
-			}
+			}	
+			
 			
 		}
 		

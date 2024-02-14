@@ -41,7 +41,7 @@ public class EventHandler implements ActionListener
 						{
 							MainGameLoop.Frame.CardButtons[i].removeActionListener(this);
 						}
-						catch(Exception e2)
+						catch(Exception exception)
 						{
 						}
 						
@@ -52,9 +52,9 @@ public class EventHandler implements ActionListener
 					MainGameLoop.isRunning = true;
 					MainGameLoop.Frame.Panel.doneOnce = false;
 				}
-				catch(Exception e2)
+				catch(Exception exception)
 				{
-					e2.printStackTrace();
+					exception.printStackTrace();
 				}
 			
 			}
@@ -72,8 +72,9 @@ public class EventHandler implements ActionListener
 							MainGameLoop.CurentPlayer.Play(i);
 							
 						}
-						catch(Exception e2)
+						catch(Exception exception)
 						{
+							System.out.println("No card to click");
 						}
 					}
 					else
@@ -84,8 +85,9 @@ public class EventHandler implements ActionListener
 							MainGameLoop.CurentPlayer.Play(i + MainGameLoop.CurentPlayer.MyDeck.Cards.size() - 9 - 1);
 							
 						}
-						catch(Exception e2)
+						catch(Exception exception)
 						{
+							System.out.println("No card to click");
 						}
 					}
 					
@@ -222,10 +224,10 @@ public class EventHandler implements ActionListener
 				Settings = new Settings();
 			}
 		}
-		catch(Exception e3)
+		catch(Exception error)
 		{
 			System.out.println("MyFrame Button");
-			e3.printStackTrace();
+			error.printStackTrace();
 		}
 
 
@@ -239,12 +241,12 @@ public class EventHandler implements ActionListener
 				if(e.getSource().equals(Settings.Reset))
 				{
 					JOptionPane.showMessageDialog(Settings,"Settings will be overwriten, please restart the game");
-					Setup.fixColors();
+					Setup.FixColors();
 					
 				}
 				
 				//SFX settings toggle
-				if(e.getSource().equals(Settings.Sfx))
+				if(e.getSource().equals(Settings.SfxToggle))
 				{
 					Settings.ChangeSfx();
 					Settings.SaveSettings();
@@ -331,7 +333,7 @@ public class EventHandler implements ActionListener
 				Settings.doneOnce = true;
 			}
 		}
-		catch(Exception e2)
+		catch(Exception exception)
 		{
 		}
 		

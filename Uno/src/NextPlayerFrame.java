@@ -10,26 +10,26 @@ public class NextPlayerFrame extends JFrame implements ActionListener
     /**
      * JButton that is used to start a players turn
      */
-    JButton 	   Start = new JButton(MainGameLoop.CurentPlayer.Name + "'s Turn");
+    JButton Start = new JButton(MainGameLoop.CurentPlayer.Name + "'s Turn");
 
     /**
      * The JPanel used to hold the buttons
      */
-    JPanel panel = new JPanel();
+    JPanel  Panel = new JPanel();
 
     /**
      * Sets up the frame
      */
     NextPlayerFrame()
     {
-        panel.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        Panel.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         	
         //Setup the image icon
-        URL url = MyPannel.class.getResource("img/Uno.png");
-        ImageIcon img = new ImageIcon(url);
-        this.setIconImage(img.getImage());
+        URL Url = MyPannel.class.getResource("img/Uno.png");
+        ImageIcon Img = new ImageIcon(Url);
+        this.setIconImage(Img.getImage());
         
-        this.setTitle("Click");
+        this.setTitle("NextPlayerIntermisonScreen");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         this.setUndecorated(		  true);
@@ -37,8 +37,8 @@ public class NextPlayerFrame extends JFrame implements ActionListener
         this.setAlwaysOnTop(		  true);
         this.setResizable(            false);
         this.setName(				  "UNO");
-        this.add(                     panel);
-        panel.setLayout(              null);
+        this.add(                     Panel);
+        Panel.setLayout(              null);
 
         //Button setup
         Setup.Button
@@ -48,11 +48,11 @@ public class NextPlayerFrame extends JFrame implements ActionListener
         	0, 
         	1900, 
         	1100, 
-        	panel
+        	Panel
         );	
         
         Start.setOpaque(              false);
-        panel.setBackground(          Color.black);
+        Panel.setBackground(          Color.black);
         Start.setForeground(          Color.white);
         Start.setFont
         (
@@ -66,7 +66,11 @@ public class NextPlayerFrame extends JFrame implements ActionListener
         Start.setBorderPainted(       false);
         
         //Creates a label to know how to start next round
-        panel.add(Setup.CreateLabel(900, 700, 100, 100, "(Click to play)"));
+        Panel.add(Setup.CreateLabel(900, 
+					        		700, 
+					        		100, 
+					        		100, 
+					        		"(Click to play)"));
         
         //Packing the frame
         this.requestFocus();
