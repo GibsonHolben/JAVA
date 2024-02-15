@@ -94,25 +94,25 @@ public class MyFrame extends JFrame
 	//ColorChanges
 	/**
 	 * Changes the color of the main deck to red
-	 * Text = Settings.ColorsBackup[0])
+	 * Text = Settings.ColorsBackup[0]
 	 */
 	static JButton 			Red 				= new JButton(Settings.ColorsBackup[0]);
 	
 	/**
 	 * Changes the color of the main deck to blue
-	 * Text = Settings.ColorsBackup[1])
+	 * Text = Settings.ColorsBackup[1]
 	 */
 	static JButton 			Blue 				= new JButton(Settings.ColorsBackup[1]);
 	
 	/**
 	 * Changes the color of the main deck to green
-	 * Text = Settings.ColorsBackup[2])
+	 * Text = Settings.ColorsBackup[2]
 	 */
 	static JButton 			Green 				= new JButton(Settings.ColorsBackup[2]);
 	
 	/**
 	 * Changes the color of the main deck to yellow
-	 * Text = Settings.ColorsBackup[3])
+	 * Text = Settings.ColorsBackup[3]
 	 */
 	static JButton 			Yellow 				= new JButton(Settings.ColorsBackup[3]);
 	
@@ -174,7 +174,7 @@ public class MyFrame extends JFrame
 	
 	//Events*************************************
 	/**
-	 * Handels the button click events
+	 * Handles the button click events
 	 */
 	public EventHandler 	Handler 			= new EventHandler();
 	

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 /**
  * Used to handel the action events (buttons)
@@ -23,10 +24,18 @@ public class EventHandler implements ActionListener
 		try
 		{
 			//Plays the click sfx if settings allow
-			if(MainGameLoop.Settings[3].equals("true"))
+			try
 			{
-				MainGameLoop.Frame.PlayClick();
+				if(MainGameLoop.Settings[3].equals("true"))
+				{
+					MainGameLoop.Frame.PlayClick();
+				}
 			}
+			catch (Exception e2)
+			{
+				
+			}
+			
 			
 			//Resets the game and plays again
 			if(e.getSource().equals(MainGameLoop.Frame.Reset))
