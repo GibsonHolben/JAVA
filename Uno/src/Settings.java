@@ -242,7 +242,8 @@ public class Settings extends JFrame
 	public void SettupLoops()
 	{
 		//Adds the action listeners
-        for (JButton button : Buttons) {
+        for (JButton button : Buttons) 
+        {
             button.addActionListener(MainGameLoop.Frame.Handler);
             button.addMouseListener(Hover);
         }

@@ -244,7 +244,8 @@ public class MainGameLoop
 	public static String PrintSettings()
 	{
 		String ret = "";
-        for (String setting : Settings) {
+        for (String setting : Settings)
+        {
             ret = ret + setting + "\n";
         }
 		return ret;

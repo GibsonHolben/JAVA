@@ -11,7 +11,7 @@ public class Visuals
 	 * The color of the red card
 	 * Default = 197, 34, 55
 	 */
-	public final static Color RED 		= new Color(197, 34, 55);
+	public final static Color RED 		= new Color(173, 43, 43);
 	
 	/**
 	 * The color of the blue card
@@ -96,8 +96,7 @@ public class Visuals
 		}
 
 	}
-	
-	
+
 	/**
 	 * Updates the graphics for the players hand
 	 */

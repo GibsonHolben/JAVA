@@ -30,8 +30,10 @@ public class Hover extends MouseAdapter
 	 */
 	public void mouseEntered(MouseEvent e)
 	{
-        for (JButton button : Buttons) {
-            if (e.getSource().equals(button)) {
+        for (JButton button : Buttons) 
+        {
+            if (e.getSource().equals(button))
+            {
                 button.setBackground(new Color(200, 200, 200));
             }
         }
@@ -43,8 +45,10 @@ public class Hover extends MouseAdapter
 	 */
 	public void mouseExited(MouseEvent e) 
 	{
-        for (JButton button : Buttons) {
-            if (e.getSource().equals(button)) {
+        for (JButton button : Buttons) 
+        {
+            if (e.getSource().equals(button))
+            {
                 button.setBackground(new Color(255, 255, 255));
                 MainGameLoop.Frame.setupPlayeBttonColors();
             }

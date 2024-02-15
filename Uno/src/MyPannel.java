@@ -381,8 +381,8 @@ public class MyPannel extends JPanel
 	 */
 	public String toString()
 	{
-        return MainDeckColor.toString() + "," +
-				MainDeckText + "," +
+        return  MainDeckColor.toString() + "," +
+        		MainDeckText + "," +
 				PlayerDeckColor.toString()  + "," +
 				PlayerDeckText;
 	}
