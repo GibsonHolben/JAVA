@@ -11,9 +11,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
- * Used for the high level graphics such as the Buttons
+ * Used for the high level graphics such as the Buttons and holding all the 
+ * button actions
  * @author CTEHolbenG46
- * @version 13.9.3
+ * @version 13.3.6
  */
 @SuppressWarnings("serial")
 public class MyFrame extends JFrame
