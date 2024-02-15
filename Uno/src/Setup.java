@@ -21,7 +21,7 @@ public class Setup
 	
 	/**
 	 * Sets up the button with x and y cordenants
-	 * @param Button the button to setup
+	 * @param Button the button to set up
 	 * @param x the x cor of the button
 	 * @param y the y cor of the button
 	 * @param w the width of the button
@@ -29,7 +29,8 @@ public class Setup
 	 * @param panel The JPanel that the button is being added to
 	 */
 	public static void Button(JButton Button, 
-								int x, int y, int w, int h, 
+								int x, int y,
+							  	int w, int h,
 								JPanel panel)
 	{	
 		Fonts(							Button, 15);
@@ -44,8 +45,8 @@ public class Setup
 	}
 	
 	/**
-	 * Gets a awt.Color from a String color
-	 * @param color
+	 * Gets an awt.Color from a String color
+	 * @param color the color string that is to be converted
 	 * @return the awt.Color version from a String
 	 */
 	public static Color GetColor(String color)
@@ -81,7 +82,7 @@ public class Setup
 			//Reads the file
 			 File SettingsObj = new File(SettingsFilePath);
 		     Scanner SetingsReader = new Scanner(SettingsObj);
-		     while (SetingsReader.hasNextLine()) 
+		     while (SetingsReader.hasNextLine())
 		     {
 		    	 //Splits the colors
 		    	 SettingsData = SetingsReader.nextLine();
@@ -96,7 +97,7 @@ public class Setup
 		    	 if(Integer.parseInt( MainGameLoop.Settings[1]) > 9 || 
 		    			 Integer.parseInt( MainGameLoop.Settings[1]) < 1)
 		    	 {
-		    		 SetingsReader.close();   
+		    		 SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Wild card value must"
 		    				 + " be less than 10... Refactoring...");
@@ -106,7 +107,7 @@ public class Setup
 		    	 if(Integer.parseInt( MainGameLoop.Settings[2]) > 99 || 
 		    			 Integer.parseInt( MainGameLoop.Settings[2]) < 1)
 		    	 {
-		    		 SetingsReader.close();   
+		    		 SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Card count must be "
 		    				 + "between 1 and 100... Refactoring...");
@@ -118,38 +119,34 @@ public class Setup
 		    	 if(colors.length > 4)
 		    	 {
 		    		
-		    		SetingsReader.close();   
+		    		SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
 		    				 "Invalid Settings... Only four colors are"
-		    				 + "supported Refactoring...");
+		    				 + "supported... Refactoring...");
 		    		 Setup.FixColors();
 		    			
 		    	 }
 		    	 else
 		    	 {
-		    		 for(int i = 0; i < colors.length; i++)
-		    		 {
-		    			if( colors[i].equals(Settings.ACCEPTEDCOLORS[0])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[1])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[2])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[3])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[4])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[5])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[6])||
-		    				colors[i].equals(Settings.ACCEPTEDCOLORS[7]))
-		    			{
-		    				System.out.println("Corect: " + colors[i]);
-		    			}
-		    			else
-		    			{
-		    				SetingsReader.close();   
-		    				JOptionPane.showMessageDialog( MainGameLoop.Frame,
-		    						"Invalid Settings... Supported colors are: "
-		    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
-		    						+ ", Cyan, and Grey .. Refactoring...");
-		    				 Setup.FixColors();
-		    			}
-		    		 }
+                     for (String color : colors) {
+                         if (color.equals(Settings.ACCEPTEDCOLORS[0]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[1]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[2]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[3]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[4]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[5]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[6]) ||
+                                 color.equals(Settings.ACCEPTEDCOLORS[7])) {
+                             System.out.println("Corect: " + color);
+                         } else {
+                             SetingsReader.close();
+                             JOptionPane.showMessageDialog(MainGameLoop.Frame,
+                                     "Invalid Settings... Supported colors are: "
+                                             + "Red, Blue, Green, Yellow, Orange, Magenta, "
+                                             + ", Cyan, and Grey .. Refactoring...");
+                             Setup.FixColors();
+                         }
+                     }
 		    		 
 		    		 if(MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[0])||
 			    		MainGameLoop.Settings[4].equals(Settings.ACCEPTEDCOLORS[1])||
@@ -164,7 +161,7 @@ public class Setup
 		    		}
 		    		else
 		    		{
-		    			SetingsReader.close();   
+		    			SetingsReader.close();
 		    			JOptionPane.showMessageDialog( MainGameLoop.Frame,
 	    						"Invalid Settings... Supported colors are: "
 	    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
@@ -175,7 +172,7 @@ public class Setup
 		    	 }
 		    	 Settings.ColorsBackup = colors;
 		     }
-		     SetingsReader.close();  
+		     SetingsReader.close();
 		  
 		   
 		} 
@@ -196,24 +193,24 @@ public class Setup
 		//Creates the basic cards
 		for(int k = 0; k < 2; k++)
 		{
-			for(int i = 0; i < colors.length; i++)
+            for (String color : colors)
 			{
-				for(int j = 0; j < Integer.parseInt( MainGameLoop.Settings[2]); j++)
+                for (int j = 0; j < Integer.parseInt(MainGameLoop.Settings[2]); j++)
 				{
-					Cards.add(new Card(j, colors[i]));
-				}
-			}
+                    Cards.add(new Card(j, color));
+                }
+            }
 		}
 		
 		//Creates the special cards
 		String[] specials = { "+2", "S"};
-		for(int i = 0; i < colors.length; i++)
+        for (String color : colors)
 		{
-			for(int j = 0; j < 2; j++)
+            for (int j = 0; j < 2; j++)
 			{
-				Cards.add(new Card(colors[i], specials[j]));
-			}
-		}
+                Cards.add(new Card(color, specials[j]));
+            }
+        }
 		
 		//Creates wild cards
 		Cards.add(new Card("Black", "W"));
@@ -297,7 +294,7 @@ public class Setup
 	public static void initGame()
 	{
 		//Clears all players from the game on the second initilization
-		if(MainGameLoop.Players.size() > 0)
+		if(!MainGameLoop.Players.isEmpty())
 		{
 			MainGameLoop.Players.clear();
 		}

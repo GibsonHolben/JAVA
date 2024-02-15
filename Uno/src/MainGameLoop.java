@@ -92,30 +92,34 @@ public class MainGameLoop
 		{
 			//Sets the frame visible 
 			Frame.setVisible(true);
-			
-			System.out.println("Please enter a command");
-			String Command = DebugScanner.next();
-			
-			switch(Command)
+
+			if (!Frame.Panel.doneOnce)
 			{
-				case "Log":
-					FileManager.GenerateLogs();
-					break;
-				case "cc":
-					System.out.println(MainDeck.Cards.get(0).toString());
-					break;
-				case "break":
-					System.exit(0);
-					break;
-				default: 
-					System.out.println("Please enter a command");
-					break;
-			}	
-			
-			
+				System.out.println("Please enter a command");
+				String Command = DebugScanner.next();
+
+				switch (Command)
+				{
+					case "log":
+						FileManager.GenerateLogs();
+						break;
+					case "cc":
+						System.out.println(MainDeck.Cards.get(0).toString());
+						break;
+					case "break":
+						System.exit(0);
+						break;
+					case "dump":
+						System.out.println("[MAINDECK]**************************************\n" + MainGameLoop.MainDeck.PrintDeck(true) +
+								MainGameLoop.PrintPlayerDecks() + "[SETTINGS]**************************************\n" + MainGameLoop.PrintSettings());
+						break;
+					default:
+						System.out.println("Please enter a command");
+						break;
+				}
+				DebugScanner.close();
+			}
 		}
-		
-		DebugScanner.close();
 	}
 	
 	/**
@@ -182,7 +186,7 @@ public class MainGameLoop
 		boolean doRun = true;
 		for(int i = 0; i < Players.size(); i++)
 		{
-			if(Players.get(i).MyDeck.Cards.size() < 1)
+			if(Players.get(i).MyDeck.Cards.isEmpty())
 			{
 				doRun = false;
 				MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
@@ -240,10 +244,9 @@ public class MainGameLoop
 	public static String PrintSettings()
 	{
 		String ret = "";
-		for(int i = 0; i < Settings.length; i++)
-		{
-			ret = ret + Settings[i] + "\n";
-		}
+        for (String setting : Settings) {
+            ret = ret + setting + "\n";
+        }
 		return ret;
 	}
 	

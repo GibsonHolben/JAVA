@@ -262,7 +262,15 @@ public class FileManager
 			File Log = new File(LogPath);
 			if(!Log.exists())
 			{
-				Log.createNewFile();
+				if(Log.createNewFile())
+				{
+					System.out.println("Log Folder has been created");
+				}
+				else
+				{
+					System.out.println("Log folder could not be created");
+				}
+
 			}
 			FileWriter LogWriter;
 			LogWriter = new FileWriter(LogPath);
@@ -360,7 +368,6 @@ public class FileManager
 	 */
 	public String toString()
 	{
-		String s = Home + "," + FILEEXTENTION + "," + DEFAULTSETTINGS;
-		return s;
+        return Home + "," + FILEEXTENTION + "," + DEFAULTSETTINGS;
 	}
 }

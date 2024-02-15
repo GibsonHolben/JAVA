@@ -242,11 +242,10 @@ public class Settings extends JFrame
 	public void SettupLoops()
 	{
 		//Adds the action listeners
-		for(int i = 0; i < Buttons.length; i++) 
-		{
-			Buttons[i].addActionListener(MainGameLoop.Frame.Handler);
-			Buttons[i].addMouseListener(Hover);
-		}
+        for (JButton button : Buttons) {
+            button.addActionListener(MainGameLoop.Frame.Handler);
+            button.addMouseListener(Hover);
+        }
 				
 		//Sets up the drop-down menu
 		for(int i = 0; i < DeckSizeArray.length; i++)

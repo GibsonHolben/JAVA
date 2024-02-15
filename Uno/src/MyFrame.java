@@ -193,7 +193,7 @@ public class MyFrame extends JFrame
 	 */
 	MyFrame(Color newColor, String newText)
 	{ 		
-		//Setup the sfx
+		//Set up the sfx
 		System.out.println(MainGameLoop.Settings[3]);
 		SetSfx();
 		
@@ -285,10 +285,9 @@ public class MyFrame extends JFrame
 	 */
 	public void hideButtons()
 	{
-		for(int i = 0; i < Buttons.length; i++)
-		{
-			Setup.Button(Buttons[i], -1000, -1000, 0, 0, Panel);
-		}
+        for (JButton button : Buttons) {
+            Setup.Button(button, -1000, -1000, 0, 0, Panel);
+        }
 	}
 	
 	/**
@@ -380,7 +379,7 @@ public class MyFrame extends JFrame
 		{
 			for(int i = 0; i < MainGameLoop.Players.size(); i++)
 			{
-				if(MainGameLoop.Players.get(i).MyDeck.Cards.size() < 1)
+				if(MainGameLoop.Players.get(i).MyDeck.Cards.isEmpty())
 				{
 					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
 					System.out.println("Game over");
@@ -411,11 +410,10 @@ public class MyFrame extends JFrame
 			Setup.Button(FlipCurentHand, 1040, 900, 200, 120, Panel);
 
 
-			for(int i = 0; i < Buttons.length; i++)
-			{
-				Buttons[i].setFocusPainted(false);
-				Buttons[i].setBackground(Color.white);
-			}
+            for (JButton button : Buttons) {
+                button.setFocusPainted(false);
+                button.setBackground(Color.white);
+            }
 
 			Play.setOpaque(false);
 			Play.setContentAreaFilled(false);
@@ -491,19 +489,11 @@ public class MyFrame extends JFrame
 			MusicClip = AudioSystem.getClip();
 			MusicClip.open(MusicStream);
 		} 
-		catch (UnsupportedAudioFileException e) 
+		catch (UnsupportedAudioFileException | LineUnavailableException | IOException e)
 		{
 			e.printStackTrace();
 		}
-		catch ( LineUnavailableException e)
-		{
-			e.printStackTrace();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-		LoopMusic();
+        LoopMusic();
 	}
 	
 	/**

@@ -39,8 +39,8 @@ public class Player
 		}
 		else if(MainGameLoop.MainDeck.Cards.get(index).numberValue != 0)
 		{
-			if(MyDeck.Cards.get(index).ColorValue.equals(MainGameLoop.CurentColor) || 
-					MyDeck.Cards.get(index).numberValue == 
+			if(MyDeck.Cards.get(index).ColorValue.equals(MainGameLoop.CurentColor) ||
+					MyDeck.Cards.get(index).numberValue ==
 					MainGameLoop.MainDeck.Cards.get(0).numberValue||
 					MyDeck.Cards.get(index).ColorValue.equals("Black"))
 			{
@@ -122,7 +122,7 @@ public class Player
 				MyDeck.Cards.remove(index);
 
 				//Checks the win condition
-				if(MyDeck.Cards.size() < 1)
+				if(MyDeck.Cards.isEmpty())
 				{
 					//Ends the game if condtion is met
 					MainGameLoop.CurentWinPlayer = MainGameLoop.CurentPlayer;
@@ -169,8 +169,7 @@ public class Player
 	 */
 	public String toString()
 	{
-		String s = Name + "," + curentCardIndex + "," + MyDeck.toString();
-		return s;
+        return Name + "," + curentCardIndex + "," + MyDeck.toString();
  	}
 
 }

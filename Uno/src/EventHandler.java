@@ -64,7 +64,7 @@ public class EventHandler implements ActionListener
 			{
 				if(e.getSource().equals(MainGameLoop.Frame.CardButtons[i]))
 				{
-					if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() < 9)
+					if(MainGameLoop.CurentPlayer.MyDeck.Cards.size() <= 9)
 					{
 						try
 						{
@@ -333,7 +333,7 @@ public class EventHandler implements ActionListener
 				Settings.doneOnce = true;
 			}
 		}
-		catch(Exception exception)
+		catch(Exception ignored)
 		{
 		}
 		

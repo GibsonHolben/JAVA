@@ -25,19 +25,19 @@ public class Deck
 	/**Prints the contents of the deck to the console*/
 	public void PrintDeck()
 	{
-		for(int i = 0; i < Cards.size(); i++)
+        for (Card card : Cards)
 		{
-			if((Cards.get(i).SpecialEffect.equals("")))
+            if ((card.SpecialEffect.isEmpty()))
 			{
-				System.out.println(Cards.get(i).ColorValue + " " + 
-									Cards.get(i).numberValue);
-			}
-			else 
+                System.out.println(card.ColorValue + " " +
+                        card.numberValue);
+            }
+			else
 			{
-				System.out.println(Cards.get(i).ColorValue + " " + 
-									Cards.get(i).SpecialEffect);
-			}
-		}
+                System.out.println(card.ColorValue + " " +
+                        card.SpecialEffect);
+            }
+        }
 	}
 	
 	/**Returns the deck as a string
@@ -47,7 +47,7 @@ public class Deck
 		String ret = "";
 		for(int i = 0; i < Cards.size(); i++)
 		{
-			if((Cards.get(i).SpecialEffect.equals("")))
+			if((Cards.get(i).SpecialEffect.isEmpty()))
 			{
 				ret = ret + Cards.get(i).ColorValue + " " + 
 									Cards.get(i).numberValue + "\n";
@@ -84,7 +84,6 @@ public class Deck
 	 */
 	public String toString()
 	{
-		String toreturn = Cards.toString();
-		return toreturn;
+        return Cards.toString();
 	}
 }

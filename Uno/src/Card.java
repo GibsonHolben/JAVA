@@ -39,14 +39,14 @@ public class Card
 	
 	
 	/**
-	 * creates a card with the passe in values 
-	 * and speial effects
+	 * creates a card with the passed in values
+	 * and special effects
 	 * @param NewColor the color of the card
-	 * @param Special the cards special effect
+	 * @param SpecialEffect the cards special effect
 	 */
-	Card(String NewColor, String Special)
+	Card(String NewColor, String SpecialEffect)
 	{
-		SpecialEffect = Special;
+		this.SpecialEffect = SpecialEffect;
 		ColorValue 	  = NewColor;
 	}
 	
@@ -58,14 +58,12 @@ public class Card
 	{
 		if(SpecialEffect.isEmpty())
 		{
-			String ToString = numberValue + "," + ColorValue;
-			return ToString;
+            return numberValue + "," + ColorValue;
 		}
 		else
 		{
-			String ToString = numberValue + "," + ColorValue + 
+            return numberValue + "," + ColorValue +
 					"," + SpecialEffect;
-			return ToString;
 		}
 	}
 	
