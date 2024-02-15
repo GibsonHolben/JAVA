@@ -4,14 +4,13 @@ import java.awt.event.ActionListener;
 
 /**
  * Used to handel the action events (buttons)
- * for both the settings and main game window
  * @author CTEHolbenG46
- * @version 0.1.9.2
+ * @version 0.1.7
  */
 public class EventHandler implements ActionListener
 {
 	/**
-	 * A reference to the settings
+	 * A referance to the settings 
 	 */
 	public Settings Settings;
 

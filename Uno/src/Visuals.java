@@ -1,9 +1,9 @@
 import java.awt.Color;
 
 /**
- * Handles the graphical updates of the game and holds the colors
+ * Handels the graphical updates of the game
  * @author CTEHolbenG46
- * @version 0.1.8
+ * @version 0.0.3
  */
 public class Visuals
 {
@@ -106,17 +106,16 @@ public class Visuals
 		{
 			if(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).SpecialEffect.isEmpty())
 			{
-				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(
-						MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue),
-						Integer.toString(
-								MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).numberValue));
-
+				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(	MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 
+													Integer.toString(
+													MainGameLoop.CurentPlayer.
+													MyDeck.Cards.get(0).numberValue));
 			}
 			else
 			{
-				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(
-								MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue),
-								MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).SpecialEffect);
+				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 	
+													MainGameLoop.CurentPlayer.
+													MyDeck.Cards.get(0).SpecialEffect);
 			}
 		}
 		catch(Exception e)

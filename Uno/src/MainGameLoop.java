@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Controls the whole game and calls other classes as needed
+ * Controls the whole game.
  * @author CTEHolbenG46
- * @version 10.5.9
+ * @version 10.4.2
  */
 public class MainGameLoop
 {
@@ -223,7 +223,7 @@ public class MainGameLoop
 	}
 	/**
 	 * Returns the players decks
-	 * @return the players deck
+	 * @return the players decks
 	 */
 	public static String PrintPlayerDecks()
 	{
