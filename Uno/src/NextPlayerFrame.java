@@ -4,7 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
+
 @SuppressWarnings("serial")
+/**
+ * Shows a clickable screen that is used to separate players turns
+ * @author CTEHolbenG46
+ * @version 0.0.8
+ */
 public class NextPlayerFrame extends JFrame implements ActionListener
 {
     /**
