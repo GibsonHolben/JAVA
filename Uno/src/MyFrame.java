@@ -477,8 +477,8 @@ public class MyFrame extends JFrame
 	public void SetSfx()
 	{
 		//setups the sfx 
-		File ButtonClickFile = new File("src/ButttonClick.wav");
-		File BKGMusicFile = new File("src/Bkg.wav");
+		File ButtonClickFile = new File("src/sfx/ButttonClick.wav");
+		File BKGMusicFile = new File("src/sfx/Bkg.wav");
 		try 
 		{
 			ButtonStream = AudioSystem.getAudioInputStream(ButtonClickFile);

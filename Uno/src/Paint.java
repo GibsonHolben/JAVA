@@ -80,7 +80,8 @@ public class Paint
         {
             G2D.setPaint(Color.white);
             CardWildDecals(x,y, true, G2D);
-            Image img = new ImageIcon("src/img/Uno4.png").getImage();
+            URL Url = MyPannel.class.getResource("img/Uno4.png");
+            Image img = new ImageIcon(Url).getImage();
             G2D.drawImage(img, x + -2, y + 20, null);
             G2D.setPaint(Color.black);
             G2D.setFont(new Font("URW Grotesk", Font.BOLD,
@@ -105,15 +106,16 @@ public class Paint
             switch(Card.SpecialEffect)
             {
                 case "S":
-                    URL url = MyPannel.class.getResource("img/Uno5.png");
-                    Image Uno1 = new ImageIcon(url).getImage();
+                    URL Url = MyPannel.class.getResource("img/Uno5.png");
+                    Image Uno1 = new ImageIcon(Url).getImage();
                     G2D.drawImage(Uno1, x + -2, y + 20, null);
                     G2D.setPaint(Color.white);
                     break;
                 case "+2":
                     G2D.setPaint(Color.white);
-                    Image Uno2 = new ImageIcon("src/img/Uno2.png"
-                    ).getImage();
+                    Url = MyPannel.class.getResource("img/Uno2.png");
+                    Image Uno2 = new ImageIcon(Url ).getImage();
+                   
                     G2D.drawImage(Uno2, x + -2, y + 20, null);
 
                     G2D.setPaint(Color.black);
@@ -123,10 +125,10 @@ public class Paint
                     G2D.drawString(Card.SpecialEffect, x - 1 + 7, y + 25+ 50);
 
                     G2D.setFont(new Font("URW Grotesk", Font.BOLD,
-                            -80));
+                    										-80));
 
                     G2D.setFont(new Font("URW Grotesk", Font.BOLD,
-                            -100));
+                    										-100));
                     G2D.setPaint(Color.black);
                     G2D.drawString(Card.SpecialEffect, x + 200, y + 160+ 155);
                     G2D.setPaint(Color.white);
@@ -135,14 +137,16 @@ public class Paint
                 case "W":
                     CardWildDecals(x,y, false, G2D);
                     G2D.setPaint(Color.white);
-                    Image img = new ImageIcon("src/img/Uno3.png"
-                    ).getImage();
+                    Url = MyPannel.class.getResource("img/Uno3.png");
+                    Image img = new ImageIcon(Url  ).getImage();
+                  
                     G2D.drawImage(img, x + -2, y + 10, null);
                     break;
                 default:
                     G2D.setPaint(Color.white);
-                    Image Uno3 = new ImageIcon("src/img/Uno2.png"
-                    ).getImage();
+                    Url = MyPannel.class.getResource("img/Uno2.png");
+                    Image Uno3 = new ImageIcon(Url).getImage();
+                 
                     G2D.drawImage(Uno3, x + -2, y + 20, null);
 
                     G2D.setPaint(Color.black);
