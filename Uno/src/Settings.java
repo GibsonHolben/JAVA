@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 
 
 /**
+ * The settings menu of the game, used as an interface for the file Uno/Settings.ini
  * @author CTEHolbenG46
- * @version 0.4.2
+ * @version 1.2.5
  */
 
 @SuppressWarnings("serial")

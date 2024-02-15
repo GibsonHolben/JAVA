@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
 /**
- * Used to create the Settings, Players, and instructions
+ * Used to create all the files needed for the game
  * @author CTEHolbenG46
  * @version 2.4.2
  *

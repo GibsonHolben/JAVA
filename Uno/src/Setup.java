@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
 /**
  * Used for setting up the objects and functions
  * @author CTEHolbenG46
- * @version 0.0.7
+ * @version 0.1.4
  */
 public class Setup
 {

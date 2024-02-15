@@ -6,7 +6,7 @@ import javax.swing.JButton;
 /**
  * Used to change the color of the buttons on hover
  * @author CTEHolbenG46
- * @version 0.0.3
+ * @version 0.0.9
  */
 public class Hover extends MouseAdapter
 {

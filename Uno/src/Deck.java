@@ -4,7 +4,7 @@ import java.util.Collections;
 /**
  * A deck of cards and can be shuffled and printed
  * @author CTEHolbenG46
- * @version 0.0.8
+ * @version 0.1.0
  * 
  * A deck that can hold cards
  */

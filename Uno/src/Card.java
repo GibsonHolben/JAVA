@@ -1,9 +1,9 @@
 
 /**
  * A standard UNO card, used when determining
- *  what to do when the card is played
+ * what to do when the card is played as well as holding the data of the card
  * @author CTEHolbenG46
- * @version 0.1.5
+ * @version 0.1.8
  */
 public class Card 
 {	

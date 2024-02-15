@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 
 /**
  * Used for drawing the low level graphics and
- *  controlling the overall look of the game
+ * controlling the overall look of the game
  * @author CTEHolbenG46
- * @version 5.2.9
+ * @version 6.0.0
  */
 
 @SuppressWarnings("serial")
@@ -354,18 +354,37 @@ public class MyPannel extends JPanel
 			//If it is the first call of paint then show the main menu
 			if(!doneOnce)
 			{
-				G2D.setPaint(Color.black);
+				G2D.setPaint(Visuals.BLACK);
 				G2D.fillRect(0, 0, 2000, 1200);
 				G2D.setPaint(Color.white);
 				G2D.setFont(new Font("URW Grotesk", Font.BOLD,300));
 				G2D.drawString("UNO", 675, 600);
+				G2D.setPaint(Color.gray);
 				G2D.setFont(new Font("URW Grotesk", Font.BOLD,40));
 				G2D.drawString("By Gibson Holben", 825, 700);
-				doneOnce = true;
+
+//				URL url = MyPannel.class.getResource("img/MainMenuImg/YellowCard.png");
+//				Image Uno1 = new ImageIcon(url).getImage();
+//				G2D.drawImage(Uno1, 20, 40, null);
+//
+//				url = MyPannel.class.getResource("img/MainMenuImg/RedCard.png");
+//				Uno1 = new ImageIcon(url).getImage();
+//				G2D.drawImage(Uno1, 1550, 50, null);
+//
+//				url = MyPannel.class.getResource("img/MainMenuImg/BlueCard.png");
+//				Uno1 = new ImageIcon(url).getImage();
+//				G2D.drawImage(Uno1, 100, 500, null);
+//
+//				url = MyPannel.class.getResource("img/MainMenuImg/GreenCard.png");
+//				Uno1 = new ImageIcon(url).getImage();
+//				G2D.drawImage(Uno1, 1550, 500, null);
+//				System.out.println("Test");
+
 			}
 		}
 		else
 		{
+
 			G2D.setPaint(Color.black);
 			G2D.fillRect(0,0, 5000, 5000);
 			G2D.setPaint(Color.white);
