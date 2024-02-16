@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="FixColors"/>
+		<item key="selection" value="URL"/>
 		<list key="findhistory">
+			<item value="url"/>
+			<item value="img"/>
 			<item value="fixColors"/>
 			<item value="y"/>
 			<item value="x"/>
@@ -21,8 +23,6 @@
 			<item value="Red"/>
 			<item value="10"/>
 			<item value="answer"/>
-			<item value="ic"/>
-			<item value="ic2"/>
 		</list>
 		<list key="replacehistory">
 			<item value="FixColors"/>
