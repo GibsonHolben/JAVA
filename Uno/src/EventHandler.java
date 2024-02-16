@@ -1,9 +1,6 @@
 import javax.swing.*;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
 /**
  * Used to handel the action events (buttons)
@@ -166,7 +163,7 @@ public class EventHandler implements ActionListener
 				//Start the game
 				if(e.getSource().equals(MainGameLoop.Frame.Start))
 				{
-					Setup.initGame();
+					Setup.InitGame();
 					MainGameLoop.Start();
 					MainGameLoop.Frame.Start.setVisible(true);
 					MainGameLoop.Frame.setVisible(true);

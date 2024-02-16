@@ -80,7 +80,7 @@ public class MainGameLoop
 		Players = new ArrayList<Player>();
 		
 		//Calls the game initilization
-		Setup.initGame();
+		Setup.InitGame();
 		
 		//Sets up the graphics
 		Visuals.SettupGraphics();
@@ -194,7 +194,7 @@ public class MainGameLoop
 				System.out.println( MainGameLoop.Players.get(i).Name + " Wins");
 				MainGameLoop.isRunning = false;
 				Frame.Panel.repaint();
-				Frame.hideButtons();
+				Frame.HideButtons();
 				Setup.Button(Frame.Reset,850,900, 200, 120, Frame.Panel);
 				Frame.Reset.addActionListener(Frame.Handler);
 				Frame.Reset.setVisible(		true);

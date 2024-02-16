@@ -39,12 +39,12 @@ public class MyFrame extends JFrame
 	
 	/**
 	 * A JButton that calls flipTheCurentDeck
-	 * Text = Flip >
+	 * Text = Flip
 	 */
 	public static JButton 	FlipCurentHand 		= new JButton("Flip >");
 	/**
 	 * A JButton that calls flipTheCurentDeck backwards
-	 * Text = < Flip
+	 * Text = Flip
 	 */
 	public static JButton 	FlipCurentHandBack 	= new JButton("< Flip");
 	
@@ -208,7 +208,7 @@ public class MyFrame extends JFrame
 		this.dispose();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		this.setUndecorated(				  true);
-		windowSettup();
+		WindowSettup();
 		
 		//Setups the buttons
 		Setup.Button(SettingsButton, 	10,   980, 200,  40, Panel);
@@ -248,7 +248,7 @@ public class MyFrame extends JFrame
 		P2.setVisible(true);
 		P3.setVisible(true);
 		P4.setVisible(true);
-		setupPlayeBttonColors();
+		SetupPlayeBttonColors();
 		
 		//Sets the frame visible
 		this.setVisible(true);
@@ -283,9 +283,10 @@ public class MyFrame extends JFrame
 	/**
 	 * Hides the buttons on game end
 	 */
-	public void hideButtons()
+	public void HideButtons()
 	{
-        for (JButton button : Buttons) {
+        for (JButton button : Buttons)
+        {
             Setup.Button(button, -1000, -1000, 0, 0, Panel);
         }
 	}
@@ -322,13 +323,13 @@ public class MyFrame extends JFrame
 	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */
-	public void reset(Color newColor, String newText)
+	public void Reset(Color newColor, String newText)
 	{
 		CreateCardButtons();
 		if(MainGameLoop.isRunning)
 		{
 			this.requestFocus();
-			windowSettup();
+			WindowSettup();
 			Panel.repaint();
 			Panel.MainDeckColor = newColor;
 			Panel.MainDeckText = newText;
@@ -350,7 +351,7 @@ public class MyFrame extends JFrame
 			Play.setBorderPainted(false);
 			
 			
-			resetFonts(Play, 10);
+			ResetFonts(Play, 10);
 			this.setVisible(true);
 		}
 
@@ -362,7 +363,7 @@ public class MyFrame extends JFrame
 	 * @param Jb the button that the font is changed on
 	 * @param fontsize the new size of the font
 	 */
-	public void resetFonts(JButton Jb, int fontsize)
+	public void ResetFonts(JButton Jb, int fontsize)
 	{
 		Jb.setFont(new Font("URW Grotesk", Font.BOLD, fontsize));
 	}
@@ -373,7 +374,7 @@ public class MyFrame extends JFrame
 	 * @param newColor the new color of tha card
 	 * @param newText the new text on the card
 	 */
-	public void resetPlayerhand(Color newColor, String newText)
+	public void ResetPlayerhand(Color newColor, String newText)
 	{
 		if(MainGameLoop.isGameStarted)
 		{
@@ -386,7 +387,7 @@ public class MyFrame extends JFrame
 					System.out.println(MainGameLoop.Players.get(i).Name + " Wins");
 					MainGameLoop.isRunning = false;
 					Panel.repaint();
-					this.hideButtons();
+					this.HideButtons();
 					Setup.Button(Reset,850,900, 200, 120, Panel);
 					Reset.addActionListener(Handler);
 					Reset.setVisible(		true);
@@ -398,7 +399,7 @@ public class MyFrame extends JFrame
 		if(MainGameLoop.isRunning)
 		{
 			this.requestFocus();
-			windowSettup();
+			WindowSettup();
 			Panel.repaint();
 			Panel.PlayerDeckColor = newColor;
 			Panel.PlayerDeckText = newText;
@@ -441,7 +442,7 @@ public class MyFrame extends JFrame
 	 * Sets up the player selector colors on startup based on what 
 	 * was saved from last use
 	 */
-	public void setupPlayeBttonColors()
+	public void SetupPlayeBttonColors()
 	{
 		try
 		{
@@ -520,7 +521,7 @@ public class MyFrame extends JFrame
 	/**
 	 * Sets up the window and general frame settings
 	 */
-	public void windowSettup()
+	public void WindowSettup()
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(					  Panel);

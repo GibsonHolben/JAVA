@@ -29,6 +29,7 @@ public class Player
 	/**
 	 * Determines weather the card in the active players 
 	 * hand match the top card in the main deck
+	 * @param index The card that is to be checked
 	 * @return true if the cards match, false if they do not
 	 */
 	public boolean CardMatch(int index)
@@ -98,6 +99,7 @@ public class Player
 	
 	/**
 	 * Checks if the the current active card is good and goes to the next player
+	 * @param index the index of the card that is to be played
 	 */
 	public void Play(int index)
 	{

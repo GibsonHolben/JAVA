@@ -95,7 +95,7 @@ public class Setup
 		    	 System.out.println( MainGameLoop.Settings[1]);
 		    	 
 		    	 if(Integer.parseInt( MainGameLoop.Settings[1]) > 9 || 
-		    			 Integer.parseInt( MainGameLoop.Settings[1]) < 1)
+		    		Integer.parseInt( MainGameLoop.Settings[1]) < 1)
 		    	 {
 		    		 SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
@@ -105,12 +105,12 @@ public class Setup
 		    	 }
 		    	 
 		    	 if(Integer.parseInt( MainGameLoop.Settings[2]) > 99 || 
-		    			 Integer.parseInt( MainGameLoop.Settings[2]) < 1)
+		    		Integer.parseInt( MainGameLoop.Settings[2]) < 1)
 		    	 {
 		    		 SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
-		    				 "Invalid Settings... Card count must be "
-		    				 + "between 1 and 100... Refactoring...");
+		    				 "Invalid Settings... Card count must be " +
+		    				 "between 1 and 100... Refactoring...");
 		    		 Setup.FixColors();
 		    	 }
 		    	 
@@ -121,8 +121,8 @@ public class Setup
 		    		
 		    		SetingsReader.close();
 		    		 JOptionPane.showMessageDialog( MainGameLoop.Frame, 
-		    				 "Invalid Settings... Only four colors are"
-		    				 + "supported... Refactoring...");
+		    				 "Invalid Settings... Only four colors are" + 
+		    				 "supported... Refactoring...");
 		    		 Setup.FixColors();
 		    			
 		    	 }
@@ -130,20 +130,20 @@ public class Setup
 		    	 {
                      for (String color : colors) {
                          if (color.equals(Settings.ACCEPTEDCOLORS[0]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[1]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[2]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[3]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[4]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[5]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[6]) ||
-                                 color.equals(Settings.ACCEPTEDCOLORS[7])) {
+                             color.equals(Settings.ACCEPTEDCOLORS[1]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[2]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[3]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[4]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[5]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[6]) ||
+                             color.equals(Settings.ACCEPTEDCOLORS[7])) {
                              System.out.println("Corect: " + color);
                          } else {
                              SetingsReader.close();
                              JOptionPane.showMessageDialog(MainGameLoop.Frame,
                                      "Invalid Settings... Supported colors are: "
-                                             + "Red, Blue, Green, Yellow, Orange, Magenta, "
-                                             + ", Cyan, and Grey .. Refactoring...");
+                                   + "Red, Blue, Green, Yellow, Orange, Magenta, "
+                                   + ", Cyan, and Grey .. Refactoring...");
                              Setup.FixColors();
                          }
                      }
@@ -164,8 +164,8 @@ public class Setup
 		    			SetingsReader.close();
 		    			JOptionPane.showMessageDialog( MainGameLoop.Frame,
 	    						"Invalid Settings... Supported colors are: "
-	    						+ "Red, Blue, Green, Yellow, Orange, Magenta, "
-	    						+ " Cyan, and Grey .. Refactoring...");
+	    				      + "Red, Blue, Green, Yellow, Orange, Magenta, "
+	    					  + " Cyan, and Grey .. Refactoring...");
 		    			 Setup.FixColors();
 		    		}		
 		    		 
@@ -183,7 +183,7 @@ public class Setup
 		      JOptionPane.showMessageDialog(MainGameLoop.Frame, 
 		    		  "An error occurred while reading the settings file");
 		      JOptionPane.showMessageDialog(MainGameLoop.Frame,
-		    		  "Refactoring Settings");
+		    		  					"Refactoring Settings");
 		      Setup.FixColors();
 		      e.printStackTrace();
 		}
@@ -218,12 +218,11 @@ public class Setup
 		Cards.add(new Card("Black", "W"));
 		Cards.add(new Card("Black", "W"));
 		
-		//Creates wild + &SETTING& cards
+		//Creates wild + Settings[1] cards
 		Cards.add(new Card("Black", "W+" +  MainGameLoop.Settings[1]));
 		Cards.add(new Card("Black", "W+" +  MainGameLoop.Settings[1]));
 		Cards.add(new Card("Black", "W+" +  MainGameLoop.Settings[1]));
 		Cards.add(new Card("Black", "W+" +  MainGameLoop.Settings[1]));
-
 		return Cards;
 	}
 	
@@ -235,13 +234,12 @@ public class Setup
 	 * @param w the width of the label
 	 * @param h the height of the label
 	 * @param text the text of the label
-	 * @return a new JLabel of the label
+	 * @return a new JLabel that was created with the passed in values
 	 */
 	public static JLabel CreateLabel(int x, int y, int w, int h, String text)
 	{
 		JLabel jb = new JLabel(text);
 		jb.setBounds(new Rectangle(x, y, w, h));
-		
 		return jb;
 	}
 	
@@ -291,7 +289,7 @@ public class Setup
 	/**Starts the game and initilizes all the neccecary features of the game
 	 * as well as does edits on some of the settings
 	 * Gets called from main as well as MyFrame*/
-	public static void initGame()
+	public static void InitGame()
 	{
 		//Clears all players from the game on the second initilization
 		if(!MainGameLoop.Players.isEmpty())
@@ -323,14 +321,14 @@ public class Setup
 					//Settup main deck
 					MainGameLoop.MainDeck = new Deck(CreateCards());
 					MainGameLoop.MainDeck.Shuffle();			
-					Setup.settupDeck(PlayerInput);
+					Setup.Deck(PlayerInput);
 					MainGameLoop.CurentPlayer = MainGameLoop.Players.get(0);		
 				}
 				else
 				{
 					System.out.println("Please enter a valid number"
 											+ " (1-4)");
-					initGame();
+					InitGame();
 				}
 			}	
 		} 
@@ -348,7 +346,6 @@ public class Setup
 					+ "\nfliping the deck...");
 			MainGameLoop.MainDeck.Cards.add(MainGameLoop.MainDeck.Cards.get(0));
 			MainGameLoop.MainDeck.Cards.remove(0);
-			
 		}
 		MainGameLoop.CurentColor = MainGameLoop.MainDeck.Cards.get(0).ColorValue;
 	}
@@ -359,7 +356,7 @@ public class Setup
 	 * Sets up the player hands
 	 * @param input the amount of players
 	 */
-	public static void settupDeck(String input)
+	public static void Deck(String input)
 	{
 		for(int i = 0; i < Integer.parseInt(input); i++)
 		{

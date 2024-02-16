@@ -3,7 +3,7 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- * painted the card
+ * COntains several functions that are used by MyPanel to render a card
  * @author CTEHolbenG46
  * @version 0.0.7
  */
@@ -12,10 +12,14 @@ public class Paint
 
     /**
      * Dynamically updates the wild card decals with the current four colors
+     * @param x The X cordenants of the card
+     * @param y The Y cordenants of the card
+     * @param plusFour Is the card a +4 card
+     * @param G2D The graphics componenet 
      */
     public static void CardWildDecals(int x, int y, boolean plusFour, Graphics2D G2D)
     {
-        //big number
+        //Big circle
         int x2 = x + 10;
         int y2 = y + 100;
         G2D.setPaint(Setup.GetColor(Settings.ColorsBackup[0]));
@@ -32,7 +36,7 @@ public class Paint
 
         if(!plusFour)
         {
-            //small 2
+            //Small circles
             for(int i = 0; i < 2; i++)
             {
                 G2D.setPaint(Setup.GetColor(Settings.ColorsBackup[0]));
@@ -48,18 +52,17 @@ public class Paint
                 G2D.fillRect(x + 45 + (i * 115), y + 60+ (i * 260), 40, 40);
             }
         }
-
-
     }
 
     /**
-     * Paints a card
+     * Paints a card at the specified position with the specified details
      * @param x the x position
      * @param y the y position
      * @param w the width
      * @param h the height
      * @param Color the color of the card
      * @param Card the card to draw
+     * @param G2D the graphics component 
      */
     @SuppressWarnings("static-access")
     public static void Card(int x, int y, int w, int h, Color Color, Card Card, Graphics2D G2D)

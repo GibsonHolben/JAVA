@@ -79,13 +79,13 @@ public class Visuals
 		{
 			if(MainGameLoop.MainDeck.Cards.get(0).SpecialEffect.isEmpty())
 			{
-				MainGameLoop.Frame.reset(Setup.GetColor(MainGameLoop.MainDeck.Cards.get(0).ColorValue), 			
+				MainGameLoop.Frame.Reset(Setup.GetColor(MainGameLoop.MainDeck.Cards.get(0).ColorValue), 			
 						Integer.toString(
 						MainGameLoop.MainDeck.Cards.get(0).numberValue));
 			}
 			else
 			{
-				MainGameLoop.Frame.reset(Setup.GetColor(MainGameLoop.MainDeck.Cards.get(0).ColorValue), 				
+				MainGameLoop.Frame.Reset(Setup.GetColor(MainGameLoop.MainDeck.Cards.get(0).ColorValue), 				
 						MainGameLoop.MainDeck.Cards.get(0).SpecialEffect);
 			}
 		}
@@ -106,14 +106,14 @@ public class Visuals
 		{
 			if(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).SpecialEffect.isEmpty())
 			{
-				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(	MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 
+				MainGameLoop.Frame.ResetPlayerhand(Setup.GetColor(	MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 
 													Integer.toString(
 													MainGameLoop.CurentPlayer.
 													MyDeck.Cards.get(0).numberValue));
 			}
 			else
 			{
-				MainGameLoop.Frame.resetPlayerhand(Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 	
+				MainGameLoop.Frame.ResetPlayerhand(Setup.GetColor(MainGameLoop.CurentPlayer.MyDeck.Cards.get(0).ColorValue), 	
 													MainGameLoop.CurentPlayer.
 													MyDeck.Cards.get(0).SpecialEffect);
 			}

@@ -5,8 +5,6 @@ import java.util.Collections;
  * A deck of cards and can be shuffled and printed
  * @author CTEHolbenG46
  * @version 0.0.8
- * 
- * A deck that can hold cards
  */
 public class Deck 
 {
@@ -41,7 +39,8 @@ public class Deck
 	}
 	
 	/**Returns the deck as a string
-	 * @param special does the function print the special cards*/
+	 * @param special does the function print the special cards
+	 * @return this deck of cards*/
 	public String PrintDeck(boolean special)
 	{
 		String ret = "";

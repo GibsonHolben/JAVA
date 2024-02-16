@@ -24,7 +24,6 @@ public class Hover extends MouseAdapter
 		this.Buttons = Buttons;
 	}
 	
-	@Override
 	/**
 	 * Runs on mouse over button
 	 */
@@ -50,7 +49,7 @@ public class Hover extends MouseAdapter
             if (e.getSource().equals(button))
             {
                 button.setBackground(new Color(255, 255, 255));
-                MainGameLoop.Frame.setupPlayeBttonColors();
+                MainGameLoop.Frame.SetupPlayeBttonColors();
             }
         }
 	}
