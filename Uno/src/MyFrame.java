@@ -38,12 +38,12 @@ public class MyFrame extends JFrame
 	public JButton[] 		CardButtons 		= new JButton[10];
 	
 	/**
-	 * A JButton that calls flipTheCurentDeck
+	 * A JButton that calls flipTheCurrentDeck
 	 * Text = Flip
 	 */
 	public static JButton 	FlipCurentHand 		= new JButton("Flip >");
 	/**
-	 * A JButton that calls flipTheCurentDeck backwards
+	 * A JButton that calls flipTheCurrentDeck backwards
 	 * Text = Flip
 	 */
 	public static JButton 	FlipCurentHandBack 	= new JButton("< Flip");
@@ -60,7 +60,7 @@ public class MyFrame extends JFrame
 	MyPannel 				Panel;
 	
 	/**
-	 * A JButton that calls play on the curent player
+	 * A JButton that calls play on the current player
 	 */
 	public static JButton 	Play 				= new JButton();
 	

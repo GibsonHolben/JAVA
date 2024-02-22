@@ -8,8 +8,6 @@ import java.util.Scanner;
  */
 public class MainGameLoop
 {
-	//****************MAKE WILD CARD IMAGE DRAW WITH ACTIVE COLORS*********************************************************************
-	
 	/**The current color of the main deck
 	 * Default = blank*/
 	public static String 			CurentColor 	= "";
@@ -98,7 +96,7 @@ public class MainGameLoop
 				System.out.println("Please enter a command");
 				String Command = DebugScanner.next();
 
-				switch (Command)
+				switch(Command)
 				{
 					case "log":
 						FileManager.GenerateLogs();
