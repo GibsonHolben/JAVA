@@ -1,38 +1,100 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main
 {
+    static ArrayList<String> questions = new ArrayList<>();
+    static JFrame frame = new JFrame();
+    static listener listr = new listener();
+
+    static boolean donext = false;
+
+    static boolean doPrint = false;
+
+    static JButton button = new JButton("next");
     public static void main(String[] args)
     {
+        JLabel label = new JLabel("Hello, JFrame!");
+        frame.getContentPane().add(label);
 
-       StringBuilder sb = new StringBuilder();
-       sb.append("hello");
-       sb.append("world");
-       print(sb);
+        button.setBounds(1800, 900, 100, 100);
+        button.addActionListener(listr);
+        frame.getContentPane().add(button);
+        frame.setLayout(new FlowLayout());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
-        Runnable run = new Runnable()
+
+        try (Scanner scanner = new Scanner(new File("C:/Users/CTEHolbenG46/Documents/Test.txt")))
         {
-            @Override
-            public void run()
-            {
-                System.out.println("Test");
+            while (scanner.hasNextLine()) {
+
+                String line = scanner.nextLine();
+                System.out.println("do print: " + doPrint);
+                if (line.contains("Question")) {
+                    doPrint = true;
+                    if(doPrint)
+                        if(!line.isEmpty())
+                            label.setText("<html>" + label.getText() + "<br>" + line + "<html>");
+                } else if (line.contains("Answer")) {
+                    donext = false;
+                    if(doPrint)
+                        if(!line.isEmpty())
+                            label.setText("<html>" + label.getText() + "<br>" + line + "<html>");
+
+                   while(!donext)
+                   {
+                       //System.out.println("Waiting");
+                   }
+                    System.out.println("cont");
+                   questions.add(label.getText());
+                   label.setText("");
+                } else {
+                    if(doPrint)
+                    {
+                        if(!line.isEmpty())
+                            label.setText("<html>" + label.getText() + "<br>>" + line + "<html>");
+                    }
+
+                }
+
             }
-        };
-
-        run.run();
-
-
-    }
-    interface Runnable
-    {
-        public void run();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void print(String text)
-    {
-        System.out.println(text);
-    }
+}
+class listener implements ActionListener
+{
 
-    public static void print(StringBuilder text)
+    @Override
+    public void actionPerformed(ActionEvent actionEvent)
     {
-        System.out.println(text);
+        if(actionEvent.getSource().equals(Main.button))
+        {
+            Main.donext = true;
+            Main.doPrint = false;
+            try
+            {
+                System.out.println(Main.questions.get(0).toString());
+
+            }
+            catch(Exception e )
+            {
+
+            }
+        }
+
     }
 }
+
+
+
