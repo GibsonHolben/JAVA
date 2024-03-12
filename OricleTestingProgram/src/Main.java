@@ -60,7 +60,7 @@ public class Main
                     if(doPrint)
                     {
                         if(!line.isEmpty())
-                            label.setText("<html>" + label.getText() + "<br>>" + line + "<html>");
+                            label.setText("<html>" + label.getText() + "<br>" + line + "<html>");
                     }
 
                 }
