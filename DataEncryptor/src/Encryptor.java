@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-class StringNotEncryptableException extends Exception {}
 public class Encryptor
 {
 
@@ -15,36 +14,30 @@ public class Encryptor
 
     static void load()
     {
-        for(int i = 1; i < 27; i++)
+        String[] s = {"A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "?", "/", "(", ")", "@", "#", "$", "%", "^", "&", "*","-","_","+","=","|",",",".","<",">","`","~","\"","'",""}; //Leave empty char
+
+        for(int i = 1; i < s.length + 1; i++)
         {
             letterNumb.add(i);
         }
 
-        String[] s = {"A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        for(String x : s)
+        Collections.addAll(Letters, s);
+
+        for(int i : letterNumb)
         {
-            Letters.add(x);
+            System.out.println(i + "," + Letters.get(i-1));
         }
     }
 
     public void OffsetList(int seed)
     {
-
         load();
         Random random = new Random(seed);
         Collections.shuffle(letterNumb, random);
-
-
-        for(int i : letterNumb)
-        {
-            System.out.println(i + "\n");
-
-        }
     }
-    public String encrypt(String toEnc) throws StringNotEncryptableException
+    public String encrypt(String toEnc)
     {
-
         if(toEnc.endsWith(".2"))
         {
             toEnc = toEnc.substring(0, toEnc.length() - 2);
@@ -57,56 +50,47 @@ public class Encryptor
             upperIndex.add(0);
         }
 
-        try
+        for(int i = 0; i < charArray.length; i++)
         {
-            for(int i = 0; i < charArray.length; i++)
+            if(isLowerCase(charArray[i]))
             {
-                if(isLowerCase(charArray[i]))
-                {
-                    charArray[i] = charArray[i].toUpperCase();
-                    upperIndex.set(i, 1);
-                }
+                charArray[i] = charArray[i].toUpperCase();
+                upperIndex.set(i, 1);
             }
+        }
 
-            for(int j = 0; j < charArray.length; j++)
+        for(int j = 0; j < charArray.length; j++)
+        {
+
+            for(int i = 0; i < Letters.size(); i++)
             {
 
-                for(int i = 0; i < Letters.size(); i++)
+                if(charArray[j].equals(Letters.get(i)))
                 {
-
-                    if(charArray[j].equals(Letters.get(i)))
+                    if(upperIndex.get(j).equals(1))
                     {
-                        if(upperIndex.get(j).equals(1))
-                        {
-                            finish.append(letterNumb.get(i)).append("*.");
-                        }
-                        else
-                        {
-                            finish.append(letterNumb.get(i)).append(".");
-                        }
+                        finish.append(letterNumb.get(i)).append("*.");
+                    }
+                    else
+                    {
+                        finish.append(letterNumb.get(i)).append(".");
                     }
                 }
-                if (charArray[j].equals(" "))
-                {
-                    finish.append("_.");
-                }
             }
-            return finish.toString();
+            if (charArray[j].equals(" "))
+            {
+                finish.append("_.");
+            }
         }
-        catch (Exception e)
-        {
-            throw new StringNotEncryptableException();
-        }
+        return finish.toString();
+
+
+
+
     }
 
     public String decrypt(String toDec, int offset)
     {
-
-        for(int i : letterNumb)
-        {
-            System.out.println(i + ",");
-
-        }
         String finish = "";
         String[] intArray = toDec.split("\\.");
         for(String s : intArray)

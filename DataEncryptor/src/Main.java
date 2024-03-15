@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static void main(String[] args) throws StringNotEncryptableException {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String enced = "";
 
         System.out.println("Please enter a encryption key (Remember the numbers)");
         String Seed = sc.nextLine();
+        if(Seed.isEmpty() || Seed.equals(" ")){Seed = "0";}
+
         Encryptor Encryptor = new Encryptor(Integer.parseInt(Seed));
 
         System.out.println("encrypt or decrypt? (enc/dec)");
