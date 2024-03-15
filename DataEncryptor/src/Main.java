@@ -6,7 +6,7 @@ public class Main
         Scanner sc = new Scanner(System.in);
         String enced = "";
 
-        System.out.println("Please enter a encryption key (Remember the numbers)");
+        System.out.println("Please enter a encryption/decryption key (Remember the numbers)");
         String Seed = sc.nextLine();
         if(Seed.isEmpty() || Seed.equals(" ")){Seed = "0";}
 
@@ -28,6 +28,11 @@ public class Main
                 String deced = Encryptor.decrypt(sc.nextLine(), 0);
                 System.out.println(deced);
                 break;
+            case "dump":
+                for(int i : Encryptor.letterNumb)
+                {
+                    System.out.println(i + "," + Encryptor.Letters.get(i-1));
+                }
 
         }
 

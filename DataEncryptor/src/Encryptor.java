@@ -14,7 +14,7 @@ public class Encryptor
 
     static void load()
     {
-        String[] s = {"A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "?", "/", "(", ")", "@", "#", "$", "%", "^", "&", "*","-","_","+","=","|",",",".","<",">","`","~","\"","'",""}; //Leave empty char
+        String[] s = {"A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "?", "/", "(", ")", "@", "#", "$", "%", "^", "&", "*","-","_","+","=","|",",",".","<",">","`","~","\"","'","\\", "}", "{",""}; //Leave empty char
 
         for(int i = 1; i < s.length + 1; i++)
         {
@@ -24,10 +24,6 @@ public class Encryptor
 
         Collections.addAll(Letters, s);
 
-        for(int i : letterNumb)
-        {
-            System.out.println(i + "," + Letters.get(i-1));
-        }
     }
 
     public void OffsetList(int seed)
@@ -62,25 +58,34 @@ public class Encryptor
         for(int j = 0; j < charArray.length; j++)
         {
 
-            for(int i = 0; i < Letters.size(); i++)
+            try
             {
-
-                if(charArray[j].equals(Letters.get(i)))
+                for(int i = 0; i < Letters.size(); i++)
                 {
-                    if(upperIndex.get(j).equals(1))
+
+                    if(charArray[j].equals(Letters.get(i)))
                     {
-                        finish.append(letterNumb.get(i)).append("*.");
-                    }
-                    else
-                    {
-                        finish.append(letterNumb.get(i)).append(".");
+                        if(upperIndex.get(j).equals(1))
+                        {
+                            finish.append(letterNumb.get(i)).append("*.");
+                        }
+                        else
+                        {
+                            finish.append(letterNumb.get(i)).append(".");
+                        }
                     }
                 }
+                if (charArray[j].equals(" "))
+                {
+                    finish.append("_.");
+                }
             }
-            if (charArray[j].equals(" "))
+            catch (Exception e)
             {
-                finish.append("_.");
+                System.err.println("Could not encrypt");
+                e.printStackTrace();
             }
+
         }
         return finish.toString();
 
