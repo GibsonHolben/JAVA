@@ -25,7 +25,7 @@ public class Main
                 break;
             case "dec":
                 System.out.println("Enter a string to decrypt");
-                String deced = Encryptor.decrypt(sc.nextLine(), 0);
+                String deced = Encryptor.decrypt(sc.nextLine());
                 System.out.println(deced);
                 break;
             case "dump":
